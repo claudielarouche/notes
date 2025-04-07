@@ -1,0 +1,223 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html>
+    <head>
+        <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+        <title>Customizing Themes with Genesis</title>
+        <link type="text/css" rel="stylesheet" href="appbase.css">
+    </head>
+    <body class="wikidpad">
+<span class="wikidpad parent-nodes">parent nodes: <span class="wikidpad parent-node"><a href="Wordpress.html" class="wikidpad">Wordpress</a></span><br class="wikidpad" /><br class="wikidpad" /></span>
+<a name=".h0" class="wikidpad"></a><h2 class="wikidpad heading-level2">Customizing Themes with Genesis</h2>
+<span class="wikidpad property attribute">[camelCaseWordsEnabled: false]</span><br class="wikidpad" />
+<br class="wikidpad" />
+<b class="wikidpad">Genesis folder structure</b><br class="wikidpad" />
+Everything here is located under theme &gt; genesis &gt; lib<br class="wikidpad" />
+<br class="wikidpad" />
+init.php: This file loads all the other files<br class="wikidpad" />
+framework.php: Contains the core hooks used by the Framework<br class="wikidpad" />
+<br class="wikidpad" />
+-FOLDERS-<br class="wikidpad" />
+admin: Folder that contains stuff that you will see in your Wordpress dashboard<br class="wikidpad" />
+classes: Folder that contains the files that define classes used by the theme<br class="wikidpad" />
+css: CSS for the admin section<br class="wikidpad" />
+functions: Folder that contains general functions of the Framework<br class="wikidpad" />
+js: Handles script loading for the theme<br class="wikidpad" />
+languages: Handles the translation files<br class="wikidpad" />
+structure: Handles the output on the front end of the site. Gold mine when it comes to figuring out customization for child theme. <br class="wikidpad" />
+widgets: Controls Genesis specific widgets<br class="wikidpad" />
+<br class="wikidpad" />
+-INSIDE THE STRUCTURE FOLDER-<br class="wikidpad" />
+archive.php: Handles all the actions specific to archive pages<br class="wikidpad" />
+header.php: Actions that load on hooks and the header.php template including the site title<br class="wikidpad" />
+layout.php: Handles the loading of sidebars<br class="wikidpad" />
+loops.php: Handles the 3 loops available in Genesis (standard, custom, grid)<br class="wikidpad" />
+menu.php: Registers the menu areas to be used on your site. By default, Genesis comes with a primary nav and a secondary nav areas<br class="wikidpad" />
+post.php: Once you're in the loop, post will spit out all the post content<br class="wikidpad" />
+search.php: Controls functionality of search bar<br class="wikidpad" />
+sidebar.php: Contains hooks and actions to create sidebars if they've been loaded by the layout.php file<br class="wikidpad" />
+<br class="wikidpad" />
+Whenever you see the genesis() function, it's loading the framework.php file<br class="wikidpad" />
+<br class="wikidpad" />
+<b class="wikidpad">Child theme</b><br class="wikidpad" />
+Usually with child theme, when you want to replace certain functionality of the parent, you would copy the .php file associated to that functionality and replace it or add something to it. In Genesis, you don't have to do that. Modifications to Genesis behaviour can be done in one single file, functions.php. In addition to function.php, the only other file you need to create in your child theme is style.css. Only 2 files and you have a fully functional child theme.<br class="wikidpad" />
+<br class="wikidpad" />
+In functions.php, you initialize the Genesis engine through this line of code:<br class="wikidpad" />
+<br class="wikidpad" />
+&lt;?php<br class="wikidpad" />
+//Start the engine<br class="wikidpad" />
+include_once( get_template_directory() . '/lib/init.php');<br class="wikidpad" />
+<br class="wikidpad" />
+In addition to functions.php and style.css, a lot of Genesis child theme will include a template for the home page. <br class="wikidpad" />
+<br class="wikidpad" />
+<b class="wikidpad">Removing website description</b><br class="wikidpad" />
+Usually in child theme, you would copy header.php and remove the website description there. In Genesis, all you have to do is add this function to functions.php:<br class="wikidpad" />
+<br class="wikidpad" />
+remove_action('genesis_site_description', 'genesis_seo_site_description');<br class="wikidpad" />
+<br class="wikidpad" />
+<b class="wikidpad">Using the Genesis loop</b><br class="wikidpad" />
+<br class="wikidpad" />
+The simplest Wordpress loop:<br class="wikidpad" />
+<br class="wikidpad" />
+&lt;?php<br class="wikidpad" />
+get_header();<br class="wikidpad" />
+if (have_post()) :<ul class="wikidpad normalindent">while (have_post()) :<ul class="wikidpad normalindent">the_post();<ul class="wikidpad normalindent">the_content();</ul>
+</ul>
+endwhile();</ul>
+endif();<br class="wikidpad" />
+get_sidebar();<br class="wikidpad" />
+get_footer();<br class="wikidpad" />
+?&gt;<br class="wikidpad" />
+<br class="wikidpad" />
+The Genesis loop works the same way as the Wordpress loop in the sense that it loops through the posts and pages to display the content. The only difference is that it contains various action hooks that give us the flexibility to jump into the page at any time to add, move or modify what's coming out. The Genesis loops are located here: genesis &gt; lib &gt; structure &gt; loops.php.<br class="wikidpad" />
+<br class="wikidpad" />
+For example, if you want to add something before each post, you would look in loops.php, find the genesis_standard_loop() function. In there, you have do_action( 'genesis_before_while' ). That piece of code gives us a place to hook into Genesis via our child theme and inject a little code before each post entry. For example, we could add a featured image. <br class="wikidpad" />
+<br class="wikidpad" />
+-STANDARD LOOP-<br class="wikidpad" />
+The Standard loop is used in most circumstances when content needs to be displayed. If you're not doing anything special, this is the loop you get. It outputs all the basic wrapping HTML you need and uses hooks to output most of the content like the title, the post content and the post information. <br class="wikidpad" />
+<br class="wikidpad" />
+-CUSTOM LOOP-<br class="wikidpad" />
+The custom loop exists for when you need to run a custom query. It's basically a wrapper for the standard loop that lets you pass new WP arguments. Things like changing the sort order, or excluding categories. It's a quick way to customize the loop, without having to create a brand new loop from scratch with wp_query. <br class="wikidpad" />
+<br class="wikidpad" />
+-GRID LOOP-<br class="wikidpad" />
+The grid loop is used to display your content in a multi-column format. It's a riff on the custom loop in that it takes your argument and passes them on to the standard loop. The difference is that it also adds some extra markup to style the grid format. It's a little confusing to work with and is left in the code for backward compatibility. If you want a grid layout for your post, there are better ways to achieve the same result such as using the grid loop plugin (<span class="wikidpad url-link"><a href="http://www.wordpress.org/plugins/genesis-grid-loop" class="wikidpad">http://www.wordpress.org/plugins/genesis-grid-loop</a></span>)<br class="wikidpad" />
+<br class="wikidpad" />
+If the loops don't fit your purpose, you can always remove or unhook the Genesis loops and add in your own Wordpress loops. <br class="wikidpad" />
+<br class="wikidpad" />
+<b class="wikidpad">Hooks</b><br class="wikidpad" />
+Review hooks here: <span class="wikidpad url-link"><a href="http://codex.wordpress.org/Plugin_API/Hooks" class="wikidpad">http://codex.wordpress.org/Plugin_API/Hooks</a></span><br class="wikidpad" />
+<br class="wikidpad" />
+There are two types of Wordpress hooks: Action hooks and Filter hooks. In addition to those, Genesis add more hooks <br class="wikidpad" />
+<br class="wikidpad" />
+<b class="wikidpad">Action hooks</b><br class="wikidpad" />
+Hooks that are called when something happens in Wordpress (ex: Saving a post, Echoeing a site description to the header...) Whenever wordpress encounters an action hook, any code that's associated with the hook gets executed. <br class="wikidpad" />
+<br class="wikidpad" />
+Two basic kinds of action:<br class="wikidpad" />
+- add_action()<br class="wikidpad" />
+- remove_action()<br class="wikidpad" />
+<br class="wikidpad" />
+Example:<br class="wikidpad" />
+add_action('hook', 'callback_function', 10, 1);<br class="wikidpad" />
+<br class="wikidpad" />
+function callback_function($arg1){<ul class="wikidpad normalindent">/*stuff */</ul>
+}<br class="wikidpad" />
+<br class="wikidpad" />
+From the example:<br class="wikidpad" />
+hook = name or location of the hook. It's ok if it does not exist, it will just be ignored.<br class="wikidpad" />
+callback_function: name of the callback_function we want to attach to the hook. Must exist otherwise error.<br class="wikidpad" />
+10: priority. The lowest the number, the highest the priority. Default priority number is 10.<br class="wikidpad" />
+1: number of accepted arguments. Default is 1.<br class="wikidpad" />
+<br class="wikidpad" />
+10 and 1 don't really have to be part of the action call, they are not mandatory. <br class="wikidpad" />
+<br class="wikidpad" />
+There is a plugin called Genesis Visual Hook Guide that you can download to see where hooks are taking place.<br class="wikidpad" />
+<br class="wikidpad" />
+remove_action: In order for a remove action to work, there has to be a corresponding add_action with the exact same hook and the exact same function, priority and arguments. <br class="wikidpad" />
+<br class="wikidpad" />
+to change the priority of an action (example):<br class="wikidpad" />
+remove_action('genesis_entry_header', 'genesis_post_info', 12);<br class="wikidpad" />
+add_action('genesis_entry_header', 'genesis_post_info', 9);<br class="wikidpad" />
+//now the post info will appear on top of the title because it has a higher priority<br class="wikidpad" />
+<br class="wikidpad" />
+To change an action:<br class="wikidpad" />
+<br class="wikidpad" />
+remove_action('genesis_entry_header', 'genesis_post_info', 12);<br class="wikidpad" />
+add_action('genesis_entry_header', 'my_custom_function', 12); //my custom function must exist!<br class="wikidpad" />
+<br class="wikidpad" />
+Challenge: remove the post meta function from the footer and add the post meta function under the post info<br class="wikidpad" />
+<br class="wikidpad" />
+remove_action( 'genesis_entry_footer', 'genesis_post_meta' );<br class="wikidpad" />
+add_action( 'genesis_entry_header', 'genesis_post_meta', 13 );<br class="wikidpad" />
+<br class="wikidpad" />
+Bravo!<br class="wikidpad" />
+<br class="wikidpad" />
+<b class="wikidpad">Filter hooks</b><br class="wikidpad" />
+<br class="wikidpad" />
+Two basic kinds of filters:<br class="wikidpad" />
+- add_filter()<br class="wikidpad" />
+- remove_filter()<br class="wikidpad" />
+<br class="wikidpad" />
+Example:<br class="wikidpad" />
+add_filter('hook_name', 'function_to_filter', 10, 1);<br class="wikidpad" />
+<br class="wikidpad" />
+function function_to_filter($arg1){<ul class="wikidpad normalindent">/*stuff */</ul>
+}<br class="wikidpad" />
+<br class="wikidpad" />
+Real example: <br class="wikidpad" />
+add_filter('genesis_title_comments', 'my_title_comments');<br class="wikidpad" />
+<br class="wikidpad" />
+function my_title_comments(){<ul class="wikidpad normalindent">$title = "&lt;h3&gt;These are the comments&lt;/h3&gt;";<br class="wikidpad" />
+return $title;</ul>
+}<br class="wikidpad" />
+<br class="wikidpad" />
+Actions are about adding or removing chunks of code, filters are about replacing specific pieces of data. You can use the Genesis Visual Hook Guide plugin to help you find the filter hooks.<br class="wikidpad" />
+<br class="wikidpad" />
+<b class="wikidpad">Example of removing seo site description except on the home page</b><br class="wikidpad" />
+/* remove site description */<br class="wikidpad" />
+remove_action('genesis_site_description', 'genesis_seo_site_description');<br class="wikidpad" />
+<br class="wikidpad" />
+/* add the site description conditionally */<br class="wikidpad" />
+add_action('genesis_site_description', 'maybe_site_description');<br class="wikidpad" />
+<br class="wikidpad" />
+function maybe_site_description(){<ul class="wikidpad normalindent">if (is_home() ) {<ul class="wikidpad normalindent">genesis_seo_site_description();</ul>
+}</ul>
+}<br class="wikidpad" />
+<br class="wikidpad" />
+<b class="wikidpad">Example adding a widget area</b><br class="wikidpad" />
+/* 1. Register widget area called 'after-post' (in functions.php) */<br class="wikidpad" />
+genesis_register_sidebar(array(<ul class="wikidpad normalindent">'id'			=&gt; 'after-post',<br class="wikidpad" />
+'name'			=&gt; __( 'After Post', 'sample'),		/* "sample" should be theme name*/<br class="wikidpad" />
+'description'	=&gt; __( 'This is a widget area that can be placed after the post', 'sample'),	/* "sample" should be theme name*/</ul>
+));<br class="wikidpad" />
+<br class="wikidpad" />
+/* 2. Hook after-post widget area after post content (in functions.php) */<br class="wikidpad" />
+add_action('genesis_before_comments', 'after-post_widget');<br class="wikidpad" />
+<br class="wikidpad" />
+function after_post_widget(){<ul class="wikidpad normalindent">if (is_singular('post'){	/*only show this area on single posts */<ul class="wikidpad normalindent">genesis_widget_area('after-post', array(<ul class="wikidpad normalindent">'before'	=&gt;	'<div class="after-post widget-area">',<br class="wikidpad" />
+'after'		=&gt;	'</div>',<br class="wikidpad" />
+));</ul>
+</ul>
+}</ul>
+}<br class="wikidpad" />
+<br class="wikidpad" />
+The array thing is used to add some HTML markup before and after the widget area<br class="wikidpad" />
+<br class="wikidpad" />
+After that you can go in wp-admin and widget to add something to your new widget area<br class="wikidpad" />
+<br class="wikidpad" />
+<b class="wikidpad">Customizing the footer Copyright</b><br class="wikidpad" />
+add_filter ('genesis_footer_creds_text', 'my_custom_footer_creds');<br class="wikidpad" />
+<br class="wikidpad" />
+function my_custom_footer_creds(){<ul class="wikidpad normalindent">$creds = '[footer_copyright] Claudie Larouche'; /[footer-copyright] is a Genesis shortcode that outputs the copyright symbol and the current year<br class="wikidpad" />
+return $creds;</ul>
+}<br class="wikidpad" />
+<br class="wikidpad" />
+<b class="wikidpad">Add logo</b><br class="wikidpad" />
+To change the size of the custom logo image, look for this piece of code in functions.php:<br class="wikidpad" />
+<br class="wikidpad" />
+add_theme_support('genesis-custom-header', array(<ul class="wikidpad normalindent">'width' 	=&gt;	320,<br class="wikidpad" />
+'height'	=&gt;	120</ul>
+));<br class="wikidpad" />
+<br class="wikidpad" />
+If you change those values, you will probably need to change something in the css as well<br class="wikidpad" />
+<br class="wikidpad" />
+If your theme does not support header image, you can go under Genesis &gt; Theme settings and under header, change to image logo. Then you can add the following stuff in your CSS:<br class="wikidpad" />
+<br class="wikidpad" />
+.header-image .site-title &gt; a {<ul class="wikidpad normalindent">background: url(images/logo.png) no-repeat left;<br class="wikidpad" />
+float: left;<br class="wikidpad" />
+min-height: 60px;<br class="wikidpad" />
+width: 100%;</ul>
+}<br class="wikidpad" />
+<br class="wikidpad" />
+<b class="wikidpad">Change the favicon</b><br class="wikidpad" />
+Place your favicon.ico file in your child theme's images folder.<br class="wikidpad" />
+<br class="wikidpad" />
+<b class="wikidpad">Other Notes</b><br class="wikidpad" />
+Every time you see this in the code: __( it identifies a string that can be translated into another language.<br class="wikidpad" />
+<br class="wikidpad" />
+In your child theme, functions.php should have an opening &lt;?php tag but it should NOT have a closing one<br class="wikidpad" />
+<br class="wikidpad" />
+If your child theme has a file called front_page.php or home.php, that means you have a custom home page.<br class="wikidpad" />
+<br class="wikidpad" />
+There is a plugin called Simple Custom CSS (<span class="wikidpad url-link"><a href="http://wordpress.org/plugins/simple-custom-css/" class="wikidpad">http://wordpress.org/plugins/simple-custom-css/</a></span>) or Jetpack (<span class="wikidpad url-link"><a href="http://wordpress.org/plugins/jetpack/" class="wikidpad">http://wordpress.org/plugins/jetpack/</a></span>) allow you to modify the CSS without modifying your theme. <br class="wikidpad" />
+<br class="wikidpad" />
+Every WordPress site comes with a default RSS feed that can be found at yourdomain.com/feed    </body>
+</html>

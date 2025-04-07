@@ -1,0 +1,440 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html>
+    <head>
+        <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+        <title>Foundation</title>
+        <link type="text/css" rel="stylesheet" href="appbase.css">
+    </head>
+    <body class="wikidpad">
+<span class="wikidpad parent-nodes">parent nodes: <span class="wikidpad parent-node"><a href="CSS.html" class="wikidpad">CSS</a></span><br class="wikidpad" /><br class="wikidpad" /></span>
+<a name=".h0" class="wikidpad"></a><h2 class="wikidpad heading-level2">Foundation</h2>
+<span class="wikidpad property attribute">[camelCaseWordsEnabled: false]</span><br class="wikidpad" />
+<br class="wikidpad" />
+You can download Foundation here: <span class="wikidpad url-link"><a href="http://foundation.zurb.com/" class="wikidpad">http://foundation.zurb.com/</a></span><br class="wikidpad" />
+<br class="wikidpad" />
+When working with foundation, you should do it with SASS<br class="wikidpad" />
+<br class="wikidpad" />
+When you first download Foundation, in the CSS folder, there are three files:<br class="wikidpad" />
+- foundation.css: Foundation file<br class="wikidpad" />
+- foundation.min.css: Minified foundation.css<br class="wikidpad" />
+- normalize.css: Normalize.css is a fairly standard style sheet that you can go online and download. And it normalizes all of the defaults that come with browsers<br class="wikidpad" />
+<br class="wikidpad" />
+Difference between CSS Reset and Normalize.css<br class="wikidpad" />
+<br class="wikidpad" />
+1. Normalize.css preserves useful defaults rather than "unstyling" everything. For example, elements like sup or sub "just work" after including normalize.css (and are actually made more robust) whereas they are visually indistinguishable from normal text after including reset.css. So, normalize.css does not impose a visual starting point (homogeny) upon you. This may not be to everyone's taste. The best thing to do is experiment with both and see which gels with your preferences.<br class="wikidpad" />
+<br class="wikidpad" />
+2. Normalize.css corrects some common bugs that are out of scope for reset.css. It has a wider scope than reset.css, and also provides bug fixes for common problems like: display settings for HTML5 elements, the lack of font inheritance by form elements, correcting font-size rendering for pre, SVG overflow in IE9, and the button styling bug in iOS.<br class="wikidpad" />
+<br class="wikidpad" />
+3. Normalize.css doesn't clutter your dev tools. A common irritation when using reset.css is the large inheritance chain that is displayed in browser CSS debugging tools. This is not such an issue with normalize.css because of the targeted stylings.<br class="wikidpad" />
+<br class="wikidpad" />
+4. Normalize.css is more modular. The project is broken down into relatively independent sections, making it easy for you to potentially remove sections (like the form normalizations) if you know they will never be needed by your website.<br class="wikidpad" />
+<br class="wikidpad" />
+5. Normalize.css has better documentation. The normalize.css code is documented inline as well as more comprehensively in the GitHub Wiki. This means you can find out what each line of code is doing, why it was included, what the differences are between browsers, and more easily run your own tests. The project aims to help educate people on how browsers render elements by default, and make it easier for them to be involved in submitting improvements.<br class="wikidpad" />
+<br class="wikidpad" />
+Then you have the js folder which contains:<br class="wikidpad" />
+<br class="wikidpad" />
+- foundation.min.js: all the js files that are in the foundation folder, minified<br class="wikidpad" />
+- foundation folder: all the js files individually, not minified<br class="wikidpad" />
+- vendor: other js files from other vendors<ul class="wikidpad normalindent">- modernizr: useful for cross-browser compatibility, also used for mobile device detection scripts<br class="wikidpad" />
+</ul>
+You can either run the js files individually or you can link to the minified version<br class="wikidpad" />
+<br class="wikidpad" />
+This is the barebone of a Foundation html file:<br class="wikidpad" />
+<br class="wikidpad" />
+&lt;!doctype html&gt;<br class="wikidpad" />
+&lt;html class="no-js" lang="en"&gt;<ul class="wikidpad normalindent">&lt;head&gt;<ul class="wikidpad normalindent">&lt;meta charset="utf-8" /&gt;<br class="wikidpad" />
+<br class="wikidpad" />
+&lt;!-- This line identifies that this will be a responsive web design --&gt;<br class="wikidpad" />
+&lt;meta name="viewport" content="width=device-width, initial-scale=1.0" /&gt;<br class="wikidpad" />
+&lt;title&gt;Foundation | Welcome&lt;/title&gt;<br class="wikidpad" />
+<br class="wikidpad" />
+&lt;!-- You can also change this line to: <link rel="stylesheet" href="css/foundation.min.css" /> --&gt;	<br class="wikidpad" />
+&lt;link rel="stylesheet" href="css/foundation.css" /&gt;<br class="wikidpad" />
+<br class="wikidpad" />
+&lt;!-- Modernizr can impact the look of the webpage, that's why it is in the head and not at the end of the body --&gt;<br class="wikidpad" />
+&lt;script src="js/vendor/modernizr.js"&gt;&lt;/script&gt;</ul>
+&lt;/head&gt;<br class="wikidpad" />
+&lt;body&gt;<br class="wikidpad" />
+<br class="wikidpad" />
+<ul class="wikidpad normalindent">&lt;script src="js/vendor/jquery.js"&gt;&lt;/script&gt;<br class="wikidpad" />
+&lt;script src="js/foundation.min.js"&gt;&lt;/script&gt;<br class="wikidpad" />
+<br class="wikidpad" />
+&lt;!--This telling Foundation to monitor any calls to javascript --&gt;<br class="wikidpad" />
+&lt;script&gt;<br class="wikidpad" />
+$(document).foundation();<br class="wikidpad" />
+&lt;/script&gt;</ul>
+&lt;/body&gt;</ul>
+&lt;/html&gt;<br class="wikidpad" />
+<br class="wikidpad" />
+<br class="wikidpad" />
+<b class="wikidpad">The grid</b><br class="wikidpad" />
+<br class="wikidpad" />
+<span class="wikidpad url-link"><a href="http://foundation.zurb.com/docs/components/grid.html" class="wikidpad">http://foundation.zurb.com/docs/components/grid.html</a></span><br class="wikidpad" />
+<br class="wikidpad" />
+Foundation ships with a 12-grid system<br class="wikidpad" />
+<br class="wikidpad" />
+The first thing to do is to create a div with a class of row:<br class="wikidpad" />
+&lt;div class="row"&gt;<br class="wikidpad" />
+&lt;/div&gt;<br class="wikidpad" />
+<br class="wikidpad" />
+Every row has 12 columns, so you can create as many instances as you want. Next you create your columns:<br class="wikidpad" />
+<br class="wikidpad" />
+This is the small grid:<br class="wikidpad" />
+&lt;div class="row"&gt;<ul class="wikidpad normalindent">&lt;div class="small-3 columns"&gt;<br class="wikidpad" />
+&lt;/div&gt;</ul>
+&lt;/div&gt;<br class="wikidpad" />
+<br class="wikidpad" />
+We don't have to use only divs. We can also use aside, section, header, footer, nav, etc.<br class="wikidpad" />
+<br class="wikidpad" />
+When the screen gets small, the columns will stack on top of each other in a single column. The point at which the stacking occurs happens at a wider point with the large grid and a narrower point with a medium grid.<br class="wikidpad" />
+<br class="wikidpad" />
+So to have a different look on a phone, a table and a computer, simply combine the large, medium and small classes within a single div. For example:<br class="wikidpad" />
+&lt;div class="small-9 medium-8 large-2 columns"&gt;<br class="wikidpad" />
+<br class="wikidpad" />
+Combining all three grids is a little bit overkill. Typically, you'll probably combine the small grid plus either the medium or the large grid.<br class="wikidpad" />
+<br class="wikidpad" />
+<b class="wikidpad">Offset</b><br class="wikidpad" />
+<br class="wikidpad" />
+Offset is used to introduce more space between columns. Offset is applied on the LEFT of the colum. Example:<br class="wikidpad" />
+&lt;div class="small-9 small-offset-1"&gt; (again you can have an offset in small, medium or large). Make sure your column + offset still equals 12<br class="wikidpad" />
+<br class="wikidpad" />
+Offset can even be used on single rows of 12 columns. Example:<br class="wikidpad" />
+&lt;div class="large-10 large-offset-2"&gt; (but it looks kind of stupid to have a large space on the left, oh well, maybe there are some use to it..<br class="wikidpad" />
+<br class="wikidpad" />
+<b class="wikidpad">Centering</b><br class="wikidpad" />
+<br class="wikidpad" />
+The key here, is to remember that the centering is going to refer to the containing element to which the class is applied. Example:<br class="wikidpad" />
+&lt;div class="large-6 large-centered columns"&gt; Doing that will center the colum on the page but the text itself is not going to be centered<br class="wikidpad" />
+<br class="wikidpad" />
+Note:<br class="wikidpad" />
+The order in which the classes are placed don't matter<br class="wikidpad" />
+<br class="wikidpad" />
+<b class="wikidpad">Block grid</b><br class="wikidpad" />
+<br class="wikidpad" />
+Example: &lt;ul class="medium-block-grid-3"&gt;<br class="wikidpad" />
+Which means: Put three pieces of content per row<br class="wikidpad" />
+<br class="wikidpad" />
+<b class="wikidpad">Ordering</b><br class="wikidpad" />
+<br class="wikidpad" />
+Sometimes on the big screen, you have something in the left column that you actually want to have appear SECOND on the small screen<br class="wikidpad" />
+<br class="wikidpad" />
+Foundation offers this way you can change the source order within a row, via push and pull classes. The push classes will push the content from left to right, a given number of cells. The pull classes, pull the content from right to left, a given number of cells.<br class="wikidpad" />
+<br class="wikidpad" />
+First step is to rearrange your code so that the SMALL appears properly (so put the code in the right order that you want it to appear on the phone)<br class="wikidpad" />
+<br class="wikidpad" />
+&lt;div class="large-3 large-push-9 columns"&gt;<ul class="wikidpad normalindent">...</ul>
+&lt;/div&gt;<br class="wikidpad" />
+&lt;div class="large-9 columns large-pull-3"&gt;<ul class="wikidpad normalindent">...</ul>
+&lt;/div&gt;<br class="wikidpad" />
+<br class="wikidpad" />
+<b class="wikidpad">Look and feel</b><br class="wikidpad" />
+<br class="wikidpad" />
+To float images to the left or right, you add a class of "right" or "left"<br class="wikidpad" />
+&lt;img src="img/sfroom.jpg" class="right"&gt;<br class="wikidpad" />
+<br class="wikidpad" />
+To remove the bullets from a list:<br class="wikidpad" />
+&lt;ul class="no-bullet"&gt;<ul class="wikidpad normalindent">&lt;li&gt;40 Modern Rooms&lt;/li&gt;<br class="wikidpad" />
+&lt;li&gt;4 Executive Suites&lt;/li&gt;<br class="wikidpad" />
+&lt;li&gt;24-Hour Dining Room&lt;/li&gt;<br class="wikidpad" />
+&lt;li&gt;Business Center&lt;/li&gt;<br class="wikidpad" />
+&lt;li&gt;Fitness Center&lt;/li&gt;<br class="wikidpad" />
+&lt;li&gt;Massage Center&lt;/li&gt;</ul>
+&lt;/ul&gt;<br class="wikidpad" />
+<br class="wikidpad" />
+All sorts of options here: <span class="wikidpad url-link"><a href="http://foundation.zurb.com/docs/utility-classes.html" class="wikidpad">http://foundation.zurb.com/docs/utility-classes.html</a></span><br class="wikidpad" />
+<br class="wikidpad" />
+To align text: &lt;div class="large-9 columns text-center"&gt;<br class="wikidpad" />
+medium-text-center: will center for medium and large, NOT small<br class="wikidpad" />
+medium-only-text-center: will only center for medium<br class="wikidpad" />
+<br class="wikidpad" />
+Buttons: &lt;a href="#" class="button"&gt;<br class="wikidpad" />
+<br class="wikidpad" />
+3 colours in Foundation:<br class="wikidpad" />
+- Primary: Blue (default you don't have to specify anything)<br class="wikidpad" />
+- Secondary: Gray<br class="wikidpad" />
+- Alert: Red<br class="wikidpad" />
+- Success: Green<br class="wikidpad" />
+<br class="wikidpad" />
+&lt;a href="#" class="button success"&gt;<br class="wikidpad" />
+<br class="wikidpad" />
+Sizes:<br class="wikidpad" />
+- Tiny<br class="wikidpad" />
+- Small<br class="wikidpad" />
+- Medium (default, you don't have to specify anything)<br class="wikidpad" />
+- Large<br class="wikidpad" />
+<br class="wikidpad" />
+&lt;a href="#" class="button large"&gt;<br class="wikidpad" />
+<br class="wikidpad" />
+Panels: <span class="wikidpad url-link"><a href="http://foundation.zurb.com/docs/components/panels.html" class="wikidpad">http://foundation.zurb.com/docs/components/panels.html</a></span><br class="wikidpad" />
+<br class="wikidpad" />
+&lt;p class="panel"&gt;Founded in 1952 by Arthur Landon, an English businessman who travelled the world in search of the perfect balance of comfort, personality, and convenience.&lt;/p&gt;<br class="wikidpad" />
+<br class="wikidpad" />
+Thumbnails: <span class="wikidpad url-link"><a href="http://foundation.zurb.com/docs/components/thumbnails.html" class="wikidpad">http://foundation.zurb.com/docs/components/thumbnails.html</a></span><br class="wikidpad" />
+&lt;ul class="small-block-grid-2 large-block-grid-4"&gt;<ul class="wikidpad normalindent">&lt;li&gt;&lt;a href="#" class="th"&gt;&lt;img src="img/sfmarket.jpg" alt="Farmer's market. "&gt;&lt;/a&gt;&lt;/li&gt;<br class="wikidpad" />
+&lt;li&gt;&lt;a href="#" class="th"&gt;&lt;img src="img/sfrocks.jpg" alt="Hot rock massage. "&gt;&lt;/a&gt;&lt;/li&gt;<br class="wikidpad" />
+&lt;li&gt;&lt;a href="#" class="th"&gt;&lt;img src="img/sfbike.jpg" alt="Biking in San Francisco. "&gt;&lt;/a&gt;&lt;/li&gt;<br class="wikidpad" />
+&lt;li&gt;&lt;a href="#" class="th"&gt;&lt;img src="img/sfcafe.jpg" alt="Coffee at a cafe. "&gt;&lt;/a&gt;&lt;/li&gt;</ul>
+&lt;/ul&gt;<br class="wikidpad" />
+<br class="wikidpad" />
+Note that it is possible to round all the corners on your website by changing something in the Foundation SASS file<br class="wikidpad" />
+<br class="wikidpad" />
+<b class="wikidpad">Custom styles</b><br class="wikidpad" />
+<br class="wikidpad" />
+It is not recommended to add your custom styles to the end of the Foundation stylesheet because when you update Foundation, your styles will be lost.<br class="wikidpad" />
+<br class="wikidpad" />
+So I created a custom CSS file called app.css<br class="wikidpad" />
+<br class="wikidpad" />
+Visibility classes: <span class="wikidpad url-link"><a href="http://foundation.zurb.com/docs/components/visibility.html" class="wikidpad">http://foundation.zurb.com/docs/components/visibility.html</a></span><br class="wikidpad" />
+<br class="wikidpad" />
+Visibility classes are really handy things. You can show or hide elements of your web size based on your screen size and orientation, or whether the device's touch enabled. But even if an item is not visible, it is STILL loaded to the page. If you want to make some images or content visible at one screen size but not another, there's a better way to do this with Foundation. That's with the Interchange JavaScript component.<br class="wikidpad" />
+<br class="wikidpad" />
+Note: Foundation is based in ems (as opposed to Bootstrap which is based in pixels)<br class="wikidpad" />
+<br class="wikidpad" />
+<b class="wikidpad">Navigation</b><br class="wikidpad" />
+<br class="wikidpad" />
+Side nav: <span class="wikidpad url-link"><a href="http://foundation.zurb.com/docs/components/sidenav.html" class="wikidpad">http://foundation.zurb.com/docs/components/sidenav.html</a></span><br class="wikidpad" />
+<br class="wikidpad" />
+Make sure to read it as it has important information about accessibility<br class="wikidpad" />
+<br class="wikidpad" />
+Nav bar: <span class="wikidpad url-link"><a href="http://foundation.zurb.com/docs/components/topbar.html" class="wikidpad">http://foundation.zurb.com/docs/components/topbar.html</a></span><br class="wikidpad" />
+<br class="wikidpad" />
+The code starts like this:<br class="wikidpad" />
+<br class="wikidpad" />
+&lt;nav&gt;<ul class="wikidpad normalindent">&lt;ul&gt;<ul class="wikidpad normalindent">&lt;li&gt;&lt;a href="#"&gt;Home&lt;/a&gt;&lt;/li&gt;<br class="wikidpad" />
+&lt;li&gt;&lt;a href="#"&gt;Accommodations&lt;/a&gt;&lt;/li&gt;<br class="wikidpad" />
+&lt;li&gt;&lt;a href="#"&gt;Reservations&lt;/a&gt;&lt;/li&gt;<br class="wikidpad" />
+&lt;li&gt;&lt;a href="#"&gt;Meetings &amp; Events&lt;/a&gt;&lt;/li&gt;<br class="wikidpad" />
+&lt;li&gt;&lt;a href="#"&gt;Contact&lt;/a&gt;&lt;/li&gt;</ul>
+&lt;/ul&gt;</ul>
+&lt;/nav&gt;<br class="wikidpad" />
+<br class="wikidpad" />
+And ends up like this:<br class="wikidpad" />
+<br class="wikidpad" />
+&lt;nav class="top-bar" data-topbar&gt;<ul class="wikidpad normalindent">&lt;ul class="title-area"&gt;	<ul class="wikidpad normalindent">&lt;li class="name"&gt;&lt;/li&gt; &lt;!-- This line is important, don't get rid of it even though it's empty!--&gt;<br class="wikidpad" />
+&lt;!-- Remove the class "menu-icon" to get rid of menu icon. Take out "Menu" to just have icon alone --&gt;<br class="wikidpad" />
+&lt;li class="toggle-topbar menu-icon"&gt;&lt;a href="#"&gt;&lt;span&gt;Menu&lt;/span&gt;&lt;/a&gt;&lt;/li&gt; &lt;!--Without the span, the hamburger wasn't showing up for me --&gt;</ul>
+&lt;/ul&gt;<br class="wikidpad" />
+<br class="wikidpad" />
+&lt;section class="top-bar-section"&gt;<ul class="wikidpad normalindent">&lt;ul class="right"&gt; &lt;!--If you remove the class of right, the menu will start on the left --&gt;<ul class="wikidpad normalindent">&lt;li class="active"&gt;&lt;a href="#"&gt;Home&lt;/a&gt;&lt;/li&gt;<br class="wikidpad" />
+&lt;li&gt;&lt;a href="#"&gt;Accommodations&lt;/a&gt;&lt;/li&gt;<br class="wikidpad" />
+&lt;li&gt;&lt;a href="#"&gt;Reservations&lt;/a&gt;&lt;/li&gt;<br class="wikidpad" />
+&lt;li&gt;&lt;a href="#"&gt;Meetings &amp; Events&lt;/a&gt;&lt;/li&gt;<br class="wikidpad" />
+&lt;li&gt;&lt;a href="#"&gt;Contact&lt;/a&gt;&lt;/li&gt;</ul>
+&lt;/ul&gt;</ul>
+&lt;/section&gt;</ul>
+&lt;/nav&gt;<br class="wikidpad" />
+<br class="wikidpad" />
+<br class="wikidpad" />
+Note: Every time you see something that starts with data-, that's a trigger for Javascript<br class="wikidpad" />
+<br class="wikidpad" />
+For dropdowns, go like this:<br class="wikidpad" />
+&lt;li class="has-dropdown"&gt;&lt;a href="#"&gt;Accommodations&lt;/a&gt;<br class="wikidpad" />
+&lt;ul class="dropdown"&gt;<ul class="wikidpad normalindent">&lt;li&gt;&lt;a href="#"&gt;King with Sofa Bed&lt;/a&gt;&lt;/li&gt;<br class="wikidpad" />
+&lt;li&gt;&lt;a href="#"&gt;Two Queen Beds&lt;/a&gt;&lt;/li&gt;<br class="wikidpad" />
+&lt;li&gt;&lt;a href="#"&gt;Pet-Friendly Suite&lt;/a&gt;&lt;/li&gt;</ul>
+&lt;/ul&gt;<br class="wikidpad" />
+&lt;/li&gt;<br class="wikidpad" />
+<br class="wikidpad" />
+Off canvas menu: <span class="wikidpad url-link"><a href="http://foundation.zurb.com/docs/components/offcanvas.html" class="wikidpad">http://foundation.zurb.com/docs/components/offcanvas.html</a></span><br class="wikidpad" />
+<br class="wikidpad" />
+The code starts like this:<br class="wikidpad" />
+&lt;nav&gt;<ul class="wikidpad normalindent">&lt;ul&gt;<ul class="wikidpad normalindent">&lt;li&gt;&lt;a href="#"&gt;Home&lt;/a&gt;&lt;/li&gt;<br class="wikidpad" />
+&lt;li&gt;&lt;a href="#"&gt;Accommodations&lt;/a&gt;<br class="wikidpad" />
+&lt;ul&gt;<ul class="wikidpad normalindent">&lt;li&gt;&lt;a href="#"&gt;King with Sofa Bed&lt;/a&gt;&lt;/li&gt;<br class="wikidpad" />
+&lt;li&gt;&lt;a href="#"&gt;Two Queen Beds&lt;/a&gt;&lt;/li&gt;<br class="wikidpad" />
+&lt;li&gt;&lt;a href="#"&gt;Pet-Friendly Suite&lt;/a&gt;&lt;/li&gt;</ul>
+&lt;/ul&gt;<br class="wikidpad" />
+&lt;/li&gt;<br class="wikidpad" />
+&lt;li&gt;&lt;a href="#"&gt;Reservations&lt;/a&gt;&lt;/li&gt;<br class="wikidpad" />
+&lt;li&gt;&lt;a href="#"&gt;Meetings &amp; Events&lt;/a&gt;&lt;/li&gt;<br class="wikidpad" />
+&lt;li&gt;&lt;a href="#"&gt;Contact&lt;/a&gt;&lt;/li&gt;</ul>
+&lt;/ul&gt;</ul>
+&lt;/nav&gt;<br class="wikidpad" />
+<br class="wikidpad" />
+Becomes this:<br class="wikidpad" />
+&lt;div class="off-canvas-wrap hide-for-medium-up" data-offcanvas&gt;<ul class="wikidpad normalindent">&lt;div class="inner-wrap"&gt;<ul class="wikidpad normalindent">&lt;nav class="tab-bar"&gt;<ul class="wikidpad normalindent">&lt;section class="left-small"&gt;<ul class="wikidpad normalindent">&lt;a class="left-off-canvas-toggle menu-icon"&gt;&lt;span&gt;&lt;/span&gt;&lt;/a&gt;</ul>
+&lt;/section&gt;</ul>
+&lt;/nav&gt;<br class="wikidpad" />
+&lt;aside class="left-off-canvas-menu"&gt;<ul class="wikidpad normalindent">&lt;ul class="off-canvas-list"&gt;<ul class="wikidpad normalindent">&lt;li&gt;&lt;a href="#"&gt;Home&lt;/a&gt;&lt;/li&gt;<br class="wikidpad" />
+&lt;li&gt;&lt;a href="#"&gt;Accommodations&lt;/a&gt;<br class="wikidpad" />
+&lt;ul&gt;<ul class="wikidpad normalindent">&lt;li&gt;&lt;a href="#"&gt;King with Sofa Bed&lt;/a&gt;&lt;/li&gt;<br class="wikidpad" />
+&lt;li&gt;&lt;a href="#"&gt;Two Queen Beds&lt;/a&gt;&lt;/li&gt;<br class="wikidpad" />
+&lt;li&gt;&lt;a href="#"&gt;Pet-Friendly Suite&lt;/a&gt;&lt;/li&gt;</ul>
+&lt;/ul&gt;<br class="wikidpad" />
+&lt;/li&gt;<br class="wikidpad" />
+&lt;li&gt;&lt;a href="#"&gt;Reservations&lt;/a&gt;&lt;/li&gt;<br class="wikidpad" />
+&lt;li&gt;&lt;a href="#"&gt;Meetings &amp; Events&lt;/a&gt;&lt;/li&gt;<br class="wikidpad" />
+&lt;li&gt;&lt;a href="#"&gt;Contact&lt;/a&gt;&lt;/li&gt;</ul>
+&lt;/ul&gt;</ul>
+&lt;/aside&gt;<br class="wikidpad" />
+&lt;a class="exit-off-canvas"&gt;</a>	</ul>
+</ul>
+[... The rest of your HTML code]<ul class="wikidpad normalindent">&lt;/div&gt;&lt;!--Inner wrap, must go after ALL content--&gt;</ul>
+&lt;/div&gt; &lt;!--Off canvas--&gt;<br class="wikidpad" />
+<br class="wikidpad" />
+In nav.html, I actually have a topbar for medium and large and a off-canvas for phones<br class="wikidpad" />
+<br class="wikidpad" />
+<b class="wikidpad">Javascript</b><br class="wikidpad" />
+<br class="wikidpad" />
+Clearing: <span class="wikidpad url-link"><a href="http://foundation.zurb.com/docs/components/clearing.html" class="wikidpad">http://foundation.zurb.com/docs/components/clearing.html</a></span><br class="wikidpad" />
+<br class="wikidpad" />
+Three examples:<br class="wikidpad" />
+<br class="wikidpad" />
+&lt;h2&gt;Photo Gallery #1&lt;/h2&gt;<br class="wikidpad" />
+&lt;p&gt;All images are there&lt;/p&gt;<br class="wikidpad" />
+&lt;ul class="clearing-thumbs" data-clearing&gt;<ul class="wikidpad normalindent">&lt;li&gt;&lt;a href="img/clearing/sfbike-large.jpg" class="th"&gt;&lt;img src="img/clearing/sfbike-thumb.jpg"&gt;&lt;/a&gt;&lt;/li&gt;<br class="wikidpad" />
+&lt;li&gt;&lt;a href="img/clearing/sfbook-large.jpg" class="th"&gt;&lt;img src="img/clearing/sfbook-thumb.jpg"&gt;&lt;/a&gt;&lt;/li&gt;<br class="wikidpad" />
+&lt;li&gt;&lt;a href="img/clearing/sfcafe-large.jpg" class="th"&gt;&lt;img src="img/clearing/sfcafe-thumb.jpg"&gt;&lt;/a&gt;&lt;/li&gt;<br class="wikidpad" />
+&lt;li&gt;&lt;a href="img/clearing/sfdog-large.jpg" class="th"&gt;&lt;img src="img/clearing/sfdog-thumb.jpg"&gt;&lt;/a&gt;&lt;/li&gt;<br class="wikidpad" />
+&lt;li&gt;&lt;a href="img/clearing/sfmarket-large.jpg" class="th"&gt;&lt;img src="img/clearing/sfmarket-thumb.jpg"&gt;&lt;/a&gt;&lt;/li&gt;<br class="wikidpad" />
+&lt;li&gt;&lt;a href="img/clearing/sfrocks-large.jpg" class="th"&gt;&lt;img src="img/clearing/sfrocks-thumb.jpg"&gt;&lt;/a&gt;&lt;/li&gt;</ul>
+&lt;/ul&gt;<br class="wikidpad" />
+<br class="wikidpad" />
+&lt;h2&gt;Photo Gallery #2&lt;/h2&gt;<br class="wikidpad" />
+&lt;p&gt;One featured image but you can still see all the other ones by clicking on it&lt;/p&gt;<br class="wikidpad" />
+&lt;ul class="clearing-thumbs clearing-feature" data-clearing&gt;<ul class="wikidpad normalindent">&lt;li&gt;&lt;a href="img/clearing/sfbike-large.jpg" class="th"&gt;&lt;img src="img/clearing/sfbike-thumb.jpg"&gt;&lt;/a&gt;&lt;/li&gt;<br class="wikidpad" />
+&lt;li&gt;&lt;a href="img/clearing/sfbook-large.jpg" class="th"&gt;&lt;img src="img/clearing/sfbook-thumb.jpg"&gt;</a>&lt;/li&gt;<br class="wikidpad" />
+&lt;li class="clearing-featured-img"&gt;&lt;a href="img/clearing/sfcafe-large.jpg" class="th"&gt;&lt;img src="img/clearing/sfcafe-thumb.jpg"&gt;&lt;/a&gt;&lt;/li&gt;<br class="wikidpad" />
+&lt;li&gt;&lt;a href="img/clearing/sfdog-large.jpg" class="th"&gt;&lt;img src="img/clearing/sfdog-thumb.jpg"&gt;&lt;/a&gt;&lt;/li&gt;<br class="wikidpad" />
+&lt;li&gt;&lt;a href="img/clearing/sfmarket-large.jpg" class="th"&gt;&lt;img src="img/clearing/sfmarket-thumb.jpg"&gt;&lt;/a&gt;&lt;/li&gt;<br class="wikidpad" />
+&lt;li&gt;&lt;a href="img/clearing/sfrocks-large.jpg" class="th"&gt;&lt;img src="img/clearing/sfrocks-thumb.jpg"&gt;&lt;/a&gt;&lt;/li&gt;</ul>
+&lt;/ul&gt;<br class="wikidpad" />
+<br class="wikidpad" />
+&lt;h2&gt;Photo Gallery #3&lt;/h2&gt;<br class="wikidpad" />
+&lt;p&gt;With captions and better grid&lt;/p&gt;<br class="wikidpad" />
+&lt;ul class="clearing-thumbs small-block-grid-2 medium-block-grid-3 large-block-grid-4" data-clearing&gt;<ul class="wikidpad normalindent">&lt;li&gt;&lt;a href="img/clearing/sfbike-large.jpg" class="th"&gt;&lt;img src="img/clearing/sfbike-thumb.jpg" data-caption="Biking in San Francisco"&gt;&lt;/a&gt;&lt;/li&gt;<br class="wikidpad" />
+&lt;li&gt;&lt;a href="img/clearing/sfbook-large.jpg" class="th"&gt;&lt;img src="img/clearing/sfbook-thumb.jpg" data-caption="Browsing for books"&gt;&lt;/a&gt;&lt;/li&gt;<br class="wikidpad" />
+&lt;li&gt;&lt;a href="img/clearing/sfcafe-large.jpg" class="th"&gt;&lt;img src="img/clearing/sfcafe-thumb.jpg" data-caption="Enjoying coffee at a café"&gt;&lt;/a&gt;&lt;/li&gt;<br class="wikidpad" />
+&lt;li&gt;&lt;a href="img/clearing/sfdog-large.jpg" class="th"&gt;&lt;img src="img/clearing/sfdog-thumb.jpg"&gt;&lt;/a&gt;&lt;/li&gt;<br class="wikidpad" />
+&lt;li&gt;&lt;a href="img/clearing/sfmarket-large.jpg" class="th"&gt;&lt;img src="img/clearing/sfmarket-thumb.jpg"&gt;&lt;/a&gt;&lt;/li&gt;<br class="wikidpad" />
+&lt;li&gt;&lt;a href="img/clearing/sfrocks-large.jpg" class="th"&gt;&lt;img src="img/clearing/sfrocks-thumb.jpg"&gt;&lt;/a&gt;&lt;/li&gt;</ul>
+&lt;/ul&gt;<br class="wikidpad" />
+<br class="wikidpad" />
+Equalizer: <span class="wikidpad url-link"><a href="http://foundation.zurb.com/docs/components/equalizer.html" class="wikidpad">http://foundation.zurb.com/docs/components/equalizer.html</a></span><br class="wikidpad" />
+<br class="wikidpad" />
+Makes columns same height (for example, a sidebar and the main content arriving at the same location at the bottom)<br class="wikidpad" />
+<br class="wikidpad" />
+1. Add this line to the top: &lt;script src="js/vendor/modernizr.js"&gt;&lt;/script&gt;<br class="wikidpad" />
+2. Add data-equalizer to the row: &lt;div class="row" data-equalizer&gt;<br class="wikidpad" />
+3. Add data-equalizer-watch to all the sections you want to equalize: <ul class="wikidpad normalindent">&lt;article class="medium-9 medium-push-3 columns" data-equalizer-watch&gt;<br class="wikidpad" />
+&lt;aside class="medium-3 medium-pull-9 columns panel" data-equalizer-watch&gt;<br class="wikidpad" />
+</ul>
+Carousel with Slick (<span class="wikidpad url-link"><a href="http://kenwheeler.github.io/slick/" class="wikidpad">http://kenwheeler.github.io/slick/</a></span>)<br class="wikidpad" />
+1. Add link to CSS in head: &lt;link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/jquery.slick/1.4.0/slick.css"/&gt;<br class="wikidpad" />
+2. Add slick.js before your closing <body> tag, after jQuery (requires jQuery 1.7 +): <br class="wikidpad" />
+&lt;script type="text/javascript" src="slick/slick.min.js"&gt;&lt;/script&gt;<br class="wikidpad" />
+3. Set up your HTML markup:<br class="wikidpad" />
+&lt;div class="your-class"&gt;<ul class="wikidpad normalindent">&lt;div&gt;your content&lt;/div&gt;<br class="wikidpad" />
+&lt;div&gt;your content&lt;/div&gt;<br class="wikidpad" />
+&lt;div&gt;your content&lt;/div&gt;</ul>
+&lt;/div&gt;<br class="wikidpad" />
+<br class="wikidpad" />
+<br class="wikidpad" />
+Responsive Lightbox: see the file lightbox.html<br class="wikidpad" />
+<br class="wikidpad" />
+Modal Window: <br class="wikidpad" />
+<br class="wikidpad" />
+1. Add data-reveal to all your a items<br class="wikidpad" />
+2. Add one of these per image. This is to be placed right after footer over script, way at the bottom:<br class="wikidpad" />
+<br class="wikidpad" />
+&lt;!-- Modal Windows --&gt;<br class="wikidpad" />
+&lt;div id="sfdog" class="reveal-modal" data-reveal&gt;<ul class="wikidpad normalindent">&lt;img src="img/clearing/sfdog-large.jpg"&gt;<br class="wikidpad" />
+&lt;p&gt;A man and his dog in the San Francisco Park&lt;/p&gt;<br class="wikidpad" />
+&lt;a class="close-reveal-modal"&gt;&#215;&lt;/a&gt; &lt;!-- &amp;#215 is the code for the X to close the window--&gt;</ul>
+&lt;/div&gt;<br class="wikidpad" />
+<br class="wikidpad" />
+Carousel:<br class="wikidpad" />
+1. Download owl carousel <span class="wikidpad url-link"><a href="http://owlgraphic.com/owlcarousel/" class="wikidpad">http://owlgraphic.com/owlcarousel/</a></span><br class="wikidpad" />
+2. Add these two lines to your head:<br class="wikidpad" />
+<br class="wikidpad" />
+&lt;!-- Owl Carousel Assets --&gt;<br class="wikidpad" />
+&lt;link href="css/owl.carousel.css" rel="stylesheet"&gt;<br class="wikidpad" />
+&lt;link href="css/owl.theme.css" rel="stylesheet"&gt;<br class="wikidpad" />
+<br class="wikidpad" />
+3. The carousel itself (somewhere in your body)<br class="wikidpad" />
+<br class="wikidpad" />
+&lt;h2&gt;Carousel&lt;/h2&gt;<br class="wikidpad" />
+<br class="wikidpad" />
+&lt;div id="owl-demo" class="owl-carousel"&gt;<ul class="wikidpad normalindent">&lt;div class="item"&gt;&lt;img src="img/banners/1.jpg" alt="Owl Image"&gt;&lt;/div&gt;<br class="wikidpad" />
+&lt;div class="item"&gt;&lt;img src="img/banners/2.jpg" alt="Owl Image"&gt;&lt;/div&gt;<br class="wikidpad" />
+&lt;div class="item"&gt;&lt;img src="img/banners/3.jpg" alt="Owl Image"&gt;&lt;/div&gt;<br class="wikidpad" />
+&lt;div class="item"&gt;&lt;img src="img/banners/4.jpg" alt="Owl Image"&gt;&lt;/div&gt;<br class="wikidpad" />
+&lt;div class="item"&gt;&lt;img src="img/banners/5.jpg" alt="Owl Image"&gt;&lt;/div&gt;<br class="wikidpad" />
+&lt;div class="item"&gt;&lt;img src="img/banners/6.jpg" alt="Owl Image"&gt;&lt;/div&gt;</ul>
+&lt;/div&gt;<br class="wikidpad" />
+<br class="wikidpad" />
+&lt;div class="customNavigation"&gt;<ul class="wikidpad normalindent">&lt;a class="button small prev"&gt;Previous&lt;/a&gt;<br class="wikidpad" />
+&lt;a class="button small next"&gt;Next&lt;/a&gt;<br class="wikidpad" />
+&lt;a class="button small play"&gt;Autoplay&lt;/a&gt;<br class="wikidpad" />
+&lt;a class="button small stop"&gt;Stop&lt;/a&gt;</ul>
+&lt;/div&gt;<br class="wikidpad" />
+<br class="wikidpad" />
+4. Add this at the bottom of the body with the rest of your script stuff:<br class="wikidpad" />
+<br class="wikidpad" />
+&lt;script src="js/carousel.js"&lt;/script&gt;<br class="wikidpad" />
+&lt;script src="js/owl.carousel.js"&gt;&lt;/script&gt;<br class="wikidpad" />
+<br class="wikidpad" />
+5. Carousel.js is actually something I wrote myself(?) and here is the content:<br class="wikidpad" />
+<br class="wikidpad" />
+$(document).ready(function() {<br class="wikidpad" />
+<ul class="wikidpad normalindent">var owl = $("#owl-demo");<br class="wikidpad" />
+<ul class="wikidpad normalindent">$("#owl-demo").owlCarousel({<br class="wikidpad" />
+<ul class="wikidpad normalindent">singleItem:true,<br class="wikidpad" />
+autoPlay: 3000,<br class="wikidpad" />
+responsive: true</ul>
+});<br class="wikidpad" />
+<br class="wikidpad" />
+// Custom Navigation Events<br class="wikidpad" />
+$(".next").click(function(){<ul class="wikidpad normalindent">owl.trigger('owl.next');</ul>
+})<br class="wikidpad" />
+$(".prev").click(function(){<ul class="wikidpad normalindent">owl.trigger('owl.prev');</ul>
+})<br class="wikidpad" />
+$(".play").click(function(){<ul class="wikidpad normalindent">owl.trigger('owl.play',3000); //owl.play event accept autoPlay speed as second parameter</ul>
+})<br class="wikidpad" />
+$(".stop").click(function(){<ul class="wikidpad normalindent">owl.trigger('owl.stop');</ul>
+})<br class="wikidpad" />
+</ul>
+</ul>
+});<br class="wikidpad" />
+<br class="wikidpad" />
+See the owl carousel website if you want to have your carousel have a different behaviour<br class="wikidpad" />
+<br class="wikidpad" />
+<b class="wikidpad">Make image responsive</b><br class="wikidpad" />
+<br class="wikidpad" />
+It's important to replace big images by smaller version for the mobile websites, otherwise people will use up lots of their download for a tiny little image.<br class="wikidpad" />
+<br class="wikidpad" />
+Solution 1: <br class="wikidpad" />
+You could use some kind of server side solution. If you happen to be coding with something like PHP, for example, you could have the browser send the client's screen size to the server, and then PHP would pick the right sized image to show up for that particular screen size.<br class="wikidpad" />
+<br class="wikidpad" />
+Solution 2: <br class="wikidpad" />
+Javascript based solution by Foundation. The only size downloaded will be the necessary size. Also supports retina images.<br class="wikidpad" />
+<br class="wikidpad" />
+Starting point:<br class="wikidpad" />
+&lt;div class="row"&gt;<ul class="wikidpad normalindent">&lt;div class="medium-12 columns"&gt;<ul class="wikidpad normalindent">&lt;img src="img/sfnight.jpg" alt="San Francisco." class="bottomspace"&gt;</ul>
+&lt;/div&gt;</ul>
+&lt;/div&gt;<br class="wikidpad" />
+<br class="wikidpad" />
+Ending point:<br class="wikidpad" />
+&lt;div class="row"&gt;<ul class="wikidpad normalindent">&lt;div class="medium-12 columns"&gt;<ul class="wikidpad normalindent">&lt;img data-interchange="<br class="wikidpad" />
+[img/interchange/small.jpg, (default)], <br class="wikidpad" />
+[img/interchange/small.jpg, (small)], <br class="wikidpad" />
+[img/interchange/retina.jpg], (retina)],<br class="wikidpad" />
+[img/interchange/medium.jpg, (medium)], <br class="wikidpad" />
+[img/interchange/large.jpg, (large)]" class="bottomspace"&gt; &lt;!--class of bottomspace is not necessary, it's just needed for this particular project--&gt;<br class="wikidpad" />
+&lt;!--Adding noscript allow people who have deactivated javascript to still have an image --&gt;<br class="wikidpad" />
+&lt;noscript&gt;&lt;img src="img/sfnight.jpg" alt="San Francisco." class="bottomspace"&gt;&lt;/noscript&gt; </ul>
+&lt;/div&gt;</ul>
+&lt;/div&gt;<br class="wikidpad" />
+<br class="wikidpad" />
+So, it looks like owl carousel and interchange are in conflict!<br class="wikidpad" />
+<br class="wikidpad" />
+<b class="wikidpad">Tooltips</b><br class="wikidpad" />
+<br class="wikidpad" />
+<span class="wikidpad url-link"><a href="http://foundation.zurb.com/docs/components/tooltips.html" class="wikidpad">http://foundation.zurb.com/docs/components/tooltips.html</a></span><br class="wikidpad" />
+<br class="wikidpad" />
+<b class="wikidpad">Download a custom version of Foundation</b><br class="wikidpad" />
+<br class="wikidpad" />
+Don't change anything on the right-hand side (Grid, colours etc.) You can make those changes using SASS<br class="wikidpad" />
+<br class="wikidpad" />
+Make sure you take good notes of which components you download, for when you update to the new Foundation.    </body>
+</html>

@@ -1,0 +1,320 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html>
+    <head>
+        <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+        <title>Building a responsive theme</title>
+        <link type="text/css" rel="stylesheet" href="appbase.css">
+    </head>
+    <body class="wikidpad">
+<span class="wikidpad parent-nodes">parent nodes: <span class="wikidpad parent-node"><a href="Wordpress.html" class="wikidpad">Wordpress</a></span><br class="wikidpad" /><br class="wikidpad" /></span>
+<a name=".h0" class="wikidpad"></a><h2 class="wikidpad heading-level2">Building a responsive theme</h2>
+<span class="wikidpad property attribute">[camelCaseWordsEnabled: false]</span><br class="wikidpad" />
+<br class="wikidpad" />
+All the exercises from the video were done on Anaximander theme under wplisa<br class="wikidpad" />
+<br class="wikidpad" />
+Wordpress mobile:<ul class="wikidpad normalindent">- Responsive theme<br class="wikidpad" />
+- Theme switcher<br class="wikidpad" />
+- Mobile plug-in (most popular as of 2012: WPtouch) The problem with that is that the mobile experience looks nothing like your main design<br class="wikidpad" />
+</ul>
+Standard screen sizes:<ul class="wikidpad normalindent">- Standard monitor, 1280x1040<br class="wikidpad" />
+- HD monitor, 1920x1080<br class="wikidpad" />
+- Typical laptop, 1360x768<br class="wikidpad" />
+- Typical smartphone, 320x480 (easy to switch from 320x480 to 480x320)<br class="wikidpad" />
+- iPad 1 and 2, 768x1024<br class="wikidpad" />
+- iPad retina, 1536x2048<br class="wikidpad" />
+- Android tablet, 1280x800<br class="wikidpad" />
+- HD Android tablet, 1920x1200<br class="wikidpad" />
+- etc. etc.<br class="wikidpad" />
+</ul>
+Basically you can never guess what the resolution will be, so you have to design your website in such a way that it will look nice on any screen resolution. <br class="wikidpad" />
+<br class="wikidpad" />
+When designing a responsive site, start with the mobile look first. You will end up getting rid of everything that does not matter. Once you know what your design will look like on a small design, you can scale your design UP to fit larger screens. Once you have the small and the large figured out, you can work on the middle size. <br class="wikidpad" />
+<br class="wikidpad" />
+Your markup needs to accommodate all your different layouts simultaneously without becoming unnecessarily cluttered in the process.<br class="wikidpad" />
+<br class="wikidpad" />
+Superfish library: Allows you to create responsive and accessible menus using jquery<br class="wikidpad" />
+<span class="wikidpad url-link"><a href="http://users.tpg.com.au/j_birch/plugins/superfish/" class="wikidpad">http://users.tpg.com.au/j_birch/plugins/superfish/</a></span><br class="wikidpad" />
+<br class="wikidpad" />
+Morten: In my opinion, drop-down menus are a bad idea and should be avoided at all costs<br class="wikidpad" />
+- Difficult to deal with on cell phones<br class="wikidpad" />
+- If you put a drop down menu, you are hiding content on the page.<br class="wikidpad" />
+<br class="wikidpad" />
+The alternative: Only make the first element of the menu clickable and put the rest of the links in that page.<br class="wikidpad" />
+<br class="wikidpad" />
+<b class="wikidpad">Media query</b><br class="wikidpad" />
+Example:<br class="wikidpad" />
+<br class="wikidpad" />
+@media only screen and (max-width: 900px){<ul class="wikidpad normalindent">body{<ul class="wikidpad normalindent">font-family: Georgia, Times, Times New Roman, serif;}<br class="wikidpad" />
+</ul>
+</ul>
+}<br class="wikidpad" />
+<br class="wikidpad" />
+Changes the font-family for anything that is smaller than 900px<br class="wikidpad" />
+<br class="wikidpad" />
+Speaker recommends to put media query at the bottom and organize them from the biggest screens to the smallest screen<br class="wikidpad" />
+<br class="wikidpad" />
+<br class="wikidpad" />
+This code is not responsive...<br class="wikidpad" />
+#wrapper {<ul class="wikidpad normalindent">display: block;<br class="wikidpad" />
+width: 1040px;<br class="wikidpad" />
+margin: 0 auto;<br class="wikidpad" />
+background: #fff;</ul>
+}<br class="wikidpad" />
+<br class="wikidpad" />
+but it becomes way better if you make this small change:<br class="wikidpad" />
+#wrapper {<ul class="wikidpad normalindent">display: block;<br class="wikidpad" />
+max-width: 1040px; //change here<br class="wikidpad" />
+margin: 0 auto;<br class="wikidpad" />
+background: #fff;</ul>
+}<br class="wikidpad" />
+<br class="wikidpad" />
+Asking the screen how big it is:<br class="wikidpad" />
+Add these lines in header.php, just on top of &lt;title&gt;<br class="wikidpad" />
+<br class="wikidpad" />
+&lt;!-- Check device width for responsive media query --&gt;<br class="wikidpad" />
+&lt;meta name="viewport" content="width=device-width, intial-scale=1.0, maximum-scale=1.0, user-scalable=no" /&gt;<br class="wikidpad" />
+<br class="wikidpad" />
+To know the percentage of space you need for something, you do:<br class="wikidpad" />
+(width * 100) / (total width) = percentage<br class="wikidpad" />
+<br class="wikidpad" />
+<b class="wikidpad">Making sure all images are resizing automatically:</b><br class="wikidpad" />
+<br class="wikidpad" />
+--START--<br class="wikidpad" />
+<br class="wikidpad" />
+img.size-auto,<br class="wikidpad" />
+img.size-full,<br class="wikidpad" />
+img.size-large,<br class="wikidpad" />
+img.size-medium,<br class="wikidpad" />
+.attachment img,<br class="wikidpad" />
+#sidebar img,<br class="wikidpad" />
+.wp-caption {<ul class="wikidpad normalindent">max-width: 100%; /* When images are too wide for containing element, force them to fit. */<br class="wikidpad" />
+height: auto; /* Override height to match resized width for correct aspect ratio. */</ul>
+}<br class="wikidpad" />
+<br class="wikidpad" />
+img.aligncenter,<br class="wikidpad" />
+.wp-caption.aligncenter {<ul class="wikidpad normalindent">margin: 0 auto 1.5em auto;<br class="wikidpad" />
+max-width: 100%;<br class="wikidpad" />
+height: auto;</ul>
+}<br class="wikidpad" />
+<br class="wikidpad" />
+--END--<br class="wikidpad" />
+<br class="wikidpad" />
+<b class="wikidpad">To make a video responsive</b><br class="wikidpad" />
+1. You need to add a javascript library that you can find here: <span class="wikidpad url-link"><a href="http://fitvidsjs.com/" class="wikidpad">http://fitvidsjs.com/</a></span><br class="wikidpad" />
+<br class="wikidpad" />
+2. Place the file jquery.fitvids.js in your theme folder under the folder called "js"<br class="wikidpad" />
+<br class="wikidpad" />
+3. In functions.php, add the following code:<br class="wikidpad" />
+<br class="wikidpad" />
+--START--<br class="wikidpad" />
+// Add FitVids to allow for responsive sizing of videos<br class="wikidpad" />
+function anaximander_fitvids() {<ul class="wikidpad normalindent">if (!is_admin()) {<br class="wikidpad" />
+<ul class="wikidpad normalindent">wp_register_script( 'fitvids', get_template_directory_uri() . '/js/jquery.fitvids.js', array('jquery'), '1.0', true);    	<ul class="wikidpad normalindent">wp_enqueue_script( 'fitvids');<br class="wikidpad" />
+add_action('wp_head', 'add_fitthem');<br class="wikidpad" />
+<br class="wikidpad" />
+function add_fitthem() { ?&gt;<ul class="wikidpad normalindent">&lt;script type="text/javascript"&gt;<ul class="wikidpad normalindent">jQuery(document).ready(function() {<ul class="wikidpad normalindent">jQuery('.video').fitVids();</ul>
+});</ul>
+&lt;/script&gt;&lt;?php</ul>
+}<br class="wikidpad" />
+</ul>
+</ul>
+}</ul>
+}<br class="wikidpad" />
+<br class="wikidpad" />
+add_action('init', 'anaximander_fitvids');<br class="wikidpad" />
+<br class="wikidpad" />
+<br class="wikidpad" />
+// Automatically append .video class to embed content (not a perfect solution, but close), will only work to new videos (old ones you have to reupdate them<br class="wikidpad" />
+function anaximander_embed_filter( $html, $data, $url ) {<br class="wikidpad" />
+<ul class="wikidpad normalindent">$return = '&lt;div class="video"&gt;'.$html.'&lt;/div&gt;';<br class="wikidpad" />
+return $return;</ul>
+}<br class="wikidpad" />
+add_filter('oembed_dataparse', 'anaximander_embed_filter', 90, 3 );<br class="wikidpad" />
+<br class="wikidpad" />
+--END--<br class="wikidpad" />
+<br class="wikidpad" />
+4. Go to your post and make sure your video has the class "video". In the text view:<br class="wikidpad" />
+<br class="wikidpad" />
+&lt;div class=video&gt;<br class="wikidpad" />
+https://www.youtube.com/watch?v=F3kImL2gDkI<br class="wikidpad" />
+&lt;/div&gt;<br class="wikidpad" />
+<br class="wikidpad" />
+If you hide something (display:  none;) it still gets loaded on the browser. Could be big... For example, hiding sidebar which contains ads from Google etc.<br class="wikidpad" />
+<br class="wikidpad" />
+<b class="wikidpad">Link in the footer to go back to top</b><br class="wikidpad" />
+Add this line to footer.php: &lt;p&gt;&lt;a href="#content"&gt;You have reached the bottom. Click here to get back on top.&lt;/a&gt;&lt;/p&gt;<br class="wikidpad" />
+<br class="wikidpad" />
+Right now it points to "Content" which is an ID but you can point to something else because it doesn't truly bring back to the TOP TOP.<br class="wikidpad" />
+<br class="wikidpad" />
+<b class="wikidpad">Adding a responsive slider</b><br class="wikidpad" />
+1. Go to <span class="wikidpad url-link"><a href="http://www.woothemes.com/flexslider/" class="wikidpad">http://www.woothemes.com/flexslider/</a></span> and click download<br class="wikidpad" />
+<br class="wikidpad" />
+2. Place the following files on your website:<br class="wikidpad" />
+flexslider.css (in theme &gt; CSS)<br class="wikidpad" />
+jquery.flexslider-min.js<br class="wikidpad" />
+images folder (in theme &gt; CSS)<br class="wikidpad" />
+<br class="wikidpad" />
+3. In functions.php, add following code:<br class="wikidpad" />
+<br class="wikidpad" />
+// FLEXSLIDER<br class="wikidpad" />
+<br class="wikidpad" />
+function anaximander_flexslider() {<ul class="wikidpad normalindent">if (!is_admin()) {<br class="wikidpad" />
+<ul class="wikidpad normalindent">// Enqueue FlexSlider JavaScript<br class="wikidpad" />
+wp_register_script('jquery_flexslider', get_template_directory_uri(). '/js/jquery.flexslider-min.js', array('jquery') );<br class="wikidpad" />
+wp_enqueue_script('jquery_flexslider');<br class="wikidpad" />
+<br class="wikidpad" />
+// Enqueue FlexSlider Stylesheet		<br class="wikidpad" />
+wp_register_style( 'flexslider-style', get_template_directory_uri() . '/CSS/flexslider.css', 'all' );<br class="wikidpad" />
+wp_enqueue_style( 'flexslider-style' );<br class="wikidpad" />
+<br class="wikidpad" />
+// FlexSlider custom settings		<br class="wikidpad" />
+add_action('wp_footer', 'anaximander_flexslider_settings');<br class="wikidpad" />
+<br class="wikidpad" />
+function anaximander_flexslider_settings() { ?&gt;			<ul class="wikidpad normalindent">&lt;script&gt;<ul class="wikidpad normalindent">jQuery(document).ready(function($){<br class="wikidpad" />
+<ul class="wikidpad normalindent">$('.flexslider').flexslider();</ul>
+});</ul>
+&lt;/script&gt;</ul>
+&lt;?php <br class="wikidpad" />
+}<br class="wikidpad" />
+</ul>
+}</ul>
+}<br class="wikidpad" />
+<br class="wikidpad" />
+add_action('init', 'anaximander_flexslider');<br class="wikidpad" />
+<br class="wikidpad" />
+//END FLEXSLIDER<br class="wikidpad" />
+<br class="wikidpad" />
+OK now you have a few options... <br class="wikidpad" />
+<br class="wikidpad" />
+--OPTION 1--<br class="wikidpad" />
+<br class="wikidpad" />
+4. In index.php, add following code under &lt;div id="content" role="main"&gt;:<br class="wikidpad" />
+<br class="wikidpad" />
+&lt;!-- Flexslider demo content --&gt;<br class="wikidpad" />
+<br class="wikidpad" />
+&lt;div class="flexslider"&gt;<ul class="wikidpad normalindent">&lt;ul class="slides"&gt;<ul class="wikidpad normalindent">&lt;li&gt;<ul class="wikidpad normalindent">&lt;img src="<img src="http://farm7.staticflickr.com/6213/6256961398\_a484813abe\_b.jpg" alt="" border="0" class="wikidpad" />" /&gt;<br class="wikidpad" />
+&lt;p class="flex-caption"&gt;Caption goes here&lt;/p&gt;</ul>
+&lt;/li&gt;<br class="wikidpad" />
+&lt;li&gt;<ul class="wikidpad normalindent">&lt;img src="<img src="http://farm7.staticflickr.com/6025/6012928351\_d643e5a404\_b.jpg" alt="" border="0" class="wikidpad" />" /&gt;<br class="wikidpad" />
+&lt;p class="flex-caption"&gt;Caption goes here&lt;/p&gt;</ul>
+&lt;/li&gt;<br class="wikidpad" />
+&lt;li&gt;<ul class="wikidpad normalindent">&lt;img src="<img src="http://farm7.staticflickr.com/6126/6007110789\_bd7faaaa79\_b.jpg" alt="" border="0" class="wikidpad" />" /&gt;<br class="wikidpad" />
+&lt;p class="flex-caption"&gt;Caption goes here&lt;/p&gt;</ul>
+&lt;/li&gt;<br class="wikidpad" />
+&lt;li&gt;<ul class="wikidpad normalindent">&lt;img src="<img src="http://farm6.staticflickr.com/5159/5874760659\_de4c00d585\_b.jpg" alt="" border="0" class="wikidpad" />" /&gt;<br class="wikidpad" />
+&lt;p class="flex-caption"&gt;Caption goes here&lt;/p&gt;</ul>
+&lt;/li&gt;</ul>
+&lt;/ul&gt;</ul>
+&lt;/div&gt;<br class="wikidpad" />
+<br class="wikidpad" />
+&lt;!-- END Flexslider demo content <br class="wikidpad" />
+<br class="wikidpad" />
+--OPTION 2--<br class="wikidpad" />
+<br class="wikidpad" />
+4. Create a php file called featureflexslider.php (it will create a flex slider with images from the featured content). Here is the code:<br class="wikidpad" />
+<br class="wikidpad" />
+--START--<br class="wikidpad" />
+<br class="wikidpad" />
+&lt;?php <br class="wikidpad" />
+<br class="wikidpad" />
+// Custom loop for featured items in the slider on the front page. <br class="wikidpad" />
+// Slider will show up to 6 posts marked as "sticky"<br class="wikidpad" />
+<br class="wikidpad" />
+?&gt;<br class="wikidpad" />
+<br class="wikidpad" />
+&lt;div class="flexslider"&gt;<ul class="wikidpad normalindent">&lt;ul class="slides"&gt;<br class="wikidpad" />
+<ul class="wikidpad normalindent">&lt;?php <br class="wikidpad" />
+// Get all sticky posts, but only sticky posts<br class="wikidpad" />
+$sticky = get_option( 'sticky_posts' );<br class="wikidpad" />
+$args = array( <ul class="wikidpad normalindent">'numberposts' =&gt; 6, // Display up to 6 posts. Change at will<br class="wikidpad" />
+'post__in'  =&gt; $sticky</ul>
+);<br class="wikidpad" />
+$postQuery = get_posts($args);<br class="wikidpad" />
+<br class="wikidpad" />
+foreach( $postQuery as $post ) : setup_postdata($post);<br class="wikidpad" />
+<ul class="wikidpad normalindent">if ( has_post_thumbnail() ) { ?&gt;<ul class="wikidpad normalindent">&lt;li&gt;<ul class="wikidpad normalindent">&lt;a href="&lt;?php echo get_permalink(); ?&gt;" title="Go to &lt;?php echo the_title(); ?&gt;" rel="bookmark"&gt;<ul class="wikidpad normalindent">&lt;?php the_post_thumbnail('feature-slider'); ?&gt;<br class="wikidpad" />
+&lt;p class="flex-caption"&gt;&lt;?php the_title(); ?&gt;&lt;/p&gt;</ul>
+&lt;/a&gt;</ul>
+&lt;/li&gt;</ul>
+&lt;?php <br class="wikidpad" />
+}</ul>
+endforeach; ?&gt;<br class="wikidpad" />
+</ul>
+&lt;/ul&gt;</ul>
+&lt;/div&gt;<br class="wikidpad" />
+<br class="wikidpad" />
+--END--<br class="wikidpad" />
+<br class="wikidpad" />
+5. If necessary, install plugin called "regenerate thumbnails" and activate. Run it: Tools &gt; Regenerate Thumbnaisl<br class="wikidpad" />
+<br class="wikidpad" />
+6. In index.php, add following code under &lt;div id="content" role="main"&gt;:<br class="wikidpad" />
+<br class="wikidpad" />
+&lt;!-- Flexslider featured content --&gt;<br class="wikidpad" />
+<br class="wikidpad" />
+&lt;?php<br class="wikidpad" />
+// Check if this is the front page and that it is not page 2 or higher<br class="wikidpad" />
+if ( is_front_page() &amp;&amp; !is_paged() ) {<ul class="wikidpad normalindent">// Add featured content slider<br class="wikidpad" />
+get_template_part( 'featureflexslider' );</ul>
+}<br class="wikidpad" />
+?&gt;<br class="wikidpad" />
+<br class="wikidpad" />
+&lt;!-- END Flexslider featured --&gt;<br class="wikidpad" />
+<br class="wikidpad" />
+<b class="wikidpad">USING MASONRY</b> (mostly working but not fully on wplisa.org)<br class="wikidpad" />
+<br class="wikidpad" />
+1. Go to the website: <span class="wikidpad url-link"><a href="http://masonry.desandro.com/index.html" class="wikidpad">http://masonry.desandro.com/index.html</a></span><br class="wikidpad" />
+<br class="wikidpad" />
+2. Download masonry and place it in js folder in your theme folder.<br class="wikidpad" />
+<br class="wikidpad" />
+3. In functions.php, put the following code:<br class="wikidpad" />
+<br class="wikidpad" />
+// MASONRY START<br class="wikidpad" />
+<br class="wikidpad" />
+function anaximander_masonry() {<ul class="wikidpad normalindent">if (!is_admin()) {<ul class="wikidpad normalindent">wp_register_script('jquery_masonry', get_template_directory_uri(). '/js/masonry.pkgd.min.js', array('jquery'), '2.0.110526' );<br class="wikidpad" />
+wp_enqueue_script('jquery_masonry');<br class="wikidpad" />
+add_action('wp_footer', 'anaximander_add_masonry'); //in footer to make sure all content is on page before we start reorg<br class="wikidpad" />
+<br class="wikidpad" />
+function anaximander_add_masonry() { ?&gt;<ul class="wikidpad normalindent">&lt;script&gt;<ul class="wikidpad normalindent">jQuery(document).ready(function($){<ul class="wikidpad normalindent">$('#masonry-index').masonry({<ul class="wikidpad normalindent">itemSelector: '.index-post-container',<br class="wikidpad" />
+isAnimated: true; /*This line controls whether the widget will move by animation or not. Check masonry website for other functions */</ul>
+});<ul class="wikidpad normalindent">});</ul>
+</ul>
+</ul>
+&lt;/script&gt;</ul>
+&lt;?php <br class="wikidpad" />
+}</ul>
+}</ul>
+}<br class="wikidpad" />
+<br class="wikidpad" />
+add_action('init', 'anaximander_masonry');<br class="wikidpad" />
+<br class="wikidpad" />
+// MASONRY END<br class="wikidpad" />
+<br class="wikidpad" />
+4. So now in Anaximander theme, we want to do a few things: get rid of the sidebar, arrange content in three columns, show image for each post and make sure that the page nav stays at the bottom. So it's too long to go through everything, just check index.php in wplisa.org<br class="wikidpad" />
+<br class="wikidpad" />
+5. Add the following code to style.css<br class="wikidpad" />
+<br class="wikidpad" />
+/* <hr class="wikidpad" />
+Index - Masonry<hr class="wikidpad" />
+*/<br class="wikidpad" />
+<br class="wikidpad" />
+#masonry-index {<ul class="wikidpad normalindent">width: 105%;</ul>
+}<br class="wikidpad" />
+<br class="wikidpad" />
+#masonry-index .textwidget {<ul class="wikidpad normalindent">padding:0;</ul>
+}<br class="wikidpad" />
+<br class="wikidpad" />
+#masonry-index .index-post-container {<ul class="wikidpad normalindent">width: 298px;<br class="wikidpad" />
+border: 1px #e3e3e3 solid;<br class="wikidpad" />
+float: left;	<br class="wikidpad" />
+margin: 0 20px 20px 0;</ul>
+}<br class="wikidpad" />
+<br class="wikidpad" />
+#masonry-index .index-title,<br class="wikidpad" />
+#masonry-index .index-name-date,<br class="wikidpad" />
+#masonry-index .index-content {<ul class="wikidpad normalindent">margin: 20px;</ul>
+}<br class="wikidpad" />
+<br class="wikidpad" />
+--END--<br class="wikidpad" />
+<br class="wikidpad" />
+Examples of websites that are responsive: <span class="wikidpad url-link"><a href="http://mediaqueri.es/" class="wikidpad">http://mediaqueri.es/</a></span>    </body>
+</html>

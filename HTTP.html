@@ -1,0 +1,516 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html>
+    <head>
+        <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+        <title>HTTP</title>
+        <link type="text/css" rel="stylesheet" href="appbase.css">
+    </head>
+    <body class="wikidpad">
+<span class="wikidpad parent-nodes">parent nodes: <span class="wikidpad parent-node"><a href="Building%20and%20Security%20a%20RESTful%20API%20for%20Multiple%20Clients%20in%20ASP.NET.html" class="wikidpad">Building and Security a RESTful API for Multiple Clients in ASP.NET</a></span> | <span class="wikidpad parent-node"><a href="General.html" class="wikidpad">General</a></span><br class="wikidpad" /><br class="wikidpad" /></span>
+<a name=".h0" class="wikidpad"></a><h2 class="wikidpad heading-level2">HTTP</h2>
+<span class="wikidpad property attribute">[camelCaseWordsEnabled: false]</span><br class="wikidpad" />
+<br class="wikidpad" />
+Source: <span class="wikidpad url-link"><a href="https://www3.ntu.edu.sg/home/ehchua/programming/webprogramming/HTTP_Basics.html" class="wikidpad">https://www3.ntu.edu.sg/home/ehchua/programming/webprogramming/HTTP_Basics.html</a></span><br class="wikidpad" />
+<br class="wikidpad" />
+There are several types of web communication protocols:<br class="wikidpad" />
+- HTTP<br class="wikidpad" />
+- FTP<br class="wikidpad" />
+- SMTP<br class="wikidpad" />
+- POP<br class="wikidpad" />
+etc.<br class="wikidpad" />
+<br class="wikidpad" />
+HTTP: HyperText Transfer Protocol <br class="wikidpad" />
+<br class="wikidpad" />
+HTTP is an asymmetric request-response client-server protocol.  An HTTP client sends a request message to an HTTP server.  The server, in turn, returns a response message.  In other words, HTTP is a pull protocol, the client pulls information from the server (instead of server pushes information down to the client).<br class="wikidpad" />
+<br class="wikidpad" />
+HTTP is a stateless protocol. In other words, the current request does not know what has been done in the previous requests.<br class="wikidpad" />
+<br class="wikidpad" />
+<b class="wikidpad">Uniform Resource Locator (URL)</b><br class="wikidpad" />
+<br class="wikidpad" />
+A URL (Uniform Resource Locator) is used to uniquely identify a resource over the web. URL has the following syntax:<br class="wikidpad" />
+<br class="wikidpad" />
+protocol://hostname:port/path-and-file-name<br class="wikidpad" />
+<br class="wikidpad" />
+There are 4 parts in a URL:<br class="wikidpad" />
+Protocol: The application-level protocol used by the client and server, e.g., HTTP, FTP, and telnet.<br class="wikidpad" />
+Hostname: The DNS domain name (e.g., www.test101.com) or IP address (e.g., 192.128.1.2) of the server.<br class="wikidpad" />
+Port: The TCP port number that the server is listening for incoming requests from the clients.<br class="wikidpad" />
+Path-and-file-name: The name and location of the requested resource, under the server document base directory.<br class="wikidpad" />
+<br class="wikidpad" />
+When the port number is not specified, the default is 80<br class="wikidpad" />
+<br class="wikidpad" />
+Other examples of URL are:<br class="wikidpad" />
+<span class="wikidpad url-link"><a href="ftp://www.ftp.org/docs/test.txt" class="wikidpad">ftp://www.ftp.org/docs/test.txt</a></span><br class="wikidpad" />
+<span class="wikidpad url-link"><a href="mailto:user@test101.com" class="wikidpad">mailto:user@test101.com</a></span><br class="wikidpad" />
+news:soc.culture.Singapore<br class="wikidpad" />
+telnet://www.test101.com/<br class="wikidpad" />
+<br class="wikidpad" />
+Whenever you enter a URL in the address box of the browser, the browser translates the URL into a request message according to the specified protocol and sends the request message to the server.<br class="wikidpad" />
+<br class="wikidpad" />
+For example, the browser translated the URL <span class="wikidpad url-link"><a href="http://www.test101.com/doc/index.html" class="wikidpad">http://www.test101.com/doc/index.html</a></span> into the following request message:<br class="wikidpad" />
+<br class="wikidpad" />
+GET /docs/index.html HTTP/1.1<br class="wikidpad" />
+Host: www.test101.com<br class="wikidpad" />
+Accept: image/gif, image/jpeg, */*<br class="wikidpad" />
+Accept-Language: en-us<br class="wikidpad" />
+Accept-Encoding: gzip, deflate<br class="wikidpad" />
+User-Agent: Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.1)<br class="wikidpad" />
+(blank line)<br class="wikidpad" />
+<br class="wikidpad" />
+When this request message reaches the server, the server can take either one of these actions:<br class="wikidpad" />
+<br class="wikidpad" />
+1)The server interprets the request received, maps the request into a file under the server's document directory, and returns the file requested to the client.<br class="wikidpad" />
+<br class="wikidpad" />
+2) The server interprets the request received, maps the request into a program kept in the server, executes the program, and returns the output of the program to the client.<br class="wikidpad" />
+<br class="wikidpad" />
+3) The request cannot be satisfied, the server returns an error message.<br class="wikidpad" />
+<br class="wikidpad" />
+An example of the HTTP response message is as shown:<br class="wikidpad" />
+<br class="wikidpad" />
+HTTP/1.1 200 OK<br class="wikidpad" />
+Date: Sun, 18 Oct 2009 08:56:53 GMT<br class="wikidpad" />
+Server: Apache/2.2.14 (Win32)<br class="wikidpad" />
+Last-Modified: Sat, 20 Nov 2004 07:16:26 GMT<br class="wikidpad" />
+ETag: "10000000565a5-2c-3e94b66c2e680"<br class="wikidpad" />
+Accept-Ranges: bytes<br class="wikidpad" />
+Content-Length: 44<br class="wikidpad" />
+Connection: close<br class="wikidpad" />
+Content-Type: text/html<br class="wikidpad" />
+X-Pad: avoid browser bug<br class="wikidpad" />
+<br class="wikidpad" />
+&lt;html&gt;&lt;body&gt;&lt;h1&gt;It works!&lt;/h1&gt;&lt;/body&gt;&lt;/html&gt;<br class="wikidpad" />
+<br class="wikidpad" />
+The browser receives the response message, interprets the message and displays the contents of the message on the browser's window according to the media type of the response (as in the Content-Type response header). <br class="wikidpad" />
+<br class="wikidpad" />
+Common media type include "text/plain", "text/html", "image/gif", "image/jpeg", "audio/mpeg", "video/mpeg", "application/msword", and "application/pdf".<br class="wikidpad" />
+<br class="wikidpad" />
+In its idling state, an HTTP server does nothing but listening to the IP address(es) and port(s) specified in the configuration for incoming request. When a request arrives, the server analyzes the message header, applies rules specified in the configuration, and takes the appropriate action. The webmaster's main control over the action of web server is via the configuration, which will be dealt with in greater details in the later sections.<br class="wikidpad" />
+<br class="wikidpad" />
+<b class="wikidpad">TCP/IP</b><br class="wikidpad" />
+<br class="wikidpad" />
+TCP/IP (Transmission Control Protocol/Internet Protocol) is a set of transport and network-layer protocols for machines to communicate with each other over the network.<br class="wikidpad" />
+<br class="wikidpad" />
+A special IP address 127.0.0.1 always refers to your own machine.  It's domian name is "localhost" and can be used for local loopback testing.<br class="wikidpad" />
+<br class="wikidpad" />
+TCP (Transmission Control Protocol) is a transport-layer protocol, responsible for establish a connection between two machines. TCP consists of 2 protocols: TCP and UDP (User Datagram Package).  TCP is reliable, each packet has a sequence number, and an acknowledgement is expected.  A packet will be re-transmitted if it is not received by the receiver.  Packet delivery is guaranteed in TCP.  UDP does not guarantee packet delivery, and is therefore not reliable.  However, UDP has less network overhead and can be used for applications such as video and audio streaming, where reliability is not critical.<br class="wikidpad" />
+<br class="wikidpad" />
+TCP multiplexes applications within an IP machine. For each IP machine, TCP supports (multiplexes) up to 65536 ports (or sockets), from port number 0 to 65535.  An application, such as HTTP or FTP, runs (or listens) at a particular port number for incoming requests. Port 0 to 1023 are pre-assigned to popular protocols, e.g., HTTP at 80, FTP at 21, Telnet at 23, SMTP at 25, NNTP at 119, and DNS at 53.  Port 1024 and above are available to the users.<br class="wikidpad" />
+<br class="wikidpad" />
+<b class="wikidpad">HTTP Request and Response Messages </b><br class="wikidpad" />
+<br class="wikidpad" />
+HTTP client and server communicate by sending text messages. The client sends a request message to the server.  The server, in turn, returns a response message.<br class="wikidpad" />
+<br class="wikidpad" />
+An HTTP message consists of a message header and an optional message body, separated by a blank line, as illustrated below:<br class="wikidpad" />
+<br class="wikidpad" />
+Message Header<br class="wikidpad" />
+Blank Line<br class="wikidpad" />
+Message Body (optional)<br class="wikidpad" />
+<br class="wikidpad" />
+The first line of the header is called the request line, followed by optional request headers.<br class="wikidpad" />
+<br class="wikidpad" />
+The request line has the following syntax:<br class="wikidpad" />
+request-method-name request-URI HTTP-version<br class="wikidpad" />
+<br class="wikidpad" />
+request-method-name: HTTP protocol defines a set of request methods, e.g., GET, POST, HEAD, and OPTIONS. The client can use one of these methods to send a request to the server.<br class="wikidpad" />
+<br class="wikidpad" />
+request-URI: specifies the resource requested.<br class="wikidpad" />
+<br class="wikidpad" />
+HTTP-version: Two versions are currently in use: HTTP/1.0 and HTTP/1.1.<br class="wikidpad" />
+<br class="wikidpad" />
+Examples of request line are:<br class="wikidpad" />
+GET /test.html HTTP/1.1<br class="wikidpad" />
+HEAD /query.html HTTP/1.0<br class="wikidpad" />
+POST /index.html HTTP/1.1<br class="wikidpad" />
+<br class="wikidpad" />
+The request headers are in the form of name:value pairs. Multiple values, separated by commas, can be specified.<br class="wikidpad" />
+<br class="wikidpad" />
+request-header-name: request-header-value1, request-header-value2, ...<br class="wikidpad" />
+<br class="wikidpad" />
+Examples of request headers are:<br class="wikidpad" />
+<br class="wikidpad" />
+Host: www.xyz.com<br class="wikidpad" />
+Connection: Keep-Alive<br class="wikidpad" />
+Accept: image/gif, image/jpeg, <b class="wikidpad">/</b><br class="wikidpad" />
+Accept-Language: us-en, fr, cn<br class="wikidpad" />
+<br class="wikidpad" />
+<b class="wikidpad">HTTP Response Message</b><br class="wikidpad" />
+<br class="wikidpad" />
+The first line is called the status line, followed by optional response header(s).<br class="wikidpad" />
+<br class="wikidpad" />
+The status line has the following syntax:<br class="wikidpad" />
+HTTP-version status-code reason-phrase<br class="wikidpad" />
+<br class="wikidpad" />
+HTTP-version: The HTTP version used in this session. Either HTTP/1.0 and HTTP/1.1.<br class="wikidpad" />
+<br class="wikidpad" />
+status-code: a 3-digit number generated by the server to reflect the outcome of the request.<br class="wikidpad" />
+<br class="wikidpad" />
+reason-phrase: gives a short explanation to the status code.<br class="wikidpad" />
+<br class="wikidpad" />
+Common status code and reason phrase are "200 OK", "404 Not Found", "403 Forbidden", "500 Internal Server Error".<br class="wikidpad" />
+<br class="wikidpad" />
+Examples of status line are:<br class="wikidpad" />
+HTTP/1.1 200 OK<br class="wikidpad" />
+HTTP/1.0 404 Not Found<br class="wikidpad" />
+HTTP/1.1 403 Forbidden<br class="wikidpad" />
+<br class="wikidpad" />
+The response headers are in the form name:value pairs:<br class="wikidpad" />
+response-header-name: response-header-value1, response-header-value2, ...<br class="wikidpad" />
+<br class="wikidpad" />
+Examples of response headers are:<br class="wikidpad" />
+Content-Type: text/html<br class="wikidpad" />
+Content-Length: 35<br class="wikidpad" />
+Connection: Keep-Alive<br class="wikidpad" />
+Keep-Alive: timeout=15, max=100<br class="wikidpad" />
+<br class="wikidpad" />
+The response message body contains the resource data requested.<br class="wikidpad" />
+<br class="wikidpad" />
+<b class="wikidpad">HTTP Request Methods</b><br class="wikidpad" />
+<br class="wikidpad" />
+HTTP protocol defines a set of request methods. A client can use one of these request methods to send a request message to an HTTP server. The methods are:<br class="wikidpad" />
+<br class="wikidpad" />
+- GET: A client can use the GET request to get a web resource from the server.<br class="wikidpad" />
+- HEAD: A client can use the HEAD request to get the header that a GET request would have obtained. Since the header contains the last-modified date of the data, this can be used to check against the local cache copy.<br class="wikidpad" />
+- POST: Used to post data up to the web server.<br class="wikidpad" />
+- PUT: Ask the server to store the data.<br class="wikidpad" />
+- DELETE: Ask the server to delete the data.<br class="wikidpad" />
+- TRACE: Ask the server to return a diagnostic trace of the actions it takes.<br class="wikidpad" />
+- OPTIONS: Ask the server to return the list of request methods it supports.<br class="wikidpad" />
+- CONNECT: Used to tell a proxy to make a connection to another host and simply reply the content, without attempting to parse or cache it. This is often used to make SSL connection through the proxy.<br class="wikidpad" />
+- Other extension methods.<br class="wikidpad" />
+<br class="wikidpad" />
+<b class="wikidpad">"GET" Request Method</b><br class="wikidpad" />
+<br class="wikidpad" />
+A GET request message takes the following syntax:<br class="wikidpad" />
+GET request-URI HTTP-version<br class="wikidpad" />
+(optional request headers)<br class="wikidpad" />
+(blank line)<br class="wikidpad" />
+(optional request body)<br class="wikidpad" />
+<br class="wikidpad" />
+The keyword GET is case sensitive and must be in uppercase.<br class="wikidpad" />
+<br class="wikidpad" />
+request-URI: specifies the path of resource requested, which must begin from the root "/" of the document base directory.<br class="wikidpad" />
+HTTP-version: Either HTTP/1.0 or HTTP/1.1. This client negotiates the protocol to be used for the current session. For example, the client may request to use HTTP/1.1. If the server does not support HTTP/1.1, it may inform the client in the response to use HTTP/1.0.<br class="wikidpad" />
+The client uses the optional request headers (such as Accept, Accept-Language, and etc) to negotiate with the server and ask the server to deliver the preferred contents (e.g., in the language that the client preferred).<br class="wikidpad" />
+GET request message has an optional request body which contains the query string (to be explained later).<br class="wikidpad" />
+<br class="wikidpad" />
+<b class="wikidpad">Response Status Code</b><br class="wikidpad" />
+<br class="wikidpad" />
+The first line of the response message (i.e., the status line) contains the response status code, which is generated by the server to indicate the outcome of the request.<br class="wikidpad" />
+<br class="wikidpad" />
+The status code is a 3-digit number:<br class="wikidpad" />
+- 1xx (Informational): Request received, server is continuing the process.<br class="wikidpad" />
+- 2xx (Success): The request was successfully received, understood, accepted and serviced.<br class="wikidpad" />
+- 3xx (Redirection): Further action must be taken in order to complete the request.<br class="wikidpad" />
+- 4xx (Client Error): The request contains bad syntax or cannot be understood.<br class="wikidpad" />
+- 5xx (Server Error): The server failed to fulfill an apparently valid request.<br class="wikidpad" />
+<br class="wikidpad" />
+Some commonly encountered status codes are:<br class="wikidpad" />
+- 100 Continue: The server received the request and in the process of giving the response.<br class="wikidpad" />
+- 200 OK: The request is fulfilled.<br class="wikidpad" />
+- 201 Created: API resource created<br class="wikidpad" />
+- 204 No Content: When a delete is successful on an API<br class="wikidpad" />
+- 301 Move Permanently: The resource requested for has been permanently moved to a new location. The URL of the new location is given in the response header called Location. The client should issue a new request to the new location. Application should update all references to this new location.<br class="wikidpad" />
+- 302 Found &amp; Redirect (or Move Temporarily): Same as 301, but the new location is temporarily in nature. The client should issue a new request, but applications need not update the references.<br class="wikidpad" />
+- 304 Not Modified: In response to the If-Modified-Since conditional GET request, the server notifies that the resource requested has not been modified.<br class="wikidpad" />
+- 400 Bad Request: Server could not interpret or understand the request, probably syntax error in the request message.<br class="wikidpad" />
+- 401 Authentication Required: The requested resource is protected, and require client’s credential (username/password). The client should re-submit the request with his credential (username/password).<br class="wikidpad" />
+- 403 Forbidden: Server refuses to supply the resource, regardless of identity of client.<br class="wikidpad" />
+- 404 Not Found: The requested resource cannot be found in the server.<br class="wikidpad" />
+- 405 Method Not Allowed: The request method used, e.g., POST, PUT, DELETE, is a valid method. However, the server does not allow that method for the resource requested.<br class="wikidpad" />
+- 408 Request Timeout:<br class="wikidpad" />
+- 414 Request URI too Large:<br class="wikidpad" />
+- 500 Internal Server Error: Server is confused, often caused by an error in the server-side program responding to the request.<br class="wikidpad" />
+- 501 Method Not Implemented: The request method used is invalid (could be caused by a typing error, e.g., "GET" misspell as "Get").<br class="wikidpad" />
+- 502 Bad Gateway: Proxy or Gateway indicates that it receives a bad response from the upstream server.<br class="wikidpad" />
+- 503 Service Unavailable: Server cannot response due to overloading or maintenance. The client can try again later.<br class="wikidpad" />
+- 504 Gateway Timeout: Proxy or Gateway indicates that it receives a timeout from an upstream server.<br class="wikidpad" />
+<br class="wikidpad" />
+<b class="wikidpad">API HTTP Status Code</b><br class="wikidpad" />
+<br class="wikidpad" />
+POST: 201, 400, 500<br class="wikidpad" />
+GET: 200, 404, 400, 500<br class="wikidpad" />
+PUT: 200, 404, 400, 500<br class="wikidpad" />
+PATCH: 200, 404, 400, 500<br class="wikidpad" />
+<br class="wikidpad" />
+General: 401, 403, 405<br class="wikidpad" />
+<br class="wikidpad" />
+<b class="wikidpad">Request Headers</b><br class="wikidpad" />
+<br class="wikidpad" />
+This section describes some of the commonly-used request headers. Refer to HTTP Specification for more details. The syntax of header name is words with initial-cap joined using dash (-), e.g., Content-Length, If-Modified-Since.<br class="wikidpad" />
+<br class="wikidpad" />
+<b class="wikidpad">Host</b>: domain-name - HTTP/1.1 supports virtual hosts. Multiple DNS names (e.g., www.test101.com and www.test102.com) can reside on the same physical server, with their own document root directories. Host header is mandatory in HTTP/1.1 to select one of the hosts.<br class="wikidpad" />
+The following headers can be used for content negotiation by the client to ask the server to deliver the preferred type of the document (in terms of the media type, e.g. JPEG vs. GIF, or language used e.g. English vs. French) if the server maintain multiple versions for the same document.<br class="wikidpad" />
+<b class="wikidpad">Accept</b>: mime-type-1, mime-type-2, ... - The client can use the Accept header to tell the server the MIME types it can handle and it prefers. If the server has multiple versions of the document requested (e.g., an image in GIF and PNG, or a document in TXT and PDF), it can check this header to decide which version to deliver to the client. (E.g., PNG is more advanced more GIF, but not all browser supports PNG.) This process is called content-type negotiation.<br class="wikidpad" />
+<b class="wikidpad">Accept-Language</b>: language-1, language-2, ... - The client can use the Accept-Language header to tell the server what languages it can handle or it prefers. If the server has multiple versions of the requested document (e.g., in English, Chinese, French), it can check this header to decide which version to return. This process is called language negotiation.<br class="wikidpad" />
+<b class="wikidpad">Accept-Charset</b>: Charset-1, Charset-2, ... - For character set negotiation, the client can use this header to tell the server which character sets it can handle or it prefers. Examples of character sets are ISO-8859-1, ISO-8859-2, ISO-8859-5, BIG5, UCS2, UCS4, UTF8.<br class="wikidpad" />
+<b class="wikidpad">Accept-Encoding</b>: encoding-method-1, encoding-method-2, ... - The client can use this header to tell the server the type of encoding it supports. If the server has encoded (or compressed) version of the document requested, it can return an encoded version supported by the client. The server can also choose to encode the document before returning to the client to reduce the transmission time. The server must set the response header "Content-Encoding" to inform the client that the returned document is encoded. The common encoding methods are "x-gzip (.gz, .tgz)" and "x-compress (.Z)".<br class="wikidpad" />
+<b class="wikidpad">Connection</b>: Close|Keep-Alive - The client can use this header to tell the server whether to close the connection after this request, or to keep the connection alive for another request. HTTP/1.1 uses persistent (keep-alive) connection by default. HTTP/1.0 closes the connection by default.<br class="wikidpad" />
+<b class="wikidpad">Referer</b>: referer-URL - The client can use this header to indicate the referrer of this request. If you click a link from web page 1 to visit web page 2, web page 1 is the referrer for request to web page 2. All major browsers set this header, which can be used to track where the request comes from (for web advertising, or content customization). Nonetheless, this header is not reliable and can be easily spoofed. Note that Referrer is misspelled as "Referer" (unfortunately, you have to follow too).<br class="wikidpad" />
+<b class="wikidpad">User-Agent</b>: browser-type - Identify the type of browser used to make the request. Server can use this information to return different document depending on the type of browsers.<br class="wikidpad" />
+Content-Length: number-of-bytes - Used by POST request, to inform the server the length of the request body.<br class="wikidpad" />
+<b class="wikidpad">Content-Type</b>: mime-type - Used by POST request, to inform the server the media type of the request body.<br class="wikidpad" />
+<b class="wikidpad">Cache-Control</b>: no-cache|... - The client can use this header to specify how the pages are to be cached by proxy server. "no-cache" requires proxy to obtain a fresh copy from the original server, even though a local cached copy is available. (HTTP/1.0 server does not recognize "Cache-Control: no-cache". Instead, it uses "Pragma: no-cache". Included both request headers if you are not sure about the server’s version.)<br class="wikidpad" />
+<b class="wikidpad">Authorization</b>: Used by the client to supply its credential (username/password) to access protected resources. (This header will be described in later chapter on authentication.)<br class="wikidpad" />
+<b class="wikidpad">Cookie</b>: cookie-name-1=cookie-value-1, cookie-name-2=cookie-value-2, ... - The client uses this header to return the cookie(s) back to the server, which was set by this server earlier for state management. (This header will be discussed in later chapter on state management.)<br class="wikidpad" />
+<b class="wikidpad">If-Modified-Since</b>: date - Tell the server to send the page only if it has been modified after the specific date.<br class="wikidpad" />
+<br class="wikidpad" />
+<b class="wikidpad">GET Request for Directory</b><br class="wikidpad" />
+<br class="wikidpad" />
+Suppose that a directory called "testdir" is present in the document base directory "htdocs".<br class="wikidpad" />
+<br class="wikidpad" />
+If a client issues a GET request to "/testdir/" (i.e., at the directory), the server will return "/testdir/index.html" if the directory contains a "index.html" file.<br class="wikidpad" />
+<br class="wikidpad" />
+Otherwise, the server returns the directory listing, if directory listing is enabled in the server configuration.<br class="wikidpad" />
+<br class="wikidpad" />
+Otherwise, the server returns "404 Page Not Found".<br class="wikidpad" />
+<br class="wikidpad" />
+It is interesting to take note that if a client issue a GET request to "/testdir" (without specifying the directory path "/"), the server returns a "301 Move Permanently" with a new "Location" of "/testdir/", as follows:<br class="wikidpad" />
+<br class="wikidpad" />
+GET /testdir HTTP/1.1<br class="wikidpad" />
+Host: 127.0.0.1<br class="wikidpad" />
+(blank line)<br class="wikidpad" />
+<br class="wikidpad" />
+HTTP/1.1 301 Moved Permanently<br class="wikidpad" />
+Date: Sun, 18 Oct 2009 13:19:15 GMT<br class="wikidpad" />
+Server: Apache/2.2.14 (Win32)<br class="wikidpad" />
+Location: <span class="wikidpad url-link"><a href="http://127.0.0.1:8000/testdir/" class="wikidpad">http://127.0.0.1:8000/testdir/</a></span><br class="wikidpad" />
+Content-Length: 238<br class="wikidpad" />
+Content-Type: text/html; charset=iso-8859-1<br class="wikidpad" />
+<br class="wikidpad" />
+&lt;!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN"&gt;<br class="wikidpad" />
+<html><head><br class="wikidpad" />
+<title>301 Moved Permanently</title><br class="wikidpad" />
+</head><body><br class="wikidpad" />
+<h1>Moved Permanently</h1><br class="wikidpad" />
+<p>The document has moved <a href="http://127.0.0.1:8000/testdir/">here</a>.</p><br class="wikidpad" />
+<br class="wikidpad" />
+</body></html><br class="wikidpad" />
+<br class="wikidpad" />
+Most of the browser will follow up with another request to "/testdir/". For example, If you issue <span class="wikidpad url-link"><a href="http://127.0.0.1:8000/testdir" class="wikidpad">http://127.0.0.1:8000/testdir</a></span> without the trailing "/" from a browser, you could notice that a trailing "/" was added to the address after the response was given. The morale of the story is: you should include the "/" for directory request to save you an additional GET request.<br class="wikidpad" />
+<br class="wikidpad" />
+<b class="wikidpad">"HEAD" Request Method</b><br class="wikidpad" />
+<br class="wikidpad" />
+HEAD request is similar to GET request. However, the server returns only the response header without the response body, which contains the actual document. HEAD request is useful for checking the headers, such as Last-Modified, Content-Type, Content-Length, before sending a proper GET request to retrieve the document.<br class="wikidpad" />
+<br class="wikidpad" />
+The syntax of the HEAD request is as follows:<br class="wikidpad" />
+HEAD request-URI HTTP-version<br class="wikidpad" />
+(other optional request headers)<br class="wikidpad" />
+(blank line)<br class="wikidpad" />
+(optional request body)<br class="wikidpad" />
+<br class="wikidpad" />
+Example:<br class="wikidpad" />
+HEAD /index.html HTTP/1.0<br class="wikidpad" />
+(blank line)<br class="wikidpad" />
+<br class="wikidpad" />
+HTTP/1.1 200 OK<br class="wikidpad" />
+Date: Sun, 18 Oct 2009 14:09:16 GMT<br class="wikidpad" />
+Server: Apache/2.2.14 (Win32)<br class="wikidpad" />
+Last-Modified: Sat, 20 Nov 2004 07:16:26 GMT<br class="wikidpad" />
+ETag: "10000000565a5-2c-3e94b66c2e680"<br class="wikidpad" />
+Accept-Ranges: bytes<br class="wikidpad" />
+Content-Length: 44<br class="wikidpad" />
+Connection: close<br class="wikidpad" />
+Content-Type: text/html<br class="wikidpad" />
+X-Pad: avoid browser bug<br class="wikidpad" />
+<br class="wikidpad" />
+Notice that the response consists of the header only without the body, which contains the actual document.<br class="wikidpad" />
+<br class="wikidpad" />
+<b class="wikidpad">"OPTIONS" Request Method</b><br class="wikidpad" />
+<br class="wikidpad" />
+A client can use an OPTIONS request method to query the server which request methods are supported. The syntax for OPTIONS request message is:<br class="wikidpad" />
+OPTIONS request-URI|* HTTP-version<br class="wikidpad" />
+(other optional headers)<br class="wikidpad" />
+(blank line)<br class="wikidpad" />
+<br class="wikidpad" />
+"*" can be used in place of a request-URI to indicate that the request does not apply to any particular resource.<br class="wikidpad" />
+<br class="wikidpad" />
+Example<br class="wikidpad" />
+For example, the following OPTIONS request is sent through a proxy server:<br class="wikidpad" />
+<br class="wikidpad" />
+OPTIONS <span class="wikidpad url-link"><a href="http://www.amazon.com/" class="wikidpad">http://www.amazon.com/</a></span> HTTP/1.1<br class="wikidpad" />
+Host: www.amazon.com<br class="wikidpad" />
+Connection: Close<br class="wikidpad" />
+(blank line)<br class="wikidpad" />
+<br class="wikidpad" />
+HTTP/1.1 200 OK<br class="wikidpad" />
+Date: Fri, 27 Feb 2004 09:42:46 GMT<br class="wikidpad" />
+Content-Length: 0<br class="wikidpad" />
+Connection: close<br class="wikidpad" />
+Server: Stronghold/2.4.2 Apache/1.3.6 C2NetEU/2412 (Unix)<br class="wikidpad" />
+Allow: GET, HEAD, POST, OPTIONS, TRACE<br class="wikidpad" />
+Connection: close<br class="wikidpad" />
+Via: 1.1 xproxy (NetCache NetApp/5.3.1R4D5)<br class="wikidpad" />
+(blank line)<br class="wikidpad" />
+All servers that allow GET request will allow HEAD request. Sometimes, HEAD is not listed.<br class="wikidpad" />
+<br class="wikidpad" />
+<b class="wikidpad">"TRACE" Request Method</b><br class="wikidpad" />
+A client can send a TRACE request to ask the server to return a diagnostic trace.<br class="wikidpad" />
+TRACE request takes the following syntax:<br class="wikidpad" />
+<br class="wikidpad" />
+TRACE / HTTP-version<br class="wikidpad" />
+(blank line)<br class="wikidpad" />
+<br class="wikidpad" />
+Example<br class="wikidpad" />
+The following example shows a TRACE request issued through a proxy server.<br class="wikidpad" />
+<br class="wikidpad" />
+TRACE <span class="wikidpad url-link"><a href="http://www.amazon.com/" class="wikidpad">http://www.amazon.com/</a></span> HTTP/1.1<br class="wikidpad" />
+Host: www.amazon.com<br class="wikidpad" />
+Connection: Close<br class="wikidpad" />
+(blank line)<br class="wikidpad" />
+<br class="wikidpad" />
+HTTP/1.1 200 OK<br class="wikidpad" />
+Transfer-Encoding: chunked<br class="wikidpad" />
+Date: Fri, 27 Feb 2004 09:44:21 GMT<br class="wikidpad" />
+Content-Type: message/http<br class="wikidpad" />
+Connection: close<br class="wikidpad" />
+Server: Stronghold/2.4.2 Apache/1.3.6 C2NetEU/2412 (Unix)<br class="wikidpad" />
+Connection: close<br class="wikidpad" />
+Via: 1.1 xproxy (NetCache NetApp/5.3.1R4D5)<br class="wikidpad" />
+<br class="wikidpad" />
+9d<br class="wikidpad" />
+TRACE / HTTP/1.1<br class="wikidpad" />
+Connection: keep-alive<br class="wikidpad" />
+Host: www.amazon.com<br class="wikidpad" />
+Via: 1.1 xproxy (NetCache NetApp/5.3.1R4D5)<br class="wikidpad" />
+X-Forwarded-For: 155.69.185.59, 155.69.5.234<br class="wikidpad" />
+<br class="wikidpad" />
+0<br class="wikidpad" />
+<br class="wikidpad" />
+<b class="wikidpad">Submitting HTML Form Data and Query String</b><br class="wikidpad" />
+<br class="wikidpad" />
+In many Internet applications, such as e-commerce and search engine, the clients are required to submit additional information to the server (e.g., the name, address, the search keywords). Based on the data submitted, the server takes an appropriate action and produces a customized response.<br class="wikidpad" />
+<br class="wikidpad" />
+The clients are usually presented with a form (produced using HTML <form> tag). Once they fill in the requested data and hit the submit button, the browser packs the form data and submits them to the server, using either a GET request or a POST request.<br class="wikidpad" />
+<br class="wikidpad" />
+Each field has a name and can take on a specified value. Once the client fills in the fields and hits the submit button, the browser gathers each of the fields' name and value, packed them into "name=value" pairs, and concatenates all the fields together using "&amp;" as the field separator. This is known as a query string. It will send the query string to the server as part of the request.<br class="wikidpad" />
+name1=value1&amp;name2=value2&amp;name3=value3&amp;...<br class="wikidpad" />
+<br class="wikidpad" />
+Special characters are not allowed inside the query string. They must be replaced by a "%" followed by the ASCII code in Hex. E.g., "~" is replaced by "%7E", "#" by "%23" and so on. Since blank is rather common, it can be replaced by either "%20" or "+" (the "+" character must be replaced by "%2B"). This replacement process is called URL-encoding, and the result is a URL-encoded query string. For example, suppose that there are 3 fields inside a form, with name/value of "name=Peter Lee", "address=#123 Happy Ave" and "language=C++", the URL-encoded query string is:<br class="wikidpad" />
+name=Peter+Lee&amp;address=%23123+Happy+Ave&amp;Language=C%2B%2B<br class="wikidpad" />
+<br class="wikidpad" />
+The query string can be sent to the server using either HTTP GET or POST request method, which is specified in the &lt;form&gt;'s attribute "method".<br class="wikidpad" />
+<br class="wikidpad" />
+&lt;form method="get|post" action="url"&gt;<br class="wikidpad" />
+<br class="wikidpad" />
+If GET request method is used, the URL-encoded query string will be appended behind the request-URI after a "?" character, i.e.,<br class="wikidpad" />
+<br class="wikidpad" />
+GET request-URI?query-string HTTP-version<br class="wikidpad" />
+(other optional request headers)<br class="wikidpad" />
+(blank line)<br class="wikidpad" />
+<br class="wikidpad" />
+(optional request body)<br class="wikidpad" />
+<br class="wikidpad" />
+Using GET request to send the query string has the following drawbacks:<br class="wikidpad" />
+- The amount of data you could append behind request-URI is limited. If this amount exceed a server-specific threshold, the server would return an error "414 Request URI too Large".<br class="wikidpad" />
+- The URL-encoded query string would appear on the address box of the browser.<br class="wikidpad" />
+<br class="wikidpad" />
+POST method overcomes these drawbacks. If POST request method is used, the query string will be sent in the body of the request message, where the amount is not limited. The request headers Content-Type and Content-Length are used to notify the server the type and the length of the query string. The query string will not appear on the browser’s address box. <br class="wikidpad" />
+<br class="wikidpad" />
+Take the example of a form that asks for a username and password:<br class="wikidpad" />
+<br class="wikidpad" />
+The HTTP GET request method is used to send the query string. Suppose the user enters "Peter Lee" as the username, "123456" as password; and clicks the submit button. The following GET request is:<br class="wikidpad" />
+<br class="wikidpad" />
+GET /bin/login?user=Peter+Lee&amp;pw=123456&amp;action=login HTTP/1.1<br class="wikidpad" />
+Accept: image/gif, image/jpeg, <b class="wikidpad">/</b><br class="wikidpad" />
+Referer: <span class="wikidpad url-link"><a href="http://127.0.0.1:8000/login.html" class="wikidpad">http://127.0.0.1:8000/login.html</a></span><br class="wikidpad" />
+Accept-Language: en-us<br class="wikidpad" />
+Accept-Encoding: gzip, deflate<br class="wikidpad" />
+User-Agent: Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.1)<br class="wikidpad" />
+Host: 127.0.0.1:8000<br class="wikidpad" />
+Connection: Keep-Alive<br class="wikidpad" />
+<br class="wikidpad" />
+Note that although the password that you enter does not show on the screen, it is shown clearly in the address box of the browser. You should never use send your password without proper encryption.<br class="wikidpad" />
+<span class="wikidpad url-link"><a href="http://127.0.0.1:8000/bin/login?user=Peter+Lee&pw=123456&action=login" class="wikidpad">http://127.0.0.1:8000/bin/login?user=Peter+Lee&amp;pw=123456&amp;action=login</a></span><br class="wikidpad" />
+<br class="wikidpad" />
+<b class="wikidpad">URI (Uniform Resource Identifier)</b><br class="wikidpad" />
+<br class="wikidpad" />
+URI (Uniform Resource Identifier), is more general than URL, which can even locate a fragment within a resource. The URI syntax for HTTP protocol is:<br class="wikidpad" />
+<span class="wikidpad url-link"><a href="http://host:port/path?request-parameters#nameAnchor" class="wikidpad">http://host:port/path?request-parameters#nameAnchor</a></span><br class="wikidpad" />
+<br class="wikidpad" />
+The request parameters, in the form of name=value pairs, are separated from the URL by a '?'. The name=value pairs are separated by a '&amp;'.<br class="wikidpad" />
+<br class="wikidpad" />
+The #nameAnchor identifies a fragment within the HTML document, defined via the anchor tag <a name="anchorName">...</a>.<br class="wikidpad" />
+<br class="wikidpad" />
+URL rewriting for session management, e.g., "...;sessionID=xxxxxx".<br class="wikidpad" />
+<br class="wikidpad" />
+<b class="wikidpad">"POST" Request Method</b><br class="wikidpad" />
+<br class="wikidpad" />
+POST request method is used to "post" additional data up to the server (e.g., submitting HTML form data or uploading a file). Issuing an HTTP URL from the browser always triggers a GET request. To trigger a POST request, you can use an HTML form with attribute method="post" or write your own network program. For submitting HTML form data, POST request is the same as the GET request except that the URL-encoded query string is sent in the request body, rather than appended behind the request-URI.<br class="wikidpad" />
+<br class="wikidpad" />
+The POST request takes the following syntax:<br class="wikidpad" />
+POST request-URI HTTP-version<br class="wikidpad" />
+Content-Type: mime-type<br class="wikidpad" />
+Content-Length: number-of-bytes<br class="wikidpad" />
+(other optional request headers)<br class="wikidpad" />
+<br class="wikidpad" />
+(URL-encoded query string)<br class="wikidpad" />
+<br class="wikidpad" />
+Request headers Content-Type and Content-Length is necessary in the POST request to inform the server the media type and the length of the request body.<br class="wikidpad" />
+<br class="wikidpad" />
+Example: Submitting Form Data using POST Request Method<br class="wikidpad" />
+<br class="wikidpad" />
+We use the same HTML script, but change the request method to POST.<br class="wikidpad" />
+<br class="wikidpad" />
+Suppose the user enters "Peter Lee" as username and "123456" as password, and clicks the submit button, the following POST request would be generated by the browser:<br class="wikidpad" />
+<br class="wikidpad" />
+POST /bin/login HTTP/1.1<br class="wikidpad" />
+Host: 127.0.0.1:8000<br class="wikidpad" />
+Accept: image/gif, image/jpeg, <b class="wikidpad">/</b><br class="wikidpad" />
+Referer: <span class="wikidpad url-link"><a href="http://127.0.0.1:8000/login.html" class="wikidpad">http://127.0.0.1:8000/login.html</a></span><br class="wikidpad" />
+Accept-Language: en-us<br class="wikidpad" />
+Content-Type: application/x-www-form-urlencoded<br class="wikidpad" />
+Accept-Encoding: gzip, deflate<br class="wikidpad" />
+User-Agent: Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.1)<br class="wikidpad" />
+Content-Length: 37<br class="wikidpad" />
+Connection: Keep-Alive<br class="wikidpad" />
+Cache-Control: no-cache<br class="wikidpad" />
+<br class="wikidpad" />
+User=Peter+Lee&amp;pw=123456&amp;action=login<br class="wikidpad" />
+<br class="wikidpad" />
+Note that the Content-Type header informs the server the data is URL-encoded (with a special MIME type application/x-www-form-urlencoded), and the Content-Length header tells the server how many bytes to read from the message body.<br class="wikidpad" />
+<br class="wikidpad" />
+<b class="wikidpad">POST vs GET for Submitting Form Data</b><br class="wikidpad" />
+<br class="wikidpad" />
+As mentioned in the previous section, POST request has the following advantage compared with the GET request in sending the query string:<br class="wikidpad" />
+<br class="wikidpad" />
+- The amount of data that can be posted is unlimited, as they are kept in the request body, which is often sent to the server in a separate data stream.<br class="wikidpad" />
+- The query string is not shown on the address box of the browser.<br class="wikidpad" />
+<br class="wikidpad" />
+Note that although the password is not shown on the browser’s address box, it is transmitted to the server in clear text, and subjected to network sniffing. Hence, sending password using a POST request is absolutely not secure.<br class="wikidpad" />
+<br class="wikidpad" />
+<b class="wikidpad">Other Request Methods</b><br class="wikidpad" />
+<br class="wikidpad" />
+PUT: Ask the server to store the data.<br class="wikidpad" />
+DELETE: Ask the server to delete the data.<br class="wikidpad" />
+<br class="wikidpad" />
+For security consideration, PUT and DELETE are not supported by most of the production server.<br class="wikidpad" />
+Extension methods (also error codes and headers) can be defined to extend the functionality of the HTTP protocol.<br class="wikidpad" />
+<br class="wikidpad" />
+<b class="wikidpad">Persistent (or Keep-alive) Connections</b><br class="wikidpad" />
+<br class="wikidpad" />
+In HTTP/1.0, the server closes the TCP connection after delivering the response by default (Connection: Close). That is, each TCP connection services only one request. This is not efficiency as many HTML pages contain hyperlinks (via <a href="url"> tag) to other resources (such as images, scripts – either locally or from a remote server). If you download a page containing 5 inline images, the browser has to establish TCP connection 6 times to the same server.<br class="wikidpad" />
+<br class="wikidpad" />
+The client can negotiate with the server and ask the server not to close the connection after delivering the response, so that another request can be sent through the same connection. This is known as persistent connection (or keep-alive connection). Persistent connections greatly enhance the efficiency of the network. For HTTP/1.0, the default connection is non-persistent. To ask for persistent connection, the client must include a request header "Connection: Keep-alive" in the request message to negotiate with the server.<br class="wikidpad" />
+<br class="wikidpad" />
+For HTTP/1.1, the default connection is persistent. The client do not have to sent the "Connection: Keep-alive" header. Instead, the client may wish to send the header "Connection: Close" to ask the server to close the connection after delivering the response.<br class="wikidpad" />
+<br class="wikidpad" />
+Persistent connection is extremely useful for web pages with many small inline images and other associated data, as all these can be downloaded using the same connection. The benefits for persistent connection are:<br class="wikidpad" />
+<br class="wikidpad" />
+- CPU time and resource saving in opening and closing TCP connection in client, proxy, gateways, and the origin server.<br class="wikidpad" />
+- Request can be "pipelined". That is, a client can make several requests without waiting for each response, so as to use the network more efficiently.<br class="wikidpad" />
+- Faster response as no time needed to perform TCP’s connection opening handshaking.<br class="wikidpad" />
+<br class="wikidpad" />
+In Apache HTTP server, several configuration directives are related to the persistent connections:<br class="wikidpad" />
+<br class="wikidpad" />
+The KeepAlive directive decides whether to support persistent connections. This takes value of either On or Off.<br class="wikidpad" />
+<br class="wikidpad" />
+KeepAlive On|Off<br class="wikidpad" />
+<br class="wikidpad" />
+The MaxKeepAliveRequests directive sets the maximum number of requests that can be sent through a persistent connection. You can set to 0 to allow unlimited number of requests. It is recommended to set to a high number for better performance and network efficiency.<br class="wikidpad" />
+<br class="wikidpad" />
+MaxKeepAliveRequests 200<br class="wikidpad" />
+<br class="wikidpad" />
+The KeepAliveTimeOut directive set the time out in seconds for a persistent connection to wait for the next request.<br class="wikidpad" />
+<br class="wikidpad" />
+KeepAliveTimeout 10    </body>
+</html>

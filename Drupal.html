@@ -1,0 +1,64 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html>
+    <head>
+        <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+        <title>Drupal</title>
+        <link type="text/css" rel="stylesheet" href="appbase.css">
+    </head>
+    <body class="wikidpad">
+<span class="wikidpad parent-nodes">parent nodes: <span class="wikidpad parent-node"><a href="WebDesign.html" class="wikidpad">WebDesign</a></span><br class="wikidpad" /><br class="wikidpad" /></span>
+<a name=".h0" class="wikidpad"></a><h2 class="wikidpad heading-level2">Drupal</h2>
+<span class="wikidpad property attribute">[camelCaseWordsEnabled: false]</span><br class="wikidpad" />
+<br class="wikidpad" />
+==Install Drupal locally using DAMP==<br class="wikidpad" />
+<br class="wikidpad" />
+1. Download DAMP from acquia: <span class="wikidpad url-link"><a href="https://www.acquia.com/downloads" class="wikidpad">https://www.acquia.com/downloads</a></span> (Acquia Dev Desktop 2)<br class="wikidpad" />
+apache web server port: 8083<br class="wikidpad" />
+mysql database port: 33067<br class="wikidpad" />
+<br class="wikidpad" />
+2. Go to <span class="wikidpad url-link"><a href="https://www.drupal.org/project/drupal" class="wikidpad">https://www.drupal.org/project/drupal</a></span> to download core Drupal (right now you have acquia Drupal)<br class="wikidpad" />
+<br class="wikidpad" />
+3. Uncompress Drupal and rename the folder to the name of your site (I'll call mine drupalclaudie)<br class="wikidpad" />
+<br class="wikidpad" />
+4. In Acquia Dev Desktop, click on the little + at the bottom of the window and select Import Local Site<br class="wikidpad" />
+<br class="wikidpad" />
+5. Browse to your desktop and select drupalclaudie folder<br class="wikidpad" />
+<br class="wikidpad" />
+6. Leave create a new database selected and call database drupalclaudie<br class="wikidpad" />
+<br class="wikidpad" />
+7. Click OK<br class="wikidpad" />
+<br class="wikidpad" />
+8. Access the website and you will be asked to continue Drupal's install<br class="wikidpad" />
+<br class="wikidpad" />
+9. Select standard profile and click Save and Continue<br class="wikidpad" />
+<br class="wikidpad" />
+10. Configure your site<br class="wikidpad" />
+<br class="wikidpad" />
+All done, bravo!<br class="wikidpad" />
+<br class="wikidpad" />
+Note: If installing on WAMP, you will have to duplicate a file called settings.php. DAMP takes care of that for you.<br class="wikidpad" />
+Also, Drupal requires 40 Mb of memory but WAMP typically gives it only 2, so there may be a setting somewhere you have to change<br class="wikidpad" />
+<br class="wikidpad" />
+==Modules to turn on automatically==<br class="wikidpad" />
+<br class="wikidpad" />
+- Aggregator<br class="wikidpad" />
+- Blog<br class="wikidpad" />
+<br class="wikidpad" />
+In Drupal 6, it used to be "upload", now: <span class="wikidpad url-link"><a href="https://www.drupal.org/node/1026432" class="wikidpad">https://www.drupal.org/node/1026432</a></span><br class="wikidpad" />
+<br class="wikidpad" />
+==Develop Themes==<br class="wikidpad" />
+<br class="wikidpad" />
+Note: If you manually download modules, you have to place them in sites &gt; all &gt; modules. If this does not exist, create it.<br class="wikidpad" />
+<br class="wikidpad" />
+1. Download the Devel module and the Theme Developer module<br class="wikidpad" />
+2. Enable them but make sure you disable them if ever your website becomes public facing<br class="wikidpad" />
+<br class="wikidpad" />
+There is a module called condition style sheet which allows you to render your site differently based on the browser used<br class="wikidpad" />
+<br class="wikidpad" />
+In your theme.info file, you would then type something like this:<br class="wikidpad" />
+stylesheets[all][] = not-ie.css<br class="wikidpad" />
+; Set the conditional stylesheets that are processed by IE.<br class="wikidpad" />
+conditional-stylesheets[if IE][all][] = for-ie.css<br class="wikidpad" />
+<br class="wikidpad" />
+More details about what to put in theme.info file: <span class="wikidpad url-link"><a href="https://www.drupal.org/node/171205" class="wikidpad">https://www.drupal.org/node/171205</a></span>    </body>
+</html>

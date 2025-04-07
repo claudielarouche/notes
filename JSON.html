@@ -1,0 +1,192 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html>
+    <head>
+        <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+        <title>JSON</title>
+        <link type="text/css" rel="stylesheet" href="appbase.css">
+    </head>
+    <body class="wikidpad">
+<span class="wikidpad parent-nodes">parent nodes: <span class="wikidpad parent-node"><a href="General.html" class="wikidpad">General</a></span><br class="wikidpad" /><br class="wikidpad" /></span>
+<a name=".h0" class="wikidpad"></a><h2 class="wikidpad heading-level2">JSON</h2>
+<span class="wikidpad property attribute">[camelCaseWordsEnabled: false]</span><br class="wikidpad" />
+<br class="wikidpad" />
+JSON: JavaScript Object Notation<br class="wikidpad" />
+- Format for sharing data<br class="wikidpad" />
+- Derived from JavaScript<br class="wikidpad" />
+- Language independent (C, Ruby, Perl, Python, PHP...)<br class="wikidpad" />
+- An alternative to XML<br class="wikidpad" />
+- Easy to read<br class="wikidpad" />
+- Easy to parse<br class="wikidpad" />
+<br class="wikidpad" />
+Example of a JSON file:<br class="wikidpad" />
+{<ul class="wikidpad normalindent">"name"      : "Ray Villalobos",<br class="wikidpad" />
+"position"  : "Staff Author",<br class="wikidpad" />
+"courses"   : [<ul class="wikidpad normalindent">"JavaScript and AJAX",<br class="wikidpad" />
+"Building Facebook Applications",<br class="wikidpad" />
+"jQuery Mobile Web Apps"</ul>
+]</ul>
+}<br class="wikidpad" />
+<br class="wikidpad" />
+index.js<br class="wikidpad" />
+var info = JSON.parse(data);<br class="wikidpad" />
+<br class="wikidpad" />
+<b class="wikidpad">JSON vs. Javascript</b><br class="wikidpad" />
+<br class="wikidpad" />
+{"full_name" : "Claudie Larouche"}<br class="wikidpad" />
+<br class="wikidpad" />
+- Keys are wrapped in "quotes"<br class="wikidpad" />
+- Keys can be any valid string (but best practice is to not use hiphen) full_name not full-name<br class="wikidpad" />
+<br class="wikidpad" />
+JSON values have to be one of 6 data types:<br class="wikidpad" />
+- Strings<br class="wikidpad" />
+- Numbers<br class="wikidpad" />
+- Objects<br class="wikidpad" />
+- Arrays<br class="wikidpad" />
+- Booleans<br class="wikidpad" />
+- Null<br class="wikidpad" />
+<br class="wikidpad" />
+Javascript Object:<br class="wikidpad" />
+var info = { <ul class="wikidpad normalindent">full_name  : "Claudie Larouche",<br class="wikidpad" />
+getName: function() {<ul class="wikidpad normalindent">alert(this.full_name);</ul>
+}</ul>
+}<br class="wikidpad" />
+<br class="wikidpad" />
+- The quotes are not needed<br class="wikidpad" />
+- One of the values can be a function<br class="wikidpad" />
+<br class="wikidpad" />
+For parsing, you can use JSON.parse(data), it is more secure however it is less compatible with older browsers. For compatibility, use:<br class="wikidpad" />
+eval('(' + data + ')');<br class="wikidpad" />
+<br class="wikidpad" />
+JSON.stringify does the opposite of parse<br class="wikidpad" />
+<br class="wikidpad" />
+A library such as jQuery can be a great help, it takes care of compatibility issues<br class="wikidpad" />
+<br class="wikidpad" />
+JSON validator: <span class="wikidpad url-link"><a href="http://jsonlint.com/" class="wikidpad">http://jsonlint.com/</a></span><br class="wikidpad" />
+JSON Online Editor: <span class="wikidpad url-link"><a href="http://jsoneditoronline.org" class="wikidpad">http://jsoneditoronline.org</a></span> (allows you to minify your JSON too)<br class="wikidpad" />
+<br class="wikidpad" />
+<b class="wikidpad">Arrays</b><br class="wikidpad" />
+<br class="wikidpad" />
+To delete an element in an array:<br class="wikidpad" />
+info.links.splice(1, 1); //delete element 1 to 1 (so only the element 1 of the array)<br class="wikidpad" />
+<br class="wikidpad" />
+if you do delete(info.links<a name=".f1" class="wikidpad"></a>[1]), it would delete it but the array still thinks it's in there.<br class="wikidpad" />
+<br class="wikidpad" />
+To add an element to an array:<br class="wikidpad" />
+info.links.push({"courses":"Lynda.com"});<br class="wikidpad" />
+<br class="wikidpad" />
+<b class="wikidpad">Looping through Javascript objects</b><br class="wikidpad" />
+<br class="wikidpad" />
+&lt;script&gt;<br class="wikidpad" />
+<br class="wikidpad" />
+var info = {<br class="wikidpad" />
+"full_name" : "Ray Villalobos",<br class="wikidpad" />
+"title" : "Staff Author",<br class="wikidpad" />
+"links" : {<ul class="wikidpad normalindent">"blog"     : "<span class="wikidpad url-link"><a href="http://iviewsource.com" class="wikidpad">http://iviewsource.com</a></span>",<br class="wikidpad" />
+"facebook" : "<span class="wikidpad url-link"><a href="http://facebook.com/iviewsource" class="wikidpad">http://facebook.com/iviewsource</a></span>",</ul>
+<ul class="wikidpad normalindent">"youtube"  : "<span class="wikidpad url-link"><a href="http://www.youtube.com/planetoftheweb" class="wikidpad">http://www.youtube.com/planetoftheweb</a></span>",<br class="wikidpad" />
+"podcast"  : "<span class="wikidpad url-link"><a href="http://feeds.feedburner.com/authoredcontent" class="wikidpad">http://feeds.feedburner.com/authoredcontent</a></span>",<br class="wikidpad" />
+"twitter"  : "<span class="wikidpad url-link"><a href="http://twitter.com/planetoftheweb" class="wikidpad">http://twitter.com/planetoftheweb</a></span>" <br class="wikidpad" />
+}</ul>
+};<br class="wikidpad" />
+<br class="wikidpad" />
+var output = "";<br class="wikidpad" />
+<br class="wikidpad" />
+for ( key in info.links ) {<ul class="wikidpad normalindent">if (info.links.hasOwnProperty(key)) {<ul class="wikidpad normalindent">output += '&lt;li&gt;' +<br class="wikidpad" />
+'&lt;a href = "' + info.links[key] +<br class="wikidpad" />
+'"&gt;' + key + '&lt;/a&gt;' +<br class="wikidpad" />
+'&lt;/li&gt;';</ul>
+} //if the links has the key property</ul>
+} // for...go through each link<br class="wikidpad" />
+<br class="wikidpad" />
+var update = document.getElementById('links');<br class="wikidpad" />
+update.innerHTML = output;<br class="wikidpad" />
+<br class="wikidpad" />
+&lt;/script&gt;<br class="wikidpad" />
+<br class="wikidpad" />
+Because the elements are stored in an object, we cannot garantee in which order they will come back on the page. If you want to garantee the order, we must use an array<br class="wikidpad" />
+<br class="wikidpad" />
+<b class="wikidpad">Using an array</b><br class="wikidpad" />
+<br class="wikidpad" />
+&lt;script&gt;<br class="wikidpad" />
+<br class="wikidpad" />
+var info = {<ul class="wikidpad normalindent">"full_name" : "Ray Villalobos",<br class="wikidpad" />
+"title" : "Staff Author",<br class="wikidpad" />
+"links" : [<ul class="wikidpad normalindent">{ "blog"     : "<span class="wikidpad url-link"><a href="http://iviewsource.com" class="wikidpad">http://iviewsource.com</a></span>" },<br class="wikidpad" />
+{ "facebook" : "<span class="wikidpad url-link"><a href="http://facebook.com/iviewsource" class="wikidpad">http://facebook.com/iviewsource</a></span>" },<br class="wikidpad" />
+{ "podcast"  : "<span class="wikidpad url-link"><a href="http://feeds.feedburner.com/authoredcontent" class="wikidpad">http://feeds.feedburner.com/authoredcontent</a></span>" },<br class="wikidpad" />
+{ "twitter"  : "<span class="wikidpad url-link"><a href="http://twitter.com/planetoftheweb" class="wikidpad">http://twitter.com/planetoftheweb</a></span>" },<br class="wikidpad" />
+{ "youtube"  : "<span class="wikidpad url-link"><a href="http://www.youtube.com/planetoftheweb" class="wikidpad">http://www.youtube.com/planetoftheweb</a></span>" }</ul>
+<ul class="wikidpad normalindent">]</ul>
+};<br class="wikidpad" />
+</ul>
+var output = '';<br class="wikidpad" />
+<br class="wikidpad" />
+for (var i = 0; i &lt;= info.links.length; i++) {<ul class="wikidpad normalindent">for (key in info.links[i]) {<ul class="wikidpad normalindent">if (info.links[i].hasOwnProperty(key)) {<ul class="wikidpad normalindent">output += '<li>' +<br class="wikidpad" />
+'&lt;a href = "' + info.links[i][key] +<br class="wikidpad" />
+'"&gt;' + key + '</a>' +<br class="wikidpad" />
+'</li>';</ul>
+} // hasOwnProperty check</ul>
+} // for each object</ul>
+} //for each array element<br class="wikidpad" />
+<br class="wikidpad" />
+var update = document.getElementById('links');<br class="wikidpad" />
+update.innerHTML = output;<br class="wikidpad" />
+<br class="wikidpad" />
+&lt;/script&gt;<br class="wikidpad" />
+<br class="wikidpad" />
+<b class="wikidpad">AJAX</b><br class="wikidpad" />
+<br class="wikidpad" />
+AJAX stands for Asynchronous JavaScript and XML and allows you to access documents on a server without having to reload the page.<br class="wikidpad" />
+<br class="wikidpad" />
+Now we have an index.html, myscript.js and data.json. Here is the content of myscript.js<br class="wikidpad" />
+<br class="wikidpad" />
+var request;<br class="wikidpad" />
+if (window.XMLHttpRequest) { //this is necessary to check if this is an older browser<ul class="wikidpad normalindent">request=new XMLHttpRequest();</ul>
+} else {<ul class="wikidpad normalindent">request=new ActiveXObject("Microsoft.XMLHTTP");</ul>
+}<br class="wikidpad" />
+<br class="wikidpad" />
+request.open('GET', 'data.json');<br class="wikidpad" />
+request.onreadystatechange = function() {<ul class="wikidpad normalindent">if ((request.status === 200) &amp;&amp;<ul class="wikidpad normalindent">(request.readyState === 4)) {<br class="wikidpad" />
+<ul class="wikidpad normalindent">info = JSON.parse(request.responseText);<br class="wikidpad" />
+<br class="wikidpad" />
+var output='';<br class="wikidpad" />
+for (var i = 0; i &lt;= info.links.length-1; i++) {<ul class="wikidpad normalindent">for (key in info.links[i]) {<ul class="wikidpad normalindent">if (info.links[i].hasOwnProperty(key)) {<ul class="wikidpad normalindent">output += '<li>' + <br class="wikidpad" />
+'&lt;a href = "' + info.links[i][key] +<br class="wikidpad" />
+'"&gt;' + key + '</a>';<br class="wikidpad" />
+'</li>';<ul class="wikidpad normalindent">}   </ul>
+</ul>
+</ul>
+}</ul>
+}<br class="wikidpad" />
+<br class="wikidpad" />
+var update = document.getElementById('links');<br class="wikidpad" />
+update.innerHTML = output;<br class="wikidpad" />
+<br class="wikidpad" />
+</ul>
+</ul>
+} //ready</ul>
+} //event<br class="wikidpad" />
+request.send();<br class="wikidpad" />
+<br class="wikidpad" />
+<b class="wikidpad">Accessing a json file using jQuery</b><br class="wikidpad" />
+<br class="wikidpad" />
+myscript.js<br class="wikidpad" />
+$(document).ready(function() {<br class="wikidpad" />
+<ul class="wikidpad normalindent">$.getJSON('data.json', function(info){<br class="wikidpad" />
+<ul class="wikidpad normalindent">var output='';<br class="wikidpad" />
+for (var i = 0; i &lt;= info.links.length-1; i++) {<ul class="wikidpad normalindent">for (key in info.links[i]) {<ul class="wikidpad normalindent">if (info.links[i].hasOwnProperty(key)) {<ul class="wikidpad normalindent">output += '<li>' + <br class="wikidpad" />
+'&lt;a href = "' + info.links[i][key] +<br class="wikidpad" />
+'"&gt;' + key + '</a>';<br class="wikidpad" />
+'</li>';<ul class="wikidpad normalindent">}   </ul>
+</ul>
+</ul>
+}</ul>
+}<br class="wikidpad" />
+<br class="wikidpad" />
+var update = document.getElementById('links');<br class="wikidpad" />
+update.innerHTML = output;<br class="wikidpad" />
+</ul>
+}); //getJSON<br class="wikidpad" />
+</ul>
+}); // ready    </body>
+</html>

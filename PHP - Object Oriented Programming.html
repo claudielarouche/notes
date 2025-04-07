@@ -1,0 +1,79 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html>
+    <head>
+        <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+        <title>PHP - Object Oriented Programming</title>
+        <link type="text/css" rel="stylesheet" href="appbase.css">
+    </head>
+    <body class="wikidpad">
+<span class="wikidpad parent-nodes">parent nodes: <span class="wikidpad parent-node"><a href="PHP.html" class="wikidpad">PHP</a></span><br class="wikidpad" /><br class="wikidpad" /></span>
+<a name=".h0" class="wikidpad"></a><h2 class="wikidpad heading-level2">PHP - Object Oriented Programming</h2>
+<b class="wikidpad">Object Oriented Programming in PHP</b><br class="wikidpad" />
+<br class="wikidpad" />
+For a simple site, OOP adds unnecessary complexity<br class="wikidpad" />
+For a complex site, OOP adds necessary simplicity<br class="wikidpad" />
+<br class="wikidpad" />
+<b class="wikidpad">Defining a class</b><br class="wikidpad" />
+<br class="wikidpad" />
+class Person { //name must start with capital letter and be camelcase<br class="wikidpad" />
+...<br class="wikidpad" />
+}<br class="wikidpad" />
+<br class="wikidpad" />
+Function to get a list of all the existing classes<br class="wikidpad" />
+<br class="wikidpad" />
+$classes = get_declared_classes();<br class="wikidpad" />
+foreach($classes as $class) {<ul class="wikidpad normalindent">echo $class ."<br />";</ul>
+}<br class="wikidpad" />
+<br class="wikidpad" />
+(there will be a lot of predefined PHP classes that have nothing to do with your code)<br class="wikidpad" />
+<br class="wikidpad" />
+You can verify the existence of a class like this: <br class="wikidpad" />
+if(class_exists("Person"){<ul class="wikidpad normalindent">...</ul>
+}<br class="wikidpad" />
+<br class="wikidpad" />
+<b class="wikidpad">Methods</b><br class="wikidpad" />
+<br class="wikidpad" />
+Methods are basically the same thing as functions but they are called "method" because they exist inside a class.<br class="wikidpad" />
+<br class="wikidpad" />
+List of existing methods:<br class="wikidpad" />
+$methods = get_class_methods('Person');<br class="wikidpad" />
+foreach($methods as $method) {<ul class="wikidpad normalindent">echo $method . "<br />";</ul>
+}<br class="wikidpad" />
+<br class="wikidpad" />
+Check if method exists:<br class="wikidpad" />
+if(method_exists('Person', 'say_hello')){<ul class="wikidpad normalindent">...</ul>
+}<br class="wikidpad" />
+<br class="wikidpad" />
+Executing a method:<br class="wikidpad" />
+$person = new Person();<br class="wikidpad" />
+$person-&gt;say_hello();<br class="wikidpad" />
+<br class="wikidpad" />
+Verify the class of a variable:<br class="wikidpad" />
+if(is_a($person, 'Person')) {<ul class="wikidpad normalindent">...</ul>
+}<br class="wikidpad" />
+<br class="wikidpad" />
+<b class="wikidpad">Attributes (variables inside a class)</b><br class="wikidpad" />
+<br class="wikidpad" />
+class Person {<br class="wikidpad" />
+<ul class="wikidpad normalindent">var $first_name; //outside class, you could have just said $first_name and it would be fine but in a class, you NEED the keyword var<br class="wikidpad" />
+var $last_name;<br class="wikidpad" />
+<br class="wikidpad" />
+var $arm_count = 2;<br class="wikidpad" />
+var $leg_count = 2;<br class="wikidpad" />
+<br class="wikidpad" />
+function say_hello() {<ul class="wikidpad normalindent">echo "Hello from inside the class ". get_class($this) .".<br />";</ul>
+}<br class="wikidpad" />
+function full_name() {<ul class="wikidpad normalindent">return $this-&gt;first_name . " " . $this-&gt;last_name;</ul>
+}</ul>
+}<br class="wikidpad" />
+<br class="wikidpad" />
+echo $person-&gt;arm_count; //this is how you echo an object's attribute<br class="wikidpad" />
+<br class="wikidpad" />
+To show all the variables of a class and their default values:<br class="wikidpad" />
+$vars = get_class_vars('Person');<br class="wikidpad" />
+foreach($vars as $var =&gt; $value) {<ul class="wikidpad normalindent">echo "{$var}: {$value}<br />";</ul>
+}<br class="wikidpad" />
+<br class="wikidpad" />
+Check if a property exists:<br class="wikidpad" />
+echo property_exists('Person', 'first_name'); //will return 0 or 1    </body>
+</html>

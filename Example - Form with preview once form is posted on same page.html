@@ -1,0 +1,629 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html>
+    <head>
+        <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+        <title>Example - Form with preview once form is posted on same page</title>
+        <link type="text/css" rel="stylesheet" href="appbase.css">
+    </head>
+    <body class="wikidpad">
+<span class="wikidpad parent-nodes">parent nodes: <span class="wikidpad parent-node"><a href="ASP.html" class="wikidpad">ASP</a></span><br class="wikidpad" /><br class="wikidpad" /></span>
+<a name=".h0" class="wikidpad"></a><h2 class="wikidpad heading-level2">Example - Form with preview once form is posted on same page</h2>
+<span class="wikidpad property attribute">[camelCaseWordsEnabled: false]</span><br class="wikidpad" />
+<br class="wikidpad" />
+&lt;% @ Page Language="C#" MasterPageFile="~/layouts/wet4/1cole.master" CodeBehind="exitsurvey.aspx.cs"<ul class="wikidpad normalindent">CodeFile="exitsurvey.aspx.cs" Inherits="ExitSurvey" AutoEventWireup="False" %&gt;</ul>
+<ul class="wikidpad normalindent">&lt;%@ Import Namespace="System.IO" %&gt;<br class="wikidpad" />
+</ul>
+&lt;asp:Content ID="PageTitle" ContentPlaceHolderID="PageTitle" Runat="Server"&gt;<ul class="wikidpad normalindent">Exit Survey</ul>
+&lt;/asp:Content&gt;<br class="wikidpad" />
+<br class="wikidpad" />
+&lt;asp:Content ID="JS" ContentPlaceHolderID="JS" Runat="Server"&gt; <ul class="wikidpad normalindent">&lt;script type="text/javascript" src="exitsurvey.js"&gt;&lt;/script&gt; </ul>
+&lt;/asp:Content&gt;<br class="wikidpad" />
+<br class="wikidpad" />
+&lt;asp:Content ID="Metadata" ContentPlaceHolderID="Metadata" Runat="Server"&gt;<ul class="wikidpad normalindent">&lt;meta name="dcterms.title" content="Exit Survey" /&gt;<br class="wikidpad" />
+&lt;meta name="dcterms.creator" content="Government of Canada, Canadian Food Inspection Agency, Human Resources" /&gt;<br class="wikidpad" />
+&lt;meta name="dcterms.subject" title="scheme" content="Forms" /&gt;<br class="wikidpad" />
+&lt;meta name="dcterms.issued" title="W3CDTF" content="2015-05-08" /&gt;<br class="wikidpad" />
+&lt;meta name="dcterms.modified" title="W3CDTF" content="2015-05-08" /&gt;<br class="wikidpad" />
+&lt;meta name="dcterms.valid" title="W3CDTF" content="2017-03-20" /&gt;<br class="wikidpad" />
+&lt;meta name="dcterms.language" title="ISO639-2" content="eng" /&gt;<br class="wikidpad" />
+&lt;meta name="dcterms.contributor" content="Human Resources" /&gt;<br class="wikidpad" />
+&lt;meta name="dcterms.description" content="Exit Survey - Questionnaire for departing employees." /&gt;<br class="wikidpad" />
+&lt;meta name="description" content="Questionnaire for departing employees." /&gt;<br class="wikidpad" />
+&lt;meta name="keywords" content="instructions, submission" /&gt;</ul>
+&lt;/asp:Content&gt;<br class="wikidpad" />
+<br class="wikidpad" />
+&lt;asp:Content ID="Breadcrumb" ContentPlaceHolderID="Breadcrumb" Runat="Server"&gt; <ul class="wikidpad normalindent">&lt;!--#include virtual="/nav/breadcrumbs/0e.inc"--&gt;<br class="wikidpad" />
+&lt;li&gt;Exit Survey&lt;/li&gt;</ul>
+&lt;/asp:Content&gt;<br class="wikidpad" />
+<br class="wikidpad" />
+&lt;asp:Content ID="Content" ContentPlaceHolderID="Main" Runat="Server"&gt;<ul class="wikidpad normalindent">&lt;h1 id="wb-cont"&gt;Exit Survey&lt;/h1&gt;<br class="wikidpad" />
+&lt;h2 &gt;Questionnaire for departing employees&lt;/h2&gt;<br class="wikidpad" />
+&lt;p&gt;Today's Date: &lt;time id="DateToday"&gt;&lt;/time&gt;&lt;/p&gt;<br class="wikidpad" />
+<br class="wikidpad" />
+<br class="wikidpad" />
+&lt;% if (System.Web.HttpContext.Current.Request.HttpMethod.ToString() == "POST")<ul class="wikidpad normalindent">{ %&gt;<ul class="wikidpad normalindent">&lt;h4&gt;Background Information&lt;/h4&gt;<br class="wikidpad" />
+&lt;p&gt;Work Organization: &lt;%= Request.Form["workOrg"] %&gt;<br class="wikidpad" />
+&lt;% if (Request.Form["workOrg"] == "Other")<br class="wikidpad" />
+{%&gt;<ul class="wikidpad normalindent">- &lt;%= Request.Form["OtherWorkOrg"] %&gt;</ul>
+&lt;%}%&gt;&lt;/p&gt;<br class="wikidpad" />
+&lt;p&gt;Highest level of education: &lt;%= Request.Form["education"] %&gt;<br class="wikidpad" />
+&lt;% if (Request.Form["education"] == "Other")<br class="wikidpad" />
+{%&gt;<ul class="wikidpad normalindent">- &lt;%= Request.Form["OtherEduc"] %&gt;</ul>
+&lt;%}%&gt;&lt;/p&gt;<br class="wikidpad" />
+&lt;p&gt;Area: &lt;%= Request.Form["area"] %&gt;&lt;/p&gt;<br class="wikidpad" />
+&lt;p&gt;Province/Territory: &lt;%= Request.Form["prov"] %&gt;&lt;/p&gt;<br class="wikidpad" />
+&lt;p&gt;Number of years of service&lt;/p&gt;<br class="wikidpad" />
+&lt;p&gt;...at your substantive classification level: &lt;%= Request.Form["yearSub"] %&gt;&lt;/p&gt;<br class="wikidpad" />
+&lt;p&gt;...at CFIA: &lt;%= Request.Form["yearCFIA"] %&gt;&lt;/p&gt;<br class="wikidpad" />
+&lt;p&gt;...in an acting or assignment position on departure: &lt;%= Request.Form["yearActing"] %&gt;&lt;/p&gt;<br class="wikidpad" />
+&lt;p&gt;...at the Federal Public Service: &lt;%= Request.Form["yearPublicService"] %&gt;&lt;/p&gt;<br class="wikidpad" />
+&lt;p&gt;Age: &lt;%= Request.Form["age"] %&gt;&lt;/p&gt;<br class="wikidpad" />
+&lt;p&gt;First Official Language: &lt;%= Request.Form["lang"] %&gt;&lt;/p&gt;<br class="wikidpad" />
+&lt;p&gt;Employment Equity: &lt;%= Request.Form["ee"] %&gt;&lt;/p&gt;<br class="wikidpad" />
+&lt;p&gt;Employment Status: &lt;%= Request.Form["status"] %&gt;&lt;/p&gt;<br class="wikidpad" />
+&lt;p&gt;Sex: &lt;%= Request.Form["sex"] %&gt;&lt;/p&gt;<br class="wikidpad" />
+&lt;p&gt;Classification:&lt;/p&gt;<br class="wikidpad" />
+&lt;p&gt;... Group/Level upon joining CFIA: &lt;%= Request.Form["groupJoining"] %&gt;-&lt;%= Request.Form["levelJoining"] %&gt;&lt;/p&gt;<br class="wikidpad" />
+&lt;p&gt;... Group/Level upon leaving CFIA: &lt;%= Request.Form["groupLeaving"] %&gt;-&lt;%= Request.Form["levelLeaving"] %&gt;&lt;/p&gt;<br class="wikidpad" />
+&lt;p&gt;Departure Type: &lt;%= Request.Form["depType"] %&gt;<br class="wikidpad" />
+&lt;% if (Request.Form["depType"] == "Other")<br class="wikidpad" />
+{%&gt;<ul class="wikidpad normalindent">- &lt;%= Request.Form["otherDepartType"] %&gt;</ul>
+&lt;%}%&gt;&lt;/p&gt;<br class="wikidpad" />
+&lt;p&gt;Reason for Departure: &lt;%= Request.Form["reason"] %&gt;<br class="wikidpad" />
+&lt;% if (Request.Form["reason"] == "Other")<br class="wikidpad" />
+{%&gt;<ul class="wikidpad normalindent">- &lt;%= Request.Form["OtherReason"] %&gt;</ul>
+&lt;%}%&gt;&lt;/p&gt;<br class="wikidpad" />
+&lt;p&gt;Destination: &lt;%= Request.Form["dest"] %&gt;<br class="wikidpad" />
+&lt;% if (Request.Form["dest"] == "Other")<br class="wikidpad" />
+{%&gt;<ul class="wikidpad normalindent">- &lt;%= Request.Form["otherDest"] %&gt;</ul>
+&lt;%}%&gt;&lt;/p&gt;<br class="wikidpad" />
+<br class="wikidpad" />
+&lt;h4&gt;Work Environment Indicators&lt;/h4&gt;			<br class="wikidpad" />
+<br class="wikidpad" />
+&lt;p&gt;Performance Feedback and Review: &lt;%= Request.Form["envInd2"] %&gt;&lt;/p&gt;<br class="wikidpad" />
+&lt;p&gt;Recognition of your work accomplishment: &lt;%= Request.Form["envInd3"] %&gt;&lt;/p&gt;<br class="wikidpad" />
+&lt;p&gt;Learning/training and development opportunities: &lt;%= Request.Form["envInd4"] %&gt;&lt;/p&gt;<br class="wikidpad" />
+&lt;p&gt;Availability of tools and services to help you manage your career: &lt;%= Request.Form["envInd5"] %&gt;&lt;/p&gt;<br class="wikidpad" />
+&lt;p&gt;Working relationship with your immediate supervisor/manager: &lt;%= Request.Form["envInd6"] %&gt;&lt;/p&gt;<br class="wikidpad" />
+&lt;p&gt;Accessibility to your immediate supervisor/manager:&lt;%= Request.Form["envInd7"] %&gt;&lt;/p&gt;<br class="wikidpad" />
+&lt;p&gt;Working relationship with co-workers: &lt;%= Request.Form["envInd8"] %&gt;&lt;/p&gt;<br class="wikidpad" />
+&lt;p&gt;Availability and access to new technology: &lt;%= Request.Form["envInd9"] %&gt;&lt;/p&gt;<br class="wikidpad" />
+&lt;p&gt;Morale in the immediate work environment: &lt;%= Request.Form["envInd10"] %&gt;&lt;/p&gt;<br class="wikidpad" />
+&lt;p&gt;Respect of official language rights: &lt;%= Request.Form["envInd11"] %&gt;&lt;/p&gt;<br class="wikidpad" />
+&lt;p&gt;Provision of a discrimination free workplace: &lt;%= Request.Form["envInd12"] %&gt;&lt;/p&gt;<br class="wikidpad" />
+&lt;p&gt;Provision of an harassment free workplace: &lt;%= Request.Form["envInd13"] %&gt;&lt;/p&gt;<br class="wikidpad" />
+&lt;p&gt;Physical work environment (location, air, space, etc.): &lt;%= Request.Form["envInd14"] %&gt;&lt;/p&gt;<br class="wikidpad" />
+&lt;p&gt;Flexibility to balance family and work responsibilities: &lt;%= Request.Form["envInd15"] %&gt;&lt;/p&gt;<br class="wikidpad" />
+&lt;p&gt;Accessibility to flexible work arrangements (part-time, compressed hours, telework, etc.): &lt;%= Request.Form["envInd16"] %&gt;&lt;/p&gt;<br class="wikidpad" />
+<br class="wikidpad" />
+&lt;p&gt;If there was an opportunity to work for the Canadian Food Inspection Agency again would you choose to do so? &lt;%= Request.Form["work"] %&gt;&lt;/p&gt;<br class="wikidpad" />
+&lt;p&gt;Will you be participating in an exit interview in addition to completing this questionnaire? &lt;%= Request.Form["interview"] %&gt;&lt;/p&gt;<br class="wikidpad" />
+<br class="wikidpad" />
+&lt;div class="well well-sm"&gt;<ul class="wikidpad normalindent">&lt;section&gt; <ul class="wikidpad normalindent">&lt;p&gt;Completed surveys will be sent directly to the &lt;strong&gt;Human Resources Planning and Programs&lt;/strong&gt; Section of the Human Resources Policy, Systems and Programs Division:&lt;/p&gt;			<br class="wikidpad" />
+&lt;p&gt;159 Cleopatra Drive&lt;br&gt;<br class="wikidpad" />
+Ottawa ON K1A 0Y9&lt;br&gt;</ul>
+&lt;/section&gt;</ul>
+&lt;/div&gt;<br class="wikidpad" />
+<br class="wikidpad" />
+&lt;form action="exitsurveye.aspx" method="get" id="exitsurveysubmit"  role="form" enctype="multipart/form-data"&gt;<ul class="wikidpad normalindent">&lt;input type="submit"  class="btn btn-default" name="btnPrint" value="Print" id="btnPrint" /&gt;<br class="wikidpad" />
+&lt;input type="submit"  class="btn btn-primary" name="btnSubmit" value="Submit" id="btnSubmit" /&gt;<br class="wikidpad" />
+&lt;input type="submit"  class="btn btn-default" name="btnBack" value="Back" id="btnBack" /&gt;</ul>
+&lt;/form&gt;			<br class="wikidpad" />
+<br class="wikidpad" />
+&lt;!-- Method <br class="wikidpad" />
+<br class="wikidpad" />
+So I think instead I will hide a div at the bottom that will become visible when you click on Preview. <br class="wikidpad" />
+I will hide the div as soon as something is changed in the form<br class="wikidpad" />
+I will have links everywhere to easily go back where it should to update values<br class="wikidpad" />
+The button back will not exist anymore<br class="wikidpad" />
+The button submit will be in the div<br class="wikidpad" />
+The div will be included in the form<br class="wikidpad" />
+<br class="wikidpad" />
+--&gt;<br class="wikidpad" />
+<br class="wikidpad" />
+</ul>
+&lt;%} <br class="wikidpad" />
+else<br class="wikidpad" />
+{		%&gt;<br class="wikidpad" />
+<ul class="wikidpad normalindent">&lt;section class="alert alert-info"&gt;<ul class="wikidpad normalindent">&lt;h3&gt;Information&lt;/h3&gt;<br class="wikidpad" />
+&lt;p&gt;Please complete this questionnaire in relation to your LAST position in the Canadian Food Inspection Agency (CFIA) including an acting or an assignment position.&lt;/p&gt;</ul>
+&lt;/section&gt;<br class="wikidpad" />
+&lt;noscript&gt;<ul class="wikidpad normalindent">&lt;section class="alert alert-danger"&gt;<ul class="wikidpad normalindent">&lt;h3&gt;Alert&lt;/h3&gt;<br class="wikidpad" />
+&lt;p&gt;Your browser must support Javascript to complete this form&lt;/p&gt;</ul>
+&lt;/section&gt;</ul>
+&lt;/noscript&gt;<br class="wikidpad" />
+<br class="wikidpad" />
+&lt;div class="wb-frmvld"&gt;<ul class="wikidpad normalindent">&lt;form action="exitsurveye.aspx" method="post" id="exitsurveyform"  role="form" enctype="multipart/form-data"&gt;<ul class="wikidpad normalindent">&lt;input type="hidden" name="language" value="e" /&gt; <br class="wikidpad" />
+&lt;input type="hidden" name="prevUrl" id="prevUrl" /&gt; <br class="wikidpad" />
+<br class="wikidpad" />
+&lt;!-- <br class="wikidpad" />
+*********************<ul class="wikidpad normalindent">EXIT SURVEY</ul>
+*********************<br class="wikidpad" />
+--&gt;		<br class="wikidpad" />
+<br class="wikidpad" />
+<br class="wikidpad" />
+&lt;!-- <br class="wikidpad" />
+**************************<ul class="wikidpad normalindent">WORK ORGANIZATION </ul>
+**************************<br class="wikidpad" />
+--&gt;			<br class="wikidpad" />
+<br class="wikidpad" />
+<br class="wikidpad" />
+<br class="wikidpad" />
+&lt;div class="form-group"&gt;				<br class="wikidpad" />
+<ul class="wikidpad normalindent">&lt;label for="workOrg" class="required"&gt;<ul class="wikidpad normalindent">&lt;span class="field-name"&gt;Work Organization&lt;/span&gt; <br class="wikidpad" />
+&lt;strong class="required"&gt;(required)&lt;/strong&gt;</ul>
+&lt;/label&gt;<br class="wikidpad" />
+<br class="wikidpad" />
+&lt;asp:Repeater ID="WorkOrgList" runat="server"&gt;<ul class="wikidpad normalindent">&lt;HeaderTemplate&gt;<ul class="wikidpad normalindent">&lt;select class="form-control" name="workOrg" id="workOrg" required="required"&gt;<br class="wikidpad" />
+&lt;option label="Select a Work Organization"&gt;&lt;/option&gt;</ul>
+&lt;/HeaderTemplate&gt;<br class="wikidpad" />
+&lt;ItemTemplate&gt;								<ul class="wikidpad normalindent">&lt;option value="&lt;%# DataBinder.Eval(Container.DataItem, "organization_en")%&gt;"&gt;<ul class="wikidpad normalindent">&lt;%# DataBinder.Eval(Container.DataItem, "organization_en")%&gt;&lt;/option&gt;</ul>
+</ul>
+&lt;/ItemTemplate&gt;<br class="wikidpad" />
+&lt;FooterTemplate&gt;<ul class="wikidpad normalindent">&lt;/select&gt;</ul>
+&lt;/FooterTemplate&gt;</ul>
+&lt;/asp:Repeater&gt;		<br class="wikidpad" />
+</ul>
+&lt;/div&gt;<br class="wikidpad" />
+&lt;div class="form-group"&gt;						<ul class="wikidpad normalindent">&lt;!-- Hidden on Pageload --&gt;<br class="wikidpad" />
+&lt;div id="ifOtherOrg"&gt;					<br class="wikidpad" />
+<ul class="wikidpad normalindent">&lt;label class="label-control required" for="otherWorkOrg"&gt;<ul class="wikidpad normalindent">&lt;span class="field-name"&gt;Specify work organization&lt;/span&gt; <br class="wikidpad" />
+&lt;strong class="required"&gt;(required)&lt;/strong&gt;</ul>
+&lt;/label&gt;    							<br class="wikidpad" />
+<br class="wikidpad" />
+&lt;input class="form-control" id="otherWorkOrg" name="otherWorkOrg" type="text" required="required" /&gt; </ul>
+&lt;/div&gt;						</ul>
+&lt;/div&gt;<br class="wikidpad" />
+<br class="wikidpad" />
+&lt;!-- <br class="wikidpad" />
+**********<ul class="wikidpad normalindent">AGE</ul>
+**********<br class="wikidpad" />
+--&gt;	<br class="wikidpad" />
+<br class="wikidpad" />
+&lt;div class="form-group"&gt;<ul class="wikidpad normalindent">&lt;label for="age" class="required"&gt;<ul class="wikidpad normalindent">&lt;span class="field-name"&gt;Age&lt;/span&gt;<br class="wikidpad" />
+&lt;strong class="required" aria-required="true"&gt;(required)&lt;/strong&gt;</ul>
+&lt;/label&gt;<br class="wikidpad" />
+&lt;asp:Repeater ID="AgeList" runat="server"&gt;<ul class="wikidpad normalindent">&lt;HeaderTemplate&gt;<ul class="wikidpad normalindent">&lt;select class="form-control" name="age" id="age" required="required"&gt;</ul>
+&lt;/HeaderTemplate&gt;<br class="wikidpad" />
+&lt;ItemTemplate&gt;<ul class="wikidpad normalindent">&lt;option value="&lt;%# DataBinder.Eval(Container.DataItem, "age_en")%&gt;"&gt;<ul class="wikidpad normalindent">&lt;%# DataBinder.Eval(Container.DataItem, "age_en")%&gt;&lt;/option&gt;</ul>
+</ul>
+&lt;/ItemTemplate&gt;<br class="wikidpad" />
+&lt;FooterTemplate&gt;<ul class="wikidpad normalindent">&lt;/select&gt;</ul>
+&lt;/FooterTemplate&gt;</ul>
+&lt;/asp:Repeater&gt;</ul>
+&lt;/div&gt;<br class="wikidpad" />
+<br class="wikidpad" />
+<br class="wikidpad" />
+&lt;!-- <br class="wikidpad" />
+***********************************<ul class="wikidpad normalindent">HIGHEST LEVEL OF EDUCATION </ul>
+***********************************<br class="wikidpad" />
+--&gt;<br class="wikidpad" />
+<br class="wikidpad" />
+&lt;div class="form-group"&gt;							<ul class="wikidpad normalindent">&lt;label for="education" class="required"&gt;<ul class="wikidpad normalindent">&lt;span class="field-name"&gt;Highest Level of Education&lt;/span&gt; <br class="wikidpad" />
+&lt;strong class="required"&gt;(required)&lt;/strong&gt;</ul>
+&lt;/label&gt;<br class="wikidpad" />
+<br class="wikidpad" />
+&lt;asp:Repeater ID="EducationList" runat="server"&gt;<ul class="wikidpad normalindent">&lt;HeaderTemplate&gt;<ul class="wikidpad normalindent">&lt;select class="form-control" id="education" name="education" required="required"&gt;<br class="wikidpad" />
+&lt;option label="Select a Level of Education"&gt;&lt;/option&gt;</ul>
+&lt;/HeaderTemplate&gt;<br class="wikidpad" />
+&lt;ItemTemplate&gt;								<ul class="wikidpad normalindent">&lt;option value="&lt;%# DataBinder.Eval(Container.DataItem, "education_en")%&gt;"&gt;<ul class="wikidpad normalindent">&lt;%# DataBinder.Eval(Container.DataItem, "education_en")%&gt;&lt;/option&gt;</ul>
+</ul>
+&lt;/ItemTemplate&gt;<br class="wikidpad" />
+&lt;FooterTemplate&gt;<ul class="wikidpad normalindent">&lt;/select&gt;</ul>
+&lt;/FooterTemplate&gt;</ul>
+&lt;/asp:Repeater&gt;		</ul>
+&lt;/div&gt;<br class="wikidpad" />
+<br class="wikidpad" />
+&lt;div class="form-group"&gt;	<br class="wikidpad" />
+<ul class="wikidpad normalindent">&lt;div id="ifOtherEduc"&gt;				<br class="wikidpad" />
+<ul class="wikidpad normalindent">&lt;label class="label-control required" for="otherEduc"&gt;<ul class="wikidpad normalindent">&lt;span class="field-name"&gt;Specify Highest Level of Education&lt;/span&gt; <br class="wikidpad" />
+&lt;strong class="required"&gt;(required)&lt;/strong&gt;</ul>
+&lt;/label&gt;    	<br class="wikidpad" />
+<br class="wikidpad" />
+<br class="wikidpad" />
+&lt;input class="form-control" id="otherEduc" name="otherEduc" type="text" required="required" /&gt; <br class="wikidpad" />
+</ul>
+&lt;/div&gt;			</ul>
+&lt;/div&gt;<br class="wikidpad" />
+<br class="wikidpad" />
+<br class="wikidpad" />
+&lt;!-- <br class="wikidpad" />
+*************<ul class="wikidpad normalindent">AREA </ul>
+*************<br class="wikidpad" />
+--&gt;			<br class="wikidpad" />
+<br class="wikidpad" />
+&lt;fieldset&gt;<br class="wikidpad" />
+&lt;legend class="required fixLegend"&gt;&lt;span class="field-name"&gt;Area&lt;/span&gt; &lt;strong class="required"&gt;(required)&lt;/strong&gt;&lt;/legend&gt;			<br class="wikidpad" />
+<br class="wikidpad" />
+&lt;!--&lt;div class="form-group"&gt; --&gt;<ul class="wikidpad normalindent">&lt;asp:Repeater ID="AreaList" runat="server"&gt;<ul class="wikidpad normalindent">&lt;ItemTemplate&gt;								<ul class="wikidpad normalindent">&lt;div class="radio"&gt;<ul class="wikidpad normalindent">&lt;label for="area&lt;%# DataBinder.Eval(Container.DataItem, "area_id")%&gt;"&gt;<ul class="wikidpad normalindent">&lt;input type="radio" name="area" value="&lt;%# DataBinder.Eval(Container.DataItem, "area_en")%&gt;" id="area&lt;%# DataBinder.Eval(Container.DataItem, "area_id")%&gt;" required="required" /&gt;&lt;%# DataBinder.Eval(Container.DataItem, "area_en")%&gt;</ul>
+&lt;/label&gt;</ul>
+&lt;/div&gt;</ul>
+&lt;/ItemTemplate&gt;</ul>
+&lt;/asp:Repeater&gt;		</ul>
+&lt;!--&lt;/div&gt; --&gt;<br class="wikidpad" />
+<br class="wikidpad" />
+&lt;/fieldset&gt;			<br class="wikidpad" />
+<br class="wikidpad" />
+&lt;!-- <br class="wikidpad" />
+*****************<ul class="wikidpad normalindent">PROVINCE </ul>
+*****************<br class="wikidpad" />
+<br class="wikidpad" />
+The list is manually generated so that it can be easily modified with jQuery based on the Area selected<br class="wikidpad" />
+--&gt;<br class="wikidpad" />
+&lt;div class="form-group"&gt;				<br class="wikidpad" />
+<ul class="wikidpad normalindent">&lt;label for="prov" class="required"&gt;<ul class="wikidpad normalindent">&lt;span class="field-name"&gt;Province/Territory&lt;/span&gt; <br class="wikidpad" />
+&lt;strong class="required"&gt;(required)&lt;/strong&gt;</ul>
+&lt;/label&gt;<br class="wikidpad" />
+<br class="wikidpad" />
+&lt;select class="form-control" id="prov" name="prov" required="required"&gt;<ul class="wikidpad normalindent">&lt;option label="Please select an Area first"&gt;&lt;/option&gt;</ul>
+&lt;/select&gt;<br class="wikidpad" />
+</ul>
+&lt;/div&gt;<br class="wikidpad" />
+<br class="wikidpad" />
+<br class="wikidpad" />
+<br class="wikidpad" />
+&lt;!-- <br class="wikidpad" />
+***********************************<ul class="wikidpad normalindent">NUMBER OF YEARS OF SERVICE </ul>
+***********************************<br class="wikidpad" />
+--&gt;<br class="wikidpad" />
+<br class="wikidpad" />
+&lt;legend class="required"&gt;&lt;span class="field-name"&gt;Number of years of service&lt;/span&gt; &lt;strong class="required"&gt;(required)&lt;/strong&gt;&lt;/legend&gt;<br class="wikidpad" />
+<br class="wikidpad" />
+&lt;div class="form-group"&gt;		<br class="wikidpad" />
+<ul class="wikidpad normalindent">&lt;!-- At your substantive classification level --&gt;<br class="wikidpad" />
+&lt;label class="label-control required" for="yearSub"&gt;<ul class="wikidpad normalindent">&lt;span class="field-name"&gt;At your substantive classification level&lt;/span&gt; <br class="wikidpad" />
+&lt;strong class="required"&gt;(required)&lt;/strong&gt;</ul>
+&lt;/label&gt;   <br class="wikidpad" />
+<br class="wikidpad" />
+&lt;asp:Repeater ID="YearListSub" runat="server"&gt;<ul class="wikidpad normalindent">&lt;HeaderTemplate&gt;<ul class="wikidpad normalindent">&lt;select class="form-control" id="yearSub" name="yearSub" required="required"&gt;<br class="wikidpad" />
+&lt;option label=""&gt;&lt;/option&gt;</ul>
+&lt;/HeaderTemplate&gt;<br class="wikidpad" />
+&lt;ItemTemplate&gt;								<ul class="wikidpad normalindent">&lt;option value="&lt;%# DataBinder.Eval(Container.DataItem, "years_service_en")%&gt;"&gt;<ul class="wikidpad normalindent">&lt;%# DataBinder.Eval(Container.DataItem, "years_service_en")%&gt;&lt;/option&gt;</ul>
+</ul>
+&lt;/ItemTemplate&gt;<br class="wikidpad" />
+&lt;FooterTemplate&gt;<ul class="wikidpad normalindent">&lt;/select&gt;</ul>
+&lt;/FooterTemplate&gt;</ul>
+&lt;/asp:Repeater&gt;		<br class="wikidpad" />
+</ul>
+&lt;/div&gt;<br class="wikidpad" />
+<br class="wikidpad" />
+&lt;!-- At CFIA --&gt;<br class="wikidpad" />
+&lt;div class="form-group"&gt;		<ul class="wikidpad normalindent">&lt;label class="label-control required" for="yearCFIA"&gt;<ul class="wikidpad normalindent">&lt;span class="field-name"&gt;At the Canadian Food Inspection Agency:&lt;/span&gt; <br class="wikidpad" />
+&lt;strong class="required"&gt;(required)&lt;/strong&gt;</ul>
+&lt;/label&gt;    							<br class="wikidpad" />
+<br class="wikidpad" />
+&lt;asp:Repeater ID="YearListCFIA" runat="server"&gt;<ul class="wikidpad normalindent">&lt;HeaderTemplate&gt;<ul class="wikidpad normalindent">&lt;select class="form-control" id="yearCFIA" name="yearCFIA" required="required"&gt;<br class="wikidpad" />
+&lt;option label=""&gt;&lt;/option&gt;</ul>
+&lt;/HeaderTemplate&gt;<br class="wikidpad" />
+&lt;ItemTemplate&gt;								<ul class="wikidpad normalindent">&lt;option value="&lt;%# DataBinder.Eval(Container.DataItem, "years_service_en")%&gt;"&gt;<ul class="wikidpad normalindent">&lt;%# DataBinder.Eval(Container.DataItem, "years_service_en")%&gt;&lt;/option&gt;</ul>
+</ul>
+&lt;/ItemTemplate&gt;<br class="wikidpad" />
+&lt;FooterTemplate&gt;<ul class="wikidpad normalindent">&lt;/select&gt;</ul>
+&lt;/FooterTemplate&gt;</ul>
+&lt;/asp:Repeater&gt;	</ul>
+&lt;/div&gt;<br class="wikidpad" />
+<br class="wikidpad" />
+&lt;!-- In an acting or assignment position on departure --&gt;<br class="wikidpad" />
+&lt;div class="form-group"&gt;		<ul class="wikidpad normalindent">&lt;label class="label-control required" for="yearActing"&gt;<ul class="wikidpad normalindent">&lt;span class="field-name"&gt;In an acting or assignment position on departure:&lt;/span&gt; <br class="wikidpad" />
+&lt;strong class="required"&gt;(required)&lt;/strong&gt;</ul>
+&lt;/label&gt;    							<br class="wikidpad" />
+<br class="wikidpad" />
+&lt;asp:Repeater ID="YearListActing" runat="server"&gt;<ul class="wikidpad normalindent">&lt;HeaderTemplate&gt;<ul class="wikidpad normalindent">&lt;select class="form-control" id="yearActing" name="yearActing" required="required"&gt;<br class="wikidpad" />
+&lt;option label=""&gt;&lt;/option&gt;</ul>
+&lt;/HeaderTemplate&gt;<br class="wikidpad" />
+&lt;ItemTemplate&gt;								<ul class="wikidpad normalindent">&lt;option value="&lt;%# DataBinder.Eval(Container.DataItem, "years_service_en")%&gt;"&gt;<ul class="wikidpad normalindent">&lt;%# DataBinder.Eval(Container.DataItem, "years_service_en")%&gt;&lt;/option&gt;</ul>
+</ul>
+&lt;/ItemTemplate&gt;<br class="wikidpad" />
+&lt;FooterTemplate&gt;<ul class="wikidpad normalindent">&lt;/select&gt;</ul>
+&lt;/FooterTemplate&gt;</ul>
+&lt;/asp:Repeater&gt;	</ul>
+&lt;/div&gt;<br class="wikidpad" />
+<br class="wikidpad" />
+&lt;!-- Federal Public Service --&gt;<br class="wikidpad" />
+&lt;div class="form-group"&gt;		<ul class="wikidpad normalindent">&lt;label class="label-control required" for="yearPublicService"&gt;<ul class="wikidpad normalindent">&lt;span class="field-name"&gt;At the Federal Public Service:&lt;/span&gt; <br class="wikidpad" />
+&lt;strong class="required"&gt;(required)&lt;/strong&gt;</ul>
+&lt;/label&gt;    							<br class="wikidpad" />
+<br class="wikidpad" />
+&lt;asp:Repeater ID="YearListPublicService" runat="server"&gt;<ul class="wikidpad normalindent">&lt;HeaderTemplate&gt;<ul class="wikidpad normalindent">&lt;select class="form-control" id="yearPublicService" name="yearPublicService" required="required"&gt;<br class="wikidpad" />
+&lt;option label=""&gt;&lt;/option&gt;</ul>
+&lt;/HeaderTemplate&gt;<br class="wikidpad" />
+&lt;ItemTemplate&gt;								<ul class="wikidpad normalindent">&lt;option value="&lt;%# DataBinder.Eval(Container.DataItem, "years_service_en")%&gt;"&gt;<ul class="wikidpad normalindent">&lt;%# DataBinder.Eval(Container.DataItem, "years_service_en")%&gt;&lt;/option&gt;</ul>
+</ul>
+&lt;/ItemTemplate&gt;<br class="wikidpad" />
+&lt;FooterTemplate&gt;<ul class="wikidpad normalindent">&lt;/select&gt;</ul>
+&lt;/FooterTemplate&gt;</ul>
+&lt;/asp:Repeater&gt;	</ul>
+&lt;/div&gt;			<br class="wikidpad" />
+<br class="wikidpad" />
+&lt;!-- <br class="wikidpad" />
+*********************************<ul class="wikidpad normalindent">FIRST OFFICIAL LANGUAGE </ul>
+*********************************<br class="wikidpad" />
+--&gt;<br class="wikidpad" />
+<br class="wikidpad" />
+&lt;fieldset&gt;<ul class="wikidpad normalindent">&lt;legend class="required"&gt;&lt;span class="field-name"&gt;First Official Language&lt;/span&gt; &lt;strong class="required"&gt;(required)&lt;/strong&gt;&lt;/legend&gt;			<br class="wikidpad" />
+<br class="wikidpad" />
+&lt;asp:Repeater ID="LangList" runat="server"&gt;<ul class="wikidpad normalindent">&lt;ItemTemplate&gt;								<ul class="wikidpad normalindent">&lt;div class="radio"&gt;<ul class="wikidpad normalindent">&lt;label for="lang&lt;%# DataBinder.Eval(Container.DataItem, "lang_id")%&gt;"&gt;<ul class="wikidpad normalindent">&lt;input type="radio" name="lang" value="&lt;%# DataBinder.Eval(Container.DataItem, "lang_en")%&gt;" id="lang&lt;%# DataBinder.Eval(Container.DataItem, "lang_id")%&gt;" required="required" /&gt;&lt;%# DataBinder.Eval(Container.DataItem, "lang_en")%&gt;</ul>
+&lt;/label&gt;</ul>
+&lt;/div&gt;</ul>
+&lt;/ItemTemplate&gt;</ul>
+&lt;/asp:Repeater&gt;		<br class="wikidpad" />
+</ul>
+&lt;/fieldset&gt;		<br class="wikidpad" />
+<br class="wikidpad" />
+<br class="wikidpad" />
+<br class="wikidpad" />
+&lt;!-- <br class="wikidpad" />
+************<ul class="wikidpad normalindent">SEX</ul>
+************<br class="wikidpad" />
+--&gt;<br class="wikidpad" />
+<br class="wikidpad" />
+&lt;fieldset&gt;<ul class="wikidpad normalindent">&lt;legend class="required"&gt;&lt;span class="field-name"&gt;Sex&lt;/span&gt; &lt;strong class="required"&gt;(required)&lt;/strong&gt;&lt;/legend&gt;<br class="wikidpad" />
+<br class="wikidpad" />
+&lt;asp:Repeater ID="SexList" runat="server"&gt;<ul class="wikidpad normalindent">&lt;ItemTemplate&gt;								<ul class="wikidpad normalindent">&lt;div class="radio"&gt;<ul class="wikidpad normalindent">&lt;label for="sex&lt;%# DataBinder.Eval(Container.DataItem, "sex_id")%&gt;"&gt;<ul class="wikidpad normalindent">&lt;input type="radio" name="sex" value="&lt;%# DataBinder.Eval(Container.DataItem, "sex_en")%&gt;" id="sex&lt;%# DataBinder.Eval(Container.DataItem, "sex_id")%&gt;" required="required" /&gt;&lt;%# DataBinder.Eval(Container.DataItem, "sex_en")%&gt;</ul>
+&lt;/label&gt;</ul>
+&lt;/div&gt;</ul>
+&lt;/ItemTemplate&gt;</ul>
+&lt;/asp:Repeater&gt;		<br class="wikidpad" />
+</ul>
+&lt;/fieldset&gt;	<br class="wikidpad" />
+<br class="wikidpad" />
+&lt;!-- <br class="wikidpad" />
+**************************<ul class="wikidpad normalindent">EMPLOYMENT EQUITY</ul>
+**************************<br class="wikidpad" />
+--&gt;<br class="wikidpad" />
+<br class="wikidpad" />
+&lt;fieldset&gt;<ul class="wikidpad normalindent">&lt;legend&gt;&lt;span class="field-name"&gt;Employment Equity&lt;/span&gt;&lt;/legend&gt;<br class="wikidpad" />
+<br class="wikidpad" />
+&lt;asp:Repeater ID="EquityList" runat="server"&gt;<ul class="wikidpad normalindent">&lt;ItemTemplate&gt;								<ul class="wikidpad normalindent">&lt;div class="checkbox"&gt;<ul class="wikidpad normalindent">&lt;label for="ee&lt;%# DataBinder.Eval(Container.DataItem, "equity_id")%&gt;"&gt;<ul class="wikidpad normalindent">&lt;input type="checkbox" name="ee" value="&lt;%# DataBinder.Eval(Container.DataItem, "equity_en")%&gt;" id="ee&lt;%# DataBinder.Eval(Container.DataItem, "equity_id")%&gt;" /&gt;&lt;%# DataBinder.Eval(Container.DataItem, "equity_en")%&gt;</ul>
+&lt;/label&gt;</ul>
+&lt;/div&gt;</ul>
+&lt;/ItemTemplate&gt;</ul>
+&lt;/asp:Repeater&gt;		<br class="wikidpad" />
+</ul>
+&lt;/fieldset&gt;	<br class="wikidpad" />
+<br class="wikidpad" />
+&lt;!-- <br class="wikidpad" />
+**************************<ul class="wikidpad normalindent">EMPLOYMENT STATUS</ul>
+**************************<br class="wikidpad" />
+--&gt;<br class="wikidpad" />
+<br class="wikidpad" />
+&lt;fieldset&gt;<ul class="wikidpad normalindent">&lt;legend class="required"&gt;&lt;span class="field-name"&gt;Employment Status&lt;/span&gt; &lt;strong class="required"&gt;(required)&lt;/strong&gt;&lt;/legend&gt;	<br class="wikidpad" />
+<br class="wikidpad" />
+&lt;asp:Repeater ID="StatusList" runat="server"&gt;<ul class="wikidpad normalindent">&lt;ItemTemplate&gt;								<ul class="wikidpad normalindent">&lt;div class="radio"&gt;<ul class="wikidpad normalindent">&lt;label for="status&lt;%# DataBinder.Eval(Container.DataItem, "status_id")%&gt;"&gt;<ul class="wikidpad normalindent">&lt;input type="radio" name="status" value="&lt;%# DataBinder.Eval(Container.DataItem, "status_en")%&gt;" id="status&lt;%# DataBinder.Eval(Container.DataItem, "status_id")%&gt;" required="required" /&gt;&lt;%# DataBinder.Eval(Container.DataItem, "status_en")%&gt;</ul>
+&lt;/label&gt;</ul>
+&lt;/div&gt;</ul>
+&lt;/ItemTemplate&gt;</ul>
+&lt;/asp:Repeater&gt;		<br class="wikidpad" />
+</ul>
+&lt;/fieldset&gt;	<br class="wikidpad" />
+<br class="wikidpad" />
+&lt;!-- <br class="wikidpad" />
+***********************<ul class="wikidpad normalindent">CLASSIFICATION</ul>
+***********************<br class="wikidpad" />
+--&gt;<br class="wikidpad" />
+<br class="wikidpad" />
+&lt;!-- Upon Joining CFIA --&gt;<br class="wikidpad" />
+&lt;legend class="required"&gt;&lt;span class="field-name"&gt;Classification&lt;/span&gt; &lt;strong class="required"&gt;(required)&lt;/strong&gt;&lt;/legend&gt;<br class="wikidpad" />
+<br class="wikidpad" />
+&lt;div class="form-group"&gt;				<br class="wikidpad" />
+<ul class="wikidpad normalindent">&lt;label class="label-control required" for="groupJoining"&gt;<ul class="wikidpad normalindent">&lt;span class="field-name"&gt;Group upon joining CFIA&lt;/span&gt; <br class="wikidpad" />
+&lt;strong class="required"&gt;(required)&lt;/strong&gt;</ul>
+&lt;/label&gt;    <br class="wikidpad" />
+<br class="wikidpad" />
+&lt;asp:Repeater ID="GroupJoinList" runat="server"&gt;<ul class="wikidpad normalindent">&lt;HeaderTemplate&gt;<ul class="wikidpad normalindent">&lt;select class="form-control" id="groupJoining" name="groupJoining" required="required"&gt;<br class="wikidpad" />
+&lt;option label=""&gt;&lt;/option&gt;</ul>
+&lt;/HeaderTemplate&gt;<br class="wikidpad" />
+&lt;ItemTemplate&gt;								<ul class="wikidpad normalindent">&lt;option value="&lt;%# DataBinder.Eval(Container.DataItem, "group_en")%&gt;"&gt;<ul class="wikidpad normalindent">&lt;%# DataBinder.Eval(Container.DataItem, "group_en")%&gt;&lt;/option&gt;</ul>
+</ul>
+&lt;/ItemTemplate&gt;<br class="wikidpad" />
+&lt;FooterTemplate&gt;<ul class="wikidpad normalindent">&lt;/select&gt;</ul>
+&lt;/FooterTemplate&gt;</ul>
+&lt;/asp:Repeater&gt;					</ul>
+&lt;/div&gt;<br class="wikidpad" />
+<br class="wikidpad" />
+&lt;div class="form-group"&gt;				<br class="wikidpad" />
+<ul class="wikidpad normalindent">&lt;label class="label-control required" for="levelJoining"&gt;<ul class="wikidpad normalindent">&lt;span class="field-name"&gt;Level upon joining CFIA&lt;/span&gt; <br class="wikidpad" />
+&lt;strong class="required"&gt;(required)&lt;/strong&gt;</ul>
+&lt;/label&gt;    <br class="wikidpad" />
+<br class="wikidpad" />
+&lt;asp:Repeater ID="LevelJoinList" runat="server"&gt;<ul class="wikidpad normalindent">&lt;HeaderTemplate&gt;<ul class="wikidpad normalindent">&lt;select class="form-control" id="levelJoining" name="levelJoining" required="required"&gt;<br class="wikidpad" />
+&lt;option label=""&gt;&lt;/option&gt;</ul>
+&lt;/HeaderTemplate&gt;<br class="wikidpad" />
+&lt;ItemTemplate&gt;								<ul class="wikidpad normalindent">&lt;option value="&lt;%# DataBinder.Eval(Container.DataItem, "level_en")%&gt;"&gt;<ul class="wikidpad normalindent">&lt;%# DataBinder.Eval(Container.DataItem, "level_en")%&gt;&lt;/option&gt;</ul>
+</ul>
+&lt;/ItemTemplate&gt;<br class="wikidpad" />
+&lt;FooterTemplate&gt;<ul class="wikidpad normalindent">&lt;/select&gt;</ul>
+&lt;/FooterTemplate&gt;</ul>
+&lt;/asp:Repeater&gt;					</ul>
+&lt;/div&gt;<br class="wikidpad" />
+<br class="wikidpad" />
+&lt;!-- Upon Leaving CFIA --&gt;			<br class="wikidpad" />
+&lt;div class="form-group"&gt;				<br class="wikidpad" />
+<ul class="wikidpad normalindent">&lt;label class="label-control required" for="groupLeaving"&gt;<ul class="wikidpad normalindent">&lt;span class="field-name"&gt;Group upon leaving CFIA&lt;/span&gt; <br class="wikidpad" />
+&lt;strong class="required"&gt;(required)&lt;/strong&gt;</ul>
+&lt;/label&gt;    <br class="wikidpad" />
+<br class="wikidpad" />
+&lt;asp:Repeater ID="GroupLeaveList" runat="server"&gt;<ul class="wikidpad normalindent">&lt;HeaderTemplate&gt;<ul class="wikidpad normalindent">&lt;select class="form-control" id="groupLeaving" name="groupLeaving" required="required"&gt;<br class="wikidpad" />
+&lt;option label=""&gt;&lt;/option&gt;</ul>
+&lt;/HeaderTemplate&gt;<br class="wikidpad" />
+&lt;ItemTemplate&gt;								<ul class="wikidpad normalindent">&lt;option value="&lt;%# DataBinder.Eval(Container.DataItem, "group_en")%&gt;"&gt;<ul class="wikidpad normalindent">&lt;%# DataBinder.Eval(Container.DataItem, "group_en")%&gt;&lt;/option&gt;</ul>
+</ul>
+&lt;/ItemTemplate&gt;<br class="wikidpad" />
+&lt;FooterTemplate&gt;<ul class="wikidpad normalindent">&lt;/select&gt;</ul>
+&lt;/FooterTemplate&gt;</ul>
+&lt;/asp:Repeater&gt;					</ul>
+&lt;/div&gt;<br class="wikidpad" />
+<br class="wikidpad" />
+&lt;div class="form-group"&gt;				<br class="wikidpad" />
+<ul class="wikidpad normalindent">&lt;label class="label-control required" for="levelLeaving"&gt;<ul class="wikidpad normalindent">&lt;span class="field-name"&gt;Level upon leaving CFIA&lt;/span&gt; <br class="wikidpad" />
+&lt;strong class="required"&gt;(required)&lt;/strong&gt;</ul>
+&lt;/label&gt;    <br class="wikidpad" />
+<br class="wikidpad" />
+&lt;asp:Repeater ID="LevelLeaveList" runat="server"&gt;<ul class="wikidpad normalindent">&lt;HeaderTemplate&gt;<ul class="wikidpad normalindent">&lt;select class="form-control" id="levelLeaving" name="levelLeaving" required="required"&gt;<br class="wikidpad" />
+&lt;option label=""&gt;&lt;/option&gt;</ul>
+&lt;/HeaderTemplate&gt;<br class="wikidpad" />
+&lt;ItemTemplate&gt;								<ul class="wikidpad normalindent">&lt;option value="&lt;%# DataBinder.Eval(Container.DataItem, "level_en")%&gt;"&gt;<ul class="wikidpad normalindent">&lt;%# DataBinder.Eval(Container.DataItem, "level_en")%&gt;&lt;/option&gt;</ul>
+</ul>
+&lt;/ItemTemplate&gt;<br class="wikidpad" />
+&lt;FooterTemplate&gt;<ul class="wikidpad normalindent">&lt;/select&gt;</ul>
+&lt;/FooterTemplate&gt;</ul>
+&lt;/asp:Repeater&gt;					</ul>
+&lt;/div&gt;<br class="wikidpad" />
+<br class="wikidpad" />
+&lt;!-- <br class="wikidpad" />
+***********************<ul class="wikidpad normalindent">DEPARTURE TYPE</ul>
+***********************<br class="wikidpad" />
+--&gt;<br class="wikidpad" />
+<br class="wikidpad" />
+&lt;div class="form-group"&gt;				<br class="wikidpad" />
+<ul class="wikidpad normalindent">&lt;label class="label-control required" for="depType"&gt;<ul class="wikidpad normalindent">&lt;span class="field-name"&gt;Departure Type&lt;/span&gt; <br class="wikidpad" />
+&lt;strong class="required"&gt;(required)&lt;/strong&gt;</ul>
+&lt;/label&gt;    <br class="wikidpad" />
+<br class="wikidpad" />
+&lt;asp:Repeater ID="DepTypeList" runat="server"&gt;<ul class="wikidpad normalindent">&lt;HeaderTemplate&gt;<ul class="wikidpad normalindent">&lt;select class="form-control" id="depType" name="depType" required="required"&gt;<br class="wikidpad" />
+&lt;option label="Select a Departure Type"&gt;&lt;/option&gt;</ul>
+&lt;/HeaderTemplate&gt;<br class="wikidpad" />
+&lt;ItemTemplate&gt;								<ul class="wikidpad normalindent">&lt;option value="&lt;%# DataBinder.Eval(Container.DataItem, "depart_type_en")%&gt;"&gt;<ul class="wikidpad normalindent">&lt;%# DataBinder.Eval(Container.DataItem, "depart_type_en")%&gt;&lt;/option&gt;</ul>
+</ul>
+&lt;/ItemTemplate&gt;<br class="wikidpad" />
+&lt;FooterTemplate&gt;<ul class="wikidpad normalindent">&lt;/select&gt;</ul>
+&lt;/FooterTemplate&gt;</ul>
+&lt;/asp:Repeater&gt;</ul>
+&lt;/div&gt;<br class="wikidpad" />
+<br class="wikidpad" />
+&lt;div class="form-group"&gt;				<ul class="wikidpad normalindent">&lt;div id="ifOtherDepart"&gt;					<br class="wikidpad" />
+<ul class="wikidpad normalindent">&lt;label class="label-control required" for="otherDepartType"&gt;<ul class="wikidpad normalindent">&lt;span class="field-name"&gt;Specify Departure Type&lt;/span&gt; <br class="wikidpad" />
+&lt;strong class="required"&gt;(required)&lt;/strong&gt;</ul>
+&lt;/label&gt;    							<br class="wikidpad" />
+<br class="wikidpad" />
+&lt;input class="form-control" id="otherDepartType" name="otherDepartType" type="text" required="required" /&gt; <br class="wikidpad" />
+</ul>
+&lt;/div&gt;	</ul>
+&lt;/div&gt;<br class="wikidpad" />
+<br class="wikidpad" />
+&lt;!-- <br class="wikidpad" />
+***********************<ul class="wikidpad normalindent">REASON FOR DEPARTURE - To be completed</ul>
+***********************<br class="wikidpad" />
+--&gt;<br class="wikidpad" />
+<br class="wikidpad" />
+&lt;section class="alert alert-info"&gt;<ul class="wikidpad normalindent">&lt;h3&gt;Information&lt;/h3&gt;<br class="wikidpad" />
+&lt;p&gt;Reason for Departure to be completed&lt;/p&gt;</ul>
+&lt;/section&gt;<br class="wikidpad" />
+<br class="wikidpad" />
+&lt;!-- <br class="wikidpad" />
+*******************<ul class="wikidpad normalindent">DESTINATION</ul>
+*******************<br class="wikidpad" />
+--&gt;<br class="wikidpad" />
+<br class="wikidpad" />
+&lt;div class="form-group"&gt;				<br class="wikidpad" />
+<ul class="wikidpad normalindent">&lt;label class="label-control required" for="dest"&gt;<ul class="wikidpad normalindent">&lt;span class="field-name"&gt;Destination&lt;/span&gt; <br class="wikidpad" />
+&lt;strong class="required"&gt;(required)&lt;/strong&gt;</ul>
+&lt;/label&gt;    <br class="wikidpad" />
+<br class="wikidpad" />
+&lt;asp:Repeater ID="DestList" runat="server"&gt;<ul class="wikidpad normalindent">&lt;HeaderTemplate&gt;<ul class="wikidpad normalindent">&lt;select class="form-control" id="dest" name="dest" required="required"&gt;<br class="wikidpad" />
+&lt;option label="Select a Destination"&gt;&lt;/option&gt;</ul>
+&lt;/HeaderTemplate&gt;<br class="wikidpad" />
+&lt;ItemTemplate&gt;								<ul class="wikidpad normalindent">&lt;option value="&lt;%# DataBinder.Eval(Container.DataItem, "destination_en")%&gt;"&gt;<ul class="wikidpad normalindent">&lt;%# DataBinder.Eval(Container.DataItem, "destination_en")%&gt;&lt;/option&gt;</ul>
+</ul>
+&lt;/ItemTemplate&gt;<br class="wikidpad" />
+&lt;FooterTemplate&gt;<ul class="wikidpad normalindent">&lt;/select&gt;</ul>
+&lt;/FooterTemplate&gt;</ul>
+&lt;/asp:Repeater&gt;</ul>
+&lt;/div&gt;<br class="wikidpad" />
+<br class="wikidpad" />
+&lt;div class="form-group"&gt;				<br class="wikidpad" />
+<ul class="wikidpad normalindent">&lt;div id="ifOtherDest"&gt;					<br class="wikidpad" />
+<ul class="wikidpad normalindent">&lt;label class="label-control required" for="otherDest"&gt;<ul class="wikidpad normalindent">&lt;span class="field-name"&gt;Specify Destination&lt;/span&gt; <br class="wikidpad" />
+&lt;strong class="required"&gt;(required)&lt;/strong&gt;</ul>
+&lt;/label&gt;    							<br class="wikidpad" />
+<br class="wikidpad" />
+&lt;input class="form-control" id="otherDest" name="otherDest" type="text" required="required" /&gt; <br class="wikidpad" />
+</ul>
+&lt;/div&gt;	</ul>
+&lt;/div&gt;<br class="wikidpad" />
+<br class="wikidpad" />
+<br class="wikidpad" />
+&lt;!-- <br class="wikidpad" />
+******************************<ul class="wikidpad normalindent">ENVIRONMENT_INDICATORS</ul>
+******************************<br class="wikidpad" />
+--&gt;<br class="wikidpad" />
+&lt;legend&gt;Work environment indicators&lt;/legend&gt;<br class="wikidpad" />
+&lt;p&gt;How would you rate your overall experience concerning the following aspects of your last position?&lt;/p&gt;<br class="wikidpad" />
+<br class="wikidpad" />
+&lt;div class="form-group"&gt;	<br class="wikidpad" />
+<ul class="wikidpad normalindent">&lt;asp:Repeater ID="EnvIndList" runat="server" OnItemDataBound="ItemBound"&gt;<ul class="wikidpad normalindent">&lt;ItemTemplate&gt;<ul class="wikidpad normalindent">&lt;div class="form-group"&gt;				<ul class="wikidpad normalindent">&lt;label class="label-control required" for="envInd&lt;%# DataBinder.Eval(Container.DataItem, "env_indicator_id")%&gt;"&gt;<ul class="wikidpad normalindent">&lt;span class="field-name"&gt;&lt;%# DataBinder.Eval(Container.DataItem, "env_indicator_en")%&gt;&lt;/span&gt; <br class="wikidpad" />
+&lt;strong class="required"&gt;(required)&lt;/strong&gt;</ul>
+&lt;/label&gt;   						<br class="wikidpad" />
+<br class="wikidpad" />
+&lt;asp:Repeater ID="ChildRepeater" runat="server"&gt;<ul class="wikidpad normalindent">&lt;HeaderTemplate&gt;<ul class="wikidpad normalindent">&lt;select class="form-control" id="envInd&lt;%# DataBinder.Eval(((RepeaterItem)Container.Parent.Parent).DataItem, "env_indicator_id")%&gt;" name="envInd&lt;%# DataBinder.Eval(((RepeaterItem)Container.Parent.Parent).DataItem, "env_indicator_id")%&gt;" required="required"&gt;<br class="wikidpad" />
+&lt;option label="Select a rating"&gt;&lt;/option&gt;</ul>
+&lt;/HeaderTemplate&gt;<br class="wikidpad" />
+&lt;ItemTemplate&gt;								<ul class="wikidpad normalindent">&lt;option value="&lt;%# DataBinder.Eval(Container.DataItem, "indicator_code_en")%&gt;"&gt;<ul class="wikidpad normalindent">&lt;%# DataBinder.Eval(Container.DataItem, "indicator_code_en")%&gt;&lt;/option&gt;</ul>
+</ul>
+&lt;/ItemTemplate&gt;<br class="wikidpad" />
+&lt;FooterTemplate&gt;<ul class="wikidpad normalindent">&lt;/select&gt;</ul>
+&lt;/FooterTemplate&gt;</ul>
+&lt;/asp:Repeater&gt;</ul>
+&lt;/div&gt;</ul>
+&lt;/ItemTemplate&gt;</ul>
+&lt;/asp:Repeater&gt; 				</ul>
+&lt;/div&gt;				<br class="wikidpad" />
+<br class="wikidpad" />
+&lt;!-- <br class="wikidpad" />
+**********************************<ul class="wikidpad normalindent">YES/NO WORK AGAIN AT CFIA </ul>
+**********************************<br class="wikidpad" />
+--&gt;			<br class="wikidpad" />
+<br class="wikidpad" />
+&lt;fieldset&gt;<ul class="wikidpad normalindent">&lt;legend class="required"&gt;&lt;span class="field-name"&gt;If there was an opportunity to work for the Canadian Food Inspection Agency again would you choose to do so?&lt;/span&gt; &lt;strong class="required"&gt;(required)&lt;/strong&gt;&lt;/legend&gt;			<br class="wikidpad" />
+<br class="wikidpad" />
+&lt;div class="radio"&gt;<ul class="wikidpad normalindent">&lt;label for="work1"&gt;<ul class="wikidpad normalindent">&lt;input type="radio" name="work" value="Yes" id="work1" required="required" /&gt;Yes</ul>
+&lt;/label&gt;</ul>
+&lt;/div&gt;			<br class="wikidpad" />
+<br class="wikidpad" />
+&lt;div class="radio"&gt;<ul class="wikidpad normalindent">&lt;label for="work2"&gt;<ul class="wikidpad normalindent">&lt;input type="radio" name="work" value="No" id="work2" &gt;No</ul>
+&lt;/label&gt;</ul>
+&lt;/div&gt;		<br class="wikidpad" />
+</ul>
+&lt;/fieldset&gt;		<br class="wikidpad" />
+<br class="wikidpad" />
+&lt;!-- <br class="wikidpad" />
+**********************************<ul class="wikidpad normalindent">YES/NO EXIT INTERVIEW</ul>
+**********************************<br class="wikidpad" />
+--&gt;			<br class="wikidpad" />
+<br class="wikidpad" />
+&lt;fieldset&gt;<ul class="wikidpad normalindent">&lt;legend class="required"&gt;&lt;span class="field-name"&gt;Will you be participating in an exit interview in addition to completing this questionnaire?&lt;/span&gt; &lt;strong class="required"&gt;(required)&lt;/strong&gt;&lt;/legend&gt;			<br class="wikidpad" />
+<br class="wikidpad" />
+&lt;div class="radio"&gt;<ul class="wikidpad normalindent">&lt;label for="interview1"&gt;<ul class="wikidpad normalindent">&lt;input type="radio" name="interview" value="Yes" id="interview1" required="required" /&gt;Yes</ul>
+&lt;/label&gt;</ul>
+&lt;/div&gt;			<br class="wikidpad" />
+<br class="wikidpad" />
+&lt;div class="radio"&gt;<ul class="wikidpad normalindent">&lt;label for="interview2"&gt;<ul class="wikidpad normalindent">&lt;input type="radio" name="interview" value="No" id="interview2" &gt;No</ul>
+&lt;/label&gt;</ul>
+&lt;/div&gt;		<br class="wikidpad" />
+</ul>
+&lt;/fieldset&gt;								<br class="wikidpad" />
+<br class="wikidpad" />
+&lt;div class="form-group"&gt;				<ul class="wikidpad normalindent">&lt;label class="label-control" for="comments"&gt;<ul class="wikidpad normalindent">&lt;span class="field-name"&gt;Comments&lt;/span&gt; </ul>
+&lt;/label&gt;    							<br class="wikidpad" />
+&lt;p&gt;The space below is for you to provide any comments regarding your work experience with the Canadian Food Inspection Agency and suggestions that you would like to make in order to improve the quality of the work environment.(maximum 750 characters)&lt;/p&gt;<br class="wikidpad" />
+<br class="wikidpad" />
+&lt;textarea class="form-control form-group-lg" id="comments" name="comments" type="text" rows="5" cols="100" &gt; &lt;/textarea&gt;<br class="wikidpad" />
+&lt;div id="charNum"&gt;750&lt;/div&gt; </ul>
+&lt;/div&gt;<br class="wikidpad" />
+<br class="wikidpad" />
+&lt;section class="alert alert-info"&gt;<ul class="wikidpad normalindent">&lt;h3&gt;Information&lt;/h3&gt;<br class="wikidpad" />
+&lt;p&gt;You must preview this form before you are able to submit.&lt;/p&gt;</ul>
+&lt;/section&gt;<br class="wikidpad" />
+<br class="wikidpad" />
+&lt;p&gt;<ul class="wikidpad normalindent">&lt;input type="submit"  class="btn btn-primary" name="btnPreview" value="Preview" id="btnPreview" /&gt;<br class="wikidpad" />
+&lt;input type="reset" class="btn btn-default" name="btnReset" value="Clear Information" id="btnReset" /&gt;</ul>
+&lt;/p&gt;</ul>
+&lt;/form&gt;</ul>
+&lt;/div&gt;</ul>
+</ul>
+&lt;%	} %&gt;<br class="wikidpad" />
+</ul>
+&lt;/asp:Content&gt;<br class="wikidpad" />
+<br class="wikidpad" />
+    </body>
+</html>

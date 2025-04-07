@@ -1,0 +1,204 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html>
+    <head>
+        <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+        <title>ASP</title>
+        <link type="text/css" rel="stylesheet" href="appbase.css">
+    </head>
+    <body class="wikidpad">
+<span class="wikidpad parent-nodes">parent nodes: <span class="wikidpad parent-node"><a href="WebDesign.html" class="wikidpad">WebDesign</a></span><br class="wikidpad" /><br class="wikidpad" /></span>
+<a name=".h0" class="wikidpad"></a><h2 class="wikidpad heading-level2">ASP</h2>
+<span class="wikidpad property attribute">[camelCaseWordsEnabled: false]</span><br class="wikidpad" />
+<br class="wikidpad" />
+<span class="wikidpad wiki-link"><a href="Building%20and%20Security%20a%20RESTful%20API%20for%20Multiple%20Clients%20in%20ASP.NET.html" class="wikidpad">Building and Security a RESTful API for Multiple Clients in ASP.NET</a></span> Course not finished <br class="wikidpad" />
+<span class="wikidpad wiki-link"><a href="Introduction%20to%20the%20ASP.NET%20Web%20API.html" class="wikidpad">Introduction to the ASP.NET Web API</a></span><br class="wikidpad" />
+<br class="wikidpad" />
+<br class="wikidpad" />
+<span class="wikidpad wiki-link"><a href="Implementing%20an%20API%20in%20ASP.NET%20Web%20API.html" class="wikidpad">Implementing an API in ASP.NET Web API</a></span><br class="wikidpad" />
+<span class="wikidpad wiki-link"><a href="Example%20-%20Form%20with%20preview%20once%20form%20is%20posted%20on%20same%20page.html" class="wikidpad">Example - Form with preview once form is posted on same page</a></span><br class="wikidpad" />
+<br class="wikidpad" />
+ASP.NET Classes Reference: <span class="wikidpad url-link"><a href="http://www.w3schools.com/aspnet/webpages_ref_classes.asp" class="wikidpad">http://www.w3schools.com/aspnet/webpages_ref_classes.asp</a></span><br class="wikidpad" />
+ASP.NET Database Object Reference: <span class="wikidpad url-link"><a href="http://www.w3schools.com/aspnet/webpages_ref_database.asp" class="wikidpad">http://www.w3schools.com/aspnet/webpages_ref_database.asp</a></span><br class="wikidpad" />
+ASP.NET WebMail Object: <span class="wikidpad url-link"><a href="http://www.w3schools.com/aspnet/webpages_ref_webmail.asp" class="wikidpad">http://www.w3schools.com/aspnet/webpages_ref_webmail.asp</a></span><br class="wikidpad" />
+ASP.NET MVC Tutorial: <span class="wikidpad url-link"><a href="http://www.w3schools.com/aspnet/mvc_intro.asp" class="wikidpad">http://www.w3schools.com/aspnet/mvc_intro.asp</a></span><br class="wikidpad" />
+Tutorial: Creating a Data Access Layer: <span class="wikidpad url-link"><a href="https://msdn.microsoft.com/en-us/library/aa581776.aspx" class="wikidpad">https://msdn.microsoft.com/en-us/library/aa581776.aspx</a></span><br class="wikidpad" />
+ASP.NET Repeater: <span class="wikidpad url-link"><a href="http://www.w3schools.com/aspnet/aspnet_repeater.asp" class="wikidpad">http://www.w3schools.com/aspnet/aspnet_repeater.asp</a></span><br class="wikidpad" />
+Data binding: <span class="wikidpad url-link"><a href="https://support.microsoft.com/en-us/kb/307860" class="wikidpad">https://support.microsoft.com/en-us/kb/307860</a></span><br class="wikidpad" />
+<br class="wikidpad" />
+ASP: Active Server Pages<br class="wikidpad" />
+<br class="wikidpad" />
+An ASP.NET page has the extension .aspx. If a browser requests an ASP.NET page, the server processes any executable code in the page, before the result is sent back to the browser.<br class="wikidpad" />
+<br class="wikidpad" />
+To demonstrate how ASP can display pages with dynamic content, we have added some executable code (in red) to the previous example:<br class="wikidpad" />
+<br class="wikidpad" />
+&lt;html&gt;<ul class="wikidpad normalindent">&lt;body bgcolor="yellow"&gt;<ul class="wikidpad normalindent">&lt;center&gt;<ul class="wikidpad normalindent">&lt;h2&gt;Hello W3Schools!&lt;/h2&gt;<br class="wikidpad" />
+&lt;p&gt;&lt;%Response.Write(Now())%&gt;&lt;/p&gt;</ul>
+&lt;/center&gt;</ul>
+&lt;/body&gt;</ul>
+&lt;/html&gt;<br class="wikidpad" />
+<br class="wikidpad" />
+The code inside the  tags is executed on the server.<br class="wikidpad" />
+<br class="wikidpad" />
+Response.Write is ASP code for writing something to the HTML output stream.<br class="wikidpad" />
+<br class="wikidpad" />
+Now() is a function returning the servers current date and time.<br class="wikidpad" />
+<br class="wikidpad" />
+<b class="wikidpad">Server Controls</b><br class="wikidpad" />
+<br class="wikidpad" />
+ASP.NET has solved the "spaghetti-code" problem described above with server controls.<br class="wikidpad" />
+<br class="wikidpad" />
+Server controls are tags that are understood by the server.<br class="wikidpad" />
+<br class="wikidpad" />
+There are three kinds of server controls:<br class="wikidpad" />
+- HTML Server Controls - Traditional HTML tags<br class="wikidpad" />
+- Web Server Controls - New ASP.NET tags<br class="wikidpad" />
+- Validation Server Controls - For input validation<br class="wikidpad" />
+<br class="wikidpad" />
+<b class="wikidpad">HTML Server Controls</b><br class="wikidpad" />
+<br class="wikidpad" />
+HTML elements in ASP.NET files are, by default, treated as text. To make these elements programmable, add a runat="server" attribute to the HTML element. This attribute indicates that the element should be treated as a server control. The id attribute is added to identify the server control. The id reference can be used to manipulate the server control at run time.<br class="wikidpad" />
+<br class="wikidpad" />
+Note: All HTML server controls must be within a <form> tag with the runat="server" attribute. The runat="server" attribute indicates that the form should be processed on the server. It also indicates that the enclosed controls can be accessed by server scripts.<br class="wikidpad" />
+<br class="wikidpad" />
+In the following example we declare an HtmlAnchor server control in an .aspx file. Then we manipulate the HRef attribute of the HtmlAnchor control in an event handler (an event handler is a subroutine that executes code for a given event). The Page_Load event is one of many events that ASP.NET understands:<br class="wikidpad" />
+<br class="wikidpad" />
+&lt;script runat="server"&gt;<br class="wikidpad" />
+Sub Page_Load<br class="wikidpad" />
+link1.HRef="<span class="wikidpad url-link"><a href="http://www.w3schools.com" class="wikidpad">http://www.w3schools.com</a></span>"<br class="wikidpad" />
+End Sub<br class="wikidpad" />
+&lt;/script&gt;<br class="wikidpad" />
+<br class="wikidpad" />
+&lt;html&gt;<br class="wikidpad" />
+&lt;body&gt;<br class="wikidpad" />
+<br class="wikidpad" />
+&lt;form runat="server"&gt;<br class="wikidpad" />
+&lt;a id="link1" runat="server"&gt;Visit W3Schools!&lt;/a&gt;<br class="wikidpad" />
+&lt;/form&gt;<br class="wikidpad" />
+<br class="wikidpad" />
+&lt;/body&gt;<br class="wikidpad" />
+&lt;/html&gt;<br class="wikidpad" />
+<br class="wikidpad" />
+The executable code itself has been moved outside the HTML.<br class="wikidpad" />
+<br class="wikidpad" />
+<b class="wikidpad">Web Server Controls</b><br class="wikidpad" />
+<br class="wikidpad" />
+Web server controls are special ASP.NET tags understood by the server.<br class="wikidpad" />
+<br class="wikidpad" />
+Like HTML server controls, Web server controls are also created on the server and they require a runat="server" attribute to work. However, Web server controls do not necessarily map to any existing HTML elements and they may represent more complex elements.<br class="wikidpad" />
+<br class="wikidpad" />
+The syntax for creating a Web server control is:<br class="wikidpad" />
+<br class="wikidpad" />
+&lt;asp:control_name id="some_id" runat="server" /&gt;<br class="wikidpad" />
+<br class="wikidpad" />
+In the following example we declare a Button server control in an .aspx file. Then we create an event handler for the Click event which changes the text on the button:<br class="wikidpad" />
+<br class="wikidpad" />
+&lt;script runat="server"&gt;<br class="wikidpad" />
+Sub submit(Source As Object, e As EventArgs)<br class="wikidpad" />
+button1.Text="You clicked me!"<br class="wikidpad" />
+End Sub<br class="wikidpad" />
+&lt;/script&gt;<br class="wikidpad" />
+<br class="wikidpad" />
+&lt;html&gt;<br class="wikidpad" />
+&lt;body&gt;<br class="wikidpad" />
+<br class="wikidpad" />
+&lt;form runat="server"&gt;<br class="wikidpad" />
+&lt;asp:Button id="button1" Text="Click me!"<br class="wikidpad" />
+runat="server" OnClick="submit"/&gt;<br class="wikidpad" />
+&lt;/form&gt;<br class="wikidpad" />
+<br class="wikidpad" />
+&lt;/body&gt;<br class="wikidpad" />
+&lt;/html&gt;<br class="wikidpad" />
+<br class="wikidpad" />
+<b class="wikidpad">Page_Load Event</b><br class="wikidpad" />
+<br class="wikidpad" />
+The Page_Load event is one of many events that ASP.NET understands. The Page_Load event is triggered when a page loads, and ASP.NET will automatically call the subroutine Page_Load, and execute the code inside it:<br class="wikidpad" />
+<br class="wikidpad" />
+&lt;script runat="server"&gt;<br class="wikidpad" />
+Sub Page_Load<br class="wikidpad" />
+lbl1.Text="The date and time is " &amp; now()<br class="wikidpad" />
+End Sub<br class="wikidpad" />
+&lt;/script&gt;<br class="wikidpad" />
+<br class="wikidpad" />
+&lt;html&gt;<br class="wikidpad" />
+&lt;body&gt;<br class="wikidpad" />
+&lt;form runat="server"&gt;<br class="wikidpad" />
+&lt;h3&gt;&lt;asp:label id="lbl1" runat="server" /&gt;&lt;/h3&gt;<br class="wikidpad" />
+&lt;/form&gt;<br class="wikidpad" />
+&lt;/body&gt;<br class="wikidpad" />
+&lt;/html&gt;<br class="wikidpad" />
+<br class="wikidpad" />
+<b class="wikidpad">The Page.IsPostBack Property</b><br class="wikidpad" />
+<br class="wikidpad" />
+The Page_Load subroutine runs EVERY time the page is loaded. If you want to execute the code in the Page_Load subroutine only the FIRST time the page is loaded, you can use the Page.IsPostBack property. If the Page.IsPostBack property is false, the page is loaded for the first time, if it is true, the page is posted back to the server (i.e. from a button click on a form):<br class="wikidpad" />
+<br class="wikidpad" />
+&lt;script runat="server"&gt;<br class="wikidpad" />
+Sub Page_Load<br class="wikidpad" />
+if Not Page.IsPostBack then<ul class="wikidpad normalindent">lbl1.Text="The date and time is " &amp; now()</ul>
+end if<br class="wikidpad" />
+End Sub<br class="wikidpad" />
+<br class="wikidpad" />
+Sub submit(s As Object, e As EventArgs)<br class="wikidpad" />
+lbl2.Text="Hello World!"<br class="wikidpad" />
+End Sub<br class="wikidpad" />
+&lt;/script&gt;<br class="wikidpad" />
+<br class="wikidpad" />
+&lt;html&gt;<br class="wikidpad" />
+&lt;body&gt;<br class="wikidpad" />
+&lt;form runat="server"&gt;<br class="wikidpad" />
+&lt;h3&gt;&lt;asp:label id="lbl1" runat="server" /&gt;&lt;/h3&gt;<br class="wikidpad" />
+&lt;h3&gt;&lt;asp:label id="lbl2" runat="server" /&gt;&lt;/h3&gt;<br class="wikidpad" />
+&lt;asp:button text="Submit" onclick="submit" runat="server" /&gt;<br class="wikidpad" />
+&lt;/form&gt;<br class="wikidpad" />
+&lt;/body&gt;<br class="wikidpad" />
+&lt;/html&gt;<br class="wikidpad" />
+<br class="wikidpad" />
+The example above will write the "The date and time is...." message only the first time the page is loaded. When a user clicks on the Submit button, the submit subroutine will write "Hello World!" to the second label, but the date and time in the first label will not change.<br class="wikidpad" />
+<br class="wikidpad" />
+Note: An .aspx page can only contain ONE <form runat="server"> control!<br class="wikidpad" />
+<br class="wikidpad" />
+<b class="wikidpad">Master Pages</b><br class="wikidpad" />
+<br class="wikidpad" />
+Master pages allow you to create a consistent look and behavior for all the pages (or group of pages) in your web application.<br class="wikidpad" />
+<br class="wikidpad" />
+A master page provides a template for other pages, with shared layout and functionality. The master page defines placeholders for the content, which can be overridden by content pages. The output result is a combination of the master page and the content page.<br class="wikidpad" />
+<br class="wikidpad" />
+The content pages contain the content you want to display.<br class="wikidpad" />
+<br class="wikidpad" />
+When users request the content page, ASP.NET merges the pages to produce output that combines the layout of the master page with the content of the content page.<br class="wikidpad" />
+<br class="wikidpad" />
+&lt;%@ Master %&gt;<br class="wikidpad" />
+<br class="wikidpad" />
+&lt;html&gt;<br class="wikidpad" />
+&lt;body&gt;<br class="wikidpad" />
+&lt;h1&gt;Standard Header From Masterpage&lt;/h1&gt;<br class="wikidpad" />
+&lt;asp:ContentPlaceHolder id="CPH1" runat="server"&gt;<br class="wikidpad" />
+&lt;/asp:ContentPlaceHolder&gt;<br class="wikidpad" />
+&lt;/body&gt;<br class="wikidpad" />
+&lt;/html&gt;<br class="wikidpad" />
+<br class="wikidpad" />
+The master page above is a normal HTML page designed as a template for other pages.<br class="wikidpad" />
+<br class="wikidpad" />
+The @ Master directive defines it as a master page.<br class="wikidpad" />
+<br class="wikidpad" />
+The master page contains a placeholder tag <asp:ContentPlaceHolder> for individual content.<br class="wikidpad" />
+<br class="wikidpad" />
+The id="CPH1" attribute identifies the placeholder, allowing many placeholders in the same master page.<br class="wikidpad" />
+<br class="wikidpad" />
+This master page was saved with the name "master1.master".<br class="wikidpad" />
+<br class="wikidpad" />
+&lt;%@ Page MasterPageFile="master1.master" %&gt;<br class="wikidpad" />
+<br class="wikidpad" />
+&lt;asp:Content ContentPlaceHolderId="CPH1" runat="server"&gt;<ul class="wikidpad normalindent">&lt;h2&gt;Individual Content&lt;/h2&gt;<br class="wikidpad" />
+&lt;p&gt;Paragraph 1&lt;/p&gt;<br class="wikidpad" />
+&lt;p&gt;Paragraph 2&lt;/p&gt;</ul>
+&lt;/asp:Content&gt;<br class="wikidpad" />
+The content page above is one of the individual content pages of the web.<br class="wikidpad" />
+<br class="wikidpad" />
+The @ Page directive defines it as a standard content page.<br class="wikidpad" />
+<br class="wikidpad" />
+The content page contains a content tag <asp:Content> with a reference to the master page (ContentPlaceHolderId="CPH1").<br class="wikidpad" />
+<br class="wikidpad" />
+This content page was saved with the name "mypage1.aspx".<br class="wikidpad" />
+<br class="wikidpad" />
+When the user requests this page, ASP.NET merges the content page with the master page.    </body>
+</html>

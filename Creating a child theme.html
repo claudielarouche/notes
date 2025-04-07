@@ -1,0 +1,159 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html>
+    <head>
+        <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+        <title>Creating a child theme</title>
+        <link type="text/css" rel="stylesheet" href="appbase.css">
+    </head>
+    <body class="wikidpad">
+<span class="wikidpad parent-nodes">parent nodes: <span class="wikidpad parent-node"><a href="Wordpress.html" class="wikidpad">Wordpress</a></span><br class="wikidpad" /><br class="wikidpad" /></span>
+<a name=".h0" class="wikidpad"></a><h2 class="wikidpad heading-level2">Creating a child theme</h2>
+<span class="wikidpad property attribute">[camelCaseWordsEnabled: false]</span><br class="wikidpad" />
+<br class="wikidpad" />
+1. Create a new folder under wp-content/themes called childoftwentytwelve<br class="wikidpad" />
+2. Create a file called style.css under the new folder childoftwentytwelve<br class="wikidpad" />
+3. Type the following in the style.css file:<br class="wikidpad" />
+<br class="wikidpad" />
+/*<ul class="wikidpad normalindent">Theme Name:   Child of simone<br class="wikidpad" />
+Theme URI:    https://wordpress.org/themes/simone<br class="wikidpad" />
+Description:  Simone Child Theme<br class="wikidpad" />
+Author:       Claudie Larouche<br class="wikidpad" />
+Author URI:   http://claudiewebdesign.com<br class="wikidpad" />
+Template:     simone<br class="wikidpad" />
+Version:      1.0.0<br class="wikidpad" />
+Tags:         light, dark, two-columns, right-sidebar, responsive-layout, accessibility-ready<br class="wikidpad" />
+Text Domain:  simone-child</ul>
+*/<br class="wikidpad" />
+<br class="wikidpad" />
+<br class="wikidpad" />
+/* =Theme customization starts here<br class="wikidpad" />
+-------------------------------------------------------------- */<br class="wikidpad" />
+<br class="wikidpad" />
+<br class="wikidpad" />
+In functions.php:<br class="wikidpad" />
+<br class="wikidpad" />
+&lt;?php<br class="wikidpad" />
+<br class="wikidpad" />
+add_action( 'wp_enqueue_scripts', 'enqueue_parent_theme_style' );<br class="wikidpad" />
+function enqueue_parent_theme_style() {<ul class="wikidpad normalindent">wp_enqueue_style( 'parent-style', get_template_directory_uri().'/style.css' );</ul>
+}<br class="wikidpad" />
+<br class="wikidpad" />
+4. Now from Chrome, just right click on something and click inspect element to get the CSS code of that particular element. Copy that code in style.css and change it to modify the behaviour of your child theme. If you don't change some of the lines, you can take them off completely and your parent theme will take care of that part. Very neat!!<br class="wikidpad" />
+<br class="wikidpad" />
+Notes: <br class="wikidpad" />
+- Body styles should be high up on your style.css file<br class="wikidpad" />
+- Some themes have several places where the font is defined<br class="wikidpad" />
+- When you add a function related to a plugin, always wrap it into conditional test (see below)<br class="wikidpad" />
+<br class="wikidpad" />
+This:<br class="wikidpad" />
+&lt;?php <ul class="wikidpad normalindent">if (function_exists('related_posts')){<ul class="wikidpad normalindent">related_posts(); </ul>
+}</ul>
+?&gt;<br class="wikidpad" />
+<br class="wikidpad" />
+Instead of this:<br class="wikidpad" />
+&lt;?php related_posts(); ?&gt;<br class="wikidpad" />
+<br class="wikidpad" />
+To create custom header, sidebar and footer in the site, use the following calls to call the appropriate php files:<br class="wikidpad" />
+<br class="wikidpad" />
+header-[name].php -&gt; &lt;?php get_header('[name]'); ?&gt;<br class="wikidpad" />
+sidebar-[name].php -&gt; &lt;?php get_sidebar('[name]'); ?&gt;<br class="wikidpad" />
+footer-[name].php -&gt; &lt;?php get_footer('[name]'); ?&gt;<br class="wikidpad" />
+<br class="wikidpad" />
+You can modify the way posts or pages are shown by making copies of some of the php files related to them...<br class="wikidpad" />
+- category.php (to modify the way posts appear when you click on the category)<br class="wikidpad" />
+- author.php<br class="wikidpad" />
+- archive.php<br class="wikidpad" />
+- index.php (the main one)<br class="wikidpad" />
+- page.php<br class="wikidpad" />
+- search.php<br class="wikidpad" />
+- content.php<br class="wikidpad" />
+- single.php<br class="wikidpad" />
+- tag.php<br class="wikidpad" />
+<br class="wikidpad" />
+Favicon stuff go in header.php in the head section like this:<br class="wikidpad" />
+<br class="wikidpad" />
+&lt;head&gt;<br class="wikidpad" />
+&lt;link rel="shortcut icon" href="&lt;?php echo get_stylesheet_directory_uri(); ?&gt;/favicon.ico" /&gt;<br class="wikidpad" />
+<br class="wikidpad" />
+To add a theme screenshot, just add screenshot.png file directly under your child theme folder.<br class="wikidpad" />
+<br class="wikidpad" />
+Consider adding this line to the footer:<br class="wikidpad" />
+Copyright &copy; &lt;?php echo date('Y'); ?&gt; &lt;a href="&lt;?php echo home_url(); ?&gt;" title="&lt;?php bloginfo('name'); ?&gt;"&gt; &lt;?php bloginfo('name');?&gt;&lt;/a&gt;.<br class="wikidpad" />
+<br class="wikidpad" />
+Picture caption: Photo by Chris RubberDragon from Flickr<br class="wikidpad" />
+Alternative text: Photo of 6 kayaks on a beach, link to Flickr page<br class="wikidpad" />
+<br class="wikidpad" />
+<b class="wikidpad">Overriding functions</b><br class="wikidpad" />
+<br class="wikidpad" />
+Source: <span class="wikidpad url-link"><a href="http://code.tutsplus.com/tutorials/a-guide-to-overriding-parent-theme-functions-in-your-child-theme--cms-22623" class="wikidpad">http://code.tutsplus.com/tutorials/a-guide-to-overriding-parent-theme-functions-in-your-child-theme--cms-22623</a></span><br class="wikidpad" />
+<br class="wikidpad" />
+If the functions in your parent theme are written this way:<br class="wikidpad" />
+&lt;?php<br class="wikidpad" />
+if ( ! function_exists ( 'my_function' ) ) {<ul class="wikidpad normalindent">function my_function() {<ul class="wikidpad normalindent">// Contents of your function here.</ul>
+}</ul>
+}<br class="wikidpad" />
+?&gt;<br class="wikidpad" />
+<br class="wikidpad" />
+You can simply write a function with the same name and it will override the parent's version:<br class="wikidpad" />
+<br class="wikidpad" />
+&lt;?php<br class="wikidpad" />
+function my_function() {<ul class="wikidpad normalindent">// Contents for your function override here.</ul>
+}<br class="wikidpad" />
+?&gt;<br class="wikidpad" />
+<br class="wikidpad" />
+<br class="wikidpad" />
+<br class="wikidpad" />
+If the function in your parent theme is not pluggable:<br class="wikidpad" />
+<br class="wikidpad" />
+&lt;?php<br class="wikidpad" />
+function parent_function() {<ul class="wikidpad normalindent">// Contents for your function here.</ul>
+}<br class="wikidpad" />
+add_action( 'init', 'parent_function' );<br class="wikidpad" />
+?&gt;<br class="wikidpad" />
+<br class="wikidpad" />
+You can rewrite the function by giving it a higher priority:<br class="wikidpad" />
+<br class="wikidpad" />
+&lt;?php<br class="wikidpad" />
+function child_function() {<ul class="wikidpad normalindent">// Contents for your function here.</ul>
+}<br class="wikidpad" />
+add_action( 'init', 'child_function', 15 );<br class="wikidpad" />
+?&gt;<br class="wikidpad" />
+<br class="wikidpad" />
+By default, Wordpress gives a priority of 10 to functions that don't have a priority specified. <br class="wikidpad" />
+<br class="wikidpad" />
+Sometimes overriding is not sufficient, in which case, you can unhook it:<br class="wikidpad" />
+<br class="wikidpad" />
+Parent theme function:<br class="wikidpad" />
+<br class="wikidpad" />
+&lt;?php<br class="wikidpad" />
+function parent_function() {<ul class="wikidpad normalindent">// Contents for your function here.</ul>
+}<br class="wikidpad" />
+add_action( 'init', 'parent_function' );<br class="wikidpad" />
+?&gt;<br class="wikidpad" />
+<br class="wikidpad" />
+Your code:<br class="wikidpad" />
+<br class="wikidpad" />
+&lt;?php<br class="wikidpad" />
+remove_action( 'init', 'parent_function' );<br class="wikidpad" />
+?&gt;<br class="wikidpad" />
+<br class="wikidpad" />
+BUT, you need to attach this function to a hook which will fire after the hook which the parent theme function is attached to. This is because you can't remove the action before it's been fired. <br class="wikidpad" />
+<br class="wikidpad" />
+&lt;?php<br class="wikidpad" />
+function child_remove_parent_function() {<ul class="wikidpad normalindent">remove_action( 'init', 'parent_function' );</ul>
+}<br class="wikidpad" />
+add_action( 'wp_loaded', 'child_remove_parent_function' );<br class="wikidpad" />
+?&gt;<br class="wikidpad" />
+<br class="wikidpad" />
+NOTE: You can also use remove_filter if that's how the parent function was added in the first place.<br class="wikidpad" />
+<br class="wikidpad" />
+Once you've done this, you can simply write an alternative function to replace the parent theme function in your child theme's functions file, or you can do nothing if all you wanted to do was remove the functionality from the parent theme.<br class="wikidpad" />
+<br class="wikidpad" />
+Note that if you're trying to remove a function using remove_action() or remove_filter() and the function has had a priority assigned to it, you must include the priority when removing it, or it won't work.<br class="wikidpad" />
+<br class="wikidpad" />
+&lt;?php<br class="wikidpad" />
+function child_remove_parent_function() {<ul class="wikidpad normalindent">remove_action( 'widgets_init', 'parent_function', 15 );</ul>
+}<br class="wikidpad" />
+add_action( 'wp_loaded', 'child_remove_parent_function' );<br class="wikidpad" />
+?&gt;    </body>
+</html>

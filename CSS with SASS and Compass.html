@@ -1,0 +1,428 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html>
+    <head>
+        <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+        <title>CSS with SASS and Compass</title>
+        <link type="text/css" rel="stylesheet" href="appbase.css">
+    </head>
+    <body class="wikidpad">
+<span class="wikidpad parent-nodes">parent nodes: <span class="wikidpad parent-node"><a href="CSS.html" class="wikidpad">CSS</a></span><br class="wikidpad" /><br class="wikidpad" /></span>
+<a name=".h0" class="wikidpad"></a><h2 class="wikidpad heading-level2">CSS with SASS and Compass</h2>
+<span class="wikidpad property attribute">[camelCaseWordsEnabled: false]</span><br class="wikidpad" />
+<br class="wikidpad" />
+SASS: Syntactically Awesome Style Sheets<br class="wikidpad" />
+- Functionality not available in CSS<br class="wikidpad" />
+- CSS-like syntax<br class="wikidpad" />
+- Compile to CSS<br class="wikidpad" />
+<br class="wikidpad" />
+<span class="wikidpad url-link"><a href="http://sass-lang.com/" class="wikidpad">http://sass-lang.com/</a></span><br class="wikidpad" />
+<br class="wikidpad" />
+<b class="wikidpad">Variables</b><br class="wikidpad" />
+<br class="wikidpad" />
+$main_color: #023E54<br class="wikidpad" />
+<br class="wikidpad" />
+.navbar{<ul class="wikidpad normalindent">background: $main_color;</ul>
+}<br class="wikidpad" />
+<br class="wikidpad" />
+h1,h2,h3{<ul class="wikidpad normalindent">background: $main_color;</ul>
+}<br class="wikidpad" />
+<br class="wikidpad" />
+<b class="wikidpad">Nesting</b><br class="wikidpad" />
+<br class="wikidpad" />
+.pixgrid{<ul class="wikidpad normalindent">ul{<ul class="wikidpad normalindent">/*style goes here*/<br class="wikidpad" />
+li{<ul class="wikidpad normalindent">/*more style here*/</ul>
+}<br class="wikidpad" />
+img{<ul class="wikidpad normalindent">/*and style here too*/</ul>
+}</ul>
+}</ul>
+}<br class="wikidpad" />
+<br class="wikidpad" />
+Kind of similar to media queries<br class="wikidpad" />
+<br class="wikidpad" />
+<b class="wikidpad">Operators</b><br class="wikidpad" />
+<br class="wikidpad" />
+$border_thickness : 1px;<br class="wikidpad" />
+$thicker : $border_thickness * 5;<br class="wikidpad" />
+<br class="wikidpad" />
+.sidebar{<ul class="wikidpad normalindent">border: $thicker solid black;</ul>
+}<br class="wikidpad" />
+<br class="wikidpad" />
+<b class="wikidpad">Controls</b><br class="wikidpad" />
+<br class="wikidpad" />
+$border_thickness : 1px;<br class="wikidpad" />
+$thicker : $border_thickness * 5;<br class="wikidpad" />
+<br class="wikidpad" />
+.sidebar{<ul class="wikidpad normalindent">@if ($border_thickness &lt;= 1){<ul class="wikidpad normalindent">background-color: red;</ul>
+} @else {<ul class="wikidpad normalindent">background-color: yellow;</ul>
+}</ul>
+}<br class="wikidpad" />
+<br class="wikidpad" />
+<b class="wikidpad">Mixins (functions)</b><br class="wikidpad" />
+<br class="wikidpad" />
+@mixin rounded($radius 10px){<ul class="wikidpad normalindent">-webkit-border-radius: $radius;<br class="wikidpad" />
+border-radius: $radius;<br class="wikidpad" />
+background-clip: padding-box;</ul>
+}<br class="wikidpad" />
+<br class="wikidpad" />
+ul{<ul class="wikidpad normalindent">padding: 0;<br class="wikidpad" />
+margin: 0;<br class="wikidpad" />
+list-system: none;<br class="wikidpad" />
+<ul class="wikidpad normalindent">li img{<ul class="wikidpad normalindent">display: block;<br class="wikidpad" />
+@include rounded(20px);</ul>
+}</ul>
+</ul>
+}<br class="wikidpad" />
+<br class="wikidpad" />
+<b class="wikidpad">Compass</b><br class="wikidpad" />
+<br class="wikidpad" />
+Compass is nothing more then a group of preset mixins that run on top of Sass.<br class="wikidpad" />
+<br class="wikidpad" />
+Sass and Compass take care of a lot of the pain of writing complex, backwards-compatible markup, and gives you a variety of tools that will streamline your workflow.<br class="wikidpad" />
+<br class="wikidpad" />
+<b class="wikidpad">Gruntjs</b><br class="wikidpad" />
+<br class="wikidpad" />
+GruntJS is a JavaScript task runner. Think of it as a tool for creating workflow macros. It doesn't support a specific workflow, but supports an infinite number of work flow tasks by using plugins to handle certain things.<br class="wikidpad" />
+<br class="wikidpad" />
+Folder structure:<br class="wikidpad" />
+<br class="wikidpad" />
+sassycompass<ul class="wikidpad normalindent">_<ul class="wikidpad normalindent">components<ul class="wikidpad normalindent">js (this will hold uncompressed version)<br class="wikidpad" />
+sass (this will hold uncompressed and uncompiled version)</ul>
+css (compressed and compiled)<br class="wikidpad" />
+js (compressed)<br class="wikidpad" />
+</ul>
+</ul>
+<b class="wikidpad">Version control</b><br class="wikidpad" />
+<br class="wikidpad" />
+1. Using command line, go to the folder where your project is (sassycompass in my case)<br class="wikidpad" />
+2. Type git init (this will create a hidden git folder)<br class="wikidpad" />
+3. Type git add . (this will add all the files into the staging area)<br class="wikidpad" />
+4. Type git commit -m "first commit" (this will do the first commit with a comment)<br class="wikidpad" />
+5. Type "git status" to check the status at any time<br class="wikidpad" />
+6. dir /a shows all files and folders including hidden ones<br class="wikidpad" />
+7. If there are some files you don't want to include, create a gitignore file: <span class="wikidpad url-link"><a href="https://help.github.com/articles/ignoring-files/" class="wikidpad">https://help.github.com/articles/ignoring-files/</a></span><ul class="wikidpad normalindent">An example of such a file is here: <span class="wikidpad url-link"><a href="https://gist.github.com/octocat/9257657" class="wikidpad">https://gist.github.com/octocat/9257657</a></span><br class="wikidpad" />
+I added the following line at the bottom *.sass-cache*<br class="wikidpad" />
+</ul>
+<b class="wikidpad">Node.js</b><br class="wikidpad" />
+<br class="wikidpad" />
+When you install Node, you'll also get a really cool utility called NPM. Which stands for Node Package Manager. NPM is going to let you install plugins for Node into your system with a single command. Now later on, we're going to use that to install Grunt. NPM is also a way to extend the functionality of Node.js and your projects.<br class="wikidpad" />
+<br class="wikidpad" />
+Now with NPM, you can also use something called a package.json file. That file is going to allow you to specify dependencies that your project needs in order to run. So, say for example that you're going to use Sass in your project. Well, you could go to the Sass website, download the installer, go through the installation, find the appropriate files, install a pre-processor and then get to work once you set up some settings in your pre-processor. Now multiply that times all of the different packages you're going to be using for your project. And what if your working with a team? You would have to write some instructions for all the members of your team to let them know which versions of the packages you're using.<br class="wikidpad" />
+<br class="wikidpad" />
+What pre-processors and what the settings are for those pre-processors, now that is obviously a nightmare. By having a package.json file you can have a single file that lists all the packages and the versions you're going to be using in your project.<br class="wikidpad" />
+<br class="wikidpad" />
+Example of the content of package.json:<br class="wikidpad" />
+<br class="wikidpad" />
+{<ul class="wikidpad normalindent">"name" : "rouxmeetups", <br class="wikidpad" />
+"version" : "0.0.1",<br class="wikidpad" />
+"dependencies" : {<ul class="wikidpad normalindent">"grunt" : "~0.4.1",<br class="wikidpad" />
+"grunt-contrib-watch" : "~0.5.3",<br class="wikidpad" />
+"grunt-contrib-compass" : "~0.5.0",<br class="wikidpad" />
+"grunt-contrib-uglify" : "~0.2.2",<br class="wikidpad" />
+"matchdep" : "~0.1.2"		</ul>
+}</ul>
+}<br class="wikidpad" />
+<br class="wikidpad" />
+In command line, go to your project folder (sassycompass for me) and type npm install to run package.json and install your projet's dependencies<br class="wikidpad" />
+<br class="wikidpad" />
+More information about package.json: <span class="wikidpad url-link"><a href="https://docs.npmjs.com/files/package.json" class="wikidpad">https://docs.npmjs.com/files/package.json</a></span><br class="wikidpad" />
+<br class="wikidpad" />
+<b class="wikidpad">Grunt</b><br class="wikidpad" />
+<br class="wikidpad" />
+1. Install Grunt (in cmd, type "npm install -g grunt-cli"<br class="wikidpad" />
+2. Create gruntfile.js in your main folder<br class="wikidpad" />
+3. Example content of gruntfile.js:<br class="wikidpad" />
+<br class="wikidpad" />
+module.exports = function(grunt){<ul class="wikidpad normalindent">grunt.loadNpmTasks('grunt-contrib-uglify');<br class="wikidpad" />
+<br class="wikidpad" />
+grunt.initConfig({<ul class="wikidpad normalindent">uglify: {<ul class="wikidpad normalindent">my_target: {<ul class="wikidpad normalindent">files: {<ul class="wikidpad normalindent">'_/js/script.js': ['_/components/js/*.js']</ul>
+}//files</ul>
+} //my_target</ul>
+} //uglify</ul>
+})//initConfig</ul>
+} //exports<br class="wikidpad" />
+<br class="wikidpad" />
+This basically runs all js scripts in _/components/js and will combine them and minify them in _/js/script.js<br class="wikidpad" />
+<br class="wikidpad" />
+To call this script, just go to cmd in the proper folder and type grunt uglify<br class="wikidpad" />
+<br class="wikidpad" />
+<b class="wikidpad">grunt-contrib-watch</b><br class="wikidpad" />
+<br class="wikidpad" />
+This module allows you to monitor files and do something when the files are modified. <br class="wikidpad" />
+<br class="wikidpad" />
+We can add another task to our gruntfile:<br class="wikidpad" />
+<br class="wikidpad" />
+module.exports = function(grunt){<ul class="wikidpad normalindent">grunt.loadNpmTasks('grunt-contrib-uglify');<br class="wikidpad" />
+grunt.loadNpmTasks('grunt-contrib-watch');	<br class="wikidpad" />
+<br class="wikidpad" />
+grunt.initConfig({<ul class="wikidpad normalindent">uglify: {<ul class="wikidpad normalindent">my_target: {<ul class="wikidpad normalindent">files: {<ul class="wikidpad normalindent">'_/js/script.js': ['_/components/js/*.js']</ul>
+}//files</ul>
+} //my_target</ul>
+}, //uglify<br class="wikidpad" />
+<br class="wikidpad" />
+watch: {			<ul class="wikidpad normalindent">files: ['_/components/js/*.js'], <br class="wikidpad" />
+tasks: ['uglify']</ul>
+} //watch</ul>
+})//initConfig</ul>
+} //exports<br class="wikidpad" />
+<br class="wikidpad" />
+To execute, cmd + grunt watch. Now the task will be in a "waiting" state and will execute the uglify command as soon as you change one of the js files. Terminate with CTRL + C<br class="wikidpad" />
+<br class="wikidpad" />
+Add this line to gruntfile and when you run grunt, you will have a default task running:<br class="wikidpad" />
+grunt.registerTask('default','watch');<br class="wikidpad" />
+<br class="wikidpad" />
+And now you just need to run "grunt"<br class="wikidpad" />
+<br class="wikidpad" />
+<b class="wikidpad">Livereload</b><br class="wikidpad" />
+<br class="wikidpad" />
+Reloads your Chrome every time you make a change:<br class="wikidpad" />
+<br class="wikidpad" />
+module.exports = function(grunt){<ul class="wikidpad normalindent">grunt.loadNpmTasks('grunt-contrib-uglify');<br class="wikidpad" />
+grunt.loadNpmTasks('grunt-contrib-watch');	<br class="wikidpad" />
+<br class="wikidpad" />
+grunt.initConfig({<ul class="wikidpad normalindent">uglify: {<ul class="wikidpad normalindent">my_target: {<ul class="wikidpad normalindent">files: {<ul class="wikidpad normalindent">'_/js/script.js': ['_/components/js/*.js']</ul>
+}//files</ul>
+} //my_target</ul>
+}, //uglify<br class="wikidpad" />
+<br class="wikidpad" />
+watch: {<ul class="wikidpad normalindent">options: { livereload: true },<br class="wikidpad" />
+scripts: {<ul class="wikidpad normalindent">files: ['_/components/js/*.js'], <br class="wikidpad" />
+tasks: ['uglify']</ul>
+}, //scripts<br class="wikidpad" />
+html: {<ul class="wikidpad normalindent">files: ['*.html']</ul>
+}</ul>
+} //watch</ul>
+})//initConfig<br class="wikidpad" />
+grunt.registerTask('default','watch');</ul>
+} //exports<br class="wikidpad" />
+<br class="wikidpad" />
+In order for this to work, you also need this line in your HTML:<br class="wikidpad" />
+&lt;script src="http://localhost:35729/livereload.js"&gt;&lt;/script&gt;<br class="wikidpad" />
+<br class="wikidpad" />
+<b class="wikidpad">Auto compiling SASS files</b><br class="wikidpad" />
+<br class="wikidpad" />
+For SASS to work, you need to have Ruby. Install Ruby from <span class="wikidpad url-link"><a href="http://rubyinstaller.org" class="wikidpad">http://rubyinstaller.org</a></span><br class="wikidpad" />
+<br class="wikidpad" />
+1. In cmd, type gem update --system<br class="wikidpad" />
+2. In cmd still, type gem install compass<br class="wikidpad" />
+3. Create a new file in sassycompass called config.rb<br class="wikidpad" />
+<br class="wikidpad" />
+Content:<br class="wikidpad" />
+<br class="wikidpad" />
+css_dir = '_/css'<br class="wikidpad" />
+sass_dir = '_/components/sass'<br class="wikidpad" />
+javascripts_dir = '_/js'<br class="wikidpad" />
+output_style = :nested (another option would be compressed)<br class="wikidpad" />
+<br class="wikidpad" />
+Any question about this: <span class="wikidpad url-link"><a href="http://compass-style.org/help/documentation/configuration-reference/" class="wikidpad">http://compass-style.org/help/documentation/configuration-reference/</a></span><br class="wikidpad" />
+<br class="wikidpad" />
+4. Update the grunt file to now include compass stuff<br class="wikidpad" />
+(compass doc: <span class="wikidpad url-link"><a href="http://compass-style.org/" class="wikidpad">http://compass-style.org/</a></span>)<br class="wikidpad" />
+<br class="wikidpad" />
+module.exports = function(grunt){<ul class="wikidpad normalindent">grunt.loadNpmTasks('grunt-contrib-uglify');<br class="wikidpad" />
+grunt.loadNpmTasks('grunt-contrib-watch');	<br class="wikidpad" />
+grunt.loadNpmTasks('grunt-contrib-compass');<br class="wikidpad" />
+<br class="wikidpad" />
+grunt.initConfig({<ul class="wikidpad normalindent">uglify: {<ul class="wikidpad normalindent">my_target: {<ul class="wikidpad normalindent">files: {<ul class="wikidpad normalindent">'_/js/script.js': ['_/components/js/*.js']</ul>
+}//files</ul>
+} //my_target</ul>
+}, //uglify<br class="wikidpad" />
+compass: {<ul class="wikidpad normalindent">dev: {<ul class="wikidpad normalindent">options: {<ul class="wikidpad normalindent">config: 'config.rb'</ul>
+} //options</ul>
+} //dev</ul>
+}, //compass<br class="wikidpad" />
+watch: {<ul class="wikidpad normalindent">options: { livereload: true },<br class="wikidpad" />
+scripts: {<ul class="wikidpad normalindent">files: ['_/components/js/*.js'], <br class="wikidpad" />
+tasks: ['uglify']</ul>
+}, //scripts<br class="wikidpad" />
+sass: {<ul class="wikidpad normalindent">files: ['_/components/sass/*.scss'],<br class="wikidpad" />
+tasks: ['compass:dev']</ul>
+}, //sass<br class="wikidpad" />
+html: {<ul class="wikidpad normalindent">files: ['*.html']</ul>
+}</ul>
+} //watch</ul>
+})//initConfig<br class="wikidpad" />
+grunt.registerTask('default','watch');</ul>
+} //exports<br class="wikidpad" />
+<br class="wikidpad" />
+Note: you have to have ruby and compass installed in your system path<br class="wikidpad" />
+<br class="wikidpad" />
+5. From terminal: gem install susy<br class="wikidpad" />
+Susy doc: <span class="wikidpad url-link"><a href="http://susy.oddbird.net/" class="wikidpad">http://susy.oddbird.net/</a></span><br class="wikidpad" />
+<br class="wikidpad" />
+6. Change config.rb to this:<br class="wikidpad" />
+<br class="wikidpad" />
+require "susy"<br class="wikidpad" />
+css_dir = '_/css'<br class="wikidpad" />
+sass_dir = '_/components/sass'<br class="wikidpad" />
+javascripts_dir = '_/js'<br class="wikidpad" />
+output_style = :compressed<br class="wikidpad" />
+<br class="wikidpad" />
+<b class="wikidpad">Coding in HTML</b><br class="wikidpad" />
+<br class="wikidpad" />
+1. If not done already, under sassycompass, create a folder called images. Be mindful of naming<br class="wikidpad" />
+2. Add a "header" to the body of your HTML page<br class="wikidpad" />
+3. Create the nav<br class="wikidpad" />
+4. Create the footer<br class="wikidpad" />
+5. Add this line to the head of index.html:<br class="wikidpad" />
+&lt;meta name="viewport" content="width=device-width, user-scalable=no, initial_scale=1.0, maximum_scale=1.0 minimum_scale=1.0"&gt;<br class="wikidpad" />
+6. Add article(s) to your index.html<br class="wikidpad" />
+7. Create primary content and aside<br class="wikidpad" />
+8. Sometimes it's good to give IDs to all your articles to be able to target a specific one<br class="wikidpad" />
+<br class="wikidpad" />
+<b class="wikidpad">SASS</b><br class="wikidpad" />
+<br class="wikidpad" />
+1. In _/components/sass create files called "_base.scss", "_layout.scss", "_mixins.scss", "_modules.scss", "_variables.scss"<br class="wikidpad" />
+<br class="wikidpad" />
+<br class="wikidpad" />
+2. Add imports to style.scss<br class="wikidpad" />
+<br class="wikidpad" />
+@import "compass";<br class="wikidpad" />
+@import "susy"; //or susyone?<br class="wikidpad" />
+<br class="wikidpad" />
+@import "variables";<br class="wikidpad" />
+@import "mixins";<br class="wikidpad" />
+@import "base";<br class="wikidpad" />
+@import "layout";<br class="wikidpad" />
+@import "modules";<br class="wikidpad" />
+<br class="wikidpad" />
+The order is important<br class="wikidpad" />
+<br class="wikidpad" />
+<b class="wikidpad">Color Palette</b><br class="wikidpad" />
+<br class="wikidpad" />
+<span class="wikidpad url-link"><a href="http://ethanschoonover.com/solarized" class="wikidpad">http://ethanschoonover.com/solarized</a></span><br class="wikidpad" />
+<br class="wikidpad" />
+Put a list of colours into your _variables.scss<br class="wikidpad" />
+<br class="wikidpad" />
+For sass doc on colours and functions related to them such as lighten or darken or rgba: <span class="wikidpad url-link"><a href="http://sass-lang.com/documentation/Sass/Script/Functions.html" class="wikidpad">http://sass-lang.com/documentation/Sass/Script/Functions.html</a></span><br class="wikidpad" />
+<br class="wikidpad" />
+<b class="wikidpad">CSS Reset</b><br class="wikidpad" />
+<br class="wikidpad" />
+So when you use the following command "@import compass;" to work with compass (which we have, proof is in styles.scss), this website will show you what you are actually importing (and what you are NOT): <span class="wikidpad url-link"><a href="http://compass-style.org/reference/compass/" class="wikidpad">http://compass-style.org/reference/compass/</a></span><br class="wikidpad" />
+<br class="wikidpad" />
+Add @import "compass/reset"; right under import compass command in styles.scss<br class="wikidpad" />
+<br class="wikidpad" />
+<b class="wikidpad">Fonts</b><br class="wikidpad" />
+<br class="wikidpad" />
+1. From Google Fonts, add the fonts you're interested in to your collection, then do quick use and then copy JUST the url, such as:<br class="wikidpad" />
+http://fonts.googleapis.com/css?family=Bree+Serif|Merriweather<br class="wikidpad" />
+<br class="wikidpad" />
+2. In _base.scss, type this:<br class="wikidpad" />
+@import url('http://fonts.googleapis.com/css?family=Bree+Serif|Merriweather');<br class="wikidpad" />
+<br class="wikidpad" />
+3. Go to _variables.scss and type this:<br class="wikidpad" />
+$font-primary: Merriweather, serif;<br class="wikidpad" />
+$font-secondary: Bree Serif, serif;<br class="wikidpad" />
+<br class="wikidpad" />
+4. In _base.scss, add another import:<br class="wikidpad" />
+@import url('http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css');<br class="wikidpad" />
+<br class="wikidpad" />
+5. Now you can add this code to your html:<br class="wikidpad" />
+&lt;i class="fa fa-home"&gt;<br class="wikidpad" />
+<br class="wikidpad" />
+<b class="wikidpad">Styling</b><br class="wikidpad" />
+<br class="wikidpad" />
+1. Now we're adding some styling in _base.scss<br class="wikidpad" />
+<br class="wikidpad" />
+For information about Compass selector helpers: <span class="wikidpad url-link"><a href="http://compass-style.org/reference/compass/helpers/selectors/" class="wikidpad">http://compass-style.org/reference/compass/helpers/selectors/</a></span><br class="wikidpad" />
+<br class="wikidpad" />
+For example: <br class="wikidpad" />
+<br class="wikidpad" />
+#{headings()}{<ul class="wikidpad normalindent">font-family: $font-secondary<br class="wikidpad" />
+font-weight: normal;<br class="wikidpad" />
+color: $darkgrey;</ul>
+}<br class="wikidpad" />
+<br class="wikidpad" />
+You can add clearfix easily in Compass, just like that:<br class="wikidpad" />
+<br class="wikidpad" />
+#nextmeeting {<ul class="wikidpad normalindent">@include clearfix;<br class="wikidpad" />
+<br class="wikidpad" />
+img{<ul class="wikidpad normalindent">width: 30%;<br class="wikidpad" />
+max-width: 130px;<br class="wikidpad" />
+float: left;<br class="wikidpad" />
+margin-right: 3%;</ul>
+}</ul>
+}<br class="wikidpad" />
+<br class="wikidpad" />
+And no need to add anything in your HTML, voilà!<br class="wikidpad" />
+<br class="wikidpad" />
+For border-radius, you normally have to add all sorts of browser support. With compass, just do this:<br class="wikidpad" />
+@include border-radius(5px);<br class="wikidpad" />
+<br class="wikidpad" />
+You can often set up default values. For example, you can add this line to _variables.scss<br class="wikidpad" />
+<br class="wikidpad" />
+$default_border_radius : 10px;<br class="wikidpad" />
+<br class="wikidpad" />
+<b class="wikidpad">Layout</b><br class="wikidpad" />
+<br class="wikidpad" />
+The work is done in _layout.scss file<br class="wikidpad" />
+<br class="wikidpad" />
+Note: In your CSS, when you use percentage to specify the width, you should also have a maximum-width attribute<br class="wikidpad" />
+<br class="wikidpad" />
+<b class="wikidpad">Susy</b><br class="wikidpad" />
+<br class="wikidpad" />
+Susy is a framework for creating responsive grids in Compass. Susy provides an additional set of mixins that let's you easily control your layout from within SASS files. One thing I love about Susy, is that it helps you create layouts without having to add additional markup into your HTML files. This is one of the problems with a framework like Bootstrap. When you code layouts, you end up with all kinds of unnecessary classes in your HTML.<br class="wikidpad" />
+<br class="wikidpad" />
+You can also establish global settings, to configure Susy for your specific needs. Create a $susy variable, and add your settings as a map.<br class="wikidpad" />
+<br class="wikidpad" />
+//Susy settings---------------------------<br class="wikidpad" />
+<br class="wikidpad" />
+$susy: (<ul class="wikidpad normalindent">columns: 12,  // The number of columns in your grid<br class="wikidpad" />
+column-width: 4em,<br class="wikidpad" />
+gutters: 1em,<br class="wikidpad" />
+gutter-position: inside</ul>
+);<br class="wikidpad" />
+<br class="wikidpad" />
+@include border-box-sizing;<br class="wikidpad" />
+<br class="wikidpad" />
+$small: 30em;<br class="wikidpad" />
+$medium: 47em;<br class="wikidpad" />
+$large: 75em;<br class="wikidpad" />
+<br class="wikidpad" />
+Documentation: <span class="wikidpad url-link"><a href="http://susy.oddbird.net/" class="wikidpad">http://susy.oddbird.net/</a></span><br class="wikidpad" />
+<br class="wikidpad" />
+<br class="wikidpad" />
+The basic Susy layout is composed using two simple mixins:<br class="wikidpad" />
+<br class="wikidpad" />
+@include container; // establish a layout context<br class="wikidpad" />
+@include span(<width>); // lay out your elements<br class="wikidpad" />
+For example:<br class="wikidpad" />
+<br class="wikidpad" />
+body { @include container(80em); }<br class="wikidpad" />
+nav { @include span(25%); }<br class="wikidpad" />
+If you want to lay your elements out on a grid, you can use the span mixin to calculate column widths:<br class="wikidpad" />
+<br class="wikidpad" />
+nav { @include span(3 of 12); }<br class="wikidpad" />
+But you don’t have to do things the Susy way. We give you direct access to the math, so you can use it any way you like:<br class="wikidpad" />
+<br class="wikidpad" />
+main {<ul class="wikidpad normalindent">float: left;<br class="wikidpad" />
+width: span(4);<br class="wikidpad" />
+margin-left: span(2) + gutter();<br class="wikidpad" />
+margin-right: gutter();</ul>
+}<br class="wikidpad" />
+<br class="wikidpad" />
+@include span-columns(4 omega, 12); //omega means that this is the last column on the right<br class="wikidpad" />
+<br class="wikidpad" />
+Basically if you make the other span-column be the omega, it switches the columns around.<br class="wikidpad" />
+<br class="wikidpad" />
+<b class="wikidpad">Transition</b><br class="wikidpad" />
+<br class="wikidpad" />
+Documentation: <span class="wikidpad url-link"><a href="http://compass-style.org/reference/compass/css3/transition/" class="wikidpad">http://compass-style.org/reference/compass/css3/transition/</a></span><br class="wikidpad" />
+<br class="wikidpad" />
+So you can just add this line (in _layout.scss) to make the big hero picture slide in instead of abruptly appearing: <br class="wikidpad" />
+@include single-transition(all, 1s, ease-out);<br class="wikidpad" />
+<br class="wikidpad" />
+Use this code on your NAV to transform it easily into an horizontal list:<br class="wikidpad" />
+<br class="wikidpad" />
+@include at-breakpoint($small){<ul class="wikidpad normalindent">@include horizontal-list;</ul>
+<ul class="wikidpad normalindent">}<br class="wikidpad" />
+</ul>
+<b class="wikidpad">Debugging your SASS</b><br class="wikidpad" />
+<br class="wikidpad" />
+In config.rb, you could change this line:<br class="wikidpad" />
+output_style = :compressed<br class="wikidpad" />
+<br class="wikidpad" />
+Into this:<br class="wikidpad" />
+output_style = :expanded<br class="wikidpad" />
+<br class="wikidpad" />
+So now, instead of having your final CSS file in just ONE line, it is actually expanded and it also tells you where in your scss files stuff are coming from.    </body>
+</html>

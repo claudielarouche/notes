@@ -1,0 +1,593 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html>
+    <head>
+        <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+        <title>Web App hosted by Google</title>
+        <link type="text/css" rel="stylesheet" href="appbase.css">
+    </head>
+    <body class="wikidpad">
+<span class="wikidpad parent-nodes">parent nodes: <span class="wikidpad parent-node"><a href="General.html" class="wikidpad">General</a></span><br class="wikidpad" /><br class="wikidpad" /></span>
+<a name=".h0" class="wikidpad"></a><h2 class="wikidpad heading-level2">Web App hosted by Google</h2>
+<span class="wikidpad property attribute">[camelCaseWordsEnabled: false]</span><br class="wikidpad" />
+<br class="wikidpad" />
+Application on Google Developer: <span class="wikidpad url-link"><a href="https://avid-system-783.appspot.com/" class="wikidpad">https://avid-system-783.appspot.com/</a></span><br class="wikidpad" />
+app-id: avid-system-783<br class="wikidpad" />
+<br class="wikidpad" />
+Problem of various devices sizes is solved by Cloud Endpoints<br class="wikidpad" />
+<br class="wikidpad" />
+Tools needed: <br class="wikidpad" />
+- Java jdk 1.7<br class="wikidpad" />
+- Apache Maven<br class="wikidpad" />
+- Eclipse EE<br class="wikidpad" />
+<br class="wikidpad" />
+<b class="wikidpad">Open an existing Maven projects</b><br class="wikidpad" />
+<br class="wikidpad" />
+1. In Eclipse, go to file &gt; Import &gt; Maven &gt; Existing Maven Project<br class="wikidpad" />
+2. Select the whole folder where the project is located<br class="wikidpad" />
+3. Click Finish<br class="wikidpad" />
+<br class="wikidpad" />
+<b class="wikidpad">To run the project locally</b><br class="wikidpad" />
+<br class="wikidpad" />
+1. Right click the project name &gt; Run as &gt; Run Configuration<br class="wikidpad" />
+2. Select Maven Build and click on New Configuration<br class="wikidpad" />
+3. Base Directory: ${project_loc}<br class="wikidpad" />
+4. Goals: appengine:devserver<br class="wikidpad" />
+5. Make sure Maven external is selected in Maven Runtime<br class="wikidpad" />
+6. Run!<br class="wikidpad" />
+7. It'll take a while but once everything is compiled and running, you can now access your webapp at localhost:8080 from Chrome<br class="wikidpad" />
+<br class="wikidpad" />
+<b class="wikidpad">To run from the server</b><br class="wikidpad" />
+<br class="wikidpad" />
+First you must ensure that your app-ID is filled properly in src &gt; main &gt; WEB-INF &gt; appengine-web.xml (app-id can be found in <span class="wikidpad url-link"><a href="https://console.developers.google.com/project" class="wikidpad">https://console.developers.google.com/project</a></span><br class="wikidpad" />
+<br class="wikidpad" />
+1. Right click the project name &gt; Run as &gt; Run Configuration<br class="wikidpad" />
+2. Select Maven Build and click on New Configuration<br class="wikidpad" />
+3. Base Directory: ${project_loc}<br class="wikidpad" />
+4. Goals: appengine:update<br class="wikidpad" />
+5. Make sure Maven external is selected in Maven Runtime<br class="wikidpad" />
+6. Run!<br class="wikidpad" />
+7. It'll take a while but once everything is compiled and running, you can now access your webapp at http://Project ID.appspot.com from Chrome<br class="wikidpad" />
+<br class="wikidpad" />
+<br class="wikidpad" />
+In web.xml, you see these lines of code:<br class="wikidpad" />
+<ul class="wikidpad normalindent">&lt;security-constraint&gt;<ul class="wikidpad normalindent">&lt;web-resource-collection&gt;<ul class="wikidpad normalindent">&lt;web-resource-name&gt;all&lt;/web-resource-name&gt;<br class="wikidpad" />
+&lt;url-pattern&gt;/*&lt;/url-pattern&gt;</ul>
+&lt;/web-resource-collection&gt;<br class="wikidpad" />
+&lt;user-data-constraint&gt;<ul class="wikidpad normalindent">&lt;transport-guarantee&gt;CONFIDENTIAL&lt;/transport-guarantee&gt;</ul>
+&lt;/user-data-constraint&gt;</ul>
+<ul class="wikidpad normalindent">&lt;/security-constraint&gt;<br class="wikidpad" />
+</ul>
+</ul>
+Which means that https will be used.<br class="wikidpad" />
+<br class="wikidpad" />
+Purpose of the various files:<br class="wikidpad" />
+- web.xml: Web App Config<br class="wikidpad" />
+- pom.xml: Maven dependencies<br class="wikidpad" />
+- appengine-web.xml: AppEngine Config<br class="wikidpad" />
+<br class="wikidpad" />
+When you see a file that starts with @Api([...] that meanst this file is using Endpoints<br class="wikidpad" />
+By default, a function inside a file that starts with @Api is exposed through endpoints<br class="wikidpad" />
+<br class="wikidpad" />
+Endpoints cant return string ojects, they have to return objects with fields.<br class="wikidpad" />
+<br class="wikidpad" />
+To view the api explorer: <span class="wikidpad url-link"><a href="http://localhost:8080/_ah/api/explorer" class="wikidpad">http://localhost:8080/_ah/api/explorer</a></span><br class="wikidpad" />
+Datastore admin: <span class="wikidpad url-link"><a href="https://appengine.google.com" class="wikidpad">https://appengine.google.com</a></span><br class="wikidpad" />
+Application on Google Developer: <span class="wikidpad url-link"><a href="https://avid-system-783.appspot.com/" class="wikidpad">https://avid-system-783.appspot.com/</a></span><br class="wikidpad" />
+app-id: avid-system-783<br class="wikidpad" />
+<br class="wikidpad" />
+From there you can actually run any functions found in your web app just by clicking on it<br class="wikidpad" />
+<br class="wikidpad" />
+<b class="wikidpad">Creating maven project from archetype</b><br class="wikidpad" />
+<br class="wikidpad" />
+1. Go to command line<br class="wikidpad" />
+2. Navigate to a place where you want your project to reside<br class="wikidpad" />
+3. Type "mvn archetype:generate" (without the double-quotes)<br class="wikidpad" />
+4. The list will be huge so you can actually filter (for example, type endpoints)<br class="wikidpad" />
+5. Choose archetype: 2<ul class="wikidpad normalindent">Choose a number: 3 <br class="wikidpad" />
+groupID: com.google.training <br class="wikidpad" />
+artifacId: training <br class="wikidpad" />
+version Id: [null] (meaning, don't type anything!)<br class="wikidpad" />
+com.google.training: [null] (meaning, don't type anything!)<br class="wikidpad" />
+Y: Y</ul>
+6. Go to Eclipse to import the project<br class="wikidpad" />
+<br class="wikidpad" />
+First time you run a project, you might have to go in Windows &gt; Preference &gt; Java &gt; Installed JRE and just deselect and reselect and click OK. That's what you should do if you get the error: No compiler is provided in this environment. Perhaps you are running on a JRE rather than a JDK?<br class="wikidpad" />
+<br class="wikidpad" />
+Endpoints are usually located in files in a folder called spi.<br class="wikidpad" />
+<br class="wikidpad" />
+<br class="wikidpad" />
+- You can restrict the input that goes into the API by passing the object as an argument in the API function<br class="wikidpad" />
+- An API can take a user object as an argument. If the object is not null, that means the user is signed in, otherwise he isn't.<br class="wikidpad" />
+<br class="wikidpad" />
+Example: public saveProfile(final User user, ProfileForm profileForm) throws UnauthorizedException {...}<br class="wikidpad" />
+<br class="wikidpad" />
+<b class="wikidpad">Data store</b><br class="wikidpad" />
+<br class="wikidpad" />
+What is data store?<br class="wikidpad" />
+- Database running in the Google cloud (built on "Big Table")<br class="wikidpad" />
+- Key-value, column-oriented (NOT RDBMS)<br class="wikidpad" />
+- Create Google-scale applications<br class="wikidpad" />
+- Highly available and reliable<br class="wikidpad" />
+<br class="wikidpad" />
+Datastore modelling<br class="wikidpad" />
+- Kind<br class="wikidpad" />
+- Entity<br class="wikidpad" />
+- Property<br class="wikidpad" />
+<br class="wikidpad" />
+Kind is similar to the concept of classes in OO programming, or a table in RDBMS<br class="wikidpad" />
+Entities are similar to the concept of "object" on OO programming, or a row in RDBMS<br class="wikidpad" />
+Properties are similar to fields/objects/attributes, or colum in RDBMS<br class="wikidpad" />
+<br class="wikidpad" />
+One kind has one or more entities and each entity has one or more properties. The above are not DIRECT analogies though. <br class="wikidpad" />
+<br class="wikidpad" />
+Property types:<br class="wikidpad" />
+- integer<br class="wikidpad" />
+- float<br class="wikidpad" />
+- string<br class="wikidpad" />
+- date<br class="wikidpad" />
+- binary data<br class="wikidpad" />
+- ...<br class="wikidpad" />
+<span class="wikidpad url-link"><a href="https://cloud.google.com/appengine/docs/java/datastore/entities#Java_Properties_and_value_types" class="wikidpad">https://cloud.google.com/appengine/docs/java/datastore/entities#Java_Properties_and_value_types</a></span><br class="wikidpad" />
+<br class="wikidpad" />
+<b class="wikidpad">Creating an entity</b><br class="wikidpad" />
+<br class="wikidpad" />
+1. add these in the imports:<br class="wikidpad" />
+import com.googlecode.objectify.annotation.Entity;<br class="wikidpad" />
+import com.googlecode.objectify.annotation.Id;<br class="wikidpad" />
+<br class="wikidpad" />
+2. add @Entity at the top of the document but after the import<br class="wikidpad" />
+<br class="wikidpad" />
+3. each entity must have one and only one Id (@Id). An Id can be of the type: Long, long or String.<br class="wikidpad" />
+<br class="wikidpad" />
+4. Optional: @Index: Indexing properties to speed up the search<br class="wikidpad" />
+<br class="wikidpad" />
+5. Optional: @Parent: Ancestor relationship<br class="wikidpad" />
+<br class="wikidpad" />
+Example: <br class="wikidpad" />
+import com.googlecode.objectify.annotation.Entity;<br class="wikidpad" />
+import com.googlecode.objectify.annotation.Id;<br class="wikidpad" />
+<br class="wikidpad" />
+@Entity<br class="wikidpad" />
+public class Profile {<ul class="wikidpad normalindent">@Id String userId;<br class="wikidpad" />
+String displayName;<br class="wikidpad" />
+String mainEmail;<br class="wikidpad" />
+TeeShirtSize teeShirtSize;</ul>
+...}<br class="wikidpad" />
+<br class="wikidpad" />
+<b class="wikidpad">Datastore keys</b><br class="wikidpad" />
+<br class="wikidpad" />
+Can be generated two different ways:<br class="wikidpad" />
+- Autogenerated by the datastore <ul class="wikidpad normalindent">Ex: Key &lt;Conference&gt; key = factory().allocateId(Conference.class);<br class="wikidpad" />
+Or, if there is a parent: Key &lt;Conference&gt; key = factory().allocateId(parentKey, Conference.class);</ul>
+- Specified<br class="wikidpad" />
+<br class="wikidpad" />
+<b class="wikidpad">Saving Data with objectify</b><br class="wikidpad" />
+<br class="wikidpad" />
+ObjectifyService.ofy().save().entity(entity).now();<br class="wikidpad" />
+it is standard to simplify it like this: ofy().save().entity(entity).now(); //rename the 2nd entity<br class="wikidpad" />
+<br class="wikidpad" />
+<b class="wikidpad">Read data from datastore</b><br class="wikidpad" />
+<br class="wikidpad" />
+ofy.load();<br class="wikidpad" />
+You can query by key or by criteria. <br class="wikidpad" />
+<br class="wikidpad" />
+Entity entity = ofy().load().key(key).now();<br class="wikidpad" />
+<br class="wikidpad" />
+Example:<br class="wikidpad" />
+String userId = user.getUserId();<br class="wikidpad" />
+Key key = Key.create(Profile.class, userId);<br class="wikidpad" />
+Profile profile = (Profile) ofy().load().key(key).now(); <br class="wikidpad" />
+<br class="wikidpad" />
+Web UI and Backend API don't have to be in the same application, they could be in two completely separate applications. You could also have several Web UI using the same Backend API. In our case, the backend and the Web UI are in the same application. However, the appengine doesn't care that they are together. You still have to authorize the UI to access the backend. <br class="wikidpad" />
+<br class="wikidpad" />
+So you need to set your client ID either in the API or in the constants, depending how the project is set up. Your client ID can be found in Google Developer Console &gt; API &amp; Auth &gt; Credentials.<br class="wikidpad" />
+<br class="wikidpad" />
+You also have to identify yourself in app.js (src &gt; main &gt; webapp &gt; js &gt; app.js). This file runs the authentication process when a user logs in. Here you need to fill in the CLIENT_ID again like previous step.<br class="wikidpad" />
+<br class="wikidpad" />
+Now we need to add the javascript origin in the Google Developer Console. Go to App &amp; Auth &gt; Credentials. (kind of done already when I created the client ID)<br class="wikidpad" />
+<br class="wikidpad" />
+When you use Objectify to define an Entity class, you need to register the Entity class. You do this in a Static method in OfyService. If there is an error message, you might have to mouse over your entity and click "Import". <br class="wikidpad" />
+<br class="wikidpad" />
+<b class="wikidpad">Relationships</b><br class="wikidpad" />
+<br class="wikidpad" />
+Ancestor: In Datastore, it is possible to specify that an entity has an ancestor. <br class="wikidpad" />
+- Assigned at creation<br class="wikidpad" />
+- Can never be changed<br class="wikidpad" />
+In our example, Created By will be an ancestor of a conference in our example. <br class="wikidpad" />
+<br class="wikidpad" />
+Has a: <br class="wikidpad" />
+In our example, we will use this relationship to store the users who are attending the conferences. Each profile will contain a property that contains the conference that they are attending. This relationship can change.<br class="wikidpad" />
+<br class="wikidpad" />
+<b class="wikidpad">Types of Queries</b><br class="wikidpad" />
+<br class="wikidpad" />
+Showing all conferences = Query by KIND<br class="wikidpad" />
+Showing all conferences created by you = Query by kind filter by ANCESTOR<br class="wikidpad" />
+Showing all conferences you will attend = Query by kind filter by PROPERTY<br class="wikidpad" />
+<br class="wikidpad" />
+Get entity by key:<br class="wikidpad" />
+Entity entity = ofy().load().key(key).now();<br class="wikidpad" />
+<br class="wikidpad" />
+Get entities of a given kind:<br class="wikidpad" />
+Query query = ofy().load().type(Kind.class);<br class="wikidpad" />
+Query query = ofy().load().type(Kind.class).order("name");<br class="wikidpad" />
+Query query = ofy().load().type(Kind.class).order("name").list();<br class="wikidpad" />
+<br class="wikidpad" />
+Get entity of a given kind having a specific ancestor:<br class="wikidpad" />
+Query query = ofy().load().type(Kind.class).ancestor(key);<br class="wikidpad" />
+<br class="wikidpad" />
+Query and filter by property:<br class="wikidpad" />
+Query query = ofy().load().type(Kind.class).filter("property and operator", "value");<br class="wikidpad" />
+Query query = ofy().load().type(Conference.class).filter("city =", "London");<br class="wikidpad" />
+<br class="wikidpad" />
+To add a filter after the query was created:<br class="wikidpad" />
+Query query = ofy().load().type(Conference.class).order("name");<br class="wikidpad" />
+query = query.filter("city =", "London");<br class="wikidpad" />
+<br class="wikidpad" />
+Objectify will assume = as the operator if none is given<br class="wikidpad" />
+<br class="wikidpad" />
+Performance of the query only depends on the size of the result set, not on the amount of data stored.<br class="wikidpad" />
+<br class="wikidpad" />
+<b class="wikidpad">Query restrictions</b><br class="wikidpad" />
+<br class="wikidpad" />
+An inequality filter can be applied to AT MOST one property (but you can have several filters on that same property)<ul class="wikidpad normalindent">start_date &gt; June 15 &amp;&amp;<br class="wikidpad" />
+max_attendees &lt; 100			-&gt; This is NOT a valid query<br class="wikidpad" />
+</ul>
+A property with an inequality filter must be sorted first<ul class="wikidpad normalindent">max_attendees &lt; 1000<br class="wikidpad" />
+sort by Name				-&gt; This is NOT a valid query<br class="wikidpad" />
+</ul>
+The best way to avoid the restrictions is to THINK AND PLAN<br class="wikidpad" />
+<br class="wikidpad" />
+<b class="wikidpad">Indexes</b><br class="wikidpad" />
+<br class="wikidpad" />
+RDBMS Indexes are not the same as Datastore indexes<br class="wikidpad" />
+<br class="wikidpad" />
+Datastore indexes are actually REQUIRED to perform a query on data. So if you want to query on certain data, there HAS TO BE an index on that data.<br class="wikidpad" />
+<br class="wikidpad" />
+Index value:<br class="wikidpad" />
+Kind / Property / Value<br class="wikidpad" />
+Conference / City / London<br class="wikidpad" />
+<br class="wikidpad" />
+Single property indexes such as the one above is also called "Built-in index"<br class="wikidpad" />
+<br class="wikidpad" />
+Composite index:<br class="wikidpad" />
+Retrieve all conferences<br class="wikidpad" />
+Filter by City and Topics<br class="wikidpad" />
+Sort by name<br class="wikidpad" />
+<br class="wikidpad" />
+This is composite because city, topics and name cannot be combined to generate the result. For this to work, a single table combining different values must be created. <br class="wikidpad" />
+<br class="wikidpad" />
+2 ways to build composite indexes:<br class="wikidpad" />
+1. Add index to index file<br class="wikidpad" />
+2. Run application locally (if it encounters a query locally that requires composite index, it will build it automatically and when you deploy to appengine, the new index will now be available)<br class="wikidpad" />
+<br class="wikidpad" />
+To look at the index file in Eclipse:<br class="wikidpad" />
+Target &gt; conference 1.0 &gt; WEB-INF &gt; appengine-generated &gt; datastore-index-auto.xml<br class="wikidpad" />
+<br class="wikidpad" />
+So instead of deploying to dev all the time before deploying to prod, you could also build your own datastore-index.xml file. Here's what the auto-generated file looks like:<br class="wikidpad" />
+<br class="wikidpad" />
+&lt;!-- Indices written at Sun, 7 Dec 2014 10:24:39 CET --&gt;<br class="wikidpad" />
+<br class="wikidpad" />
+&lt;datastore-indexes&gt;<br class="wikidpad" />
+<ul class="wikidpad normalindent">&lt;!-- Used 1 time in query history --&gt;<br class="wikidpad" />
+&lt;datastore-index kind="Conference" ancestor="false" source="auto"&gt;<ul class="wikidpad normalindent">&lt;property name="city" direction="asc"/&gt;<br class="wikidpad" />
+&lt;property name="month" direction="asc"/&gt;<br class="wikidpad" />
+&lt;property name="topics" direction="asc"/&gt;<br class="wikidpad" />
+&lt;property name="name" direction="asc"/&gt;</ul>
+&lt;/datastore-index&gt;<br class="wikidpad" />
+</ul>
+&lt;/datastore-indexes&gt;<br class="wikidpad" />
+<br class="wikidpad" />
+If you create datastore-index.xml, both datastore-index.xml and datastore-index-auto.xml gets sent to the Google server. <br class="wikidpad" />
+<br class="wikidpad" />
+Indexes take up a lot of space so it's better to index ONLY the columns on which you will query.<br class="wikidpad" />
+<br class="wikidpad" />
+To index single properties at a time, add @index in front of it. <br class="wikidpad" />
+To index everything inside a class, use @index in front of the class and then @unindex to remove the index from specific properties<br class="wikidpad" />
+You can also add conditional indexing (ex: only index this if the value is greater than 100) <br class="wikidpad" />
+Documentation on partial indexes: <span class="wikidpad url-link"><a href="https://code.google.com/p/objectify-appengine/wiki/Queries#Partial\_Indexes" class="wikidpad">https://code.google.com/p/objectify-appengine/wiki/Queries#Partial\_Indexes</a></span><br class="wikidpad" />
+<br class="wikidpad" />
+<b class="wikidpad">Datastore Commit Process</b><br class="wikidpad" />
+<br class="wikidpad" />
+1. Eventual Consistency<br class="wikidpad" />
+2. Strong Consistency<br class="wikidpad" />
+<br class="wikidpad" />
+Eventual consistency means that when you ask to enter data in the datastore, the OK is given back to you BEFORE the data is actually fully loaded. So if you send a query to retrieve the data right after you received the ok, the data might not be returned to you right away.<br class="wikidpad" />
+<br class="wikidpad" />
+Strong consistency means that the query will notice that some data is still being written, so it will wait for the write operation to be done, and then return the data.<br class="wikidpad" />
+<br class="wikidpad" />
+So which is better? It depends on the application. Strong consistency is more accurate but slower. Eventual consistency scales better.<br class="wikidpad" />
+<br class="wikidpad" />
+For example:<br class="wikidpad" />
+Blog Comments could be "Eventual Consistency"<br class="wikidpad" />
+ATM Money Withdrawal should be "Stong consistency"<br class="wikidpad" />
+<br class="wikidpad" />
+Datastore supports both<br class="wikidpad" />
+<br class="wikidpad" />
+Enforcing Strong Consistency is done when you have an Ancestor relationship and you filter by Ancestor. All children will be queries using Strong Consistency. <br class="wikidpad" />
+<br class="wikidpad" />
+<b class="wikidpad">Transactions</b><br class="wikidpad" />
+<br class="wikidpad" />
+Transactions are used when several transactions must be done together. For example:<br class="wikidpad" />
+- Registering to a conference<br class="wikidpad" />
+- Decreasting the number of seats available<br class="wikidpad" />
+<br class="wikidpad" />
+You wrap those two operations in a transaction to ensure that either nothing gets executed if there is a problem or both get executed. <br class="wikidpad" />
+<br class="wikidpad" />
+Code for a transaction:<br class="wikidpad" />
+<br class="wikidpad" />
+&lt;T&gt; result = ofy().transact(new Work&lt;t&gt;(){<ul class="wikidpad normalindent">public &lt;T&gt; run(){<ul class="wikidpad normalindent">//do stuff<br class="wikidpad" />
+return &lt;T&gt;;</ul>
+}</ul>
+});<br class="wikidpad" />
+<br class="wikidpad" />
+if you don't wnat the transaction to return anything, you would use new void Work instead of new Work.<br class="wikidpad" />
+<br class="wikidpad" />
+Snapshot isolation<br class="wikidpad" />
+- Read returns values at the beginning of the transaction<br class="wikidpad" />
+- Updates will not be reflected while in transaction<br class="wikidpad" />
+<br class="wikidpad" />
+Optimistic Concurrency:<br class="wikidpad" />
+- Commit is only successful if the values updated by the transaction have not changed since the beginning of the transaction<br class="wikidpad" />
+- One transaction can modify at most 5 ancestor groups<br class="wikidpad" />
+- A transaction must complete within 60 seconds<br class="wikidpad" />
+<br class="wikidpad" />
+<b class="wikidpad">Memcache</b><br class="wikidpad" />
+<br class="wikidpad" />
+Memcache is a Memory Cache which sits next to your appengine instances. Any data you store in Memcache can be immediately retrieved without having to make a call to the Datastore. So when you store data in the store, you can also store it in Memcache at the same time. Both datastore and Memcache are shared across any number of instance of your application.<br class="wikidpad" />
+<br class="wikidpad" />
+Add @Cache to your entity to automatically use Memcache to store your entity data. Objectify will try its best to use Memcache. <br class="wikidpad" />
+<br class="wikidpad" />
+Memcache is only used if you are trying to get an entity by Key, save it or delete it. Query result are NOT cached. Property value are cached. Objectify has its own session cache. <br class="wikidpad" />
+<br class="wikidpad" />
+Using the memcache service:<br class="wikidpad" />
+MemcacheService memcacheService = MemcacheServiceFactory.getMemcacheService();<br class="wikidpad" />
+<br class="wikidpad" />
+Put something in memcache:<br class="wikidpad" />
+memcacheService.put(key, value);<br class="wikidpad" />
+<br class="wikidpad" />
+Get value out of memcache:<br class="wikidpad" />
+&lt;Type&gt; value = memcacheService.get(key);<br class="wikidpad" />
+<br class="wikidpad" />
+<b class="wikidpad">Servlets</b><br class="wikidpad" />
+<br class="wikidpad" />
+When you use Servlets in a webapp, you need to configure them in web.xml<br class="wikidpad" />
+<br class="wikidpad" />
+To trigger the servlet, go to the servlet URL: avid-system-783.appspot.com/crons/set_announcement<br class="wikidpad" />
+<br class="wikidpad" />
+<b class="wikidpad">Task queues</b><br class="wikidpad" />
+<br class="wikidpad" />
+Tasks queues are meant to take big jobs offline and split them in smaller tasks. They are not executed in the user request thread, so you can immediately return a response to the user.<br class="wikidpad" />
+<br class="wikidpad" />
+<b class="wikidpad">Push Queues</b><br class="wikidpad" />
+<br class="wikidpad" />
+The execution of Push Queues are managed by appengine itself. That means that appengine has threads that scan the queue and pick up tasks. These thread than call the URL that you have specified when you've entered the task in the queue. The maximum duration of a task is 10 minutes. There are several configuration options for each queues. Configurations are defined in the "Queue configuration file" when you do development. <br class="wikidpad" />
+<br class="wikidpad" />
+Configuration items:<br class="wikidpad" />
+- Name<br class="wikidpad" />
+- Maximum Rate<br class="wikidpad" />
+- Enforced Rate<br class="wikidpad" />
+- Bucket Size<br class="wikidpad" />
+- Maximum Concurrent<br class="wikidpad" />
+- Oldest Task<br class="wikidpad" />
+- Tasks in Queue<br class="wikidpad" />
+- Run in Last Minute<br class="wikidpad" />
+- Running<br class="wikidpad" />
+<br class="wikidpad" />
+Also lots of parameters around Errors Management<br class="wikidpad" />
+<br class="wikidpad" />
+How to create a task and assign it to a queue:<br class="wikidpad" />
+1. Get Queue by name<br class="wikidpad" />
+2. Create task (task name, URL, other params)<br class="wikidpad" />
+3. Add task to queue<br class="wikidpad" />
+<br class="wikidpad" />
+Very important to protect the URL<br class="wikidpad" />
+<br class="wikidpad" />
+In our example, we will use the queue to send a confirmation e-mail. <br class="wikidpad" />
+<br class="wikidpad" />
+Adding tasks to a queue:<br class="wikidpad" />
+1. Define work to be done (in a servlet or endpoint function)<br class="wikidpad" />
+2. Configure queue.xml (if you use the default queue, you actually don't have to do any configuration)<br class="wikidpad" />
+<br class="wikidpad" />
+&lt;queue-entry&gt;<ul class="wikidpad normalindent">&lt;queue&gt;<ul class="wikidpad normalindent">&lt;name&gt;emailqueue&lt;/name&gt;<br class="wikidpad" />
+&lt;rate&gt;l-s&lt;/rate&gt;</ul>
+&lt;/queue&gt;</ul>
+&lt;/queue-entry&gt;<br class="wikidpad" />
+<br class="wikidpad" />
+There could be more parameters<br class="wikidpad" />
+<br class="wikidpad" />
+3. Write code to add task to queue<br class="wikidpad" />
+<br class="wikidpad" />
+Queue queue = QueueFactory.getDefaultQueue();<br class="wikidpad" />
+or<br class="wikidpad" />
+Queue queue = QueueFactory.getQueue("queueName");<br class="wikidpad" />
+<br class="wikidpad" />
+queue.add(TaskOptions.Builder.withUrl("url_for_task").param("param1").param("param2"));<br class="wikidpad" />
+or<br class="wikidpad" />
+queue.add(transaction, TaskOptions.Builder.withUrl("url_for_task").param("param1").param("param2"));<br class="wikidpad" />
+ofy.getTransaction()<br class="wikidpad" />
+<br class="wikidpad" />
+4. If you use all the default options, a task is going to stay stuck in the queue until it succeeds, so it's important to test your queues to make sure that no task get stuck in there that is never going to finish.<br class="wikidpad" />
+<br class="wikidpad" />
+<b class="wikidpad">Pull queues</b><br class="wikidpad" />
+<br class="wikidpad" />
+Humans actually pull tasks from the queues to work on them (for example, approving comments before they get posted on the site.) Tasks can be "leased" for a certain time. If it is not completed by the time the lease is over, it is automatically returned to the queue. <br class="wikidpad" />
+<br class="wikidpad" />
+Caracteristics:<br class="wikidpad" />
+- No URL<br class="wikidpad" />
+- Tasks are leased<br class="wikidpad" />
+- Explicit delete (worker must delete the task when completed)<br class="wikidpad" />
+- Automatic return if task is not completed<br class="wikidpad" />
+- REST interface<br class="wikidpad" />
+- No default queue (you must create it)<br class="wikidpad" />
+<br class="wikidpad" />
+<b class="wikidpad">Cron jobs</b><br class="wikidpad" />
+<br class="wikidpad" />
+- Schedule tasks regularly<br class="wikidpad" />
+- Perfect to perform background tasks not directly initiated by user activity (ex. backups)<br class="wikidpad" />
+- Easy to configure:<ul class="wikidpad normalindent">- URL<br class="wikidpad" />
+- Schedule</ul>
+- 10 minutes limit for dynamic instances, if you want more, you would need resident instances<br class="wikidpad" />
+<br class="wikidpad" />
+Cron jobs are configured in cron.xml. Example:<br class="wikidpad" />
+<br class="wikidpad" />
+&lt;?xml version="1.0" encoding="UTF-8"?&gt;<br class="wikidpad" />
+&lt;cronentries&gt;<ul class="wikidpad normalindent">&lt;cron&gt;<ul class="wikidpad normalindent">&lt;url&gt;/crons/set_announcement&lt;/url&gt;<br class="wikidpad" />
+&lt;description&gt;Repopulate the announcement every 1 hour&lt;/description&gt;<br class="wikidpad" />
+&lt;schedule&gt;every 1 hours&lt;/schedule&gt;		=&gt; Must follow a certain format otherwise it won't work</ul>
+&lt;/cron&gt;  </ul>
+&lt;/cronentries&gt;<br class="wikidpad" />
+<br class="wikidpad" />
+Scheduling cron tasks <span class="wikidpad url-link"><a href="https://developers.google.com/appengine/docs/java/config/cron#Java\_appengine\_web\_xml\_About\_cron\_xml" class="wikidpad">https://developers.google.com/appengine/docs/java/config/cron#Java\_appengine\_web\_xml\_About\_cron\_xml</a></span><br class="wikidpad" />
+Schedule format: <span class="wikidpad url-link"><a href="https://developers.google.com/appengine/docs/java/config/cron#Java\_appengine\_web\_xml\_The\_schedule\_format" class="wikidpad">https://developers.google.com/appengine/docs/java/config/cron#Java\_appengine\_web\_xml\_The\_schedule\_format</a></span><br class="wikidpad" />
+<br class="wikidpad" />
+If you want to cancel your job, it is not enough to delete cron.xml and reupload your app, you actually have to set up a new cron.xml with no cron entries:<br class="wikidpad" />
+&lt;?xml version="1.0" encoding="UTF-8"?&gt;<br class="wikidpad" />
+&lt;cronentries&gt;<br class="wikidpad" />
+&lt;/cronentries&gt;<br class="wikidpad" />
+&lt;/cronentries&gt;<br class="wikidpad" />
+<br class="wikidpad" />
+<b class="wikidpad">Modules</b><br class="wikidpad" />
+<br class="wikidpad" />
+- Code partitioning<br class="wikidpad" />
+- Scalability Control<br class="wikidpad" />
+- Version control and online upgrades<br class="wikidpad" />
+<br class="wikidpad" />
+Applications can have several modules, and modules include:<br class="wikidpad" />
+- Code<br class="wikidpad" />
+- Instance class<br class="wikidpad" />
+- Scalability<br class="wikidpad" />
+<br class="wikidpad" />
+Each module can then have several versions of your code. <br class="wikidpad" />
+<br class="wikidpad" />
+This allow you to do version upgrades without bringing down your application<br class="wikidpad" />
+<br class="wikidpad" />
+And finally each version can have several instances.<br class="wikidpad" />
+<br class="wikidpad" />
+Two types of scaling:<br class="wikidpad" />
+- Manual<ul class="wikidpad normalindent">- Instances always up and running<br class="wikidpad" />
+- No 10 minutes limit on background tasks and cron jobs<br class="wikidpad" />
+- Must configure the number of instances</ul>
+- Automatic<ul class="wikidpad normalindent">- Can specify min/max idle instances (instances have a startup time)<br class="wikidpad" />
+- Can specify min/max pending latency (so how long appengine waits for an instance to become free before it just starts a brand new instance)<br class="wikidpad" />
+</ul>
+Instance classes:<br class="wikidpad" />
+- Speed of CPU<br class="wikidpad" />
+- Amount of memory <br class="wikidpad" />
+<br class="wikidpad" />
+<b class="wikidpad">Appstats</b><br class="wikidpad" />
+<br class="wikidpad" />
+Function to allow you to get extensive information about how API functions are called by your app.<br class="wikidpad" />
+<br class="wikidpad" />
+- Profile application<br class="wikidpad" />
+- Inspect API Calls <ul class="wikidpad normalindent">- Minimize latency by caching data<br class="wikidpad" />
+- Reduce / bundle calls<br class="wikidpad" />
+- Reduce costs<br class="wikidpad" />
+</ul>
+- Enable tracing through configuration<br class="wikidpad" />
+- Access profiling information using URL<br class="wikidpad" />
+<br class="wikidpad" />
+Documentation: <span class="wikidpad url-link"><a href="https://developers.google.com/appengine/docs/java/tools/appstats" class="wikidpad">https://developers.google.com/appengine/docs/java/tools/appstats</a></span><br class="wikidpad" />
+<br class="wikidpad" />
+To use AppStats with Maven, you have to add additional dependence to your pom.xml file. This is in addition to the steps described in AppStats documentation, as this is Maven specific step.<br class="wikidpad" />
+<br class="wikidpad" />
+After following the AppStats install guide found in the link above, add the following code in pom.xml under &lt;dependencies&gt;:<br class="wikidpad" />
+<ul class="wikidpad normalindent">&lt;dependency&gt;<ul class="wikidpad normalindent">&lt;groupId&gt;com.google.appengine&lt;/groupId&gt;<br class="wikidpad" />
+&lt;artifactId&gt;appengine-api-labs&lt;/artifactId&gt;<br class="wikidpad" />
+&lt;version&gt;${appengine.target.version}&lt;/version&gt;</ul>
+&lt;/dependency&gt;<br class="wikidpad" />
+</ul>
+<b class="wikidpad">Edge caching</b><br class="wikidpad" />
+<br class="wikidpad" />
+1. Set cache-control header in http response (only if the response will be the same every time)<br class="wikidpad" />
+2. Define as much content as possible as being static (in configuration files)<br class="wikidpad" />
+<br class="wikidpad" />
+Even by doing these two options, you cannot guarantee that edge caching will be used, but if it is, the response to the user will be MUCH faster.<br class="wikidpad" />
+<br class="wikidpad" />
+<b class="wikidpad">To create a mobile app</b><br class="wikidpad" />
+<br class="wikidpad" />
+You need to generate the client library for your Endpoints API so that you can include the library in your mobile application.<br class="wikidpad" />
+<br class="wikidpad" />
+You'll need to know:<br class="wikidpad" />
+<br class="wikidpad" />
+The package name of the classes in your mobile app<br class="wikidpad" />
+The SHA1 fingerprint of your mobile app<br class="wikidpad" />
+Getting the SHA1 fingerprint of your mobile app<br class="wikidpad" />
+<br class="wikidpad" />
+When you build an Android App in debug mode, the SDK automatically creates a debug key and signs the application. You can also generate a new key.<br class="wikidpad" />
+<br class="wikidpad" />
+To generate a new key, you'll need to specify the keystore name and keystore alias.<br class="wikidpad" />
+<br class="wikidpad" />
+Generating a new key<br class="wikidpad" />
+<br class="wikidpad" />
+keytool -genkey -v -keystore keystore-name.keystore -alias keystore-alias -keyalg RSA -keysize 2048 -validity 1000<br class="wikidpad" />
+Enter a password and remember it!<br class="wikidpad" />
+Answer the questions (such as what is your first and last name)<br class="wikidpad" />
+Say yes for the the last question.<br class="wikidpad" />
+It's OK for the password for the keystore alias to be the same as the keystore password.<br class="wikidpad" />
+To create the client Id for the Android app, you'll need the SHA1 fingerprint.<br class="wikidpad" />
+<br class="wikidpad" />
+Getting the SHA1 fingerprint<br class="wikidpad" />
+<br class="wikidpad" />
+keytool -exportcert -alias keystore-alias -keystore keystore-name.keystore -list -v<br class="wikidpad" />
+Enter password.<br class="wikidpad" />
+Copy and save the SHA1 value, (don't include "SHA1:") for example: 04:E7:79:66:CD...C7:41<br class="wikidpad" />
+Creating the Client ID<br class="wikidpad" />
+<br class="wikidpad" />
+Create your mobile client ID in the Developers Console.<br class="wikidpad" />
+<br class="wikidpad" />
+Go to APIS &amp; Auth &gt; Credentials. Click Create New Client Id.<br class="wikidpad" />
+Choose Installed application.<br class="wikidpad" />
+Select Android.<br class="wikidpad" />
+Enter the package name of the classes in your Android app.<br class="wikidpad" />
+Copy in the SHA1 fingerprint.<br class="wikidpad" />
+You can leave DEEP LINKING disabled.<br class="wikidpad" />
+Click Create Client ID.<br class="wikidpad" />
+Add the new Android Client ID to the clientIDs list in the @Api annotation in the Java class containing the endpoint functions.<br class="wikidpad" />
+Generate the Client Library for the Endpoints API<br class="wikidpad" />
+<br class="wikidpad" />
+You need to generate the client library that contains your Endpoints API so you can include it in your mobile app.<br class="wikidpad" />
+<br class="wikidpad" />
+For Android Apps:<br class="wikidpad" />
+<br class="wikidpad" />
+In a terminal window, cd to the library containing the pom.xml for your application.<br class="wikidpad" />
+mvn appengine:endpoints_get_client_lib<br class="wikidpad" />
+cd to the target directory.<br class="wikidpad" />
+cd to endpoints-client-libs<br class="wikidpad" />
+cd conference<br class="wikidpad" />
+mvn install<br class="wikidpad" />
+cd to the target folder<br class="wikidpad" />
+Add the client library jar appname-v1-1.n.n-rc-SNAPSHOT.jar to the project for your mobile application.<br class="wikidpad" />
+If you change your backend API, you'll need to update the client library.<br class="wikidpad" />
+<br class="wikidpad" />
+Changes to the Conference Central code<br class="wikidpad" />
+<br class="wikidpad" />
+In general, when you create an application that uses Endpoints, the code to define the endpoints is the same regardless of whether the endpoints are used by a web app or an Android app. However, when the Android app injects the user into an endpoints API call, the User object does not include the userId. In our Conference Central app we have used the userId to uniquely identify the logged-in user, and obviously this won't work for Android users. So we have defined a class AppEngineUser that compensates for the lack of the userId in Android Users.<br class="wikidpad" />
+<br class="wikidpad" />
+You will need to:<br class="wikidpad" />
+<br class="wikidpad" />
+Add the AppEngineUser class to your Conference Central Java project . <br class="wikidpad" />
+<br class="wikidpad" />
+(To be clear, add it to the app that defines the endpoints, not the Android app). <br class="wikidpad" />
+<br class="wikidpad" />
+You can find the AppEngineUser class in the Lesson 6 folder.<br class="wikidpad" />
+<br class="wikidpad" />
+Add the definition of private static String getUserId(User user) to ConferenceApi. <br class="wikidpad" />
+<br class="wikidpad" />
+You can find it in the file extra code for ConferenceApi.txt in the Lesson 6 folder.<br class="wikidpad" />
+<br class="wikidpad" />
+In ConferenceApi, change each occurrence of: user.getUserId(); to getUserId(user)<br class="wikidpad" />
+<br class="wikidpad" />
+<b class="wikidpad">Problems</b><br class="wikidpad" />
+<br class="wikidpad" />
+1. If there are problems that don't make sense, try to delete the Target directory and compile again.<br class="wikidpad" />
+<br class="wikidpad" />
+2. We now have test data, you may want to go in run configuration to check "skip test"<br class="wikidpad" />
+<br class="wikidpad" />
+3. If you delete the "target" folder, right click on your project and do Maven &gt; Update Project before you run it (you might have to do that a few times?)<br class="wikidpad" />
+<br class="wikidpad" />
+4. Under target &gt; surefire-reports, you will have a report of the errors<br class="wikidpad" />
+<br class="wikidpad" />
+5. 500 error, run your app first on dev and THEN move it to Google. It will not work until the index is finished preparing (check status in google dev console &gt; Storage &gt; Cloud Datastore &gt; Indexes)<br class="wikidpad" />
+<br class="wikidpad" />
+6. List must be imported as java.util (not java.awt)    </body>
+</html>

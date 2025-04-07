@@ -1,0 +1,48 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html>
+    <head>
+        <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+        <title>MongoDB</title>
+        <link type="text/css" rel="stylesheet" href="appbase.css">
+    </head>
+    <body class="wikidpad">
+<span class="wikidpad parent-nodes">parent nodes: <span class="wikidpad parent-node"><a href="General.html" class="wikidpad">General</a></span><br class="wikidpad" /><br class="wikidpad" /></span>
+<a name=".h0" class="wikidpad"></a><h2 class="wikidpad heading-level2">Mongo DB</h2>
+<span class="wikidpad property attribute">[camelCaseWordsEnabled: false]</span><br class="wikidpad" />
+<br class="wikidpad" />
+MongoDB is a document database. This means that we store data as documents, which are similar to JavaScript objects. Here below are a few sample JS objects:<ul class="wikidpad normalindent">var a = {age: 25};<br class="wikidpad" />
+var n = {name: 'Ed', languages: ['c', 'ruby', 'js']};<br class="wikidpad" />
+var student = {name: 'Jim', scores: [75, 99, 87.2]};<br class="wikidpad" />
+</ul>
+Here's how you save a document to MongoDB:<ul class="wikidpad normalindent">db.scores.save({a: 99});</ul>
+This says, "save the document '{a: 99}' to the 'scores' collection.".<br class="wikidpad" />
+To confirm that it's been saved properly:<br class="wikidpad" />
+db.scores.find();<br class="wikidpad" />
+<br class="wikidpad" />
+Let's find all documents where a == 2:<ul class="wikidpad normalindent">db.scores.find({a: 2});</ul>
+Or we could find all documents where a &gt; 15:<ul class="wikidpad normalindent">db.scores.find({a: {'$gt': 15}})<br class="wikidpad" />
+</ul>
+$gt` is one of many special query operators. Here are few others:<ul class="wikidpad normalindent">{a: {$lt: 5}} // Less Than<br class="wikidpad" />
+{a: {$gte: 10}} // Greater than or equal to<br class="wikidpad" />
+{a: {$ne: 'b'}} // Not Equal To<br class="wikidpad" />
+{a: {$in: ['a', 'b', 'c']}} // Exists in array<br class="wikidpad" />
+</ul>
+<b class="wikidpad">Update</b><br class="wikidpad" />
+<br class="wikidpad" />
+db.users.insert({name: 'Johnny', languages: ['ruby', 'c']});<br class="wikidpad" />
+db.users.update({name: 'Johnny'}, {name: 'Cash', languages: ['English']});<br class="wikidpad" />
+db.users.find()<br class="wikidpad" />
+<br class="wikidpad" />
+db.users.insert({name: 'Sue', languages: ['scala', 'lisp']});<br class="wikidpad" />
+<br class="wikidpad" />
+Update Sue's languages without overwriting them:<ul class="wikidpad normalindent">db.users.update({name: 'Sue'}, { $addToSet: {languages: 'ruby'}});</ul>
+Or we can add a new field to Cash<ul class="wikidpad normalindent">db.users.update({name: 'Cash'}, {'$set': {'age': 50} });</ul>
+ou can also push and pull items from arrays:<ul class="wikidpad normalindent">db.users.update({name: 'Sue'}, {'$push': {'languages': 'ruby'} });<br class="wikidpad" />
+db.users.update({name: 'Sue'}, {'$pull': {'languages': 'scala'} });<br class="wikidpad" />
+</ul>
+<b class="wikidpad">Delete</b><br class="wikidpad" />
+<br class="wikidpad" />
+To delete matching documents only, add a query selector to the remove method:<ul class="wikidpad normalindent">db.users.remove({name: 'Sue'});</ul>
+To delete everything from a collection:<ul class="wikidpad normalindent">db.scores.remove({});</ul>
+    </body>
+</html>

@@ -1,0 +1,60 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html>
+    <head>
+        <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+        <title>Migration through the database</title>
+        <link type="text/css" rel="stylesheet" href="appbase.css">
+    </head>
+    <body class="wikidpad">
+<span class="wikidpad parent-nodes">parent nodes: <span class="wikidpad parent-node"><a href="Wordpress.html" class="wikidpad">Wordpress</a></span><br class="wikidpad" /><br class="wikidpad" /></span>
+<a name=".h0" class="wikidpad"></a><h2 class="wikidpad heading-level2">Migration through the database</h2>
+<span class="wikidpad property attribute">[camelCaseWordsEnabled: false]</span><br class="wikidpad" />
+<br class="wikidpad" />
+==THIS SET OF INSTRUCTIONS IS OLD AND HAS NOT BEEN REVISED==<br class="wikidpad" />
+<br class="wikidpad" />
+Normally you would use Export / Import function. <br class="wikidpad" />
+<br class="wikidpad" />
+1. Set up empty Wordpress site on new host<br class="wikidpad" />
+<br class="wikidpad" />
+2. Copy plugins, themes and uploads to new host <ul class="wikidpad normalindent">Seems like just replacing wp-content folder should do it!<br class="wikidpad" />
+</ul>
+3. Export database from current host through phpMyAdmin<ul class="wikidpad normalindent">- Go to phpMyAdmin on source<br class="wikidpad" />
+- If you're not sure you're in the right database, check wp_options table<br class="wikidpad" />
+- Click on "Databases"<br class="wikidpad" />
+- Click on the proper database that's running the wordpress site<br class="wikidpad" />
+- Click on Export<br class="wikidpad" />
+- Select Custom<br class="wikidpad" />
+- Make sure all the database tables are selected<br class="wikidpad" />
+- Make sure it's set to save output to a file<br class="wikidpad" />
+- Compression: none<br class="wikidpad" />
+- Format: SQL<br class="wikidpad" />
+- Check Add drop table etc.<br class="wikidpad" />
+- Uncheck Add create procedure etc. <br class="wikidpad" />
+- Click Go<br class="wikidpad" />
+</ul>
+4. Fix database URLs in text editor<ul class="wikidpad normalindent">- Open the file created in step 3 using Notepad++<br class="wikidpad" />
+- Go to your source and target website main page and get the URL from both, you'll have to replace source with target in the SQL script<br class="wikidpad" />
+- Search and replace <span class="wikidpad url-link"><a href="http://localhost/wordpress" class="wikidpad">http://localhost/wordpress</a></span> with <span class="wikidpad url-link"><a href="http://mor10.com/migration" class="wikidpad">http://mor10.com/migration</a></span><br class="wikidpad" />
+- Search and replace /wordpress with /migration<br class="wikidpad" />
+</ul>
+5. Import database on new host through phpMyAdmin<ul class="wikidpad normalindent">- Go to phpMyAdmin on target<br class="wikidpad" />
+- If you're not sure you're in the right database, check wp_options table<br class="wikidpad" />
+- Check all the tables (under Structure)<br class="wikidpad" />
+- Click on the arrow next to "with selected", Drop<br class="wikidpad" />
+- Yes<br class="wikidpad" />
+- Click Import<br class="wikidpad" />
+- Browse for file<br class="wikidpad" />
+- Find your modified SQL script<br class="wikidpad" />
+- Go<br class="wikidpad" />
+</ul>
+Go to wp-admin<br class="wikidpad" />
+You will see a database update required screen<br class="wikidpad" />
+Click Update<br class="wikidpad" />
+And then you should be good to go but click on links to make sure it's going to the right place (check URL too)<br class="wikidpad" />
+<br class="wikidpad" />
+You might have to go to settings &gt; Permalinks and then just change something and put it back as it was and click "Save".<br class="wikidpad" />
+<br class="wikidpad" />
+Sometimes the file extension being capital or not makes an image appear properly or not<br class="wikidpad" />
+<br class="wikidpad" />
+It's good to match # of posts, # of media, # of comments, etc.     </body>
+</html>

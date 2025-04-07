@@ -1,0 +1,273 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html>
+    <head>
+        <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+        <title>Node.js</title>
+        <link type="text/css" rel="stylesheet" href="appbase.css">
+    </head>
+    <body class="wikidpad">
+<span class="wikidpad parent-nodes">parent nodes: <span class="wikidpad parent-node"><a href="Javascript.html" class="wikidpad">Javascript</a></span><br class="wikidpad" /><br class="wikidpad" /></span>
+<a name=".h0" class="wikidpad"></a><h2 class="wikidpad heading-level2">Node.js</h2>
+<span class="wikidpad property attribute">[camelCaseWordsEnabled: false]</span><br class="wikidpad" />
+<br class="wikidpad" />
+What is Node.js? It allows you to build scalable network applications using JavaScript on the server-side.<br class="wikidpad" />
+<br class="wikidpad" />
+What can you build?<br class="wikidpad" />
+- Websocket Server (like a chat server)<br class="wikidpad" />
+- Fast File Upload Client<br class="wikidpad" />
+- Ad Server<br class="wikidpad" />
+- Any Real-Time Data Apps<br class="wikidpad" />
+<br class="wikidpad" />
+What it's NOT:<br class="wikidpad" />
+- A Web Framework (it will not replace Rails or django)<br class="wikidpad" />
+- For beginners<br class="wikidpad" />
+- Multi-threaded<br class="wikidpad" />
+<br class="wikidpad" />
+Blocking Code:<br class="wikidpad" />
+Read File from Filesystem and set equal to "contents"<br class="wikidpad" />
+Print Contents<br class="wikidpad" />
+Do Something else<br class="wikidpad" />
+<br class="wikidpad" />
+Non-Blocking code<br class="wikidpad" />
+Read File from Filesystem<ul class="wikidpad normalindent">Whenever you're complete, print the contents</ul>
+Do something else<br class="wikidpad" />
+<br class="wikidpad" />
+The "Whenever you're complete" part is a "callback"<br class="wikidpad" />
+<br class="wikidpad" />
+So basically it will start reading the file and start doing something else. When the file is done reading, it'll jump back to print the contents.<br class="wikidpad" />
+<br class="wikidpad" />
+In code, it would look like this<br class="wikidpad" />
+<br class="wikidpad" />
+Blocking code:<br class="wikidpad" />
+var contents = fs.readFileSync('/etc/hosts');<br class="wikidpad" />
+console.log(contents);<br class="wikidpad" />
+console.log('Doing something else');<br class="wikidpad" />
+<br class="wikidpad" />
+Non-Blocking code:<br class="wikidpad" />
+fs.readFileSync('/etc/hosts', function(err, contents){<ul class="wikidpad normalindent">console.log("contents");</ul>
+});<br class="wikidpad" />
+console.log('Doing something else');<br class="wikidpad" />
+<br class="wikidpad" />
+OR<br class="wikidpad" />
+<br class="wikidpad" />
+var callback = function(err, contents){<ul class="wikidpad normalindent">console.log("contents");</ul>
+}<br class="wikidpad" />
+<br class="wikidpad" />
+fs.readFileSync('/etc/hosts', callback);<br class="wikidpad" />
+<br class="wikidpad" />
+<b class="wikidpad">First Hello World application</b><br class="wikidpad" />
+<br class="wikidpad" />
+hello.js<br class="wikidpad" />
+var http = require('http');<br class="wikidpad" />
+http.createServer(function(request, response){<ul class="wikidpad normalindent">response.writeHead(200); //Status code in header<br class="wikidpad" />
+response.write("Hello World!");<br class="wikidpad" />
+response.end(); //Close the connection</ul>
+}).listen(8080); //Listen for connections on this port<br class="wikidpad" />
+console.log('Listening on port 8080');<br class="wikidpad" />
+<br class="wikidpad" />
+$node hello.js<br class="wikidpad" />
+<br class="wikidpad" />
+$curl <span class="wikidpad url-link"><a href="http://localhost:8080" class="wikidpad">http://localhost:8080</a></span><br class="wikidpad" />
+but for Bluehost, use: $curl <span class="wikidpad url-link"><a href="http://69.195.124.238:8080" class="wikidpad">http://69.195.124.238:8080</a></span><br class="wikidpad" />
+<br class="wikidpad" />
+The first time the computer goes through the code, node registers the events into a list of known events. In our case there is only one: Request. Once Node is done going through the script, it starts an Event Loop that basically constantly checks for new events. Once an event is fired, the callback code gets executed (that's what's in our function)<br class="wikidpad" />
+<br class="wikidpad" />
+<b class="wikidpad">Long running process example</b><br class="wikidpad" />
+hello.js<br class="wikidpad" />
+var http = require('http');<br class="wikidpad" />
+http.createServer(function(request, response){<ul class="wikidpad normalindent">response.writeHead(200); //Status code in header<br class="wikidpad" />
+response.write("Dog is running");<br class="wikidpad" />
+setTimeout(function(){<ul class="wikidpad normalindent">response.write("Dog is done");<br class="wikidpad" />
+response.end();</ul>
+}, 5000);</ul>
+}).listen(8080); //Listen for connections on this port<br class="wikidpad" />
+console.log('Listening on port 8080');<br class="wikidpad" />
+<br class="wikidpad" />
+<br class="wikidpad" />
+Now we have two events: Request and Timeout<br class="wikidpad" />
+<br class="wikidpad" />
+<b class="wikidpad">Other notes</b><br class="wikidpad" />
+<br class="wikidpad" />
+readFileSync is a "blocking" function. Use readFile instead.<br class="wikidpad" />
+<br class="wikidpad" />
+<a name=".h2541" class="wikidpad"></a><h3 class="wikidpad heading-level3">NodeJS training from Lynda.com</h3>
+nodejs is basically javascript without a browser<br class="wikidpad" />
+It uses the same engine as Google Chrome<br class="wikidpad" />
+<br class="wikidpad" />
+Reason why using node: you can use javascript both for front end and back end<br class="wikidpad" />
+<br class="wikidpad" />
+Another reason to use node, is that it allows you to use the same JavaScript on the front end as the back end. Among other features the package called browserify allows you to bundle javascript from the back end and serve it to your front end application. And then finally another reason to use node is that it has native support for evented programming.<br class="wikidpad" />
+<br class="wikidpad" />
+You can install node through a normal install file. Disadvantage: when it's time to update, you have to go through that same install process again. Switching versions also requires reinstallation<br class="wikidpad" />
+<br class="wikidpad" />
+Another way of install node is through npm (which I think is what I did). Install any version quickly, switch between versions quickly, easily install on Linux.<br class="wikidpad" />
+<br class="wikidpad" />
+<b class="wikidpad">Differences between nodejs and javascript</b><br class="wikidpad" />
+<br class="wikidpad" />
+Node adds a few functions and objects not typically available in web browers. It also removes a few that you may be familar with. <br class="wikidpad" />
+<br class="wikidpad" />
+There are a few variables that you may be familiar with from the web browser. There's window, location, and document. <br class="wikidpad" />
+<br class="wikidpad" />
+The window object has functions and attributes that have to do with the window that's being drawn on the screen. And similarly, the location object has all the information about the URL that we've loaded. And then finally, there's a document object. This document object contains all of the HTML that's being displayed on the page. Those three objects do not exist in node.<br class="wikidpad" />
+<br class="wikidpad" />
+Now let's type "global". Now, depending on what page you're on, you're either going to get a reference error saying that global is not defined, or you're going to get an instance of a window object. That window object is going to be similar to the one that you get when you just type in window. On the other hand, when you go over to Node, type in global, and you get an entire object. This object has several functions that are not avalable in Google Chrome.<br class="wikidpad" />
+<br class="wikidpad" />
+Require is used to pull in different JavaScript files that you are using during the course of programming your application. It's not available in Google Chrome. There are other globals that have been provided in Node that are not available in Chrome. One of them is module, and the other one is process. And if we go back over here to Google Chrome and type in module, and if we type in process, both of those return reference errors. So module is used to define a self-contained piece of code, and it's something that's very handy in Node. And then there's also the process object. It has functions and properties that have to do with the running Node process.<br class="wikidpad" />
+<br class="wikidpad" />
+<b class="wikidpad">Require module</b><br class="wikidpad" />
+<br class="wikidpad" />
+Example 1.js<br class="wikidpad" />
+<br class="wikidpad" />
+var announce = require('./announce');<br class="wikidpad" />
+<br class="wikidpad" />
+announce('Node Essential Training');<br class="wikidpad" />
+<br class="wikidpad" />
+the first line means that the file announce.js will be called.<br class="wikidpad" />
+<br class="wikidpad" />
+In announce.js:<br class="wikidpad" />
+<br class="wikidpad" />
+module.exports = function (announcement) {<ul class="wikidpad normalindent">console.log('Announcing: ' + announcement);</ul>
+};<br class="wikidpad" />
+<br class="wikidpad" />
+Everything in module.exports will be exported, if there was something else in the file, it wouldn't be exported. Right now module.exports is a function but it could be anything else (variable, object, etc.)<br class="wikidpad" />
+<br class="wikidpad" />
+back to example1.js, since we set the stuff exported as a function, announce in example1.js becomes a function<br class="wikidpad" />
+<br class="wikidpad" />
+What's located in require could be a js file or it could be a folder, as long as it contains an index.js file in it.<br class="wikidpad" />
+<br class="wikidpad" />
+Example2.js:<br class="wikidpad" />
+var relay = require('./relay');<br class="wikidpad" />
+<br class="wikidpad" />
+prefix = "Attention: ";<br class="wikidpad" />
+<br class="wikidpad" />
+relay('Ticket counter closes at 10PM');<br class="wikidpad" />
+<br class="wikidpad" />
+relay.js:<br class="wikidpad" />
+prefix = 'Relaying: ';<br class="wikidpad" />
+<br class="wikidpad" />
+module.exports = function (message) {<ul class="wikidpad normalindent">console.log(prefix + message);</ul>
+};<br class="wikidpad" />
+<br class="wikidpad" />
+By running node example2.js, prefix from relay.js will get overwritten by example2.js because it behaves as a global variable. If you add "var" in front of it:<br class="wikidpad" />
+var prefix = 'Relaying: ';<br class="wikidpad" />
+<br class="wikidpad" />
+module.exports = function (message) {<ul class="wikidpad normalindent">console.log(prefix + message);</ul>
+};<br class="wikidpad" />
+<br class="wikidpad" />
+Now it acts as a local variable and it will say "relaying" not "attention".<br class="wikidpad" />
+<br class="wikidpad" />
+Here is a way of exporting objects with various properties (functions):<br class="wikidpad" />
+exports.softly = function (message) {<ul class="wikidpad normalindent">console.log('proclaiming: ' + message);</ul>
+};<br class="wikidpad" />
+<br class="wikidpad" />
+exports.loudly = function (message) {<ul class="wikidpad normalindent">console.log('PROCLAIMING: ' + message);</ul>
+};<br class="wikidpad" />
+<br class="wikidpad" />
+Another type of require:<br class="wikidpad" />
+var os = require('os');<br class="wikidpad" />
+<br class="wikidpad" />
+console.log('This code is running on: ' + os.type());<br class="wikidpad" />
+<br class="wikidpad" />
+When we don't use ./ it tells node that we want to use a core module.<br class="wikidpad" />
+<br class="wikidpad" />
+Modules form fundamental building blocks for programs running in Node. They give you a way of arranging code into convenient, self contained objects.<br class="wikidpad" />
+<br class="wikidpad" />
+<b class="wikidpad">Loop</b><br class="wikidpad" />
+<br class="wikidpad" />
+When a Node program starts, the event loop starts along with it automatically. Now, in contrast to many other environments, all input and output in Node is non blocking. So for instance, if you're making a call to a database, in many other environments, that call is going to block.<br class="wikidpad" />
+<br class="wikidpad" />
+The environment is going to wait for all those results to come back from the database, stop your program, and then resume your program once those results are ready. Node however, keeps running the program. <br class="wikidpad" />
+<br class="wikidpad" />
+server.js:<br class="wikidpad" />
+var http = require('http');<br class="wikidpad" />
+<br class="wikidpad" />
+var handleRequest = function (req, res) {<ul class="wikidpad normalindent">res.writeHead(200, {'Content-Type': 'text/plain'});<br class="wikidpad" />
+res.end('Welcome to Node Essential Trainingn');</ul>
+};<br class="wikidpad" />
+<br class="wikidpad" />
+var server = http.createServer(handleRequest);<br class="wikidpad" />
+<br class="wikidpad" />
+server.listen(3000, 'localhost'); <br class="wikidpad" />
+<br class="wikidpad" />
+The node program will never end unless you ask it to, it will constantly listen for new requests on port 3000. As soon as it has a request, it will run the handleRequest function.<br class="wikidpad" />
+<br class="wikidpad" />
+When I build a web server in Node, that server keeps running until I stop it. One of the side effects, is that when I set a variable to a specific value, it will still be set the next time someone reaches the page.<br class="wikidpad" />
+<br class="wikidpad" />
+Node runs all of the code in a program at once, then waits for all callback functions to finish. It's possible to write a callback function that never finishes, which keeps a program running until it's forcibly stopped.<br class="wikidpad" />
+<br class="wikidpad" />
+<b class="wikidpad">Project</b><br class="wikidpad" />
+<br class="wikidpad" />
+The best way to start a project in Node is to create a package.json file. We can use npm to generate a package.json file.<br class="wikidpad" />
+<br class="wikidpad" />
+Create a folder for your project, navigate to your folder in cmd and type npm init<br class="wikidpad" />
+<br class="wikidpad" />
+Fill the questionnaire (you can keep some defaults). test command will be used later to run some unit test, if you don't use it you can leave it blank. Git repository can also be left blank.<br class="wikidpad" />
+<br class="wikidpad" />
+Author: Claudie Larouche &lt;claudielarouche@gmail.com&gt;<br class="wikidpad" />
+<br class="wikidpad" />
+You now have your package.json file!<br class="wikidpad" />
+<br class="wikidpad" />
+<b class="wikidpad">Downloading modules</b><br class="wikidpad" />
+<br class="wikidpad" />
+The Node community provide thousands of modules beyond what's included in Node core. All of the community provided modules are available on npmjs.org.<br class="wikidpad" />
+<br class="wikidpad" />
+npm install --save express (the --save means that we will record the version of express that we're installing as we install it in package.json) A dependencies line was added to package.json<br class="wikidpad" />
+<br class="wikidpad" />
+Now we create a new file called index.js<br class="wikidpad" />
+<br class="wikidpad" />
+Express will allow us to create routes on this application.<br class="wikidpad" />
+<br class="wikidpad" />
+<b class="wikidpad">Common npm commands</b><br class="wikidpad" />
+<br class="wikidpad" />
+npm install -g express (this installs express as a global module)<br class="wikidpad" />
+express airline<br class="wikidpad" />
+<br class="wikidpad" />
+This will create an Airline project for us. (please note that in order for these two steps to work, you actually need to install an older version of express: npm install -g express@3.4.x)<br class="wikidpad" />
+<br class="wikidpad" />
+There are two dependencies now in my airline project, express and jade. Jade is a templating engine that works with express.<br class="wikidpad" />
+<br class="wikidpad" />
+npm install to install the needed modules.<br class="wikidpad" />
+<br class="wikidpad" />
+Thanks to package.json, we can start the app by doing npm start, because package.json contains this:<br class="wikidpad" />
+"scripts": {<ul class="wikidpad normalindent">"start": "node app.js"</ul>
+<ul class="wikidpad normalindent">},<br class="wikidpad" />
+</ul>
+If you are cleaning up your json file and removing all sorts of module, you can then run npm prune to remove those folders from your node_modules folder.<br class="wikidpad" />
+<br class="wikidpad" />
+npm update will update all your dependencies that have a "*" to the latest version, it will also update everything else to the highest acceptable level.<br class="wikidpad" />
+<br class="wikidpad" />
+<b class="wikidpad">building your own module</b><br class="wikidpad" />
+<br class="wikidpad" />
+index.js<br class="wikidpad" />
+var number, origin, destination;<br class="wikidpad" />
+<br class="wikidpad" />
+exports.setNumber = function(num){<ul class="wikidpad normalindent">number = num;</ul>
+}<br class="wikidpad" />
+<br class="wikidpad" />
+exports.setOrigin = function(orig){<ul class="wikidpad normalindent">origin = orig;</ul>
+}<br class="wikidpad" />
+<br class="wikidpad" />
+exports.setDestination = function(dest){<ul class="wikidpad normalindent">destination = dest;</ul>
+}<br class="wikidpad" />
+<br class="wikidpad" />
+exports.getInfo = function(){<ul class="wikidpad normalindent">return {<ul class="wikidpad normalindent">number: number,<br class="wikidpad" />
+origin: origin,<br class="wikidpad" />
+destination: destination</ul>
+}</ul>
+}<br class="wikidpad" />
+<br class="wikidpad" />
+Those are getters and setters and they are set as exports so that I can access them. I put var in front of the variables to make them local instead of global.<br class="wikidpad" />
+<br class="wikidpad" />
+To use the module:<br class="wikidpad" />
+<br class="wikidpad" />
+app.js:<br class="wikidpad" />
+var flight = require('./flight');<br class="wikidpad" />
+<br class="wikidpad" />
+flight.setOrigin('LAX');<br class="wikidpad" />
+flight.setDestination('DCA');<br class="wikidpad" />
+flight.setNumber('363');<br class="wikidpad" />
+<br class="wikidpad" />
+console.log(flight.getInfo());<br class="wikidpad" />
+<br class="wikidpad" />
+    </body>
+</html>

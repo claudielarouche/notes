@@ -1,0 +1,85 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html>
+    <head>
+        <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+        <title>Grunt</title>
+        <link type="text/css" rel="stylesheet" href="appbase.css">
+    </head>
+    <body class="wikidpad">
+<span class="wikidpad parent-nodes">parent nodes: <span class="wikidpad parent-node"><a href="General.html" class="wikidpad">General</a></span><br class="wikidpad" /><br class="wikidpad" /></span>
+<a name=".h0" class="wikidpad"></a><h2 class="wikidpad heading-level2">Grunt</h2>
+<span class="wikidpad property attribute">[camelCaseWordsEnabled: false]</span><br class="wikidpad" />
+<br class="wikidpad" />
+Step 1. Create a package.json file in your main directory<br class="wikidpad" />
+<br class="wikidpad" />
+grunt-contrib-watch: <span class="wikidpad url-link"><a href="https://github.com/gruntjs/grunt-contrib-watch" class="wikidpad">https://github.com/gruntjs/grunt-contrib-watch</a></span><br class="wikidpad" />
+grunt-contrib-less: <span class="wikidpad url-link"><a href="https://github.com/gruntjs/grunt-contrib-less" class="wikidpad">https://github.com/gruntjs/grunt-contrib-less</a></span><br class="wikidpad" />
+grunt-contrib-uglify: <span class="wikidpad url-link"><a href="https://github.com/gruntjs/grunt-contrib-uglify" class="wikidpad">https://github.com/gruntjs/grunt-contrib-uglify</a></span><br class="wikidpad" />
+grunt-contrib-concat: <span class="wikidpad url-link"><a href="https://github.com/gruntjs/grunt-contrib-concat" class="wikidpad">https://github.com/gruntjs/grunt-contrib-concat</a></span><br class="wikidpad" />
+grunt-contrib-cssmin: ??<br class="wikidpad" />
+matchdep: <span class="wikidpad url-link"><a href="https://github.com/tkellen/node-matchdep" class="wikidpad">https://github.com/tkellen/node-matchdep</a></span><br class="wikidpad" />
+<br class="wikidpad" />
+Example of a package.json file for a bootstrap project:<br class="wikidpad" />
+{<ul class="wikidpad normalindent">"name" : "lean-claudie", <br class="wikidpad" />
+"version" : "0.0.1",<br class="wikidpad" />
+"dependencies" : {<ul class="wikidpad normalindent">"grunt" : "~0.4.5",<br class="wikidpad" />
+"grunt-contrib-watch" : "~0.6.1",<br class="wikidpad" />
+"grunt-contrib-less" : "~1.0.0",<br class="wikidpad" />
+"grunt-contrib-uglify" : "~0.7.0",<br class="wikidpad" />
+"grunt-contrib-concat" : "~0.5.0",<br class="wikidpad" />
+"grunt-contrib-cssmin" : "~0.11.0",<br class="wikidpad" />
+"matchdep" : "~0.3.0"		</ul>
+}</ul>
+}<br class="wikidpad" />
+<br class="wikidpad" />
+Step 2. In command line, go to your directory and type npm install. This will run package.json and install the proper dependencies for your project<br class="wikidpad" />
+<br class="wikidpad" />
+Step 3. Create a gruntfile.js file<br class="wikidpad" />
+<br class="wikidpad" />
+Example of a gruntfile.js for a bootstrap project:<br class="wikidpad" />
+module.exports = function(grunt){<ul class="wikidpad normalindent">grunt.loadNpmTasks('grunt-contrib-uglify');<br class="wikidpad" />
+grunt.loadNpmTasks('grunt-contrib-watch');	<br class="wikidpad" />
+grunt.loadNpmTasks('grunt-contrib-less');<br class="wikidpad" />
+grunt.loadNpmTasks('grunt-contrib-concat');<br class="wikidpad" />
+grunt.loadNpmTasks('grunt-contrib-cssmin');<br class="wikidpad" />
+<br class="wikidpad" />
+grunt.initConfig({<ul class="wikidpad normalindent">less: {<ul class="wikidpad normalindent">lessbootstrap: {<ul class="wikidpad normalindent">options: {<ul class="wikidpad normalindent">paths: ["_/css"]</ul>
+},<br class="wikidpad" />
+files: {<ul class="wikidpad normalindent">"_/css/bootstrap.css": "_/components/less/bootstrap.less"</ul>
+}</ul>
+},<br class="wikidpad" />
+lessother: {<ul class="wikidpad normalindent">options: {<ul class="wikidpad normalindent">paths: ["_/css"]</ul>
+},<br class="wikidpad" />
+files: {<ul class="wikidpad normalindent">"_/css/mystyles.css": "_/components/less/_mystyles.less"</ul>
+}</ul>
+}</ul>
+},<br class="wikidpad" />
+concat: {<ul class="wikidpad normalindent">dist: {<ul class="wikidpad normalindent">src: ['_/components/js/jquery.js', '_/components/js/affix.js', '_/components/js/transition.js', '_/components/js/tooltip.js', '_/components/js/alert.js', '_/components/js/button.js', '_/components/js/carousel.js', '_/components/js/collapse.js', '_/components/js/dropdown.js', '_/components/js/modal.js', '_/components/js/popover.js', '_/components/js/scrollspy.js', '_/components/js/tab.js'],<br class="wikidpad" />
+dest: '_/js/bootstrap.js',</ul>
+}</ul>
+},<br class="wikidpad" />
+cssmin: {<ul class="wikidpad normalindent">target: {<ul class="wikidpad normalindent">files: {<ul class="wikidpad normalindent">'_/css/final.css': ['_/css/bootstrap.css', '_/css/mystyles.css']</ul>
+}</ul>
+}</ul>
+},<br class="wikidpad" />
+uglify: {<ul class="wikidpad normalindent">uglifybootstrap: {<ul class="wikidpad normalindent">files: {<ul class="wikidpad normalindent">'_/js/bootstrap.js': ['_/js/bootstrap.js']</ul>
+}//files</ul>
+},<br class="wikidpad" />
+uglifyother: {<ul class="wikidpad normalindent">files: {<ul class="wikidpad normalindent">'_/js/myscript.js': ['_/components/js/_myscript.js']</ul>
+}//files</ul>
+}</ul>
+}, //uglify<br class="wikidpad" />
+watch: {<ul class="wikidpad normalindent">less: {<ul class="wikidpad normalindent">files: ['_/components/less/_mystyles.less'],<br class="wikidpad" />
+tasks: ['less:lessother', 'cssmin']</ul>
+}, //less<br class="wikidpad" />
+uglify: {<ul class="wikidpad normalindent">files: ['_/components/js/_myscript.js'], <br class="wikidpad" />
+tasks: ['uglify:uglifyother']</ul>
+}, //uglify</ul>
+} //watch</ul>
+})//initConfig<br class="wikidpad" />
+grunt.registerTask('default','watch');</ul>
+} //exports<br class="wikidpad" />
+<br class="wikidpad" />
+<br class="wikidpad" />
+That's it! Now you can type grunt in your command line and wait! :)    </body>
+</html>

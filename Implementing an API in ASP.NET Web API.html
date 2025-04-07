@@ -1,0 +1,58 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html>
+    <head>
+        <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+        <title>Implementing an API in ASP.NET Web API</title>
+        <link type="text/css" rel="stylesheet" href="appbase.css">
+    </head>
+    <body class="wikidpad">
+<span class="wikidpad parent-nodes">parent nodes: <span class="wikidpad parent-node"><a href="ASP.html" class="wikidpad">ASP</a></span><br class="wikidpad" /><br class="wikidpad" /></span>
+<a name=".h0" class="wikidpad"></a><h2 class="wikidpad heading-level2">Implementing an API in ASP.NET Web API</h2>
+<span class="wikidpad property attribute">[camelCaseWordsEnabled: false]</span><br class="wikidpad" />
+<br class="wikidpad" />
+HTTP/RPC: Remote Procedure Call <br class="wikidpad" />
+- URI endpoints<br class="wikidpad" />
+- Verbs included in API<br class="wikidpad" />
+- older model<br class="wikidpad" />
+<br class="wikidpad" />
+REST-ful<br class="wikidpad" />
+- URI endpoints<br class="wikidpad" />
+- Resource URI<br class="wikidpad" />
+- HTTP verbs<br class="wikidpad" />
+- Stateless Server<br class="wikidpad" />
+- Content Negotiation<br class="wikidpad" />
+<br class="wikidpad" />
+HATEOAS (Hypermedia as the Engine of Application State)<br class="wikidpad" />
+- Resource URI<br class="wikidpad" />
+- HTTP verbs<br class="wikidpad" />
+- Stateless Server<br class="wikidpad" />
+- Content Negotiation<br class="wikidpad" />
+- Link Relations (Ex. Hypermedia)<br class="wikidpad" />
+(the idea is to extend REST to include hypermedia)<br class="wikidpad" />
+<br class="wikidpad" />
+File &gt; New Project &gt; C# &gt; Web &gt; Web API<br class="wikidpad" />
+<br class="wikidpad" />
+In Global.asax, you will see a function called Application_Start(). This is when your application is sarted up, NOT once per request. There is a number of configurations that happen:<br class="wikidpad" />
+<br class="wikidpad" />
+AreaRegistration.RegisterAllAreas();<br class="wikidpad" />
+GlobalConfiguration.Configure(WebApiConfig.Register);<br class="wikidpad" />
+FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);<br class="wikidpad" />
+RouteConfig.RegisterRoutes(RouteTable.Routes);<br class="wikidpad" />
+BundleConfig.RegisterBundles(BundleTable.Bundles);<br class="wikidpad" />
+<br class="wikidpad" />
+We are interested in this line: GlobalConfiguration.Configure(WebApiConfig.Register);<br class="wikidpad" />
+<br class="wikidpad" />
+If you click on Register and do F12, you will be brought to the function (which resides in a file located under the App_start folder)<br class="wikidpad" />
+<br class="wikidpad" />
+This part configures a default route for the API:<br class="wikidpad" />
+<br class="wikidpad" />
+config.Routes.MapHttpRoute(<ul class="wikidpad normalindent">name: "DefaultApi",<br class="wikidpad" />
+routeTemplate: "api/{controller}/{id}", //CL - mapping<br class="wikidpad" />
+defaults: new { id = RouteParameter.Optional }<br class="wikidpad" />
+</ul>
+This API has creates default controllers located in the Controllers folder (example: ValuesController.cs)<br class="wikidpad" />
+<br class="wikidpad" />
+As you can see from this line: public class ValuesController : ApiController, it is an API controller as opposed to a generic controller.<br class="wikidpad" />
+<br class="wikidpad" />
+So if you look under api/values/ it will use the mapping above to use ValuesController    </body>
+</html>

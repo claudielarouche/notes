@@ -1,0 +1,263 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html>
+    <head>
+        <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+        <title>Google App Engine</title>
+        <link type="text/css" rel="stylesheet" href="appbase.css">
+    </head>
+    <body class="wikidpad">
+<span class="wikidpad parent-nodes">parent nodes: <span class="wikidpad parent-node"><a href="General.html" class="wikidpad">General</a></span><br class="wikidpad" /><br class="wikidpad" /></span>
+<a name=".h0" class="wikidpad"></a><h2 class="wikidpad heading-level2">Google App Engine</h2>
+<span class="wikidpad property attribute">[camelCaseWordsEnabled: false]</span><br class="wikidpad" />
+<br class="wikidpad" />
+Google App Engine:<br class="wikidpad" />
+- Platform as a service (PaaS)<ul class="wikidpad normalindent">-&gt; Generally a Platform as a Service provides the networks, servers, storage, and other services needed to host applications.</ul>
+- Supports:<ul class="wikidpad normalindent">- Web App<br class="wikidpad" />
+- Mobile App<br class="wikidpad" />
+- Games</ul>
+- Offers complete server-side management<br class="wikidpad" />
+- Automatically scales to an unlimited number of users<br class="wikidpad" />
+- Auto-scaling<ul class="wikidpad normalindent">- Instances added as needed<br class="wikidpad" />
+- Databases shared on demand<br class="wikidpad" />
+- Bandwidth expanded when necessary</ul>
+- Great performance<br class="wikidpad" />
+- Tight security with fully sandboxed apps<br class="wikidpad" />
+- Extremely reliable<br class="wikidpad" />
+<br class="wikidpad" />
+Supported languages:<br class="wikidpad" />
+- Java<br class="wikidpad" />
+- Python<br class="wikidpad" />
+- Go ("Experimental" - limited functionality)<br class="wikidpad" />
+- PHP (Preview)<br class="wikidpad" />
+<br class="wikidpad" />
+To work with App Engine, you'll need to choose one of the language options, and install its SDK. <br class="wikidpad" />
+Documentation (including tutorials): <span class="wikidpad url-link"><a href="https://cloud.google.com/appengine/docs" class="wikidpad">https://cloud.google.com/appengine/docs</a></span><br class="wikidpad" />
+SDKs: <span class="wikidpad url-link"><a href="https://cloud.google.com/appengine/downloads" class="wikidpad">https://cloud.google.com/appengine/downloads</a></span><br class="wikidpad" />
+<br class="wikidpad" />
+App enging costs:<br class="wikidpad" />
+- No start-up costs<br class="wikidpad" />
+- No charge limit:<ul class="wikidpad normalindent">- 10 Applications per developer account<br class="wikidpad" />
+- 1 GB storage per application<br class="wikidpad" />
+- 5 million page views per month per application<br class="wikidpad" />
+</ul>
+Other Google Cloud Platform services<br class="wikidpad" />
+- Compute Engine:<ul class="wikidpad normalindent">- For large scale computing needs<br class="wikidpad" />
+- Same infrastructure as Google Search, Gmail, Ads<br class="wikidpad" />
+- VMs on demand (you can specify 1, 2, 4 or 8 core instances. Up to 3.75 GB memory per core)</ul>
+- Cloud Storage:<ul class="wikidpad normalindent">- Global regional hosting<br class="wikidpad" />
+- Fast access<br class="wikidpad" />
+- Guaranteed up-time of 99.95%<br class="wikidpad" />
+- Backup and restore option<br class="wikidpad" />
+- Storage unlimited</ul>
+- BigQuery:<ul class="wikidpad normalindent">- Analyze massive amount of data extremely quickly<br class="wikidpad" />
+- Access via simple UI or REST (Representational State Transfer) interface<br class="wikidpad" />
+- Data storage scales to 100s of TB<br class="wikidpad" />
+- Accessible via client API libraries (Java, .NET, Python, Go, Ruby, PHP, Javascript, etc.)<br class="wikidpad" />
+- SQL-like syntax (NoSQL)</ul>
+- Cloud SQL:<ul class="wikidpad normalindent">- Relational database<br class="wikidpad" />
+- MySQL<br class="wikidpad" />
+- Host in US or EU<br class="wikidpad" />
+- 100 GB storage, 16 GB RAM per instance</ul>
+- Cloud Datastore:<ul class="wikidpad normalindent">- Non-relational database<br class="wikidpad" />
+- NoSQL<br class="wikidpad" />
+- Free up to 50 000 read/write, 200 indexes<br class="wikidpad" />
+- 1 GB data / month</ul>
+- Google Prediction API for trend forecasting<br class="wikidpad" />
+- Google Translate API<br class="wikidpad" />
+<br class="wikidpad" />
+<b class="wikidpad">Quotas</b><br class="wikidpad" />
+<br class="wikidpad" />
+- Safety Quotas<ul class="wikidpad normalindent">- Daily (replenished at midnight, Pacific time)<br class="wikidpad" />
+- Per-minute</ul>
+- Billable quotas<br class="wikidpad" />
+<br class="wikidpad" />
+<span class="wikidpad url-link"><a href="https://cloud.google.com/appengine/docs/quotas" class="wikidpad">https://cloud.google.com/appengine/docs/quotas</a></span><br class="wikidpad" />
+<br class="wikidpad" />
+Project Name: App Engine Lynda 001<br class="wikidpad" />
+ID: crack-cogency-797<br class="wikidpad" />
+URL: crack-cogency-797.appspot.com<br class="wikidpad" />
+<br class="wikidpad" />
+In the console (<span class="wikidpad url-link"><a href="https://console.developers.google.com" class="wikidpad">https://console.developers.google.com</a></span>) under APIs &amp; Auth &gt; API, you will find a list of all the Google Services you can have access to along with the limits. <br class="wikidpad" />
+<br class="wikidpad" />
+Turn on URL shortener API.<br class="wikidpad" />
+<br class="wikidpad" />
+<b class="wikidpad">GIT</b><br class="wikidpad" />
+<br class="wikidpad" />
+You can connect Google Cloud with GIT under Source Code &gt; Developer Tools (I think)<br class="wikidpad" />
+<br class="wikidpad" />
+<b class="wikidpad">Creating apps to run PHP on Google App Engine</b><br class="wikidpad" />
+<br class="wikidpad" />
+Step 1: Install the SDK<br class="wikidpad" />
+Step 2: Create new folder somewhere<br class="wikidpad" />
+Step 3: Create main.php (this is your php code)<br class="wikidpad" />
+Step 4: Create app.yaml (this is your configuration file)<br class="wikidpad" />
+<br class="wikidpad" />
+application: firstapp<br class="wikidpad" />
+version: 1<br class="wikidpad" />
+runtime: php<br class="wikidpad" />
+api_version: 1<br class="wikidpad" />
+<br class="wikidpad" />
+handlers: <br class="wikidpad" />
+- url: /.*<ul class="wikidpad normalindent">script: main.php<br class="wikidpad" />
+</ul>
+Step 5: In Google App Engine Launcher, click file &gt; Add existing application<br class="wikidpad" />
+Step 6: Browse to the folder where your main.php and app.yaml files are located and click OK<br class="wikidpad" />
+Step 7: Leave default values for port stuff<br class="wikidpad" />
+Step 8: Click Add<br class="wikidpad" />
+Step 9: Select the app, click Run<br class="wikidpad" />
+Step 10: Once the icon becomes green, go to localhost:8080/ in Google Chrome and admire your beautiful app!<br class="wikidpad" />
+<br class="wikidpad" />
+<b class="wikidpad">To handle images and css files</b><br class="wikidpad" />
+<br class="wikidpad" />
+Here is your app.yaml configuration to handle images and css:<br class="wikidpad" />
+<br class="wikidpad" />
+application: static-files-demo<br class="wikidpad" />
+version: 1<br class="wikidpad" />
+runtime: php<br class="wikidpad" />
+api_version: 1<br class="wikidpad" />
+<br class="wikidpad" />
+handlers:<br class="wikidpad" />
+- url: /styles<ul class="wikidpad normalindent">static_dir: styles<br class="wikidpad" />
+</ul>
+- url: /images<ul class="wikidpad normalindent">static_dir: images<br class="wikidpad" />
+</ul>
+- url: /.*<ul class="wikidpad normalindent">script: main.php<br class="wikidpad" />
+</ul>
+To accept only some file types for images, change to this:<br class="wikidpad" />
+<br class="wikidpad" />
+- url: /images/(.*\.(gif|png|jpg))<ul class="wikidpad normalindent">static_files: images/\1<br class="wikidpad" />
+</ul>
+<b class="wikidpad">Connecting to a MySQL database</b><br class="wikidpad" />
+<br class="wikidpad" />
+See the app called dbapp under Dropbox\New career\Web Designer\App Engine\aeapps\dbapp<br class="wikidpad" />
+<br class="wikidpad" />
+<b class="wikidpad">Deploy to app engine</b><br class="wikidpad" />
+<br class="wikidpad" />
+Step 1: Register your app in Google Cloud: <span class="wikidpad url-link"><a href="https://appengine.google.com" class="wikidpad">https://appengine.google.com</a></span> Click on Create new application and fill the information.<br class="wikidpad" />
+Step 2: Go in your app.yaml file and ensure that your app ID both on Google and on app.yaml are identical<br class="wikidpad" />
+Step 3: All files will need to be transfered to Google. Anything that looks like this (with static_dir) will be automatically transfered<br class="wikidpad" />
+- url: /styles<ul class="wikidpad normalindent">static_dir: styles<br class="wikidpad" />
+</ul>
+But if you used a regular expression such as this, then you will have to add an upload command to app.yaml:<br class="wikidpad" />
+- url: /images/(.*\.(gif|png|jpg))<ul class="wikidpad normalindent">static_files: images/\1<br class="wikidpad" />
+</ul>
+Basically just add this line under static_file:   upload: images/(.*\.(gif|png|jpg))<br class="wikidpad" />
+It is an exact copy of the first line, minus the first /<br class="wikidpad" />
+<br class="wikidpad" />
+Step 4: Go to Google App Engine Launcher, select the app you want to deploy to Google and click Deploy<br class="wikidpad" />
+<br class="wikidpad" />
+Step 5: Sign in to your account<br class="wikidpad" />
+<br class="wikidpad" />
+==App engine and Python==<br class="wikidpad" />
+<br class="wikidpad" />
+Step 1: create main.py<br class="wikidpad" />
+Step 2: create app.yaml<br class="wikidpad" />
+<br class="wikidpad" />
+application: firstapp<br class="wikidpad" />
+version: 1<br class="wikidpad" />
+runtime: python<br class="wikidpad" />
+api_version: 1<br class="wikidpad" />
+threadsafe: true<br class="wikidpad" />
+<br class="wikidpad" />
+handlers:<br class="wikidpad" />
+- url: /.*<ul class="wikidpad normalindent">script: main.application<br class="wikidpad" />
+</ul>
+Note that script is main.application NOT main.py<br class="wikidpad" />
+<br class="wikidpad" />
+==Incorporating HTML in Python code==<br class="wikidpad" />
+<br class="wikidpad" />
+Step 1: Modify app.yaml to add libraries<br class="wikidpad" />
+<br class="wikidpad" />
+application: firstapp<br class="wikidpad" />
+version: 1<br class="wikidpad" />
+runtime: python27<br class="wikidpad" />
+api_version: 1<br class="wikidpad" />
+threadsafe: true<br class="wikidpad" />
+<br class="wikidpad" />
+libraries:<br class="wikidpad" />
+- name: jinja2<ul class="wikidpad normalindent">version: latest<br class="wikidpad" />
+</ul>
+handlers:<br class="wikidpad" />
+- url: /.*<ul class="wikidpad normalindent">script: main.application<br class="wikidpad" />
+</ul>
+Step 2: Ok I didn't quite get it but change the code in main.py to this:<br class="wikidpad" />
+<br class="wikidpad" />
+import webapp2<br class="wikidpad" />
+<br class="wikidpad" />
+import os<br class="wikidpad" />
+import jinja2<br class="wikidpad" />
+<br class="wikidpad" />
+jinja_environment = jinja2.Environment(autoescape=True,<ul class="wikidpad normalindent">loader=jinja2.FileSystemLoader(os.path.join(os.path.dirname(<i class="wikidpad">_file_</i>))))<br class="wikidpad" />
+</ul>
+class MainPage(webapp2.RequestHandler):<ul class="wikidpad normalindent">def get(self):</ul>
+<ul class="wikidpad normalindent">template_values = {<ul class="wikidpad normalindent">'welcome':'Welcome to Roux Academy'</ul>
+}<br class="wikidpad" />
+<br class="wikidpad" />
+template = jinja_environment.get_template('index.htm')<ul class="wikidpad normalindent">self.response.write(template.render(template_values))<br class="wikidpad" />
+</ul>
+</ul>
+application = webapp2.WSGIApplication([<ul class="wikidpad normalindent">('/',MainPage),<br class="wikidpad" />
+], debug=True)<br class="wikidpad" />
+<br class="wikidpad" />
+</ul>
+The full solution is here: Dropbox\New career\Web Designer\App Engine\pyapps\test-py-001 <br class="wikidpad" />
+(actually it doesn't really work so why don't you just ignore :)<br class="wikidpad" />
+<br class="wikidpad" />
+==Cloud SQL==<br class="wikidpad" />
+<br class="wikidpad" />
+- Fully managed relational database service<br class="wikidpad" />
+- Uses MySQL database<br class="wikidpad" />
+- Data replicated across multiple data centres<br class="wikidpad" />
+- You can import existing databases<br class="wikidpad" />
+- You can export to mysqldump format<br class="wikidpad" />
+- Allows you to create multiple db instances<br class="wikidpad" />
+- 100 GB storage per instance<br class="wikidpad" />
+- 16 GB RAM per instance<br class="wikidpad" />
+- Billing must be enabled<br class="wikidpad" />
+<br class="wikidpad" />
+Restrictions:<br class="wikidpad" />
+- User-defined functions not supported<br class="wikidpad" />
+- MySQL replication not supported<br class="wikidpad" />
+- MySQL not supported: <ul class="wikidpad normalindent">- LOAD DATA INFILE<br class="wikidpad" />
+- SELECT ... INTO OUTFILE/DUMPFILE<br class="wikidpad" />
+- INSTALL/UNINSTALL PLUGIN<br class="wikidpad" />
+- CREATE FUNCTION<br class="wikidpad" />
+- LOAD_FILE()<br class="wikidpad" />
+</ul>
+Import steps:<br class="wikidpad" />
+1. Create project<br class="wikidpad" />
+2. Enable billing<br class="wikidpad" />
+3. Store SQL file in cloud storage<br class="wikidpad" />
+4. Establish instance (storage &gt; cloud SQL)<ul class="wikidpad normalindent">a. Click create new instance<br class="wikidpad" />
+b. Click on the instance ID<br class="wikidpad" />
+c. Click import (<bucket name>/<file name>)<br class="wikidpad" />
+d. Go to operations tab to make sure your import was done</ul>
+5. Import data<br class="wikidpad" />
+<br class="wikidpad" />
+In PHP, 3 connections are supported:<br class="wikidpad" />
+- PDO<br class="wikidpad" />
+- mysql_connect<br class="wikidpad" />
+- mysqli<br class="wikidpad" />
+<br class="wikidpad" />
+You will connect via a socket<br class="wikidpad" />
+<br class="wikidpad" />
+In the examples below,<br class="wikidpad" />
+- App ID = hello-php<br class="wikidpad" />
+- Database instance ID = my-cloudsql-instance<br class="wikidpad" />
+<br class="wikidpad" />
+PDO:<br class="wikidpad" />
+$db = new PDO('mysql:unix_socket=/cloudsql/hello-php:my-cloudsql-instance;charset=utf8', '<username>', '<password>');<br class="wikidpad" />
+<br class="wikidpad" />
+mysql_connect:<br class="wikidpad" />
+$conn = my_sqlconnect(":/cloudsql/hello-php:my-cloudsql-instance", "<username>", "<password>");<br class="wikidpad" />
+<br class="wikidpad" />
+mysqli:<br class="wikidpad" />
+$sql = new mysqli(null, "<username>", "<password>", "<database>", null, "/cloudsql/hello-php:my-cloudsql-instance"); //may be wrong, not sure<br class="wikidpad" />
+<br class="wikidpad" />
+==Custom domain==<br class="wikidpad" />
+<br class="wikidpad" />
+1. Go in admin console of one of your projects on which you have enabled billing<br class="wikidpad" />
+2. Click on Billing &amp; Settings<br class="wikidpad" />
+3. Click on App Engine Settings at the bottom<br class="wikidpad" />
+4. Click on Custom Domains    </body>
+</html>

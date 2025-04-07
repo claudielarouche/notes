@@ -1,0 +1,207 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html>
+    <head>
+        <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+        <title>Bootstrap</title>
+        <link type="text/css" rel="stylesheet" href="appbase.css">
+    </head>
+    <body class="wikidpad">
+<span class="wikidpad parent-nodes">parent nodes: <span class="wikidpad parent-node"><a href="CSS.html" class="wikidpad">CSS</a></span><br class="wikidpad" /><br class="wikidpad" /></span>
+<a name=".h0" class="wikidpad"></a><h2 class="wikidpad heading-level2">Bootstrap</h2>
+<span class="wikidpad property attribute">[camelCaseWordsEnabled: false]</span><br class="wikidpad" />
+<br class="wikidpad" />
+Step 1: Create a new folder somewhere for your new project<br class="wikidpad" />
+<br class="wikidpad" />
+Step 2: Follow instructions below to download Bootstrap<br class="wikidpad" />
+<br class="wikidpad" />
+<b class="wikidpad">Download Bootstrap from github</b><br class="wikidpad" />
+<br class="wikidpad" />
+1. Go to <span class="wikidpad url-link"><a href="http://getbootstrap.com/" class="wikidpad">http://getbootstrap.com/</a></span> and click on github at the bottom of the screen (which should bring you here: <span class="wikidpad url-link"><a href="https://github.com/twbs/bootstrap" class="wikidpad">https://github.com/twbs/bootstrap</a></span>)<br class="wikidpad" />
+2. Click on the download ZIP button. Downloading the github version should ensure you have the latest bootstrap version, also you will have more content<br class="wikidpad" />
+3. Unzip bootstrap<br class="wikidpad" />
+4. In your project folder, create two folders, one called "_" and one called "images"<br class="wikidpad" />
+5. Inside _ create a folder called components<br class="wikidpad" />
+6. Copy the fonts folder to _ folder<br class="wikidpad" />
+7. Copy the js and less folders to the components folder<br class="wikidpad" />
+8. Open the js folder and get rid of the test folder<br class="wikidpad" />
+9. Inside _ folder, create two folders: css and js. In these folders, we will be put the compressed versions of the LESS and js documents<br class="wikidpad" />
+10. Download jquery (bootstrap needs jquery to work)at <span class="wikidpad url-link"><a href="http://jquery.com/" class="wikidpad">http://jquery.com/</a></span> You can download uncompressed since we will be compressing all javascript files later<br class="wikidpad" />
+11. Rename the jquery file into jquery.js<br class="wikidpad" />
+<br class="wikidpad" />
+<b class="wikidpad">Compressing files</b><br class="wikidpad" />
+<br class="wikidpad" />
+1. Create another file in the folder _/components/less called _mystyles.less<br class="wikidpad" />
+2. Create another file in the folder _/components/js called _myscript.js<br class="wikidpad" />
+3. Go to grunt.txt in the documentation and follow the steps to get grunt going<br class="wikidpad" />
+<br class="wikidpad" />
+The following steps are to be done in cmd:<br class="wikidpad" />
+<br class="wikidpad" />
+4. Type grunt less:lessbootstrap (this will compress the bootstrap files)<br class="wikidpad" />
+5. Type grunt cssmin (this will minify the bootstrap css)<br class="wikidpad" />
+6. Type grunt concat (this will concatenate all javascript files)<br class="wikidpad" />
+7. Type grunt uglify:uglifybootstrap (this will make the bootstrap.js file all on one line)<br class="wikidpad" />
+8. Type grunt (now your grunt is in wait mode and will make necessary changes as soon as _myscript.js or _mystyles.less are updated<br class="wikidpad" />
+<br class="wikidpad" />
+Now you can go to bootstrap's website (<span class="wikidpad url-link"><a href="http://www.getboostrap.com" class="wikidpad">http://www.getboostrap.com</a></span>) and under getting started, you can grab the starting HTML code. You will have to update the link to the bootstrap location properly though.<br class="wikidpad" />
+<br class="wikidpad" />
+<b class="wikidpad">Building the structure of the page</b><br class="wikidpad" />
+<br class="wikidpad" />
+It's a good idea to give an ID to each page so that they are easy to target in CSS<br class="wikidpad" />
+&lt;body id="home"&gt;<br class="wikidpad" />
+<br class="wikidpad" />
+&lt;section class="container"&gt;<ul class="wikidpad normalindent">&lt;div class="content row"&gt;<ul class="wikidpad normalindent">&lt;section class="main col col-lg-8"&gt;</ul>
+</ul>
+<ul class="wikidpad normalindent">&lt;/section&gt; &lt;!-- main--&gt;<br class="wikidpad" />
+<br class="wikidpad" />
+&lt;section class="sidebar col col-lg-4"&gt;<br class="wikidpad" />
+&lt;/section&gt;&lt;!-- sidebar--&gt;</ul>
+<ul class="wikidpad normalindent">&lt;/div&gt; &lt;!-- content--&gt;</ul>
+&lt;/section&gt; &lt;!-- container --&gt;<br class="wikidpad" />
+<br class="wikidpad" />
+Row is the technical term that you use in Bootstrap to define each row of your document. Content is a class that I'm defining to identify the main section of the code that's going to allow us to center this main layout on the page.<br class="wikidpad" />
+<br class="wikidpad" />
+The two sections (col-lg-8 and col-lg-4) they have to add up to 12<br class="wikidpad" />
+<br class="wikidpad" />
+I like to alternate between divs and sections to make things easier to read<br class="wikidpad" />
+<br class="wikidpad" />
+Now that we have the structure in place, we can copy paste index.php to create all our other documents (about.php etc. etc.)<br class="wikidpad" />
+<br class="wikidpad" />
+The reason why we named all our files with the php extension is so that we can call the header and footer from another document every time (yay!)<br class="wikidpad" />
+&lt;?php include "_/components/php/header.php"; ?&gt;<br class="wikidpad" />
+<br class="wikidpad" />
+Now I can create a navbar like this:<br class="wikidpad" />
+&lt;nav class="navbar navbar-default"&gt;<ul class="wikidpad normalindent">&lt;div class="container-fluid"&gt;<ul class="wikidpad normalindent">&lt;div class="navbar-header"&gt;<ul class="wikidpad normalindent">&lt;div class="navbar-header"&gt;<ul class="wikidpad normalindent">&lt;button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1"&gt;<br class="wikidpad" />
+&lt;span class="sr-only"&gt;Toggle navigation&lt;/span&gt;<br class="wikidpad" />
+&lt;span class="icon-bar"&gt;&lt;/span&gt;<br class="wikidpad" />
+&lt;span class="icon-bar"&gt;&lt;/span&gt;<br class="wikidpad" />
+&lt;span class="icon-bar"&gt;&lt;/span&gt;<br class="wikidpad" />
+&lt;/button&gt;</ul>
+&lt;/div&gt;<br class="wikidpad" />
+&lt;div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1"&gt;<ul class="wikidpad normalindent">&lt;ul class="nav navbar-nav"&gt;<ul class="wikidpad normalindent">&lt;li&gt;&lt;a href="index.php"&gt;Home&lt;/a&gt;&lt;/li&gt;<br class="wikidpad" />
+&lt;li&gt;&lt;a href="venuetravel.php"&gt;Venue/Travel&lt;/a&gt;&lt;/li&gt;<br class="wikidpad" />
+&lt;li&gt;&lt;a href="schedule.php"&gt;Schedule&lt;/a&gt;&lt;/li&gt;<br class="wikidpad" />
+&lt;li&gt;&lt;a href="Register.php"&gt;Register&lt;/a&gt;&lt;/li&gt;</ul>
+&lt;/ul&gt;</ul>
+&lt;/div&gt;</ul>
+&lt;/div&gt;</ul>
+&lt;/div&gt;</ul>
+&lt;/nav&gt;	<br class="wikidpad" />
+<br class="wikidpad" />
+Other options:<br class="wikidpad" />
+- If you add a class of navbar-fixed-top to the top div, it will remain at the top all the time.<br class="wikidpad" />
+- If you add a class of active to one of the li element, it will mark it as active<br class="wikidpad" />
+- If you add a class of navbar-inverse to the top div, the navbar will become black<br class="wikidpad" />
+- the div at the top can be a div or section, it doesn't matter<br class="wikidpad" />
+<br class="wikidpad" />
+To make an element a drop down:<br class="wikidpad" />
+&lt;li class="dropdown"&gt;<ul class="wikidpad normalindent">&lt;a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"&gt;Artists &lt;span class="caret"&gt;&lt;/span&gt;&lt;/a&gt;<br class="wikidpad" />
+&lt;ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu"&gt;<ul class="wikidpad normalindent">&lt;li&gt;&lt;a tableindex="-1" href="artists.php"&gt;All artists&lt;/a&gt;&lt;/li&gt;										</ul>
+&lt;/ul&gt;</ul>
+&lt;/li&gt;<br class="wikidpad" />
+<br class="wikidpad" />
+To add a divider: <br class="wikidpad" />
+&lt;li class="divider"&gt;&lt;/li&gt;<br class="wikidpad" />
+<br class="wikidpad" />
+To make the dropdown drop down automatically, add the following code to _myscript.js:<br class="wikidpad" />
+$(function(){<ul class="wikidpad normalindent">//Make menu drop down on hover<br class="wikidpad" />
+<br class="wikidpad" />
+$('ul.nav li.dropdown').hover(function(){<ul class="wikidpad normalindent">$('.dropdown-menu', this).fadeIn();</ul>
+}, function(){<ul class="wikidpad normalindent">$('.dropdown-menu', this).fadeOut('fast');</ul>
+}); //hover</ul>
+}); //on jQuery loads<br class="wikidpad" />
+<br class="wikidpad" />
+Highlight the current nav:<br class="wikidpad" />
+$("#home a:contains('Home')").parent().addClass('active'); //double quotation mark because there is a single quote around the word Home<br class="wikidpad" />
+$("#schedule a:contains('Schedule')").parent().addClass('active');<br class="wikidpad" />
+$("#artists a:contains('Artists')").parent().addClass('active');<br class="wikidpad" />
+$("#venuetravel a:contains('Venue/Travel')").parent().addClass('active');<br class="wikidpad" />
+$("#register a:contains('Register')").parent().addClass('active');<br class="wikidpad" />
+<br class="wikidpad" />
+And then we add the footer, also called by php<br class="wikidpad" />
+<br class="wikidpad" />
+Now we create a carousel! Add a new php document called snippet-carousel.php<br class="wikidpad" />
+&lt;div id="myCarousel" class="carousel slide" data-ride="carousel"&gt;<ul class="wikidpad normalindent">&lt;!--Indicators --&gt;<br class="wikidpad" />
+&lt;ol class="carousel-indicators"&gt;<ul class="wikidpad normalindent">&lt;li data-target="#myCarousel" data-slide-to="0" class="active"&gt;&lt;/li&gt;<br class="wikidpad" />
+&lt;li data-target="#myCarousel" data-slide-to="1"&gt;&lt;/li&gt;<br class="wikidpad" />
+&lt;li data-target="#myCarousel" data-slide-to="2"&gt;&lt;/li&gt;<br class="wikidpad" />
+&lt;li data-target="#myCarousel" data-slide-to="3"&gt;&lt;/li&gt;<br class="wikidpad" />
+&lt;li data-target="#myCarousel" data-slide-to="4"&gt;&lt;/li&gt;</ul>
+&lt;/ol&gt;<br class="wikidpad" />
+<br class="wikidpad" />
+&lt;!-- Wrapper for slides --&gt;<br class="wikidpad" />
+&lt;section class="carousel-inner"&gt;<ul class="wikidpad normalindent">&lt;div class="item active"&gt;<ul class="wikidpad normalindent">&lt;img src="images/carousel/seattle_skyline.jpg" alt="Photo of Seattle Skyline"&gt;</ul>
+&lt;/div&gt;<br class="wikidpad" />
+&lt;div class="item"&gt;<ul class="wikidpad normalindent">&lt;img src="images/carousel/jewelry_workshop.jpg" alt="Photo of Jewelry Workshop"&gt;</ul>
+&lt;/div&gt;<br class="wikidpad" />
+&lt;div class="item"&gt;<ul class="wikidpad normalindent">&lt;img src="images/carousel/painting_workshop.jpg" alt="Photo of Painting Workshop"&gt;</ul>
+&lt;/div&gt;<br class="wikidpad" />
+&lt;div class="item"&gt;<ul class="wikidpad normalindent">&lt;img src="images/carousel/pottery_workshop.jpg" alt="Photo of Pottery Workshop"&gt;</ul>
+&lt;/div&gt;<br class="wikidpad" />
+&lt;div class="item"&gt;<ul class="wikidpad normalindent">&lt;img src="images/carousel/quicksketch_workshop.jpg" alt="Photo of Quicksketch Workshop"&gt;</ul>
+&lt;/div&gt;</ul>
+&lt;/section&gt;<br class="wikidpad" />
+&lt;!-- Controls --&gt;<br class="wikidpad" />
+&lt;a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev"&gt;<ul class="wikidpad normalindent">&lt;span class="glyphicon glyphicon-chevron-left"&gt;&lt;/span&gt;</ul>
+&lt;/a&gt;<br class="wikidpad" />
+&lt;a class="right carousel-control" href="#myCarousel" role="button" data-slide="next"&gt;<ul class="wikidpad normalindent">&lt;span class="glyphicon glyphicon-chevron-right"&gt;&lt;/span&gt;</ul>
+&lt;/a&gt;</ul>
+&lt;/div&gt;<br class="wikidpad" />
+<br class="wikidpad" />
+Bootstrap allows you to make certain things visible only when the site is visited by certain device sizes: <span class="wikidpad url-link"><a href="http://getbootstrap.com/css/#responsive-utilities" class="wikidpad">http://getbootstrap.com/css/#responsive-utilities</a></span><br class="wikidpad" />
+<br class="wikidpad" />
+Example, this paragraph will not appear on a phone: &lt;p class="hidden-xs"&gt;<br class="wikidpad" />
+<br class="wikidpad" />
+Buttons: <span class="wikidpad url-link"><a href="http://getbootstrap.com/css/#buttons" class="wikidpad">http://getbootstrap.com/css/#buttons</a></span><br class="wikidpad" />
+Example:<br class="wikidpad" />
+&lt;a href="artists.php" class="btn btn-primary"&gt;About the artists&lt;/a&gt;<br class="wikidpad" />
+<br class="wikidpad" />
+Tooltips: <span class="wikidpad url-link"><a href="http://getbootstrap.com/javascript/#tooltips" class="wikidpad">http://getbootstrap.com/javascript/#tooltips</a></span><br class="wikidpad" />
+Example:<br class="wikidpad" />
+&lt;a href="artists.php#Barot_Bellingham"&gt;&lt;img data-toggle="tooltip" data-original-title="Barot Bellingham" src="images/artists/Barot_Bellingham_tn.jpg" alt="Photo of Barot Bellingham"&gt;&lt;/a&gt;<br class="wikidpad" />
+<br class="wikidpad" />
+Must add this line to _myscript.js: $('<span class="wikidpad property attribute">[data-toggle: tooltip]</span>').tooltip({animation: true})<br class="wikidpad" />
+<br class="wikidpad" />
+Media indent (image next to the text): <span class="wikidpad url-link"><a href="http://getbootstrap.com/components/#media" class="wikidpad">http://getbootstrap.com/components/#media</a></span><br class="wikidpad" />
+media-left must be placed BEFORE media-body, media-right must be placed AFTER media-body<br class="wikidpad" />
+<br class="wikidpad" />
+Example:<br class="wikidpad" />
+&lt;article class="aboutthevenue media"&gt;<ul class="wikidpad normalindent">&lt;h2&gt;About the venue&lt;/h2&gt;	<br class="wikidpad" />
+&lt;div class="media-body"&gt;<ul class="wikidpad normalindent">&lt;p&gt;Paragraph 1&lt;/p&gt;<br class="wikidpad" />
+&lt;p&gt;Paragraph 2&lt;/p&gt;</ul>
+&lt;/div&gt;<br class="wikidpad" />
+&lt;a class="media-right" href="venuetravel.php"&gt;<ul class="wikidpad normalindent">&lt;img src="images/hotels/contempo.jpg" alt="Photo of Hotel Contempo"&gt;</ul>
+&lt;/a&gt;</ul>
+&lt;/article&gt;<br class="wikidpad" />
+<br class="wikidpad" />
+Modals: <span class="wikidpad url-link"><a href="http://getbootstrap.com/javascript/#modals" class="wikidpad">http://getbootstrap.com/javascript/#modals</a></span><br class="wikidpad" />
+<br class="wikidpad" />
+See the code in _myscript.js and in aside-lastyear<br class="wikidpad" />
+<br class="wikidpad" />
+Accordion (also called Collapse): <span class="wikidpad url-link"><a href="http://getbootstrap.com/javascript/#collapse" class="wikidpad">http://getbootstrap.com/javascript/#collapse</a></span><br class="wikidpad" />
+<br class="wikidpad" />
+Please see aside-accordion.php<br class="wikidpad" />
+<br class="wikidpad" />
+Ok so now we're building the other pages<br class="wikidpad" />
+<br class="wikidpad" />
+Tabs: <span class="wikidpad url-link"><a href="http://getbootstrap.com/javascript/#tabs" class="wikidpad">http://getbootstrap.com/javascript/#tabs</a></span><br class="wikidpad" />
+<br class="wikidpad" />
+Have a look at the article-schedule page. Also we needed to add something in _myscript.js so that when you're in the home page and you click on a day, it brings you to the proper tab<br class="wikidpad" />
+<br class="wikidpad" />
+Scrollspy: <span class="wikidpad url-link"><a href="http://getbootstrap.com/javascript/#scrollspy" class="wikidpad">http://getbootstrap.com/javascript/#scrollspy</a></span> and <span class="wikidpad url-link"><a href="http://getbootstrap.com/javascript/#affix" class="wikidpad">http://getbootstrap.com/javascript/#affix</a></span><br class="wikidpad" />
+Make sure you style the "active" element eh? (see article-artistlist.php and artists.php)<br class="wikidpad" />
+<br class="wikidpad" />
+Forms: <span class="wikidpad url-link"><a href="http://getbootstrap.com/css/#forms" class="wikidpad">http://getbootstrap.com/css/#forms</a></span><br class="wikidpad" />
+<br class="wikidpad" />
+<b class="wikidpad">LESS</b><br class="wikidpad" />
+<br class="wikidpad" />
+<span class="wikidpad url-link"><a href="http://lesscss.org/" class="wikidpad">http://lesscss.org/</a></span><br class="wikidpad" />
+<br class="wikidpad" />
+You can update the variables.less file to personalize the colours and the look of your website.<br class="wikidpad" />
+<br class="wikidpad" />
+Now we are going to play with _mystyles.less<br class="wikidpad" />
+<br class="wikidpad" />
+Maybe we could add:<br class="wikidpad" />
+.navbar {<br class="wikidpad" />
+border-radius: 0px;<br class="wikidpad" />
+}    </body>
+</html>

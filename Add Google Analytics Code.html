@@ -1,0 +1,60 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html>
+    <head>
+        <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+        <title>Add Google Analytics Code</title>
+        <link type="text/css" rel="stylesheet" href="appbase.css">
+    </head>
+    <body class="wikidpad">
+<span class="wikidpad parent-nodes">parent nodes: <span class="wikidpad parent-node"><a href="Wordpress.html" class="wikidpad">Wordpress</a></span><br class="wikidpad" /><br class="wikidpad" /></span>
+<a name=".h0" class="wikidpad"></a><h2 class="wikidpad heading-level2">Add Google Analytics Code</h2>
+<span class="wikidpad property attribute">[camelCaseWordsEnabled: false]</span><br class="wikidpad" />
+<br class="wikidpad" />
+1. Login to your Google Analytics Account<br class="wikidpad" />
+This tutorial assumes you’ve already signed up for Google Analytics. If you haven’t already got one, it only takes a second to sign up, especially if you’ve already got an account with Google. Head to the Google Analytics site and create a new account.<br class="wikidpad" />
+After you’ve signed up, you’ll be given a piece of Javascript code to add to your site.<br class="wikidpad" />
+<br class="wikidpad" />
+After signing up for Google Analytics, you’ll be given some code to put in your site.<br class="wikidpad" />
+<br class="wikidpad" />
+2. Add the Google Analytics Code to Your WordPress Theme<br class="wikidpad" />
+<br class="wikidpad" />
+Copy the tracking code. Go to your WordPress Admin and then Appearance &gt; Editor.<br class="wikidpad" />
+Open your theme’s header.php file and directory underneath the &lt; body &gt; tag, paste the tracking code. Click “Update File”.<br class="wikidpad" />
+Add the tracking code directly below the &lt;body&gt; tag.<br class="wikidpad" />
+<br class="wikidpad" />
+3. Check Analytics is Working On Your Site<br class="wikidpad" />
+<br class="wikidpad" />
+Receiving data<br class="wikidpad" />
+Once you’ve insert the tracking code into your theme, your Google Analytics tracking should change.<br class="wikidpad" />
+Go back to your Google Analytics account. Click on “Admin” at the top of the page and under “Property” choose your site and then click “Tracking Info”.<br class="wikidpad" />
+If the Tracking Status is “Receiving Data,” then you’ve successfully added Google Analytics to your site.<br class="wikidpad" />
+You can now click on the “Reporting” tab at the top of the page to see your site’s analytics overview. It may take Google up to 12-24 hours to start providing you with site stats.<br class="wikidpad" />
+<br class="wikidpad" />
+<br class="wikidpad" />
+<a name=".h1449" class="wikidpad"></a><h3 class="wikidpad heading-level3">From a different document</h3>
+There are 3 ways to install Google analytics in WordPress. Direct paste, functions.php, and plugins.<br class="wikidpad" />
+<br class="wikidpad" />
+<b class="wikidpad">Plugins Method (Recommended)</b><br class="wikidpad" />
+There are tons of plugins available to add Google Analytics to your site. However, it is probably best to just use a simple light-weight plugin like:<br class="wikidpad" />
+Insert Header and Footer (<span class="wikidpad url-link"><a href="https://wordpress.org/plugins/insert-headers-and-footers/" class="wikidpad">https://wordpress.org/plugins/insert-headers-and-footers/</a></span>)<br class="wikidpad" />
+<br class="wikidpad" />
+Paste the Google Analytics code in the plugin’s setting page.<br class="wikidpad" />
+<br class="wikidpad" />
+<b class="wikidpad">Direct Paste Method</b><br class="wikidpad" />
+<br class="wikidpad" />
+Copy the code that you received in Step 6, and paste it in your theme’s header.php right after the <body> tag.<br class="wikidpad" />
+<br class="wikidpad" />
+<b class="wikidpad">Functions.php Method</b><br class="wikidpad" />
+<br class="wikidpad" />
+Note: only use this if you know what you are doing.<br class="wikidpad" />
+<br class="wikidpad" />
+Add the following code in your theme’s functions.php file and don’t forget to paste your Google Analytics code from Step 6 here. Before you paste it, please make sure that you have read our Beginner’s Guide to Pasting Snippets from the Web.<br class="wikidpad" />
+<br class="wikidpad" />
+&lt;?php<br class="wikidpad" />
+add_action('wp_footer', 'add_googleanalytics');<br class="wikidpad" />
+function add_googleanalytics() { ?&gt;<br class="wikidpad" />
+// Paste your Google Analytics code from Step 6 here<br class="wikidpad" />
+&lt;?php } ?&gt;<br class="wikidpad" />
+<br class="wikidpad" />
+You can now click on the Reporting tab in Google Analytics to see your site’s analytics overview. It takes Google up to 12 – 24 hours to start providing you with the awesome site stats that you need.    </body>
+</html>

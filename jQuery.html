@@ -1,0 +1,675 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html>
+    <head>
+        <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+        <title>jQuery</title>
+        <link type="text/css" rel="stylesheet" href="appbase.css">
+    </head>
+    <body class="wikidpad">
+<span class="wikidpad parent-nodes">parent nodes: <span class="wikidpad parent-node"><a href="Javascript.html" class="wikidpad">Javascript</a></span><br class="wikidpad" /><br class="wikidpad" /></span>
+<a name=".h0" class="wikidpad"></a><h2 class="wikidpad heading-level2">j Query</h2>
+<span class="wikidpad property attribute">[camelCaseWordsEnabled: false]</span><br class="wikidpad" />
+<br class="wikidpad" />
+Step 1 : Download jquery at jquery.com<br class="wikidpad" />
+<br class="wikidpad" />
+Step 2: Call jQuery using this line: (put this in the HEAD section). The jquery version might be different. <br class="wikidpad" />
+<br class="wikidpad" />
+&lt;script type="text/javascript" src="/js/jquery-1.11.1.js"&gt;&lt;/script&gt;<br class="wikidpad" />
+<br class="wikidpad" />
+jQuery's feature break down in 8 major categories:<br class="wikidpad" />
+- Core Functionality: Implements core jQuery functions as well as commonly used utilities.<br class="wikidpad" />
+- Selection and Traversal: functions for finding content in documents and navigating among the contents of the document. query in the jquery name. Traversing the document object model.<br class="wikidpad" />
+- Manipulation &amp; CSS: functions for editing and changing documents content and working with CSS data such as positioning info.<br class="wikidpad" />
+- Events: Simplifies working with the modern DOM events such page, keyboard and mouse events and provides a lot of common event helper functions.<br class="wikidpad" />
+- Effects: Contains functions for creating some basic animations and effects such as hiding and showing elements and moving objects around etc.<br class="wikidpad" />
+- AJAX: utilities for working with Ajax, such as loading content from pages without refreshing the page and dealing with JSON (javascript object notation data).<br class="wikidpad" />
+- User Interface (UI): an official plug-in with commonly used interface widgets, like slider controls, progress bars, dialogs, accordions, etc.<br class="wikidpad" />
+- Extensibility: Enables the construction of jQuery plug-ins that enhance the functionality of the base library.<br class="wikidpad" />
+<br class="wikidpad" />
+Document ready function: <br class="wikidpad" />
+<br class="wikidpad" />
+<b class="wikidpad">IMPORTANT NOTE: try.jquery.com thinks that document should have NO QUOTES....</b><br class="wikidpad" />
+This function will load when the DOM is ready, even if the images are not quite done loading. If you pile up several functions on top of each other to do that, they will be called in succession.<br class="wikidpad" />
+<br class="wikidpad" />
+$("document").ready (function(){<ul class="wikidpad normalindent">alert("the page just loaded!");</ul>
+});<br class="wikidpad" />
+<br class="wikidpad" />
+A shortcut of this "document ready" thing would be to do this:<br class="wikidpad" />
+$(function(){<ul class="wikidpad normalindent">alert("the page just loaded!");</ul>
+});<br class="wikidpad" />
+<br class="wikidpad" />
+<b class="wikidpad">Example of difference between DOM and jQuery</b><br class="wikidpad" />
+<br class="wikidpad" />
+1) Get all the elements that are paragraphs<br class="wikidpad" />
+2) Get all tags with ID of list1<br class="wikidpad" />
+3) Get all li tags with a class of "a"<br class="wikidpad" />
+4) Get all tags that have a class of "b" but only if they are inside a ul<br class="wikidpad" />
+<br class="wikidpad" />
+DOM:<br class="wikidpad" />
+1) document.getElementsByTagName("p");<br class="wikidpad" />
+2) document.getElementsById("list1");<br class="wikidpad" />
+3) complicated in DOM, requires loop<br class="wikidpad" />
+4) complicated in DOM<br class="wikidpad" />
+<br class="wikidpad" />
+jQuery:<br class="wikidpad" />
+1) $("p");<br class="wikidpad" />
+2) $("#list1"); (similar to CSS)<br class="wikidpad" />
+3) $("li.a");<br class="wikidpad" />
+4) $("ul .b");<br class="wikidpad" />
+<br class="wikidpad" />
+<b class="wikidpad">Other jQuery selectors</b><br class="wikidpad" />
+<br class="wikidpad" />
+selector, selector – Finds all of the specified selectors<br class="wikidpad" />
+.class1.class2 – Finds all elements with both .class1 and .class2 applied<br class="wikidpad" />
+parent&gt;child – Finds all child elements that are direct children of elements of type parent<br class="wikidpad" />
+ancestor descendant – Finds all descendant elements that are contained within elements of type ancestor (like #4 above)<br class="wikidpad" />
+prev+next – Find all next elements that are next to a prev element<br class="wikidpad" />
+prev~siblings – Find all sibling elements that come after prev and match the siblings selector<br class="wikidpad" />
+closest: For each element in the set, get the first element that matches the selector by testing the element itself and traversing up through its ancestors in the DOM tree.<br class="wikidpad" />
+<br class="wikidpad" />
+Find number of children: $("#location1").children().length<br class="wikidpad" />
+<br class="wikidpad" />
+<b class="wikidpad">Filters</b><br class="wikidpad" />
+<br class="wikidpad" />
+Types of filters<br class="wikidpad" />
+<br class="wikidpad" />
+Basic: Provides basic filtering, like getting the first, last, and even- and odd-numbered items in a returned set<br class="wikidpad" />
+Content: Filters a set of elements based on the content, like whether an element contains a particular string<br class="wikidpad" />
+Visibility: Filters a set of elements using the visibility setting of each element as a test<br class="wikidpad" />
+Attribute: Examines a given attribute on an element to determine whether it should be filtered out<br class="wikidpad" />
+Child: Selects elements based upon their relationship with their parent element<br class="wikidpad" />
+Form: Provides specialized filters that operate on form elements<br class="wikidpad" />
+<br class="wikidpad" />
+<b class="wikidpad">Basic filters</b><br class="wikidpad" />
+<br class="wikidpad" />
+:first – Selects only the first instance of the selector’s returned set<br class="wikidpad" />
+:last  - Selects only the last instance of the selector’s returnet set<br class="wikidpad" />
+:even – Selects only the even-numbered elements in the selectpr’s returned set<br class="wikidpad" />
+:odd – Selects only odd-numbered elements in the selector;s returned set<br class="wikidpad" />
+:eq(n) – Filters out elements that are not positioned at the given index<br class="wikidpad" />
+:gt(n) – Includes elements that are past the given index<br class="wikidpad" />
+:lt(n) – Includes elements that are before the given index<br class="wikidpad" />
+:header – Selects all header elements(H1, H2, H3, etc)<br class="wikidpad" />
+:animated – Selects all elements that are currently being animated in some way<br class="wikidpad" />
+:not(selector) – Includes elements that do not match the given selector<br class="wikidpad" />
+<br class="wikidpad" />
+Index number start from 0.<br class="wikidpad" />
+<br class="wikidpad" />
+Examples: <br class="wikidpad" />
+$("document").ready(function() {<ul class="wikidpad normalindent">$("p:first").css("border","3px solid red");<br class="wikidpad" />
+$("p:odd").css("border","3px solid red");<br class="wikidpad" />
+$("p:even").css("border","3px solid red");<br class="wikidpad" />
+$(".classname:first").css("border","3px solid red");<br class="wikidpad" />
+$(".classname:even").css("border","3px solid red");<br class="wikidpad" />
+$("p:gt(1)").css("border","3px solid red"); – index will start from 2 (0 and 1 will not be included)<br class="wikidpad" />
+$("p:not(p:eq(2))").css("border","3px solid red"); – index 2 will be excluded</ul>
+});<br class="wikidpad" />
+<br class="wikidpad" />
+<b class="wikidpad">Attribute filters</b><br class="wikidpad" />
+<br class="wikidpad" />
+[attribute] – Includes elements in the result set it they have the specified attribute<br class="wikidpad" />
+[attribute=value] – Includes elements in the result set if they have the specified attribute and it has the given value<br class="wikidpad" />
+[attribute!=value] – Includes elements in the result set only if they have the specified attribute and it doesn’t have the given value<br class="wikidpad" />
+[attribute^=value] – Includes elements that have the specified attribute and it starts with the specified value<br class="wikidpad" />
+[attribute$=value] – Includes elements that have the specified attribute and it ends with the specified value<br class="wikidpad" />
+[attribute*=value] – Includes elements that have the specified attribute and it contains the specified value<br class="wikidpad" />
+[attrFilter1][attrFilterN] – Includes elements that match all of the specified attribute filters<br class="wikidpad" />
+<br class="wikidpad" />
+Example:<br class="wikidpad" />
+$("document").ready(function() {<ul class="wikidpad normalindent">$("p[class]").css("border","3px solid red");<br class="wikidpad" />
+$("p[id=idname]").css("border","3px solid red");<br class="wikidpad" />
+$("p[id^=list-item]").css("border","3px solid red"); - Ex: &lt;p id="list-item1″ lang="en-us"&gt;&lt;/p&gt;<br class="wikidpad" />
+$("p[id^=list-item][lang*=en-]").css("border","3px solid red"); – Ex: &lt;p id="list-item1″ lang="en-us"&gt;&lt;/p&gt;</ul>
+});<br class="wikidpad" />
+<br class="wikidpad" />
+<b class="wikidpad">Content and visibility filters</b><br class="wikidpad" />
+<br class="wikidpad" />
+:contains(text) – Filters the selection to only include elements that contain the text string<br class="wikidpad" />
+:empty – Filters the selection to only include empty elements<br class="wikidpad" />
+:has(selector) – Matches elements that contain at least one element that has the specified selector<br class="wikidpad" />
+:parent – Matches all elements that are parents(i.e. they contain at least one other element, including text)<br class="wikidpad" />
+:visible – Filters the selection to only include visible elements<br class="wikidpad" />
+:hidden – Filters the selection to only include hidden elements<br class="wikidpad" />
+<br class="wikidpad" />
+<b class="wikidpad">Child filters</b><br class="wikidpad" />
+<br class="wikidpad" />
+:nth-child(index)<br class="wikidpad" />
+:nth-child(even)<br class="wikidpad" />
+:nth-child(odd)<br class="wikidpad" />
+:nth-child(equation)<br class="wikidpad" />
+- Matches elements at index, or even or odd increments, or who match an euation of the form Xn-M (for example 2n or 3n+1)<br class="wikidpad" />
+<br class="wikidpad" />
+:first-child- Matches elements who are the first child of their parent<br class="wikidpad" />
+:last-child- Matches elements who are the last child of their parent<br class="wikidpad" />
+:only-child- Matches elements who are the only child of their parent<br class="wikidpad" />
+<br class="wikidpad" />
+Examples:<br class="wikidpad" />
+$("document").ready(function() {<ul class="wikidpad normalindent">$("p:contains(3)").css("border","3px solid red"); – Ex: &lt;p class="test"&gt; This is paragraph 3&lt;/p&gt; – contains number 3<br class="wikidpad" />
+$(":contains(3)").css("border","3px solid red"); – all the elements which contains number 3 : body, div, ul, li and others.<br class="wikidpad" />
+$("li:contains(3), p:contains(3)").css("border","3px solid red"); – Ex: &lt;p&gt; This is paragraph 3&lt;/p&gt; – contains number 3<br class="wikidpad" />
+$("p:parent(3)").css("border","3px solid red"); – Ex: &lt;p&gt; This is paragraph 3&lt;/p&gt; – All p contains content.<br class="wikidpad" />
+$("ul:has(li[class=a])").css("border","3px solid red"); – Ex:&lt;ul&gt;&lt;li class="a"&gt;Item 1&lt;/li&gt;&lt;/ul&gt; – only select ul if has inside class a<br class="wikidpad" />
+$("ul li:nth-child(3)").css("border","3px solid red"); – Only the third li will be highlighted<br class="wikidpad" />
+$("ul li:last-child").css("border","3px solid red"); – Only the last li will be highlighted<br class="wikidpad" />
+$("ul li:nth-child(2n)").css("border","3px solid red"); – n start counting from 1</ul>
+});<br class="wikidpad" />
+<br class="wikidpad" />
+<b class="wikidpad">Form selectors</b><br class="wikidpad" />
+<br class="wikidpad" />
+:input – Finds all input, select, textarea and button elements<br class="wikidpad" />
+:text- Finds all text elements<br class="wikidpad" />
+:password – Finds all password elements<br class="wikidpad" />
+:radio – Finds all radio button elements<br class="wikidpad" />
+:checkbox – Finds all checkbox elements<br class="wikidpad" />
+:submit – Finds all submit elements<br class="wikidpad" />
+:reset – Finds all reset elements<br class="wikidpad" />
+:image – Finds all image elements<br class="wikidpad" />
+:button – Finds all button elements<br class="wikidpad" />
+:file – Finds all file upload elements<br class="wikidpad" />
+:enabled – Matches all form elements that are enabled<br class="wikidpad" />
+:disabled – Matches all form elements that are disabled<br class="wikidpad" />
+:checked – Matches all form elements that are checked (radiobuttons and checkboxes)<br class="wikidpad" />
+:selected – Matchels all elements that are selected<br class="wikidpad" />
+<br class="wikidpad" />
+Examples:<br class="wikidpad" />
+$("document".ready(function() {<ul class="wikidpad normalindent">$("form:input").before("INPUT:"); – add "INPUT" before all input elements (checkbox, textarea, button, upload field, etc.)<br class="wikidpad" />
+$("form:text").before("INPUT:"); – add "INPUT" before all text elements: Ex. &lt;input id="text1″ type="text" /&gt;<br class="wikidpad" />
+$("form:text:disabled").css("display" "none"); – Ex. &lt;input id="text1″ type="text" disabled="disabled" /&gt;<br class="wikidpad" />
+$("form:text:enabled").before("ENABLED:"); – Ex. &lt;input id="text1″ type="text" /&gt;<br class="wikidpad" />
+$("form:checked").before("CHECKED:"); – Ex. &lt;input id="checkbox1″ type="checkbox" /&gt;&lt;label&gt;Checkbox 1&lt;/label&gt; &lt;input id="radio1″ type="radio" /&gt;&lt;label&gt;Radio 1&lt;/label&gt;<br class="wikidpad" />
+$("form:checkbox:checked").before("CHECKED:"); – Ex. &lt;input id="checkbox1″ type="checkbox" /&gt;&lt;label&gt;Checkbox 1&lt;/label&gt;</ul>
+});<br class="wikidpad" />
+<br class="wikidpad" />
+<b class="wikidpad">Traversing filters</b><br class="wikidpad" />
+<br class="wikidpad" />
+size(), lenght – The number of elements in the jQuery result set<br class="wikidpad" />
+get() – Returns an array of all matched DOM elements. Useful if you need to operate on the DOM elements themselves instead of using built-in jQuery functions<br class="wikidpad" />
+get(index) – Access a single matched DOM element at a specified index in the matched set<br class="wikidpad" />
+find(expression) – Searches for descendent elements that match the specified expression<br class="wikidpad" />
+each(fn) – Execute a function within the context of every matched element<br class="wikidpad" />
+<br class="wikidpad" />
+Examples:<br class="wikidpad" />
+$("document").ready(function() {<ul class="wikidpad normalindent">// alert("There are "+$("p").size() +"&lt;p&gt; elements"); – There are "number" &lt;p&gt; elements<br class="wikidpad" />
+// alert("There are "+$("p").length +"&lt;p&gt; elements"); – There are "number" &lt;p&gt; elements<br class="wikidpad" />
+// var elems= $(‘li’).get();  alert("there are "+ elems.lenght + "&lt;li&gt; tags" ) – get all the li tags from the page and show the number using DOM<br class="wikidpad" />
+// alert ($(‘li’).get(0)); – find the index – get the first li tag- Results: [object HTMLElement]<br class="wikidpad" />
+// $("ul").find("li.b").css("border" "3px solid red"); – find the elements with b class and add a border to them<br class="wikidpad" />
+/* var leftmargin – 0;<br class="wikidpad" />
+var border =3;<br class="wikidpad" />
+$("p").each(function () {<ul class="wikidpad normalindent">$(this).css("border", border + "px solid red");<br class="wikidpad" />
+$(this).css("margin-left", leftmargin);<br class="wikidpad" />
+border += 2;<br class="wikidpad" />
+leftmargin += 10;</ul>
+}</ul>
+}); */ – The border will gonna get bigger for each &lt;p&gt;, also for left margin.<br class="wikidpad" />
+<br class="wikidpad" />
+<b class="wikidpad">Chaining</b><br class="wikidpad" />
+<br class="wikidpad" />
+$(selector) .fn1().fn2().fn3(); – ".fn1().fn2().fn3();" – Statement chain<br class="wikidpad" />
+<br class="wikidpad" />
+The reason why this makes jQuery so powerful is that it allows you to perform multiple operations on one result set without having to get that result set over and over again, like you might have to do in other scripting conventions.<br class="wikidpad" />
+<br class="wikidpad" />
+Example:<br class="wikidpad" />
+$("document").ready(function(){<ul class="wikidpad normalindent">$("a[href$=.pdf]").after("HTML code"); – Find the &lt;a href=""&gt; elements which ends with .pdf and add a content(text, img etc) after the &lt;a&gt;</ul>
+});<br class="wikidpad" />
+<br class="wikidpad" />
+<b class="wikidpad">Manipulating HTML Content</b><br class="wikidpad" />
+<br class="wikidpad" />
+To create new HTML content, you simply pass a string containing the new HTML to the jQuery function.<br class="wikidpad" />
+<br class="wikidpad" />
+Example:<br class="wikidpad" />
+var newHeader = $("&lt;h1&gt;My New header&lt;/h1&gt;");<br class="wikidpad" />
+<br class="wikidpad" />
+Example using variables:<br class="wikidpad" />
+var myStr = "&lt;h1&gt;My new Header&lt;/h1&gt;"<br class="wikidpad" />
+var newHeader = $(myStr);<br class="wikidpad" />
+<br class="wikidpad" />
+In addition to this method, you can use jQuery's html() and text() methods to get and set content on elements.<br class="wikidpad" />
+<br class="wikidpad" />
+:html() – Returns the HTML content of the first matched element<br class="wikidpad" />
+:html(newcontent) – Sets the HTML content of every matched element<br class="wikidpad" />
+:text() – Returns the text content of the first matched element<br class="wikidpad" />
+:text(newtext) – Sets the text content for all matched elements<br class="wikidpad" />
+<br class="wikidpad" />
+Examples:<br class="wikidpad" />
+alert($("#list1″).html()); – display all the HTML elements which contains #list1 (list1 is a UL)<br class="wikidpad" />
+<br class="wikidpad" />
+$("#list1″).html("&lt;li&gt;This is a new list item&lt;/li&gt;"); Now everything in the UL list1 is removed and replaced by "This is a new list item"<br class="wikidpad" />
+<br class="wikidpad" />
+var newItem = $("&lt;p&gt;This is a new paragraph&lt;/p&gt;");<br class="wikidpad" />
+$("#para2″).html(newItem.html()); */ – it will replace &lt;p id="para2″&gt;&lt;/p&gt; with the new content<br class="wikidpad" />
+<br class="wikidpad" />
+<b class="wikidpad">Manipulating Attributes</b><br class="wikidpad" />
+<br class="wikidpad" />
+attr(name) – Accesses property on the first matched element. This method makes it easy to retrieve a property value from the first matched element. If the element does not have an attribute with such a name, undefined is returned<br class="wikidpad" />
+attr(properties) – Sets a series of attributes on all matched elements using an object notation syntax. This is the best used for setting large numbers of properties at once. Ex: $("img").attr({src: "/images/hat.gif", title: "jQuery", alt: "jQuery Logo"});<br class="wikidpad" />
+attr(key, value) – Sets a single property to a value on all matched elements<br class="wikidpad" />
+attr(key, fn) – Sets a single property to a computed value, on all matched elements. Instead of supplying a string value, a function is provided that computes the value of the attribute<br class="wikidpad" />
+removeAttr(name) – Removes the named attribute from all matched elements.<br class="wikidpad" />
+<br class="wikidpad" />
+Examples:<br class="wikidpad" />
+$("a").attr("target", "_blank" ); – open all &lt;a&gt; tags in a new tab<br class="wikidpad" />
+$("a").removeAttr("href"); – will turn off the link<br class="wikidpad" />
+$("img").attr({src:"images/spring.jpg", alt:"spring"}); – will change the image and add a different alt tag<br class="wikidpad" />
+<br class="wikidpad" />
+Checking a checkbox: $('#location1 input').attr('checked', 'true')<br class="wikidpad" />
+Selecting a specific option in a select box: $('#location1 select').val('target2');<br class="wikidpad" />
+<br class="wikidpad" />
+Read this for difference between attr and prop: <span class="wikidpad url-link"><a href="https://api.jquery.com/prop/" class="wikidpad">https://api.jquery.com/prop/</a></span><br class="wikidpad" />
+<br class="wikidpad" />
+<b class="wikidpad">Inserting content</b><br class="wikidpad" />
+<br class="wikidpad" />
+append(content) – Appends content to the inside of every matched element<br class="wikidpad" />
+appendTo(selector) – Appends all of the matched elements to another, specified, set of elements<br class="wikidpad" />
+prepend(content) – Prepends content to the inside of every matched element<br class="wikidpad" />
+prependTo(selector) – Prepends all the matched elements to another, specified, set of elements<br class="wikidpad" />
+after(content) – Insert content after each of the matched elements<br class="wikidpad" />
+before(content) – Inserts content before each of the matched elements<br class="wikidpad" />
+insertAfter(selector) – Insert all of the matched elements after another, specified, set of elements<br class="wikidpad" />
+insertBefore(selector) – Insert all the matched elements before another, specified set of elements<br class="wikidpad" />
+<br class="wikidpad" />
+Examples:<br class="wikidpad" />
+$("p").append("with some content appended"); – add a text after the text from paragraph<br class="wikidpad" />
+$("p").prepend("Hello! "); – add a text before the text from a paragraph<br class="wikidpad" />
+$("p:last").appendTo("p:first");  - add the last paragraph under the first paragraph<br class="wikidpad" />
+$("p:last").prependTo("p:first");  - add the last paragraph to be the first paragraph<br class="wikidpad" />
+<br class="wikidpad" />
+<b class="wikidpad">Wrapping, replacing and removing content</b><br class="wikidpad" />
+<br class="wikidpad" />
+wrap(html) – Wraps each matched element with the specified HTML content<br class="wikidpad" />
+wrap(element) – Wraps each matched element with the specified element<br class="wikidpad" />
+wrapAll(html) – Wraps all the elements in the matched set with the specified HTML content<br class="wikidpad" />
+wrapAll(element) – Wraps all the elements in the matched set into a single wrapper element<br class="wikidpad" />
+weapInner(html) – Wraps the inner child contents of matched elements(including text nodes)with an HTML structure<br class="wikidpad" />
+wrapInner(element) – Wraps the inner child contents of each matched element(including text nodes)with a DOM structure<br class="wikidpad" />
+replaceWith(content) – Replace all matched elements with the specified HTML or DOM elements<br class="wikidpad" />
+replaceAll(selector) -Replaces the elements matched by the specified selector with the matched elements<br class="wikidpad" />
+empty() – Remove all child nodes from the set of matched elements<br class="wikidpad" />
+remove() – Removes all matched elements from the DOM<br class="wikidpad" />
+clone() – clone matched DOM elements and selects the clones<br class="wikidpad" />
+clone(bool) – Clone matched DOM elements, and all their event handlers, and select the clones<br class="wikidpad" />
+<br class="wikidpad" />
+Examples:<br class="wikidpad" />
+$("p").wrap("&lt;div style=’color:red’/&gt; "); – p without class will be added in a div with red color<br class="wikidpad" />
+$("p").wrapAll("&lt;div style=’border: 2px solid red’ /&gt;"); – All &lt;p&gt; will be added in a div with 2px border<br class="wikidpad" />
+$("ul").empty();<br class="wikidpad" />
+<br class="wikidpad" />
+<b class="wikidpad">Working with CSS</b><br class="wikidpad" />
+<br class="wikidpad" />
+css(name) – Returns the value for the named CSS property for the first matched element<br class="wikidpad" />
+css(properties) – Sets the css properties of every matched element using an object-notation syntax:<br class="wikidpad" />
+var cssObj – {<br class="wikidpad" />
+‘background-color’ : ‘$DDD’,<br class="wikidpad" />
+‘font-weight’ : ‘normal’,<br class="wikidpad" />
+‘color’ : ‘rgb(0,40,244)’<br class="wikidpad" />
+}<br class="wikidpad" />
+$(this).css(cssobj);<br class="wikidpad" />
+css(property, value) – Sets a single style property to a value of all mathed elements. If a number is provided, it is automatically converted into a pixel value, with the following expeptions: z-index, font-weight, opacity, zoom, and line-height.<br class="wikidpad" />
+<br class="wikidpad" />
+addClass(class) – Adds the specified class(es) to each of the set of matched elements<br class="wikidpad" />
+hasClass(class) – Returns true if the specified class is present on at least one of the set pf matched elements<br class="wikidpad" />
+removeClass(class) – Removes all the specified class(es) from the set of matched elements<br class="wikidpad" />
+toggleClass(class) – Adds the specified class if is not present, removes the specified class if is present<br class="wikidpad" />
+toggleClass(class,switch) – Adds the specified class if the switch is true, removes the specified class if the switch is false<br class="wikidpad" />
+offset() – Gets the current offset of the first matched element, in pixels, relative to the document<br class="wikidpad" />
+offsetParent() – Returns a jQuery collection with the positioned parent of the first matched element<br class="wikidpad" />
+position() – Gets the top and left position of an element relative to its offset parent<br class="wikidpad" />
+scrollTop() – Gets the scroll top offset of the first matched element<br class="wikidpad" />
+scrollTop(val) – Sets the scroll top offset to the given value oon all matched elements<br class="wikidpad" />
+scrollLeft() – Gets the scroll left offset of the first matched element<br class="wikidpad" />
+scroll Left(val) – Sets the scroll left offset to the given value on all matched elements<br class="wikidpad" />
+height() – Gets the current computed, pixel, height of the first matched element<br class="wikidpad" />
+height(val) – Sets the CSS height of every matched element<br class="wikidpad" />
+width() – Gets the current computed, pixel, width of the first matched element<br class="wikidpad" />
+width(val) – Sets the CSS width of every matched element<br class="wikidpad" />
+innerHeight() – Gets the inner height(excluding the border and including the padding)for the first matched element<br class="wikidpad" />
+innerWidth() – Gets the inner width(excluding the border and including the padding)for the first matched element<br class="wikidpad" />
+outerHeight(margin)  - Gets the outer height(includes the border and padding by default) for the first matched element. If the margin argument is true, then the margin value are also included<br class="wikidpad" />
+outerWidth(margin) – Gets the outer width(includes the border and padding by default)for the first matched element. If the margin argument is true, then the margin value are also included<br class="wikidpad" />
+<br class="wikidpad" />
+Examples: <br class="wikidpad" />
+$("#height").html($("#theDiv").height()); – add the height as a number from an ID<br class="wikidpad" />
+$("#width").html($("#theDiv").width()); - add the width as a number from an ID<br class="wikidpad" />
+$("#innerH").html($("#theDiv").innerHeight());<br class="wikidpad" />
+$("#innerW").html($("#theDiv").innerWidth());<br class="wikidpad" />
+$("#outerH").html($("#theDiv").outerHeight());<br class="wikidpad" />
+$("#outerW").html($("#theDiv").outerWidth());<br class="wikidpad" />
+$("#offset").html($("#theDiv").offset().top + ", " + $("#theDiv").offset().left);<br class="wikidpad" />
+$("#position").html($("#theDiv").position().top + ", " + $("#theDiv").position().left);<br class="wikidpad" />
+<br class="wikidpad" />
+<b class="wikidpad">Functions</b><br class="wikidpad" />
+<br class="wikidpad" />
+function showTicket(){<ul class="wikidpad normalindent">//closest searches UP, find searches DOWN, slideDown will show stuff that have .ticket class (it starts in display: none)    <br class="wikidpad" />
+$(this).closest('.confirmation').find('.ticket').slideDown(); </ul>
+}<br class="wikidpad" />
+<br class="wikidpad" />
+$(document).ready(function(){<ul class="wikidpad normalindent">//Do not put () after the function name, otherwise it gets executed right away!<br class="wikidpad" />
+$('.confirmation').on('click', 'button', showTicket); </ul>
+});<br class="wikidpad" />
+<br class="wikidpad" />
+<b class="wikidpad">Data()</b><br class="wikidpad" />
+<br class="wikidpad" />
+This is how you store:<br class="wikidpad" />
+.data( key, value )<br class="wikidpad" />
+.data( obj )<br class="wikidpad" />
+<br class="wikidpad" />
+This is how you retrieve:<br class="wikidpad" />
+.data( key )<br class="wikidpad" />
+.data()<br class="wikidpad" />
+<br class="wikidpad" />
+the function removeData() is used to empty the data<br class="wikidpad" />
+<br class="wikidpad" />
+Example (3 buttons called "store", "remove" and "show"):<br class="wikidpad" />
+<br class="wikidpad" />
+$("document").ready(function(){<ul class="wikidpad normalindent">$("store").click(function(){<ul class="wikidpad normalindent">$("#div1").data("key1", 1234);<br class="wikidpad" />
+$("#div1").data("key2", "Joe Smith");</ul>
+});<br class="wikidpad" />
+$("remove").click(function(){<ul class="wikidpad normalindent">$("#div1").removeData();</ul>
+});<br class="wikidpad" />
+$("show").click(function(){<ul class="wikidpad normalindent">alert($("#div1").data("key1"));<br class="wikidpad" />
+alert($("#div1").data("key2"));</ul>
+});</ul>
+});<br class="wikidpad" />
+<br class="wikidpad" />
+As part of HTML5, you can do the following:<br class="wikidpad" />
+<br class="wikidpad" />
+&lt;div id="div1" data-key3="data attribute"&gt;Sample Div&lt;/div&gt;<br class="wikidpad" />
+<br class="wikidpad" />
+So now key3 can be used by jQuery data(). You can show the value: <br class="wikidpad" />
+alert(JSON.stringify($("#div1″).data(),null,"   " )); <br class="wikidpad" />
+<br class="wikidpad" />
+Results: "key3″ : "data attribute"<br class="wikidpad" />
+<br class="wikidpad" />
+<b class="wikidpad">Events</b><br class="wikidpad" />
+<br class="wikidpad" />
+Working with events through the DOM is complicated because each browser works differently<br class="wikidpad" />
+<br class="wikidpad" />
+Binding/Unbinding: Allows events to be wired up and torn down in a cross-browser fashion. Events are connected to and disconnected from elements using the bind() and unbind() functions.<br class="wikidpad" />
+<br class="wikidpad" />
+Unified Event Object:Provides an event object that exposes the most common properties in a cross-browser fashion.<br class="wikidpad" />
+<br class="wikidpad" />
+Convenience Functions: Provides functions that encapsulate common event features and cross-browser helper routines.<br class="wikidpad" />
+<br class="wikidpad" />
+.on(): attaches an event handler<br class="wikidpad" />
+.off(): removes an event handler<br class="wikidpad" />
+<br class="wikidpad" />
+Note: bind/unbind, die/live are from older versions of jQuery<br class="wikidpad" />
+<br class="wikidpad" />
+Example: On mouse over, the class will be toggled between highlight and not. On click, the toggle event will be removed.<br class="wikidpad" />
+<br class="wikidpad" />
+&lt;script type="text/javascript"&gt;<br class="wikidpad" />
+$(function() {<ul class="wikidpad normalindent">$("#evtTarget").on("mouseover mouseleave", highlight);  //or you could have used $("#evtTarget").hover(highlight, highlight)<br class="wikidpad" />
+$("#evtTarget").on("click", function(evt) {<ul class="wikidpad normalindent">$("#evtTarget").off("mouseover mouseleave", highlight);<br class="wikidpad" />
+$("#evtTarget").html("&lt;p&gt;You shut off the hover effect!&lt;/p&gt;");</ul>
+});</ul>
+});<br class="wikidpad" />
+<br class="wikidpad" />
+function highlight(evt) {<br class="wikidpad" />
+$("#evtTarget").toggleClass("highlighted");<br class="wikidpad" />
+}<br class="wikidpad" />
+<br class="wikidpad" />
+On click can have several arguments:<br class="wikidpad" />
+$('.vacation').on('click', button, function(){}); //will only launch when you click a BUTTON. This is called event delegation.<br class="wikidpad" />
+<br class="wikidpad" />
+Here is a list of Mouse Events:<br class="wikidpad" />
+- click<br class="wikidpad" />
+- dlbclick<br class="wikidpad" />
+- focusin<br class="wikidpad" />
+- focusout<br class="wikidpad" />
+- mousedown<br class="wikidpad" />
+- mouseup<br class="wikidpad" />
+- mousemove<br class="wikidpad" />
+- mouveout<br class="wikidpad" />
+- mouveover<br class="wikidpad" />
+- mouseleave<br class="wikidpad" />
+- mouseenter (similar to hover?)<br class="wikidpad" />
+<br class="wikidpad" />
+List of Keyboard Events:<br class="wikidpad" />
+- keypress<br class="wikidpad" />
+- keydown<br class="wikidpad" />
+- keyup<br class="wikidpad" />
+<br class="wikidpad" />
+List of Form Events:<br class="wikidpad" />
+- blur<br class="wikidpad" />
+- select<br class="wikidpad" />
+- change<br class="wikidpad" />
+- focus<br class="wikidpad" />
+- submit<br class="wikidpad" />
+<br class="wikidpad" />
+<b class="wikidpad">jQuery Event Object</b><br class="wikidpad" />
+<br class="wikidpad" />
+type – Type of the event("click",e.g)<br class="wikidpad" />
+target – Element that issued the event<br class="wikidpad" />
+data – Data passed to bind function<br class="wikidpad" />
+pageX, pageY – Coordinates of mouse when event happened, relative to document<br class="wikidpad" />
+result – Value returned by the last handler function (unless it is undefined)<br class="wikidpad" />
+timestamp – Time when event occurred (in milliseconds)<br class="wikidpad" />
+preventDefault() – Prevents the browser from executing the default action<br class="wikidpad" />
+isDefaultPrevented() – Returns whether preventDefault() was ever called on this object<br class="wikidpad" />
+stopPropagation() – Stops the bubbling of an event to parent elements<br class="wikidpad" />
+isPropagationStopped() – Returns whether stopPropagation() was ever called on this object<br class="wikidpad" />
+<br class="wikidpad" />
+Example:<br class="wikidpad" />
+&lt;script type="text/javascript"&gt;<br class="wikidpad" />
+$(function() {<ul class="wikidpad normalindent">$("div").click(function(evt) {<br class="wikidpad" />
+$(this).html("pageX: " + evt.pageX + ", pageY: " + evt.pageY + ", type: " + evt.type + ", target: " + evt.target);<br class="wikidpad" />
+});</ul>
+});<br class="wikidpad" />
+&lt;/script&gt;<br class="wikidpad" />
+<br class="wikidpad" />
+Prevent Default:<br class="wikidpad" />
+For example if you click on "show comments", if the button is way below, the "a href=#" will cause the browser to jump back up at the top of the page because that's the default behaviour. Prevent Default will make sure you don't jump up at the top of the page.<br class="wikidpad" />
+<br class="wikidpad" />
+<b class="wikidpad">Miscellaneous jQuery Event Functions</b><br class="wikidpad" />
+<br class="wikidpad" />
+on(type,data,handler)	- Works the same as bind(), but the event handler is only ever executed one time for each matched element<br class="wikidpad" />
+<br class="wikidpad" />
+trigger(event,data)	- triggers an event on every matched element. This will also cause the default action of the browser to be executed. For example, passing 'click' to the trigger() function will also cause the browser to act as though the item were clicked.<br class="wikidpad" />
+<br class="wikidpad" />
+triggerHandler(event, data)	- Triggers all bound event handlers on an element (for a specific event type) withouth executing the browser's default actions, bubbling, or live events. Only works on the first matched element in the result set for selector.<br class="wikidpad" />
+<br class="wikidpad" />
+&lt;script type="text/javascript"&gt;<ul class="wikidpad normalindent">$(function() {	// onload handler<ul class="wikidpad normalindent">$("div").on("click", function(evt){<ul class="wikidpad normalindent">$(this).css({background: "red", cursor: "auto"});</ul>
+});</ul>
+});</ul>
+&lt;/script&gt;<br class="wikidpad" />
+<br class="wikidpad" />
+<b class="wikidpad">Animation and effects</b><br class="wikidpad" />
+<br class="wikidpad" />
+Functions for showing and hiding elements:<br class="wikidpad" />
+<br class="wikidpad" />
+show() - Displays each of the set of matched elements, if they are hidden.<br class="wikidpad" />
+show(speed,callback) - shows all matched elements using a graceful animation. Fires an optional callback after completion.<br class="wikidpad" />
+hide(speed,callback) - Hides all matched elements using graceful animation. Fires an optional callback after completion<br class="wikidpad" />
+toggle() - Toggles displaying each of the set of matched elements<br class="wikidpad" />
+toggle(switch) - Toggles displaying each of the set of matched elements based upon the switch (true shows all elements, flase hides all elements)<br class="wikidpad" />
+toggle(speed,callback) - toggles displaying each of the set of matched elements using a gracefuls animation and firing an optional callback after completion.<br class="wikidpad" />
+<br class="wikidpad" />
+Fade in an out functions:<br class="wikidpad" />
+<br class="wikidpad" />
+fadeIn(speed, callback) - Fades in all matched elements by adjusting their opacity and firing an optional callback after completion<br class="wikidpad" />
+fadeOut(speed, callback) - Fades out all matched elements by adjusting their opacity to 0 and then setting display to "none" and firing an optional callback after completion<br class="wikidpad" />
+fadeTo(speed, opacity, callback) - Fades the opacity of all matched elements to a specified opacity and fires an optional callback after completion.<br class="wikidpad" />
+<br class="wikidpad" />
+Examples:<br class="wikidpad" />
+&lt;script type="text/javascript"&gt;<ul class="wikidpad normalindent">$(function() {<ul class="wikidpad normalindent">$("#fadein").click(function() {<ul class="wikidpad normalindent">$("#theDiv").fadeIn("normal");</ul>
+});<br class="wikidpad" />
+$("#fadeout").click(function() {<ul class="wikidpad normalindent">$("#theDiv").fadeOut(4000, function(){<br class="wikidpad" />
+alert("Done fading out")});</ul>
+});<br class="wikidpad" />
+$("#fadeto3").click(function() {<ul class="wikidpad normalindent">$("#theDiv").fadeTo("slow", 0.3);</ul>
+});<br class="wikidpad" />
+$("#fadeup").click(function() {<ul class="wikidpad normalindent">$("#theDiv").fadeTo("slow", 1.0);</ul>
+});</ul>
+});</ul>
+&lt;/script&gt;<br class="wikidpad" />
+<br class="wikidpad" />
+Slide functions:<br class="wikidpad" />
+<br class="wikidpad" />
+slideDown(speed, callback) - Reveals all, matched elements by adjusting their height and firing an optional callback after completion<br class="wikidpad" />
+slideUp(speed, callback) - Hides all matched elements by adjusting their height and firing an optional callback after completion<br class="wikidpad" />
+SlideToggle(speed, callback) - Toggles the visibility of all matched elements by adjusting their height and firing an optional callback after completion<br class="wikidpad" />
+<br class="wikidpad" />
+Examples:<br class="wikidpad" />
+<br class="wikidpad" />
+&lt;script type="text/javascript"&gt;<ul class="wikidpad normalindent">$(function() {<ul class="wikidpad normalindent">$("#slideup").click(function() {<ul class="wikidpad normalindent">$("#theDiv").slideUp(4000, function(){<ul class="wikidpad normalindent">alert("slide complete");</ul>
+});</ul>
+});<br class="wikidpad" />
+$("#slidedown").click(function() {<ul class="wikidpad normalindent">$("#theDiv").slideDown("normal");</ul>
+});<br class="wikidpad" />
+$("#toggle").click(function() {<ul class="wikidpad normalindent">$("#theDiv").slideToggle("slow");</ul>
+});</ul>
+});</ul>
+&lt;/script&gt;<br class="wikidpad" />
+<br class="wikidpad" />
+Custom animations:<br class="wikidpad" />
+<br class="wikidpad" />
+animate(params, duration, easing, callback)	- Creates a custom animation<ul class="wikidpad normalindent">a. params: the properties on the elements to animate<br class="wikidpad" />
+b. duration: the number of milliseconds the animation should take. (if you don't set anything, default is 400). Pass "slow" for 600 ms, "fast" for 200 ms.<br class="wikidpad" />
+c. easing: the type of easing function to use (linear or swing) [must install plugins for more functions]<br class="wikidpad" />
+d. callback: the function to call when the animation is complete.<br class="wikidpad" />
+</ul>
+animate(params,options)	- Creates a custom animation<ul class="wikidpad normalindent">a. params: the properties to animate<br class="wikidpad" />
+b. options: set of options for the animation to take<br class="wikidpad" />
+</ul>
+stop()	- Stops all the currently running animations on all the specified elements.<br class="wikidpad" />
+<br class="wikidpad" />
+&lt;script type="text/javascript"&gt;<ul class="wikidpad normalindent">$(function() {<ul class="wikidpad normalindent">$("#right").click(function() {<ul class="wikidpad normalindent">$("#theDiv").animate({ width: "500px" }, 1000);</ul>
+});<br class="wikidpad" />
+$("#text").click(function() {<ul class="wikidpad normalindent">$("#theDiv").animate({ fontSize: "24pt" }, 1000);</ul>
+});<br class="wikidpad" />
+$("#toggle").click(function() {<ul class="wikidpad normalindent">$("#theDiv").animate({ left: "500" }, 1000, "swing");</ul>
+});<br class="wikidpad" />
+<br class="wikidpad" />
+$("#multiple").click(function() {<ul class="wikidpad normalindent">$("#theDiv").animate({ width: "500px", fontSize: "24pt", left: "500" }, 1000, "linear");</ul>
+});</ul>
+});</ul>
+&lt;/script&gt;<br class="wikidpad" />
+<br class="wikidpad" />
+<b class="wikidpad">JQUERY UI LIBRARY</b><br class="wikidpad" />
+<br class="wikidpad" />
+<span class="wikidpad url-link"><a href="http://jqueryui.com/" class="wikidpad">http://jqueryui.com/</a></span><br class="wikidpad" />
+<br class="wikidpad" />
+Provides a prebuild set of functionality that gives your pages a polished professional look and feel.<br class="wikidpad" />
+<br class="wikidpad" />
+1. Interactions:<ul class="wikidpad normalindent">- draggable<br class="wikidpad" />
+- droppable<br class="wikidpad" />
+- resizable<br class="wikidpad" />
+- selectable<br class="wikidpad" />
+- sortable</ul>
+2. Widgets:<ul class="wikidpad normalindent">- Accordia<br class="wikidpad" />
+- Datepicker<br class="wikidpad" />
+- Progressbar<br class="wikidpad" />
+- Dialog<br class="wikidpad" />
+- Slider<br class="wikidpad" />
+- Tabs</ul>
+3. Effects:<ul class="wikidpad normalindent">- Add class<br class="wikidpad" />
+- Remove Class<br class="wikidpad" />
+- Toggle Class<br class="wikidpad" />
+- Switch Class<br class="wikidpad" />
+- Hide<br class="wikidpad" />
+- Show<br class="wikidpad" />
+- Toggle<br class="wikidpad" />
+- Color Animation<br class="wikidpad" />
+</ul>
+Step 1: Download jQuery UI<br class="wikidpad" />
+<br class="wikidpad" />
+Several ways:<br class="wikidpad" />
+1) Custom download button from the main page, let's you customize what to download<br class="wikidpad" />
+2) Stable quick download (zip file of current library)<br class="wikidpad" />
+3) Legacy download (1 version back)<br class="wikidpad" />
+<br class="wikidpad" />
+Step 2: Add the script and css calls in the head section of your html:<br class="wikidpad" />
+<br class="wikidpad" />
+&lt;link href="css/jquery-ui.min.css" rel="stylesheet" type="text/css" /&gt;<br class="wikidpad" />
+&lt;script type="text/javascript" src="scripts/jquery-1.11.1.min.js"&gt;&lt;/script&gt;<br class="wikidpad" />
+&lt;script type="text/javascript" src="scripts/jquery-ui.min.js"&gt;&lt;/script&gt;<br class="wikidpad" />
+<br class="wikidpad" />
+Step 3: Use whatever you want from jQuery UI :)<br class="wikidpad" />
+<br class="wikidpad" />
+<b class="wikidpad">AJAX</b><br class="wikidpad" />
+Using AJAX, your web pages can retrieve data from remote services and communicate with your web server without having to reload the entire page.<br class="wikidpad" />
+<br class="wikidpad" />
+$.ajax() to make a request to the server and get a response back. <br class="wikidpad" />
+<br class="wikidpad" />
+jQuery.get(): Load data from the server using a HTTP GET request.<br class="wikidpad" />
+jQuery.getJSON(): Load JSON-encoded data from the server using a GET HTTP request.<br class="wikidpad" />
+jQuery.getScript(): Load a JavaScript file from the server using a GET HTTP request, then execute it.<br class="wikidpad" />
+jQuery.post(): Load data from the server using a HTTP POST request.<br class="wikidpad" />
+.load(): Load data from the server and place the returned HTML into the matched element.<br class="wikidpad" />
+<br class="wikidpad" />
+Example: <br class="wikidpad" />
+<br class="wikidpad" />
+&lt;script type="text/javascript"&gt;<ul class="wikidpad normalindent">$(function() {<ul class="wikidpad normalindent">getData();</ul>
+});<br class="wikidpad" />
+<br class="wikidpad" />
+function getData(){<ul class="wikidpad normalindent">$.ajax({<ul class="wikidpad normalindent">url: "testdata.txt",<br class="wikidpad" />
+type: "GET",<br class="wikidpad" />
+dataType: "text",<br class="wikidpad" />
+success: successFn,<br class="wikidpad" />
+error: errorFn,<br class="wikidpad" />
+complete: function(xhr, status){<ul class="wikidpad normalindent">console.log("The request is complete!");	</ul>
+}</ul>
+});</ul>
+}<br class="wikidpad" />
+<br class="wikidpad" />
+function successFn(result){<ul class="wikidpad normalindent">console.log("Setting result");<br class="wikidpad" />
+$("#content").append(result);</ul>
+}<br class="wikidpad" />
+<br class="wikidpad" />
+<br class="wikidpad" />
+function errorFn(xhr, status, strError){<ul class="wikidpad normalindent">console.log("There was an error!");</ul>
+}<br class="wikidpad" />
+<br class="wikidpad" />
+</ul>
+&lt;/script&gt;<br class="wikidpad" />
+<br class="wikidpad" />
+But, an even shorter way of doing the exact same thing as above would be:<br class="wikidpad" />
+&lt;script type="text/javascript"&gt;<br class="wikidpad" />
+$(function() {<ul class="wikidpad normalindent">getData();</ul>
+});<br class="wikidpad" />
+<br class="wikidpad" />
+function getData(){<ul class="wikidpad normalindent">$("#content").load("testdata.txt");</ul>
+}<br class="wikidpad" />
+<br class="wikidpad" />
+&lt;/script&gt;<br class="wikidpad" />
+<br class="wikidpad" />
+See ajax.html to ajax3.html for more examples (in jQuery folder &gt; AJAX on Bluehost)<br class="wikidpad" />
+<br class="wikidpad" />
+Other Ajax functions, although these are not functions that you call, these are functions that get called FOR you (and if you define them, you can add behaviours to them)<br class="wikidpad" />
+<br class="wikidpad" />
+.ajaxComplete(): Register a handler to be called when Ajax requests complete. This is an AjaxEvent.<br class="wikidpad" />
+.ajaxError(): Register a handler to be called when Ajax requests complete with an error. This is an Ajax Event.<br class="wikidpad" />
+.ajaxSend(): Attach a function to be executed before an Ajax request is sent. This is an Ajax Event.<br class="wikidpad" />
+.ajaxStart(): Register a handler to be called when the first Ajax request begins. This is an Ajax Event.<br class="wikidpad" />
+.ajaxStop(): Register a handler to be called when all Ajax requests have completed. This is an Ajax Event.<br class="wikidpad" />
+.ajaxSuccess(): Attach a function to be executed whenever an Ajax request completes successfully. This is an Ajax Event.<br class="wikidpad" />
+<br class="wikidpad" />
+Example:<br class="wikidpad" />
+<br class="wikidpad" />
+<b class="wikidpad">Chrome</b><br class="wikidpad" />
+<br class="wikidpad" />
+If you have a script you want to put a break point to, look under "source", find wherever your code is, put breakpoints and refresh the page.<br class="wikidpad" />
+<br class="wikidpad" />
+If you want to put some text in the console log, do it like this: <br class="wikidpad" />
+console.log("AJAX starting");<br class="wikidpad" />
+<br class="wikidpad" />
+Then you can look at the console by doing "inspect element" anywhere and switching to the console tab<br class="wikidpad" />
+<br class="wikidpad" />
+<b class="wikidpad">Notes from Pluralsight training</b><br class="wikidpad" />
+<br class="wikidpad" />
+jquery 1.9: supports ie6+<br class="wikidpad" />
+jquery 2.0: support ie9+<br class="wikidpad" />
+<br class="wikidpad" />
+you can actually use server side detection. If the browser used is ie8 or below, use jquery 1.9, otherwise use jquery 2.0 either using:<br class="wikidpad" />
+- server side detection<br class="wikidpad" />
+- client side contional comments<br class="wikidpad" />
+<br class="wikidpad" />
+&lt;!--[if lt IE9]&gt;<br class="wikidpad" />
+&lt;scrit src="jquery-10.2.1.min.js"&gt;&lt;/script&gt;<br class="wikidpad" />
+&lt;![endif]--&gt;<br class="wikidpad" />
+&lt;!--[if gte IE9]&gt;&lt;!--&gt;<br class="wikidpad" />
+&lt;script src="jquery-2.0.2.min.js"&gt;&lt;/script&gt;<br class="wikidpad" />
+&lt;!--[endif]--&gt;<br class="wikidpad" />
+<br class="wikidpad" />
+The jQuery document ready function fires when the DOM is done loading, regardless if images or other assets are still loading.    </body>
+</html>

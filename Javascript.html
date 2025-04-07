@@ -1,0 +1,1182 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html>
+    <head>
+        <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+        <title>Javascript</title>
+        <link type="text/css" rel="stylesheet" href="appbase.css">
+    </head>
+    <body class="wikidpad">
+<span class="wikidpad parent-nodes">parent nodes: <span class="wikidpad parent-node"><a href="WebDesign.html" class="wikidpad">WebDesign</a></span><br class="wikidpad" /><br class="wikidpad" /></span>
+<a name=".h0" class="wikidpad"></a><h2 class="wikidpad heading-level2">Javascript</h2>
+<span class="wikidpad property attribute">[camelCaseWordsEnabled: false]</span><br class="wikidpad" />
+<br class="wikidpad" />
+<span class="wikidpad wiki-link"><a href="AngularJS.html" class="wikidpad">AngularJS</a></span><br class="wikidpad" />
+<span class="wikidpad wiki-link"><a href="jQuery.html" class="wikidpad">jQuery</a></span><br class="wikidpad" />
+<span class="wikidpad wiki-link"><a href="jQuery%20Plugins.html" class="wikidpad">jQuery Plugins</a></span><br class="wikidpad" />
+<span class="wikidpad wiki-link"><a href="Node.js.html" class="wikidpad">Node.js</a></span><br class="wikidpad" />
+<span class="wikidpad wiki-link"><a href="EmberJS.html" class="wikidpad">EmberJS</a></span><br class="wikidpad" />
+<span class="wikidpad wiki-link"><a href="MVC%20Frameworks.html" class="wikidpad">MVC Frameworks</a></span><br class="wikidpad" />
+<br class="wikidpad" />
+<b class="wikidpad">Introduction</b><br class="wikidpad" />
+JavaScript only works inside another application, the web browser. Whether that's IE or Safari or Firefox or Chrome or Opera, they all have a JavaScript engine inside them. The operating system runs the web browser, the web browser contains a page, and the page contains the JavaScript. Now another way JavaScript is limited is that it doesn't have access to the file system of the computer that it's running on. There are no keywords in JavaScript to open or save local files because that would be a security risk.<br class="wikidpad" />
+<br class="wikidpad" />
+Javascript is a client-side language as opposed to server side technologies like PHP, ASP.NET, Ruby on Rails...<br class="wikidpad" />
+<br class="wikidpad" />
+You will also find Javascript in Acrobat, Photoshop, Node.js...<br class="wikidpad" />
+<br class="wikidpad" />
+Because JavaScript is on the client-side, you have to think of the possibility of it not being activated on the client's machine, and it will be as if your javascript does not exist at all. It is not as common nowadays as it used to be. We have to make sure our website are still useable even if JavaScript is inactivated.<br class="wikidpad" />
+<br class="wikidpad" />
+JavaScript used to be rendered differently by different browsers, but it is no longer the case much.<br class="wikidpad" />
+<br class="wikidpad" />
+JavaScript and ECMAScript is pretty much the same thing. ECMAScript version 3 was published in 1999 and ECMAScript version 5 in 2009, but version 3 is the one that guarantees full support by all browsers. [The course was done in 2011 so it is probably not true anymore]<br class="wikidpad" />
+<br class="wikidpad" />
+Javascript is interpreted, not compiled<br class="wikidpad" />
+<br class="wikidpad" />
+<i class="wikidpad">Javascript is case sensitive</i><br class="wikidpad" />
+<i class="wikidpad">Javascript is whitespace insensitive</i><br class="wikidpad" />
+<i class="wikidpad">Javacript comment: // or /**/</i><br class="wikidpad" />
+<br class="wikidpad" />
+<b class="wikidpad">Alert Box</b><br class="wikidpad" />
+&lt;script&gt;<ul class="wikidpad normalindent">alert("Hello World!");</ul>
+&lt;/script&gt;<br class="wikidpad" />
+<br class="wikidpad" />
+<b class="wikidpad">Examples of things you could do with JavaScript</b><br class="wikidpad" />
+<br class="wikidpad" />
+- Change color of headline<br class="wikidpad" />
+- Calculate age<br class="wikidpad" />
+- Move image<br class="wikidpad" />
+- Hide menu<br class="wikidpad" />
+- Alert important messages<br class="wikidpad" />
+<br class="wikidpad" />
+<b class="wikidpad">Putting Javascript into different files</b><br class="wikidpad" />
+<br class="wikidpad" />
+In your HTML file:<br class="wikidpad" />
+&lt;script src="myscript.js" type="text/javascript"&gt;&lt;/script&gt; <br class="wikidpad" />
+<br class="wikidpad" />
+You can leave off type="text/javascript", every browser will assume it's javascript<br class="wikidpad" />
+<br class="wikidpad" />
+And in your js file, you would not have the &lt;script&gt; tag<br class="wikidpad" />
+<br class="wikidpad" />
+<b class="wikidpad">Where to put your code</b><br class="wikidpad" />
+<br class="wikidpad" />
+Put the script tags at the very bottom of your &lt;body&gt; tag, unless the script is necessary to render the page.<br class="wikidpad" />
+<br class="wikidpad" />
+<b class="wikidpad">Variables</b><br class="wikidpad" />
+<br class="wikidpad" />
+Creating a variable:<br class="wikidpad" />
+var year;<br class="wikidpad" />
+year = 2011;<br class="wikidpad" />
+<br class="wikidpad" />
+or: <br class="wikidpad" />
+var year = 2011; //technically, the word "var" is not necessary but it is good practice to put it<br class="wikidpad" />
+<br class="wikidpad" />
+So basically if you have just year = 2011, javascript will check if that variable already exists and if it doesn't, it will create it for you. <br class="wikidpad" />
+<br class="wikidpad" />
+Name of variable cannot start with a number<br class="wikidpad" />
+99problems does not work<br class="wikidpad" />
+problems99 works<br class="wikidpad" />
+<br class="wikidpad" />
+You are allowed to do this:<br class="wikidpad" />
+var year, month, day;<br class="wikidpad" />
+var year= 2011, month = 12, day = 18;<br class="wikidpad" />
+<br class="wikidpad" />
+In javascript, you don't have to specify which type your variable is (bool, float, string, etc.)<br class="wikidpad" />
+<br class="wikidpad" />
+You can use either " or ' to surround text. <br class="wikidpad" />
+<br class="wikidpad" />
+You're allowed to do this:<br class="wikidpad" />
+<br class="wikidpad" />
+var myVariable;<br class="wikidpad" />
+myVariable = 200;<br class="wikidpad" />
+myVariable = "Hello";<br class="wikidpad" />
+myVariable = 'Hello';<br class="wikidpad" />
+myVariable = true;<br class="wikidpad" />
+<br class="wikidpad" />
+<b class="wikidpad">Conditional code</b><br class="wikidpad" />
+<br class="wikidpad" />
+if(condition) {<ul class="wikidpad normalindent">//code</ul>
+}<br class="wikidpad" />
+else{<ul class="wikidpad normalindent">//different code</ul>
+}<br class="wikidpad" />
+<br class="wikidpad" />
+if( c==99(&lt;){<ul class="wikidpad normalindent">//we need a double ==, or triple ===. Never =</ul>
+}<br class="wikidpad" />
+<br class="wikidpad" />
+You don't have to put braces if you have a one-line statement inside your if<br class="wikidpad" />
+<br class="wikidpad" />
+<b class="wikidpad">Switch</b><br class="wikidpad" />
+<br class="wikidpad" />
+var candy = prompt("What's your favorite candy?","Type your favorite candy here.");<br class="wikidpad" />
+<br class="wikidpad" />
+switch(candy) {<ul class="wikidpad normalindent">case 'licorice':<ul class="wikidpad normalindent">console.log("Gross!");<br class="wikidpad" />
+break;</ul>
+case 'gum':<ul class="wikidpad normalindent">console.log("I like gum!");<br class="wikidpad" />
+break;</ul>
+case 'beets':<ul class="wikidpad normalindent">console.log("...is that even a candy?");<br class="wikidpad" />
+break;</ul>
+// Add your code here!<br class="wikidpad" />
+default:<ul class="wikidpad normalindent">console.log("default");</ul>
+</ul>
+}<br class="wikidpad" />
+<br class="wikidpad" />
+<b class="wikidpad">Operators</b><br class="wikidpad" />
+<br class="wikidpad" />
+Arithmetic: + - * /<br class="wikidpad" />
+Assignment: =<br class="wikidpad" />
+Equality: == or === (strict equality) <br class="wikidpad" />
+Different: != or !==<br class="wikidpad" />
+Comparison: &lt; &gt; =&lt; =&gt;<br class="wikidpad" />
+Logical "or" and "and": || and &amp;&amp;<br class="wikidpad" />
+Modulus: %<br class="wikidpad" />
+Shorthand increment / decrement: i++; or i--; or ++i; or --i;<br class="wikidpad" />
+Prefix / Postfix: if you alert(++a), this is different from alert(a++)<br class="wikidpad" />
+Ternary: condition ? true : false<br class="wikidpad" />
+<br class="wikidpad" />
+Operator precedence: * and / are more important than + and -<br class="wikidpad" />
+<br class="wikidpad" />
+Equality example:<br class="wikidpad" />
+5 == "5" is true <br class="wikidpad" />
+but <br class="wikidpad" />
+5 === "5" is not true<br class="wikidpad" />
+<br class="wikidpad" />
+Some javascript experts recommend using === all the time and never use ==<br class="wikidpad" />
+<br class="wikidpad" />
+//Those two statements are identical:<br class="wikidpad" />
+score = score + 10;<br class="wikidpad" />
+score += 10;<br class="wikidpad" />
+<br class="wikidpad" />
+Calculate a leap year:<br class="wikidpad" />
+var year = 2003;<br class="wikidpad" />
+var remainder = year % 4; //remainder is 3<br class="wikidpad" />
+<br class="wikidpad" />
+<b class="wikidpad">Write to the console</b><br class="wikidpad" />
+<br class="wikidpad" />
+var foo = 10;<br class="wikidpad" />
+var bar = 20;<br class="wikidpad" />
+<br class="wikidpad" />
+if (foo &lt; bar){<ul class="wikidpad normalindent">console.log("foo is less than bar");<br class="wikidpad" />
+console.debug("foo is less than bar");<br class="wikidpad" />
+console.info("foo is less than bar");<br class="wikidpad" />
+console.warn("foo is less than bar");<br class="wikidpad" />
+console.error("foo is less than bar");</ul>
+}<br class="wikidpad" />
+<br class="wikidpad" />
+<b class="wikidpad">Loops</b><br class="wikidpad" />
+<br class="wikidpad" />
+<i class="wikidpad">while</i><br class="wikidpad" />
+<br class="wikidpad" />
+var a = 1;<br class="wikidpad" />
+<br class="wikidpad" />
+while (a &lt; 10){<ul class="wikidpad normalindent">console.log(a);<br class="wikidpad" />
+a++;</ul>
+}<br class="wikidpad" />
+<br class="wikidpad" />
+<i class="wikidpad">do...while</i><br class="wikidpad" />
+<br class="wikidpad" />
+var a = 1;<br class="wikidpad" />
+<br class="wikidpad" />
+do {<ul class="wikidpad normalindent">console.log(a);<br class="wikidpad" />
+a++;</ul>
+} while (a &lt; 10);<br class="wikidpad" />
+<br class="wikidpad" />
+<i class="wikidpad">for loop</i><br class="wikidpad" />
+<br class="wikidpad" />
+for (var a = 1; a&lt; 10; a++){<ul class="wikidpad normalindent">console.log(a);</ul>
+}<br class="wikidpad" />
+<br class="wikidpad" />
+<i class="wikidpad">break</i><br class="wikidpad" />
+<br class="wikidpad" />
+The word "break" jumps you out of the loop<br class="wikidpad" />
+<br class="wikidpad" />
+<i class="wikidpad">continue</i><br class="wikidpad" />
+<br class="wikidpad" />
+for (var a = 1; a&lt; 10; a++){<ul class="wikidpad normalindent">//do stuff<br class="wikidpad" />
+//do stuff<br class="wikidpad" />
+if (condition){<ul class="wikidpad normalindent">continue;</ul>
+}<br class="wikidpad" />
+//will be skipped by continue, we're done with this iteration</ul>
+}<br class="wikidpad" />
+<br class="wikidpad" />
+<b class="wikidpad">Functions</b><br class="wikidpad" />
+<br class="wikidpad" />
+function myFunction () {<ul class="wikidpad normalindent">console.log("We're in the function!");</ul>
+}<br class="wikidpad" />
+<br class="wikidpad" />
+//sometime later<br class="wikidpad" />
+myFunction();<br class="wikidpad" />
+<br class="wikidpad" />
+It doesn't matter where you put your functions, they will work regardless, however it is better practice to declare a function BEFORE calling it.<br class="wikidpad" />
+<br class="wikidpad" />
+<i class="wikidpad">Function with parameters</i><br class="wikidpad" />
+<br class="wikidpad" />
+function myFunction (x) {<ul class="wikidpad normalindent">console.log("We're in the function and here is the value of x: " + x);</ul>
+}<br class="wikidpad" />
+<br class="wikidpad" />
+//sometime later<br class="wikidpad" />
+myFunction("salut!");<br class="wikidpad" />
+<br class="wikidpad" />
+<i class="wikidpad">Returning values</i><br class="wikidpad" />
+<br class="wikidpad" />
+function myFunction (x, y) {<ul class="wikidpad normalindent">var myVar = x + y;<br class="wikidpad" />
+return myVar;</ul>
+}<br class="wikidpad" />
+<br class="wikidpad" />
+//sometime later<br class="wikidpad" />
+myVar = myFunction(2,3);<br class="wikidpad" />
+alert(myVar);<br class="wikidpad" />
+<br class="wikidpad" />
+If you pass an extra parameter by mistake:<br class="wikidpad" />
+myVar = myFunction(2,3,4) -&gt; this equals 5<br class="wikidpad" />
+<br class="wikidpad" />
+The extra parameter is simply ignored.<br class="wikidpad" />
+<br class="wikidpad" />
+If you don't pass enough, the variables will be "undefined".<br class="wikidpad" />
+myVar = myFunction(2) -&gt; This does not actually give 2, it gives NaN, but at least my page doesn't break.<br class="wikidpad" />
+<br class="wikidpad" />
+<b class="wikidpad">Scope</b><br class="wikidpad" />
+<br class="wikidpad" />
+var bar = 1000; //This is a global variable<br class="wikidpad" />
+<br class="wikidpad" />
+function simpleFunction(){<ul class="wikidpad normalindent">var foo = 500;<br class="wikidpad" />
+console.log(foo); //500<br class="wikidpad" />
+console.log(bar); //1000</ul>
+}<br class="wikidpad" />
+<br class="wikidpad" />
+simpleFunction();<br class="wikidpad" />
+console.log(foo); //undefined<br class="wikidpad" />
+console.log(bar); //1000;<br class="wikidpad" />
+<br class="wikidpad" />
+<br class="wikidpad" />
+<b class="wikidpad">Arrays</b><br class="wikidpad" />
+<br class="wikidpad" />
+var tableau = [1,2,3,4,5];<br class="wikidpad" />
+<br class="wikidpad" />
+or<br class="wikidpad" />
+<br class="wikidpad" />
+var tableau = [];<br class="wikidpad" />
+<br class="wikidpad" />
+tableau[0] = 50;<br class="wikidpad" />
+tableau[1] = 60;<br class="wikidpad" />
+tableau[2] = "mouse";<br class="wikidpad" />
+<br class="wikidpad" />
+Basically you can put anything in your array, regardless of the type<br class="wikidpad" />
+<br class="wikidpad" />
+These lines mean the same thing:<br class="wikidpad" />
+var tableau = [];<br class="wikidpad" />
+var tableau = new Array();<br class="wikidpad" />
+var tableau = Array();<br class="wikidpad" />
+<br class="wikidpad" />
+We can create the array with a size (var tableau = Array(5);) but you don't have to specify the size, javascript will let you put values wherever you feel like in your array at anytime. Arrays are dynamic.<br class="wikidpad" />
+<br class="wikidpad" />
+console.log(tableau.length()); //will give you the length of the array<br class="wikidpad" />
+<br class="wikidpad" />
+<b class="wikidpad">Array methods</b><br class="wikidpad" />
+<br class="wikidpad" />
+length;<br class="wikidpad" />
+reverse();<br class="wikidpad" />
+join(); //join all the values in the array in one single string<br class="wikidpad" />
+sort();<br class="wikidpad" />
+<br class="wikidpad" />
+<b class="wikidpad">Numbers</b><br class="wikidpad" />
+<br class="wikidpad" />
+Internally, all JavaScript numbers are 64-bit floating point numbers<br class="wikidpad" />
+<br class="wikidpad" />
+5 + 5 = 10<br class="wikidpad" />
+"5" + "5" = "55"<br class="wikidpad" />
+5 + "5" = "55"<br class="wikidpad" />
+<br class="wikidpad" />
+To verify if a variable is a number:<br class="wikidpad" />
+<br class="wikidpad" />
+var foo = "55";<br class="wikidpad" />
+var myNumber = Number(foo);<br class="wikidpad" />
+<br class="wikidpad" />
+if (isNaN(myNumber) ){<ul class="wikidpad normalindent">console.log("It's not a number!");</ul>
+}<br class="wikidpad" />
+<br class="wikidpad" />
+or <br class="wikidpad" />
+<br class="wikidpad" />
+if (!isNaN(myNumber) ){<ul class="wikidpad normalindent">console.log("It IS a number!");</ul>
+}<br class="wikidpad" />
+<br class="wikidpad" />
+To convert a variable into a number, just put a + in front of it (var foo = +"55";)<br class="wikidpad" />
+<br class="wikidpad" />
+<i class="wikidpad">Using the Math object</i><br class="wikidpad" />
+<br class="wikidpad" />
+var x = 200.6;<br class="wikidpad" />
+var y = Math.round(x);<br class="wikidpad" />
+<br class="wikidpad" />
+var a = 1, b = 2, c = 3;<br class="wikidpad" />
+var biggest = Math.max(a,b,c);<br class="wikidpad" />
+var smallest = Math.min(a,b,c);<br class="wikidpad" />
+<br class="wikidpad" />
+other functions:<br class="wikidpad" />
+Math.PI<br class="wikidpad" />
+Math.random();<br class="wikidpad" />
+Math.sqrt();<br class="wikidpad" />
+Math.log();<br class="wikidpad" />
+<br class="wikidpad" />
+Math.floor(Math.random() * 255) -&gt; will give you a random number between 0 and 255<br class="wikidpad" />
+We do this because random generates a random number between 0 and 1 (0.5, 0.831, etc.)<br class="wikidpad" />
+<br class="wikidpad" />
+<b class="wikidpad">Strings</b><br class="wikidpad" />
+<br class="wikidpad" />
+Escape string: <br />
+<br class="wikidpad" />
+var phrase = "this is a simple phrase.";<br class="wikidpad" />
+phrase.length; //24<br class="wikidpad" />
+phrase.toUpperCase();<br class="wikidpad" />
+phrase.toLowerCase();<br class="wikidpad" />
+<br class="wikidpad" />
+phrase.split(" "); //returns an array of words. The "space" represents where the string should be split<br class="wikidpad" />
+<br class="wikidpad" />
+var phrase = "We want a groovy keyword";<br class="wikidpad" />
+var position = phrase.indexOf("groovy"); //10<br class="wikidpad" />
+<br class="wikidpad" />
+This will return the FIRST occurence of the word (if there are multiple)<br class="wikidpad" />
+<br class="wikidpad" />
+If not found, it will return -1<br class="wikidpad" />
+<br class="wikidpad" />
+You can use lastIndexOf for the last occurence<br class="wikidpad" />
+<br class="wikidpad" />
+var phrase = "Yet another phrase.";<br class="wikidpad" />
+var segment = phrase.slice(6,11); //"other" <br class="wikidpad" />
+<br class="wikidpad" />
+.substring(start,end)<br class="wikidpad" />
+.substr(start,length)<br class="wikidpad" />
+<br class="wikidpad" />
+String comparison is case sensitive<br class="wikidpad" />
+<br class="wikidpad" />
+All the uppercase letters are considered less than lowercase<br class="wikidpad" />
+<br class="wikidpad" />
+Javascript reference guide: <span class="wikidpad url-link"><a href="http://developer.mozilla.org/en/JavaScript/Reference" class="wikidpad">http://developer.mozilla.org/en/JavaScript/Reference</a></span><br class="wikidpad" />
+<br class="wikidpad" />
+<b class="wikidpad">Dates</b><br class="wikidpad" />
+<br class="wikidpad" />
+var today = new Date(); //current date and time if you don't pass parameters<br class="wikidpad" />
+var y2k = new Date(2000,0,1); //notice that MONTH is zero based<br class="wikidpad" />
+<br class="wikidpad" />
+today.getMonth(); //returns 0 - 11<br class="wikidpad" />
+today.getFullYear(); //YYYY<br class="wikidpad" />
+today.getYear(); //deprecated<br class="wikidpad" />
+today.getDate(); //1-31 day of month<br class="wikidpad" />
+today.getDay(); //0-6 day of the week (0 = Sunday)<br class="wikidpad" />
+today.getHours(); //0-23 (zero-based)<br class="wikidpad" />
+today.getTime(); //milliseconds since 1970/01/01. This is used a lot to compare dates<br class="wikidpad" />
+<br class="wikidpad" />
+We also have the equivalent "set" methods.<br class="wikidpad" />
+<br class="wikidpad" />
+<i class="wikidpad">Comparing dates</i><br class="wikidpad" />
+<br class="wikidpad" />
+var date1 = new Date(2000,0,1);<br class="wikidpad" />
+var date2 = new Date(2000,0,1);<br class="wikidpad" />
+<br class="wikidpad" />
+if (date1==date2) //This is false, because dates are objects<br class="wikidpad" />
+<br class="wikidpad" />
+instead we should do:<br class="wikidpad" />
+<br class="wikidpad" />
+if(date1.getTime() == date2.getTime()) //This is true<br class="wikidpad" />
+<br class="wikidpad" />
+<b class="wikidpad">Typeof</b><br class="wikidpad" />
+<br class="wikidpad" />
+var anObj = { job: "I'm an object!" };<br class="wikidpad" />
+var aNumber = 42;<br class="wikidpad" />
+var aString = "I'm a string!";<br class="wikidpad" />
+<br class="wikidpad" />
+console.log(typeof  anObj ); // should print "object"<br class="wikidpad" />
+console.log( typeof aNumber ); // should print "number"<br class="wikidpad" />
+console.log( typeof  aString); // should print "string"<br class="wikidpad" />
+<br class="wikidpad" />
+<br class="wikidpad" />
+<b class="wikidpad">Objects</b><br class="wikidpad" />
+<br class="wikidpad" />
+3 types of object:<br class="wikidpad" />
+- Host Objects: objects defined by the environment in which your code is run (example a web browser which include console object, window object, etc.)<br class="wikidpad" />
+- Core Objects: Objects built into the JavaScript language itself (ex: Math, String, Date, etc.)<br class="wikidpad" />
+- Coder defined: All other objects that are defined by you or coming from a library like jQuery! :)<br class="wikidpad" />
+<br class="wikidpad" />
+Arrays are Objects<br class="wikidpad" />
+Dates are Objects<br class="wikidpad" />
+<br class="wikidpad" />
+var player = new Object();<br class="wikidpad" />
+<br class="wikidpad" />
+//properties<br class="wikidpad" />
+player.name = "Fred";<br class="wikidpad" />
+player.score = 100;<br class="wikidpad" />
+player.rank = 1;<br class="wikidpad" />
+<br class="wikidpad" />
+or<br class="wikidpad" />
+<br class="wikidpad" />
+//shorthand through name-value pair<br class="wikidpad" />
+var player1 = {name: "Fred", score: 100, rank: 1};<br class="wikidpad" />
+var player2 = {name: "Sam", score: 50, rank: 3};<br class="wikidpad" />
+<br class="wikidpad" />
+function playerDetails(){<ul class="wikidpad normalindent">//Display information about each player<br class="wikidpad" />
+console.log(this.name + " has a rank of: " + this.rank);</ul>
+}<br class="wikidpad" />
+<br class="wikidpad" />
+player1.logDetails = playerDetails; //This is not a call to a function, we are associating the function with player1<br class="wikidpad" />
+player2.logDetails = playerDetails;<br class="wikidpad" />
+<br class="wikidpad" />
+player1.logDetails();<br class="wikidpad" />
+<br class="wikidpad" />
+OR <br class="wikidpad" />
+<br class="wikidpad" />
+var phonebookEntry = {};<br class="wikidpad" />
+<br class="wikidpad" />
+phonebookEntry.name = 'Oxnard Montalvo';<br class="wikidpad" />
+phonebookEntry.number = '(555) 555-5555';<br class="wikidpad" />
+phonebookEntry.phone = function() {<ul class="wikidpad normalindent">console.log('Calling ' + this.name + ' at ' + this.number + '...');</ul>
+};<br class="wikidpad" />
+<br class="wikidpad" />
+phonebookEntry.phone();<br class="wikidpad" />
+<br class="wikidpad" />
+OR<br class="wikidpad" />
+<br class="wikidpad" />
+var me = {<ul class="wikidpad normalindent">name: "Claudie",<br class="wikidpad" />
+age: 29</ul>
+};<br class="wikidpad" />
+<br class="wikidpad" />
+<b class="wikidpad">hasOwnProperty</b><br class="wikidpad" />
+<br class="wikidpad" />
+var myObj = {<ul class="wikidpad normalindent">name: "Claudie"</ul>
+};<br class="wikidpad" />
+<br class="wikidpad" />
+console.log( myObj.hasOwnProperty('name') ); // true<br class="wikidpad" />
+console.log( myObj.hasOwnProperty('nickname') ); // false<br class="wikidpad" />
+<br class="wikidpad" />
+<b class="wikidpad">Loop through elements of an object</b><br class="wikidpad" />
+<br class="wikidpad" />
+var nyc = {<ul class="wikidpad normalindent">fullName: "New York City",<br class="wikidpad" />
+mayor: "Bill de Blasio",<br class="wikidpad" />
+population: 8000000,<br class="wikidpad" />
+boroughs: 5</ul>
+};<br class="wikidpad" />
+<br class="wikidpad" />
+for (var property in nyc)<br class="wikidpad" />
+{<ul class="wikidpad normalindent">console.log(property); //this will log the property name<br class="wikidpad" />
+console.log(nyc[property]); //this will log the property value</ul>
+}<br class="wikidpad" />
+<br class="wikidpad" />
+<b class="wikidpad">DOM</b><br class="wikidpad" />
+<br class="wikidpad" />
+Knowing the DOM is the single most important skill for a Javascript developer<br class="wikidpad" />
+<br class="wikidpad" />
+DOM: Document Object Model<br class="wikidpad" />
+<br class="wikidpad" />
+Document = The page (the web page)<br class="wikidpad" />
+Object = Any element on the page (h1, ul, html...) sometimes they contain other objects (ul contains li)<br class="wikidpad" />
+Model = kind of like the HTML in a tree structure. The model is an agreed upon set of terms<br class="wikidpad" />
+<br class="wikidpad" />
+HTML<ul class="wikidpad normalindent">HEAD<ul class="wikidpad normalindent">TITLE</ul>
+BODY<ul class="wikidpad normalindent">H1<br class="wikidpad" />
+P<br class="wikidpad" />
+UL<ul class="wikidpad normalindent">LI<br class="wikidpad" />
+LI<br class="wikidpad" />
+LI<br class="wikidpad" />
+</ul>
+</ul>
+</ul>
+When you know the DOM, you can use Javascript to access and make changes to ANY element of the page:<br class="wikidpad" />
+- Get the title text<br class="wikidpad" />
+- Get the second paragraph<br class="wikidpad" />
+- Get the third link in the menu and set its CSS to display: none<br class="wikidpad" />
+- Change the background color of all paragraphs with a class of "important"<br class="wikidpad" />
+- Get all the &lt;li&gt; elements in the last unordered list<br class="wikidpad" />
+- Find the image with an id of "logo" and move it 40 pixels to the right<br class="wikidpad" />
+- Change a link so it performs a javascript function when clicked<br class="wikidpad" />
+- Create a new unordered list and insert between first and second paragraph<br class="wikidpad" />
+- ...<br class="wikidpad" />
+<br class="wikidpad" />
+The DOM thinks about elements in terms of "Nodes". Nodes are not only tags, they are block of text, comments in the code, attributes, etc.<br class="wikidpad" />
+<br class="wikidpad" />
+<b class="wikidpad">Node types</b><br class="wikidpad" />
+<br class="wikidpad" />
+node.ELEMENT_NODE<br class="wikidpad" />
+node.ATTRIBUTE_NODE<br class="wikidpad" />
+node.TEXT_NODE<br class="wikidpad" />
+node.CDATA_SECTION_NODE<br class="wikidpad" />
+node.ENTITY_REFERENCE_NODE<br class="wikidpad" />
+node.ENTITY_NODE<br class="wikidpad" />
+node.PROCESSING_INSTRUCTION_NODE<br class="wikidpad" />
+node.COMMENT_NODE<br class="wikidpad" />
+node.DOCUMENT_NODE<br class="wikidpad" />
+node.DOCUMENT_TYPE_NODE<br class="wikidpad" />
+node.DOCUMENT_FRAGMENT_NODE<br class="wikidpad" />
+node.NOTATION_NODE<br class="wikidpad" />
+<br class="wikidpad" />
+But we are only interested in the first three<br class="wikidpad" />
+<br class="wikidpad" />
+<b class="wikidpad">Accessing DOM elements</b><br class="wikidpad" />
+<br class="wikidpad" />
+Your main question is: Is it unique? Does it have an ID?<br class="wikidpad" />
+<br class="wikidpad" />
+If so, you can get to it this way:<br class="wikidpad" />
+var myElement = document.getElementById("someId");<br class="wikidpad" />
+<br class="wikidpad" />
+What we are creating is a "Handle" to that place in the DOM. We can use that variable to read properties of the element. You can call methods of the element. You can even change that element. You can use it to go down to the child nodes. You can use it to go up to the parent node.<br class="wikidpad" />
+<br class="wikidpad" />
+What if you don't have an ID or you want more than one element?<br class="wikidpad" />
+<br class="wikidpad" />
+var myListItems = document.getElementsByTagName("li"); //this will become an array<br class="wikidpad" />
+var myLinks = document.getElementsByTagName("a"); //if you don't have any, the array will be empty<br class="wikidpad" />
+<br class="wikidpad" />
+Those two functions (getElementById and getElementsByTagName) don't always have to be used on "document", they can be used on any element<br class="wikidpad" />
+<br class="wikidpad" />
+<b class="wikidpad">Changing DOM elements</b><br class="wikidpad" />
+<br class="wikidpad" />
+Working with attributes:<br class="wikidpad" />
+myElement.getAttribute("align"); //name in quotes<br class="wikidpad" />
+myElement.setAttribute("align","left"); //if the attribute does not exist, it will be created<br class="wikidpad" />
+<br class="wikidpad" />
+<b class="wikidpad">Creating elements</b><br class="wikidpad" />
+<br class="wikidpad" />
+Step 1: Create the element<br class="wikidpad" />
+Step 2: Put it where it belons in the DOM<br class="wikidpad" />
+Step 3: If necessary, create a text node<br class="wikidpad" />
+<br class="wikidpad" />
+var myNewElement = document.createElement("li");<br class="wikidpad" />
+myElement.appendChild(myNewElement); //we pretend that myElement is actually a &lt;ul&gt; somewhere<br class="wikidpad" />
+var myText = document.createTextNode("New list item text");<br class="wikidpad" />
+myNewElement.appendChild(myText);<br class="wikidpad" />
+<br class="wikidpad" />
+You could use this method to populate a trivia for example. So you have a list of trivia questions and you randomly pick one and use javascript to populate that area everytime the page loads.<br class="wikidpad" />
+<br class="wikidpad" />
+Alternative to appendchild:<br class="wikidpad" />
+parent.insertBefore(newElement, existingElement);<br class="wikidpad" />
+<br class="wikidpad" />
+<b class="wikidpad">Events</b><br class="wikidpad" />
+<br class="wikidpad" />
+Examples of events:<br class="wikidpad" />
+- Page load<br class="wikidpad" />
+- Button click<br class="wikidpad" />
+- Mouse scroll<br class="wikidpad" />
+- Mouse move<br class="wikidpad" />
+- Form field click<br class="wikidpad" />
+- Key press<br class="wikidpad" />
+- ...<br class="wikidpad" />
+<br class="wikidpad" />
+Event names (examples):<br class="wikidpad" />
+- onload<br class="wikidpad" />
+- onclick<br class="wikidpad" />
+- onmouseover<br class="wikidpad" />
+- onblur (opposite of onfocus, when you leave a form field for example)<br class="wikidpad" />
+- onfocus<br class="wikidpad" />
+<br class="wikidpad" />
+There are 3 ways you can react to an event in JavaScript:<br class="wikidpad" />
+<br class="wikidpad" />
+1. Handling Events directly in your HTML ==&gt; Not recommended<br class="wikidpad" />
+<br class="wikidpad" />
+&lt;button onclick="alert('Hello,world');"&gt;<ul class="wikidpad normalindent">//Code</ul>
+&lt;/button&gt;<br class="wikidpad" />
+<br class="wikidpad" />
+2. Using the element name.event name method ==&gt; Those are all anonymous functions<br class="wikidpad" />
+<br class="wikidpad" />
+window.onload = function(){<ul class="wikidpad normalindent">//code</ul>
+};<br class="wikidpad" />
+<br class="wikidpad" />
+nameField.onblur = function(){<ul class="wikidpad normalindent">//code</ul>
+};<br class="wikidpad" />
+<br class="wikidpad" />
+myElement.onclick = function(){<ul class="wikidpad normalindent">//code</ul>
+}; //Don't forget the semicolon, it is there because of the myElement.onclick stuff, because this is a statement<br class="wikidpad" />
+<br class="wikidpad" />
+In most cases it would work even without the ;, but it's better to put it<br class="wikidpad" />
+<br class="wikidpad" />
+3. Add event listener<br class="wikidpad" />
+<br class="wikidpad" />
+document.addEventListener('click', myFunction, false);<br class="wikidpad" />
+<br class="wikidpad" />
+You can call it on the document object or any element<br class="wikidpad" />
+'click' =&gt; Event<br class="wikidpad" />
+'myFunction' =&gt; the function<br class="wikidpad" />
+'false' =&gt; this is going to be false most of the time, it's for super advanced event handling stuff<br class="wikidpad" />
+<br class="wikidpad" />
+Benefit: You can have one event with multiple listeners (so you can reuse your function basically). You can also remove eventlisteners and put them back throughout your code<br class="wikidpad" />
+<br class="wikidpad" />
+Disadvantage: There is still a different between the browsers. Does not work prior to IE 9<br class="wikidpad" />
+<br class="wikidpad" />
+//IE 8 and previous<br class="wikidpad" />
+document.attachEvent('onclick', myFunction);<br class="wikidpad" />
+<br class="wikidpad" />
+Here is a function you can use to handle this:<br class="wikidpad" />
+<br class="wikidpad" />
+function addCrossBrowserEventListener (elementName, eventName, functionName){<ul class="wikidpad normalindent">//does the addEventListener function exist?<br class="wikidpad" />
+if (elementName.addEventListener){<ul class="wikidpad normalindent">//yes - use it<br class="wikidpad" />
+elementName.addEventListener(eventName, functionName, false);<br class="wikidpad" />
+return true;</ul>
+} else {<ul class="wikidpad normalindent">//otherwise use attachEvent<br class="wikidpad" />
+elementName.attachEvent("on" + eventName, functioName);<br class="wikidpad" />
+return true;</ul>
+}</ul>
+}<br class="wikidpad" />
+<br class="wikidpad" />
+BUT, it is much better to use jQuery or another similar library!<br class="wikidpad" />
+<br class="wikidpad" />
+Useful piece of code:<br class="wikidpad" />
+<br class="wikidpad" />
+function prepareEventHandlers() {	<ul class="wikidpad normalindent">var myImage = document.getElementById("mainImage");<br class="wikidpad" />
+myImage.onclick =  function() {<ul class="wikidpad normalindent">alert("You clicked the image");</ul>
+}</ul>
+}<br class="wikidpad" />
+<br class="wikidpad" />
+//The window.onload function tells us when the page is fully loaded<br class="wikidpad" />
+window.onload = function() {<ul class="wikidpad normalindent">// prep anything we need to<br class="wikidpad" />
+prepareEventHandlers();</ul>
+};<br class="wikidpad" />
+<br class="wikidpad" />
+<b class="wikidpad">With the code above, if you don't have window.onload function and you have your script tag in your HTML in your head section, it won't work because it's trying to grab the image (var myImage = document.getElementById("mainImage");) which does not exist yet</b><br class="wikidpad" />
+<br class="wikidpad" />
+You should only write a window.onload function ONCE PER PAGE. If multiple javascrip files are using window.onload, only the last one will win. To go around this problem, do this:<br class="wikidpad" />
+<br class="wikidpad" />
+window.addEventListener(‘load’, function () {<br class="wikidpad" />
+// Your code or function call here.<br class="wikidpad" />
+}, false);<br class="wikidpad" />
+<br class="wikidpad" />
+Or another option would be to use jQuery:<br class="wikidpad" />
+<br class="wikidpad" />
+$(document).ready(function(){<ul class="wikidpad normalindent">//code</ul>
+}<br class="wikidpad" />
+<br class="wikidpad" />
+<b class="wikidpad">Focus and Blur</b><br class="wikidpad" />
+<br class="wikidpad" />
+var emailField = document.getElementById("email");<br class="wikidpad" />
+<br class="wikidpad" />
+emailField.onfocus = function() {<ul class="wikidpad normalindent">if ( emailField.value == "your email") {<ul class="wikidpad normalindent">emailField.value = "";</ul>
+}</ul>
+};<br class="wikidpad" />
+<br class="wikidpad" />
+emailField.onblur = function() {<ul class="wikidpad normalindent">if ( emailField.value == "") {<ul class="wikidpad normalindent">emailField.value = "your email";</ul>
+}</ul>
+};<br class="wikidpad" />
+<br class="wikidpad" />
+This will basically put "your email" as a helper in the e-mail field and remove it when you focus on it. It puts it back if the field is still empty. Notice the .value for form fields<br class="wikidpad" />
+<br class="wikidpad" />
+<b class="wikidpad">Timers</b><br class="wikidpad" />
+<br class="wikidpad" />
+// settimeout is in milliseconds<br class="wikidpad" />
+setTimeout(functionName,3000); //This only happens once<br class="wikidpad" />
+<br class="wikidpad" />
+// setInterval is also in milliseconds<br class="wikidpad" />
+setInterval(changeImage,5000); //This happens every 5000 milliseconds<br class="wikidpad" />
+<br class="wikidpad" />
+// Two methods for timers - setTimeout and SetInterval (single / repeating)<br class="wikidpad" />
+<br class="wikidpad" />
+function simpleMessage() {<ul class="wikidpad normalindent">alert("This is just an alert box");</ul>
+}<br class="wikidpad" />
+<br class="wikidpad" />
+// settimeout is in milliseconds<br class="wikidpad" />
+setTimeout(simpleMessage,3000);<br class="wikidpad" />
+<br class="wikidpad" />
+var myImage = document.getElementById("mainImage");<br class="wikidpad" />
+<br class="wikidpad" />
+var imageArray = ["_images/overlook.jpg","_images/winery_sign.jpg","_images/lunch.jpg",<ul class="wikidpad normalindent">"_images/bigSur.jpg","_images/flag_photo.jpg","_images/mission_look.jpg"];</ul>
+var imageIndex = 0;<br class="wikidpad" />
+<br class="wikidpad" />
+function changeImage() {<ul class="wikidpad normalindent">myImage.setAttribute("src",imageArray[imageIndex]);<br class="wikidpad" />
+imageIndex++;<br class="wikidpad" />
+if (imageIndex &gt;= imageArray.length) {<ul class="wikidpad normalindent">imageIndex = 0;</ul>
+}</ul>
+}<br class="wikidpad" />
+<br class="wikidpad" />
+// setInterval is also in milliseconds<br class="wikidpad" />
+setInterval(changeImage,5000);<br class="wikidpad" />
+<br class="wikidpad" />
+To stop the interval:<br class="wikidpad" />
+<br class="wikidpad" />
+// setInterval is also in milliseconds<br class="wikidpad" />
+var intervalHandle = setInterval(changeImage,5000);<br class="wikidpad" />
+<br class="wikidpad" />
+myImage.onclick = function(){<ul class="wikidpad normalindent">clearInterval(intervalHandle);</ul>
+}<br class="wikidpad" />
+<br class="wikidpad" />
+<b class="wikidpad">Forms</b><br class="wikidpad" />
+<br class="wikidpad" />
+Getting forms and form elements:<br class="wikidpad" />
+<br class="wikidpad" />
+document.forms.frmContact (will get you the form named frmContact)<br class="wikidpad" />
+document.forms.frmContact.name (this is the name of the field)<br class="wikidpad" />
+<br class="wikidpad" />
+or you can use document.getElementById<br class="wikidpad" />
+<br class="wikidpad" />
+<i class="wikidpad">Text fields</i><br class="wikidpad" />
+<br class="wikidpad" />
+Have a "value" property<br class="wikidpad" />
+<br class="wikidpad" />
+Events:<br class="wikidpad" />
+- onfocus<br class="wikidpad" />
+- onblur<br class="wikidpad" />
+- onchange<br class="wikidpad" />
+- onkeypress<br class="wikidpad" />
+- onkeydown<br class="wikidpad" />
+- onkeyup<br class="wikidpad" />
+<br class="wikidpad" />
+<i class="wikidpad">Checkboxes and radio buttons</i><br class="wikidpad" />
+<br class="wikidpad" />
+Have a "checked" property, true or false<br class="wikidpad" />
+<br class="wikidpad" />
+Events:<br class="wikidpad" />
+- onclick<br class="wikidpad" />
+- onchange<br class="wikidpad" />
+<br class="wikidpad" />
+<i class="wikidpad">Select list (dropdown or list box)</i><br class="wikidpad" />
+<br class="wikidpad" />
+Properties:<br class="wikidpad" />
+- type (possible choices: select-one or select-multiple)<br class="wikidpad" />
+- selectedIndex (for a select-one)<br class="wikidpad" />
+- mySelect.options[x].selected (true or false, for a multi-select)<br class="wikidpad" />
+<br class="wikidpad" />
+Events:<br class="wikidpad" />
+- onchange<br class="wikidpad" />
+<br class="wikidpad" />
+<i class="wikidpad">Form Event: onsubmit</i><br class="wikidpad" />
+<br class="wikidpad" />
+The function you write on onsubmit can be used to validate the form. You can stop the submission of the form by returning false. Do not rely solely on Javascript to validate a form, you should do form validation on the server too.<br class="wikidpad" />
+<br class="wikidpad" />
+Example: <br class="wikidpad" />
+<br class="wikidpad" />
+// handle the form submit event<br class="wikidpad" />
+function prepareEventHandlers() {<ul class="wikidpad normalindent">document.getElementById("frmContact").onsubmit = function() {<ul class="wikidpad normalindent">// prevent a form from submitting if no email.<br class="wikidpad" />
+if (document.getElementById("email").value == "") {<ul class="wikidpad normalindent">document.getElementById("errorMessage").innerHTML = "Please provide at least an email address!";<br class="wikidpad" />
+// to STOP the form from submitting<br class="wikidpad" />
+return false;</ul>
+} else {<ul class="wikidpad normalindent">// reset and allow the form to submit<br class="wikidpad" />
+document.getElementById("errorMessage").innerHTML = "";<br class="wikidpad" />
+return true;</ul>
+}</ul>
+};</ul>
+}<br class="wikidpad" />
+<br class="wikidpad" />
+// when the document loads<br class="wikidpad" />
+window.onload =  function() {<ul class="wikidpad normalindent">prepareEventHandlers();</ul>
+};<br class="wikidpad" />
+<br class="wikidpad" />
+Example to show elements that weren't there before when clicking a checkbox:<br class="wikidpad" />
+<br class="wikidpad" />
+// show and hide sections of a form<br class="wikidpad" />
+function preparePage() {<ul class="wikidpad normalindent">document.getElementById("brochures").onclick = function() {<ul class="wikidpad normalindent">if (document.getElementById("brochures").checked) {<ul class="wikidpad normalindent">// use CSS style to show it<br class="wikidpad" />
+document.getElementById("tourSelection").style.display = "block";</ul>
+} else {<ul class="wikidpad normalindent">// hide the div<br class="wikidpad" />
+document.getElementById("tourSelection").style.display = "none";</ul>
+}</ul>
+};<br class="wikidpad" />
+// now hide it on the initial page load so that people who disabled javascript can still get to that information.<br class="wikidpad" />
+document.getElementById("tourSelection").style.display = "none";</ul>
+}<br class="wikidpad" />
+<br class="wikidpad" />
+window.onload =  function() {<ul class="wikidpad normalindent">preparePage();</ul>
+};<br class="wikidpad" />
+<br class="wikidpad" />
+<b class="wikidpad">CSS</b><br class="wikidpad" />
+<br class="wikidpad" />
+You can style elements through javascript by setting their Style property:<br class="wikidpad" />
+<br class="wikidpad" />
+myElement.style.color = "#ff0000";<br class="wikidpad" />
+<br class="wikidpad" />
+example of CSS and equivalent Javascript:<br class="wikidpad" />
+<br class="wikidpad" />
+#example{<ul class="wikidpad normalindent">width: 230px;<br class="wikidpad" />
+color: #fff;<br class="wikidpad" />
+font-weight: bold;<br class="wikidpad" />
+background-color: #193742;</ul>
+}<br class="wikidpad" />
+<br class="wikidpad" />
+Now the equivalent Javascript:<br class="wikidpad" />
+<br class="wikidpad" />
+myElement.style.width = "230px";<br class="wikidpad" />
+myElement.style.color: "#fff";<br class="wikidpad" />
+myElement.style.<b class="wikidpad">fontWeight</b> = "bold";<br class="wikidpad" />
+myElement.style.<b class="wikidpad">backgroundColor</b> = "#193742"<br class="wikidpad" />
+<br class="wikidpad" />
+Some elements become camel case because the - means minus in Javascript.<br class="wikidpad" />
+<br class="wikidpad" />
+Setting properties are always set as strings<br class="wikidpad" />
+<br class="wikidpad" />
+Applying a class to an element: myElement.className (not .class)<br class="wikidpad" />
+<br class="wikidpad" />
+Example:<br class="wikidpad" />
+<br class="wikidpad" />
+// prevent a form from submitting<br class="wikidpad" />
+function preparePage() {<ul class="wikidpad normalindent">document.getElementById("mainContent").onclick = function() {<ul class="wikidpad normalindent">if ( document.getElementById("mainContent").className == "example") {<ul class="wikidpad normalindent">document.getElementById("mainContent").className = "";</ul>
+} else {<ul class="wikidpad normalindent">document.getElementById("mainContent").className = "example";</ul>
+}</ul>
+};</ul>
+}<br class="wikidpad" />
+<br class="wikidpad" />
+window.onload =  function() {<ul class="wikidpad normalindent">preparePage();</ul>
+};<br class="wikidpad" />
+<br class="wikidpad" />
+<b class="wikidpad">Minification</b><br class="wikidpad" />
+<br class="wikidpad" />
+A few resources to minify your Javascript:<br class="wikidpad" />
+<br class="wikidpad" />
+JSMin<br class="wikidpad" />
+YUI Compressor<br class="wikidpad" />
+Google Closure Compiler (web based version: <span class="wikidpad url-link"><a href="http://closure-compiler.appspot.com/home" class="wikidpad">http://closure-compiler.appspot.com/home</a></span>)<br class="wikidpad" />
+<br class="wikidpad" />
+<b class="wikidpad">Javascript Code Checkers</b><br class="wikidpad" />
+<br class="wikidpad" />
+JSLint (<span class="wikidpad url-link"><a href="http://jslint.com/" class="wikidpad">http://jslint.com/</a></span>)<br class="wikidpad" />
+<br class="wikidpad" />
+Missing use strict: "use strict"; on all your functions, or change the options at the bottom of the screen<br class="wikidpad" />
+'document' was used before it was defined: In options, assume browser<br class="wikidpad" />
+<br class="wikidpad" />
+<b class="wikidpad">Libraries</b><br class="wikidpad" />
+<br class="wikidpad" />
+<span class="wikidpad url-link"><a href="https://developers.google.com/closure/library/" class="wikidpad">https://developers.google.com/closure/library/</a></span><br class="wikidpad" />
+<span class="wikidpad url-link"><a href="http://mootools.net/" class="wikidpad">http://mootools.net/</a></span><br class="wikidpad" />
+<span class="wikidpad url-link"><a href="http://yuilibrary.com/" class="wikidpad">http://yuilibrary.com/</a></span> =&gt; Discontinued<br class="wikidpad" />
+<span class="wikidpad url-link"><a href="http://jquery.com/" class="wikidpad">http://jquery.com/</a></span><br class="wikidpad" />
+<span class="wikidpad url-link"><a href="http://lokeshdhakar.com/projects/lightbox2/" class="wikidpad">http://lokeshdhakar.com/projects/lightbox2/</a></span><br class="wikidpad" />
+<span class="wikidpad url-link"><a href="http://script.aculo.us/" class="wikidpad">http://script.aculo.us/</a></span><br class="wikidpad" />
+<span class="wikidpad url-link"><a href="http://moofx.mad4milk.net/" class="wikidpad">http://moofx.mad4milk.net/</a></span><br class="wikidpad" />
+<br class="wikidpad" />
+<b class="wikidpad">Linking several scripts in one HTML file</b><br class="wikidpad" />
+<br class="wikidpad" />
+Keep them to a minimum: every script is a call by the browser to the server. Combine them as much as possible<br class="wikidpad" />
+<br class="wikidpad" />
+Using a CDN for linking external libraries:<br class="wikidpad" />
+- Improved speed / redundancy<br class="wikidpad" />
+- Improved bandwidth<br class="wikidpad" />
+- Improved parallel downloads<br class="wikidpad" />
+- Caching benefits (if same file used by various websites)<br class="wikidpad" />
+<br class="wikidpad" />
+More information: <br class="wikidpad" />
+<span class="wikidpad url-link"><a href="https://developers.google.com/speed/libraries/" class="wikidpad">https://developers.google.com/speed/libraries/</a></span><br class="wikidpad" />
+<span class="wikidpad url-link"><a href="https://developers.google.com/speed/libraries/devguide" class="wikidpad">https://developers.google.com/speed/libraries/devguide</a></span><br class="wikidpad" />
+<br class="wikidpad" />
+Google API key is not necessary, you can simply use the "path". You can use http or https. <br class="wikidpad" />
+<br class="wikidpad" />
+<b class="wikidpad">Javascript additions in HTML5</b><br class="wikidpad" />
+<br class="wikidpad" />
+getElementsByClassName (IE9+, otherwise use jQuery)<br class="wikidpad" />
+<br class="wikidpad" />
+<i class="wikidpad">video</i><br class="wikidpad" />
+<br class="wikidpad" />
+&lt;video id="myVideo" controls preload="auto"&gt;<ul class="wikidpad normalindent">&lt;source src="videofile.mp4 type="video/mp4" /&gt;<br class="wikidpad" />
+&lt;source src="videofile.webm type="video/webm" /&gt;<br class="wikidpad" />
+&lt;source src="videofile.ogv type="video/webm" /&gt;<br class="wikidpad" />
+&lt;!-- if video is not supported --&gt;<br class="wikidpad" />
+&lt;p&gt;Your browser does not support HTML5 video.&lt;/p&gt;</ul>
+&lt;/video&gt;<br class="wikidpad" />
+<br class="wikidpad" />
+.play();<br class="wikidpad" />
+.pause();<br class="wikidpad" />
+.currentTime = 0;<br class="wikidpad" />
+<br class="wikidpad" />
+myVideo.addEventListener("ended", function(){<ul class="wikidpad normalindent">//code</ul>
+}, false);<br class="wikidpad" />
+<br class="wikidpad" />
+You can assume that if a browser supports the video tag, it will also support addEventListener<br class="wikidpad" />
+<br class="wikidpad" />
+<i class="wikidpad">storage</i><br class="wikidpad" />
+<br class="wikidpad" />
+//set<br class="wikidpad" />
+localStorage["username"] = name;<br class="wikidpad" />
+<br class="wikidpad" />
+//get<br class="wikidpad" />
+var name = localStorage["username"];<br class="wikidpad" />
+<br class="wikidpad" />
+<i class="wikidpad">web workers</i><br class="wikidpad" />
+<br class="wikidpad" />
+We'll be able to load JavaScript and make it run in the background, regardless of what else is going on in your page. Similar to multithreading<br class="wikidpad" />
+<br class="wikidpad" />
+var worker = new Worker("anotherjavascriptfile.js");<br class="wikidpad" />
+<br class="wikidpad" />
+The worker cannot directly affect the DOM. It is used to generate events and send them back<br class="wikidpad" />
+<br class="wikidpad" />
+//get ready to receive messages from the worker<br class="wikidpad" />
+worker.onmessage = function(e){<ul class="wikidpad normalindent">console.log("the worker called me!");</ul>
+}<br class="wikidpad" />
+<br class="wikidpad" />
+//send messages to the worker<br class="wikidpad" />
+worker.postMessage("firstFunction");<br class="wikidpad" />
+<br class="wikidpad" />
+Not supported in IE<br class="wikidpad" />
+<br class="wikidpad" />
+<i class="wikidpad">feature detection</i><br class="wikidpad" />
+<br class="wikidpad" />
+if (document.getElementsByClassName){<ul class="wikidpad normalindent">//if that function exist, use it</ul>
+}<br class="wikidpad" />
+else{<ul class="wikidpad normalindent">//else, find another way! :)</ul>
+}<br class="wikidpad" />
+<br class="wikidpad" />
+Basically, if you want to check if a feature exist, just name it in an if statement.<br class="wikidpad" />
+<br class="wikidpad" />
+<b class="wikidpad">Modernizr</b><br class="wikidpad" />
+<br class="wikidpad" />
+<span class="wikidpad url-link"><a href="http://www.modernizr.com" class="wikidpad">http://www.modernizr.com</a></span><br class="wikidpad" />
+<br class="wikidpad" />
+Recommended to put the link to this library in the head of your HTML<br class="wikidpad" />
+<br class="wikidpad" />
+Once this is run, what you will have is a javascript object called Modernizr with 40 boolean properties like this to say whether a particular feature is supported or not:<br class="wikidpad" />
+<br class="wikidpad" />
+video: true<br class="wikidpad" />
+audio: true<br class="wikidpad" />
+canvas: false<br class="wikidpad" />
+...<br class="wikidpad" />
+<br class="wikidpad" />
+if (Modernizr.video){<ul class="wikidpad normalindent">// true - you can use HTML5 video</ul>
+}<br class="wikidpad" />
+else{<ul class="wikidpad normalindent">//false - perhaps replace with Flash video?</ul>
+}<br class="wikidpad" />
+<br class="wikidpad" />
+The full Modernizr library lets you check for every feature of HTML5 and CSS3. You can also download a custom-built version to only check what you are interested in.<br class="wikidpad" />
+<br class="wikidpad" />
+The advanced options of Modernizr helps you load shims or polyfills to replace thee missing features<br class="wikidpad" />
+<br class="wikidpad" />
+<b class="wikidpad">Strict mode</b><br class="wikidpad" />
+<br class="wikidpad" />
+It's a way to volunteer to have your JavaScript held to higher standards. By turning on strict mode, you must declare variables before using them. To volunteer to strict mode, simply add this line to the beginning of your javascript:<br class="wikidpad" />
+<br class="wikidpad" />
+"use strict";<br class="wikidpad" />
+<br class="wikidpad" />
+You can also use it in the first line of a function if you want to do it function by function<br class="wikidpad" />
+<br class="wikidpad" />
+If you combine JavaScript files into one, some of which use Stric and some of which don't, you can wrap your files into an anonymous function so that only that particular file will use Strict:<br class="wikidpad" />
+<br class="wikidpad" />
+(function(){<br class="wikidpad" />
+<br class="wikidpad" />
+//your javascript file<br class="wikidpad" />
+<br class="wikidpad" />
+}());<br class="wikidpad" />
+<br class="wikidpad" />
+If strict mode is turned on, make sure you test your code in a browser that supports it :) <br class="wikidpad" />
+<br class="wikidpad" />
+<b class="wikidpad">Javascript to avoid</b><br class="wikidpad" />
+<br class="wikidpad" />
+Javascript is very popular and there is a LOT of bad javascript out there<br class="wikidpad" />
+<br class="wikidpad" />
+<i class="wikidpad">document.write</i><br class="wikidpad" />
+<br class="wikidpad" />
+document.write("here is some &lt;em&gt;important&lt;/em&gt; content");<br class="wikidpad" />
+<br class="wikidpad" />
+Why you should not use it:<br class="wikidpad" />
+- document.write does not work in XHTML<br class="wikidpad" />
+- It does not understand the DOM properly<br class="wikidpad" />
+- Clunky, inflexible way of doing things<br class="wikidpad" />
+- Can only use it when the page is initially loaded, otherwise it will destroy the content of the page that was there before it ran<br class="wikidpad" />
+<br class="wikidpad" />
+<i class="wikidpad">browser sniffing</i><br class="wikidpad" />
+<br class="wikidpad" />
+if (navigator.userAgent.indexOf('Netscape')...<br class="wikidpad" />
+<br class="wikidpad" />
+or<br class="wikidpad" />
+<br class="wikidpad" />
+if (navigator.appName=='Microsoft Internet Explorer')...<br class="wikidpad" />
+<br class="wikidpad" />
+etc.<br class="wikidpad" />
+<br class="wikidpad" />
+This is old school stuff, it's a giveaway that this is old javascript code because it's not necessary anymore. Any detection you do should be to detect <b class="wikidpad">features</b> not browsers.<br class="wikidpad" />
+<br class="wikidpad" />
+<i class="wikidpad">EVAL</i><br class="wikidpad" />
+<br class="wikidpad" />
+EVAL is a powerful function that can take an expression and execute it as code<br class="wikidpad" />
+<br class="wikidpad" />
+Example:<br class="wikidpad" />
+<br class="wikidpad" />
+var a = "alert('";<br class="wikidpad" />
+var b = "hello world";<br class="wikidpad" />
+var c = "');";<br class="wikidpad" />
+<br class="wikidpad" />
+<br class="wikidpad" />
+// now, we use eval to combine and execute code dynamically<br class="wikidpad" />
+eval(a + b + c);<br class="wikidpad" />
+<br class="wikidpad" />
+Why you should not use it:<br class="wikidpad" />
+- There are almost always better way of doing this as opposed to using EVAL<br class="wikidpad" />
+- This is ugly and hard to figure out what's going on<br class="wikidpad" />
+- Innefficient<br class="wikidpad" />
+- Can lead to security problems<br class="wikidpad" />
+<br class="wikidpad" />
+<i class="wikidpad">Pseudo-protocols</i><br class="wikidpad" />
+<br class="wikidpad" />
+&lt;p&gt;Inside your HTML, you may find:<br class="wikidpad" />
+&lt;a href="javascript:someFunction()"&gt;this&lt;/a&gt;<br class="wikidpad" />
+&lt;/p&gt;<br class="wikidpad" />
+<br class="wikidpad" />
+It's a way to make a link or a button directly call a function<br class="wikidpad" />
+<br class="wikidpad" />
+- Mixing HTML with script<br class="wikidpad" />
+- If Javascript is disabled, this is useless<br class="wikidpad" />
+<br class="wikidpad" />
+&lt;p&gt;A preferable way:<br class="wikidpad" />
+&lt;a href="nojavascript.html" onclick="someFunction();" return false;&gt;this&lt;/a&gt;<br class="wikidpad" />
+&lt;/p&gt;<br class="wikidpad" />
+<br class="wikidpad" />
+Here at least you have a backup plan if there is no javascript. The return false is to cancel the browser following the link. Even though it's better, it's not recommended.<br class="wikidpad" />
+<br class="wikidpad" />
+<b class="wikidpad">Regular expressions</b><br class="wikidpad" />
+<br class="wikidpad" />
+1. Create the regular expression<br class="wikidpad" />
+<br class="wikidpad" />
+var myRE = /hello/;<br class="wikidpad" />
+or<br class="wikidpad" />
+var myRE = new RegExp("hello");<br class="wikidpad" />
+<br class="wikidpad" />
+2. Testing the Regular Expression<br class="wikidpad" />
+<br class="wikidpad" />
+For the string to match the RegExp, it would need to contain the string "hello"<br class="wikidpad" />
+<br class="wikidpad" />
+var myString = "Does this sentence have the word hello in it?";<br class="wikidpad" />
+if (myRE.text(myString)){<ul class="wikidpad normalindent">alert("Yes");</ul>
+}<br class="wikidpad" />
+<br class="wikidpad" />
+myRE.search(myString) would return the postion of the first match<br class="wikidpad" />
+<br class="wikidpad" />
+/^hello/; //hello must be at the start<br class="wikidpad" />
+/hello$/; //hello must be at the end<br class="wikidpad" />
+/hel+o/; //previous character (l) has to appear once or more (helo, hello, hellllllllllllllllo)<br class="wikidpad" />
+/hel*o/; //previous character (l) has to appear zero or more times (heo, hello, hellllllllo)<br class="wikidpad" />
+/hel?o/; //previous character (l) has to appear zero or one time (heo, helo)<br class="wikidpad" />
+/hello|goodbye/; //either or<br class="wikidpad" />
+/he..o/; //. = any character<br class="wikidpad" />
+/\wello/; \w must be alphanumeric or underscore<br class="wikidpad" />
+/\bhello/; \b = word boundary (space or new line)<br class="wikidpad" />
+/[crnld]ope/; // [...] range of chars, so any of those letters (cope, rope, etc. but not zope)<br class="wikidpad" />
+<br class="wikidpad" />
+<i class="wikidpad">More complex patterns</i><br class="wikidpad" />
+<br class="wikidpad" />
+/^[0-9]{5}(?:-[0-9]{4})?$/ US Zip Code with an optional 4 digit extensions<br class="wikidpad" />
+<br class="wikidpad" />
+5 = how many characters<br class="wikidpad" />
+question mark to say optional<br class="wikidpad" />
+<br class="wikidpad" />
+<b class="wikidpad">AJAX</b><br class="wikidpad" />
+<br class="wikidpad" />
+AJAX: Asynchronous JavaScript and XML<br class="wikidpad" />
+<br class="wikidpad" />
+Ajax doesn't actually require XML, AJAX <b class="wikidpad">is</b> JavaScript<br class="wikidpad" />
+<br class="wikidpad" />
+What it means is that after a web page has opened in the user's browser, we can have JavaScript behind the scenes to communicate back to the server, even pass and retrieve data, and update parts of the page without the entire page itself needing to reload. A simple example, if you've used, for example, Google, and started typing, and found it able to start to fill out the information that it thinks you're looking for and actually update the page as you're typing, this is AJAX going on.<br class="wikidpad" />
+<br class="wikidpad" />
+The ability to zoom in and out on maps is also AJAX<br class="wikidpad" />
+<br class="wikidpad" />
+1. Create the request<br class="wikidpad" />
+2. Deal with any response<br class="wikidpad" />
+<br class="wikidpad" />
+Unfortunately, there is a different way of writing this in different browsers<br class="wikidpad" />
+<br class="wikidpad" />
+var myReqyest;<br class="wikidpad" />
+//check if the feature exists<br class="wikidpad" />
+if (window.XMLHttpRequest){<ul class="wikidpad normalindent">myRequest = new XMLHttpRequest();</ul>
+} else if (window.ActiveXObject){<ul class="wikidpad normalindent">myRequest = new ActiveXObject("Microsoft.XMLHTTP");</ul>
+}<br class="wikidpad" />
+<br class="wikidpad" />
+//prepare to accept the response<br class="wikidpad" />
+myRequest.onreadystatechange = function(){<ul class="wikidpad normalindent">console.log("We were called!");<br class="wikidpad" />
+if (myRequest.readyState === 4) { //this is the important state<br class="wikidpad" />
+<ul class="wikidpad normalindent">var p = document.createElement("p");<br class="wikidpad" />
+var t = document.createTextNode(myRequest.responseText);<br class="wikidpad" />
+p.appendChild(t);<br class="wikidpad" />
+document.getElementById("mainContent").appendChild(p);</ul>
+}</ul>
+};<br class="wikidpad" />
+<br class="wikidpad" />
+//configure and send<br class="wikidpad" />
+myRequest.open('GET', 'simple.txt', true); //simple.txt can be replaced by http://mysite.com/somedata.php<br class="wikidpad" />
+// any parameters?<br class="wikidpad" />
+myRequest.send(null);<br class="wikidpad" />
+<br class="wikidpad" />
+You can use jQuery so that you don't have to worry about writing the cross browser check<br class="wikidpad" />
+<br class="wikidpad" />
+<b class="wikidpad">Prototypes</b><br class="wikidpad" />
+<br class="wikidpad" />
+Don't confuse with the popular JavaScript library called Prototype (<span class="wikidpad url-link"><a href="http://prototypejs.org" class="wikidpad">http://prototypejs.org</a></span>)<br class="wikidpad" />
+<br class="wikidpad" />
+Prototype is used to create objects that share the same structure (and same functions?)<br class="wikidpad" />
+<br class="wikidpad" />
+1. Create a constructor function to make a new object<br class="wikidpad" />
+<br class="wikidpad" />
+function Player(n, s, r) { //Convention -&gt; First letter capital<ul class="wikidpad normalindent">this.name = n;</ul>
+<ul class="wikidpad normalindent">this.score = s;<br class="wikidpad" />
+this.rank = r;</ul>
+}<br class="wikidpad" />
+<br class="wikidpad" />
+var fred = new Player("Fred", 1000, 5);<br class="wikidpad" />
+var bob = new Player("Bob", 50, 1);<br class="wikidpad" />
+<br class="wikidpad" />
+2. Use Prototype to create new functions that all objects will share<br class="wikidpad" />
+<br class="wikidpad" />
+Player.prototype.logInfo = function(){<ul class="wikidpad normalindent">console.log("I am: ", this.name);</ul>
+}<br class="wikidpad" />
+<br class="wikidpad" />
+Player.prototype.promote = function(){<ul class="wikidpad normalindent">this.rank++;<br class="wikidpad" />
+console.log("My new rank is: ", this.rank);</ul>
+}<br class="wikidpad" />
+<br class="wikidpad" />
+//logInfo and promote are names I picked myself<br class="wikidpad" />
+<br class="wikidpad" />
+fred.logInfo();<br class="wikidpad" />
+fred.promote();<br class="wikidpad" />
+<br class="wikidpad" />
+<b class="wikidpad">Inheritance</b><br class="wikidpad" />
+<br class="wikidpad" />
+// the original Animal class and sayName method<br class="wikidpad" />
+function Animal(name, numLegs) {<ul class="wikidpad normalindent">this.name = name;<br class="wikidpad" />
+this.numLegs = numLegs;</ul>
+}<br class="wikidpad" />
+Animal.prototype.sayName = function() {<ul class="wikidpad normalindent">console.log("Hi my name is " + this.name);</ul>
+};<br class="wikidpad" />
+<br class="wikidpad" />
+// define a Penguin class<br class="wikidpad" />
+function Penguin(name) {<ul class="wikidpad normalindent">this.name = name;<br class="wikidpad" />
+this.numLegs = 2;</ul>
+}<br class="wikidpad" />
+<br class="wikidpad" />
+// set its prototype to be a new instance of Animal so that it inherits its functions <br class="wikidpad" />
+Penguin.prototype = new Animal();<br class="wikidpad" />
+<br class="wikidpad" />
+<b class="wikidpad">Private Variables</b><br class="wikidpad" />
+<br class="wikidpad" />
+function Person(first,last,age) {<ul class="wikidpad normalindent">this.firstname = first;<br class="wikidpad" />
+this.lastname = last;<br class="wikidpad" />
+this.age = age;<br class="wikidpad" />
+var bankBalance = 7500;</ul>
+}<br class="wikidpad" />
+<br class="wikidpad" />
+// create your Person <br class="wikidpad" />
+var john = new Person("John","Smith",32)<br class="wikidpad" />
+<br class="wikidpad" />
+// try to print his bankBalance<br class="wikidpad" />
+console.log(john.bankBalance); //This will not print the bankBalance because it is private (var)<br class="wikidpad" />
+<br class="wikidpad" />
+<br class="wikidpad" />
+<br class="wikidpad" />
+In order to access the private variables:<br class="wikidpad" />
+<br class="wikidpad" />
+function Person(first,last,age) {<ul class="wikidpad normalindent">this.firstname = first;<br class="wikidpad" />
+this.lastname = last;<br class="wikidpad" />
+this.age = age;<br class="wikidpad" />
+var bankBalance = 7500;<br class="wikidpad" />
+<br class="wikidpad" />
+this.getBalance = function() {<ul class="wikidpad normalindent">// your code should return the bankBalance<br class="wikidpad" />
+return bankBalance;</ul>
+};</ul>
+}<br class="wikidpad" />
+<br class="wikidpad" />
+var john = new Person('John','Smith',30);<br class="wikidpad" />
+console.log(john.bankBalance);<br class="wikidpad" />
+<br class="wikidpad" />
+// create a new variable myBalance that calls getBalance()<br class="wikidpad" />
+var myBalance = john.getBalance();<br class="wikidpad" />
+console.log(myBalance);<br class="wikidpad" />
+<br class="wikidpad" />
+<b class="wikidpad">Useful Functions</b><br class="wikidpad" />
+<br class="wikidpad" />
+encoreURIComponent(document.getElementById("english").value); -&gt; will change "Hello World" into "Hello%20World"<br class="wikidpad" />
+<br class="wikidpad" />
+<b class="wikidpad">Other sources of help</b><br class="wikidpad" />
+<br class="wikidpad" />
+<span class="wikidpad url-link"><a href="https://dev.opera.com/" class="wikidpad">https://dev.opera.com/</a></span><br class="wikidpad" />
+<span class="wikidpad url-link"><a href="https://developer.mozilla.org/en-US/" class="wikidpad">https://developer.mozilla.org/en-US/</a></span><br class="wikidpad" />
+<span class="wikidpad url-link"><a href="http://stackoverflow.com/" class="wikidpad">http://stackoverflow.com/</a></span> (type javascript and sort by votes to find interesting articles)<br class="wikidpad" />
+<br class="wikidpad" />
+<b class="wikidpad">Other notes</b><br class="wikidpad" />
+<br class="wikidpad" />
+Global variables are to be avoided at all cost because it's so easy to overwrite other people's variables. So it's better to do:<br class="wikidpad" />
+<br class="wikidpad" />
+(function(){<ul class="wikidpad normalindent">....all your JS code</ul>
+}());<br class="wikidpad" />
+<br class="wikidpad" />
+This is an Immediately invoked function expression (IIFE, pronounce iffy)    </body>
+</html>

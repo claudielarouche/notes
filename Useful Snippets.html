@@ -1,0 +1,76 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html>
+    <head>
+        <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+        <title>Useful Snippets</title>
+        <link type="text/css" rel="stylesheet" href="appbase.css">
+    </head>
+    <body class="wikidpad">
+<span class="wikidpad parent-nodes">parent nodes: <span class="wikidpad parent-node"><a href="Wordpress.html" class="wikidpad">Wordpress</a></span><br class="wikidpad" /><br class="wikidpad" /></span>
+<a name=".h0" class="wikidpad"></a><h2 class="wikidpad heading-level2">Useful Snippets</h2>
+<span class="wikidpad property attribute">[camelCaseWordsEnabled: false]</span><br class="wikidpad" />
+<br class="wikidpad" />
+Table des matières:<br class="wikidpad" />
+- Exclude Pages from WordPress Search Results<br class="wikidpad" />
+- Redirect To Post If Search Results Return One Post<br class="wikidpad" />
+- Change the Number of Default Post Revisions<br class="wikidpad" />
+- Empty Your WordPress Trash<br class="wikidpad" />
+<br class="wikidpad" />
+<b class="wikidpad">Exclude Pages from WordPress Search Results</b><br class="wikidpad" />
+File to Edit: Functions.php<br class="wikidpad" />
+<br class="wikidpad" />
+By default, WordPress includes pages in search results. This means that pages such as about, contact, privacy, etc, will be included in search results. These types of pages are not necessary if they are linked in your main navigation menu. WordPress will also include private pages in search results too. For example, a newsletter confirmation page or an eBook download page.<br class="wikidpad" />
+<br class="wikidpad" />
+To remove all pages from WordPress search, simple add the snippet below to your theme functions.php file.<br class="wikidpad" />
+<br class="wikidpad" />
+function filter_search($query) {<ul class="wikidpad normalindent">if ($query-&gt;is_search) {<ul class="wikidpad normalindent">$query-&gt;set('post_type', 'page');</ul>
+}<br class="wikidpad" />
+return $query;</ul>
+}<br class="wikidpad" />
+add_filter('pre_get_posts', 'filter_search');<br class="wikidpad" />
+<br class="wikidpad" />
+<b class="wikidpad">Redirect To Post If Search Results Return One Post</b><br class="wikidpad" />
+File to Edit: Functions.php<br class="wikidpad" />
+<br class="wikidpad" />
+When you search for something on a WordPress website, a search results page is displayed with all relevant posts, posts, and other post types. The problem with this setup is that WordPress will still display a results page if there is only one blog post result.<br class="wikidpad" />
+<br class="wikidpad" />
+This code snippet addresses this issue. If only one blog post is found for a search, the visitor will be taken directly to the blog post in question.<br class="wikidpad" />
+<br class="wikidpad" />
+add_action('template_redirect', 'redirect_single_post');<br class="wikidpad" />
+function redirect_single_post() {<ul class="wikidpad normalindent">if (is_search()) {<ul class="wikidpad normalindent">global $wp_query;<br class="wikidpad" />
+if ($wp_query-&gt;post_count * 1 &amp;&amp; $wp_query-&gt;max_num_pages * 1) {<ul class="wikidpad normalindent">wp_redirect( get_permalink( $wp_query-&gt;posts['0']-&gt;ID ) );<br class="wikidpad" />
+exit;</ul>
+}</ul>
+}</ul>
+}<br class="wikidpad" />
+<br class="wikidpad" />
+<b class="wikidpad">Change the Number of Default Post Revisions</b><br class="wikidpad" />
+File to Edit: WP-Config.php<br class="wikidpad" />
+<br class="wikidpad" />
+The WordPress revision system saves a copy of your posts and pages every time you update them. This is handy as it allows you to refer back to previous versions of your article, compare drafts, and correct mistakes.<br class="wikidpad" />
+<br class="wikidpad" />
+The problem is that WordPress does not limit how many revisions it saves. Therefore, if you have saved an article 100 times, your website will store 100 revisions of the article. This can greatly increase the size of your database as one article with 100 revisions will take up just as much room as 100 articles with no revisions.<br class="wikidpad" />
+<br class="wikidpad" />
+It is therefore practical to limit the number of revisions that are stored. On my own websites, I limit revisions to two. This allows me to refer back to the last few copies of an article, without taking up too much room in the database.<br class="wikidpad" />
+<br class="wikidpad" />
+You can limit revisions by adding the code snippet below to wp-config.php.<br class="wikidpad" />
+<br class="wikidpad" />
+define( 'WP_POST_REVISIONS', 2 );<br class="wikidpad" />
+Revisions can be disabled altogether by using the following code.<br class="wikidpad" />
+<br class="wikidpad" />
+define( 'WP_POST_REVISIONS', false );<br class="wikidpad" />
+Be careful about disabling post revisions. If you lose your internet connection or accidentally close your browser tab, you could lose everything you had written since you last saved your article.<br class="wikidpad" />
+<br class="wikidpad" />
+<b class="wikidpad">Empty Your WordPress Trash</b><br class="wikidpad" />
+File to Edit: WP-Config.php<br class="wikidpad" />
+<br class="wikidpad" />
+When you delete something in WordPress, such as a comment, post, image, or link; it is not permanently deleted. Instead, it is sent to the trash folder. This fail safe system is used to allow you to retrieve items that were deleted in error. The downside to this is that deleted items will remain in your database until trash is emptied.<br class="wikidpad" />
+<br class="wikidpad" />
+Items that are sent to the trash folder are automatically deleted after 30 days. You can reduce the number of days before trash items are deleted by adding the following code to wp-config.php.<br class="wikidpad" />
+<br class="wikidpad" />
+define( 'EMPTY_TRASH_DAYS', 10 ); // 10 days<br class="wikidpad" />
+The trash system can be completely disabled if you wish. You can do this by using this code.<br class="wikidpad" />
+<br class="wikidpad" />
+define( 'EMPTY_TRASH_DAYS', 0 ); // Zero days<br class="wikidpad" />
+Be careful of disabling the trash system completely as it means that there is no way of recovering an item once you have deleted it. At the very least, I recommend setting trash to be emptied after one day. This will let you recover any items you deleted by accident.    </body>
+</html>

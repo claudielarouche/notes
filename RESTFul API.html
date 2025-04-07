@@ -1,0 +1,164 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html>
+    <head>
+        <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+        <title>RESTFul API</title>
+        <link type="text/css" rel="stylesheet" href="appbase.css">
+    </head>
+    <body class="wikidpad">
+<span class="wikidpad parent-nodes">parent nodes: <span class="wikidpad parent-node"><a href="General.html" class="wikidpad">General</a></span><br class="wikidpad" /><br class="wikidpad" /></span>
+<a name=".h0" class="wikidpad"></a><h2 class="wikidpad heading-level2">REST Ful API</h2>
+<span class="wikidpad property attribute">[camelCaseWordsEnabled: false]</span><br class="wikidpad" />
+<br class="wikidpad" />
+<b class="wikidpad">Designing your API</b><br class="wikidpad" />
+<br class="wikidpad" />
+1) Identify the participants (internal and external stakeholders)<ul class="wikidpad normalindent">- System admiun<br class="wikidpad" />
+- Developers<br class="wikidpad" />
+- Customer (users of API)<br class="wikidpad" />
+- ...</ul>
+2) Identify activities <br class="wikidpad" />
+3) Break activities into steps<br class="wikidpad" />
+4) Create API Definitions<ul class="wikidpad normalindent">- Identify the resources (a tip on doing that: find the "nouns" in step 3)<br class="wikidpad" />
+- Map activities to resource lifecycle (map actions to HTTP verbs &amp; nouns - GET, PUT, PATCH, DELETE, POST)<br class="wikidpad" />
+- Map the remaining activities to custom actions<br class="wikidpad" />
+</ul>
+Example:<br class="wikidpad" />
+List items -&gt; GET / items<br class="wikidpad" />
+View item -&gt; GET /items/:id<br class="wikidpad" />
+Search for items -&gt; GET /items?search=param<br class="wikidpad" />
+Add items -&gt; POST /items/<br class="wikidpad" />
+Edit items -&gt; PUT /items/:id    <br class="wikidpad" />
+Add item -&gt; POST /carts/:id/item/:item_id<br class="wikidpad" />
+Remove item -&gt; DELETE /carts/:id/item/:item_id<br class="wikidpad" />
+Clear Cart -&gt; DELETE /carts/:id<br class="wikidpad" />
+View Cart -&gt; GET /carts/:id<br class="wikidpad" />
+Checkout -&gt; POST /carts/:id/checkout<br class="wikidpad" />
+<br class="wikidpad" />
+5) Validate API<br class="wikidpad" />
+<br class="wikidpad" />
+<b class="wikidpad">Designing relationships</b><br class="wikidpad" />
+<br class="wikidpad" />
+Three types:<br class="wikidpad" />
+1) Independent: The resources may exist regardless of the other existing but they may reference each other<br class="wikidpad" />
+2) Dependent: One resource cannot exist without the parent<br class="wikidpad" />
+3) Associative: They are independent but the relationship contains additional properties to describe it (recipe, milk and egg are independent but may be combined to create something else)<br class="wikidpad" />
+<br class="wikidpad" />
+<b class="wikidpad">HTTP Response Code</b><br class="wikidpad" />
+<br class="wikidpad" />
+200 OK<br class="wikidpad" />
+201 Created<br class="wikidpad" />
+202 Accepted<br class="wikidpad" />
+204 No Content<br class="wikidpad" />
+301 Moved Permanently<br class="wikidpad" />
+302 Moved Temporarily<br class="wikidpad" />
+400 Bad Request<br class="wikidpad" />
+401 Authentication Required<br class="wikidpad" />
+403 Forbidden<br class="wikidpad" />
+404 Not Found<br class="wikidpad" />
+<br class="wikidpad" />
+Never create your own response code<br class="wikidpad" />
+<br class="wikidpad" />
+<b class="wikidpad">Example of github API</b><br class="wikidpad" />
+<br class="wikidpad" />
+In Command Line, I typed curl -I <span class="wikidpad url-link"><a href="https://api.github.com" class="wikidpad">https://api.github.com</a></span><br class="wikidpad" />
+<br class="wikidpad" />
+HTTP/1.1 200 OK<br class="wikidpad" />
+Server: GitHub.com<br class="wikidpad" />
+Date: Mon, 21 Dec 2015 18:36:18 GMT<br class="wikidpad" />
+Content-Type: application/json; charset=utf-8<br class="wikidpad" />
+Content-Length: 2064<br class="wikidpad" />
+Status: 200 OK<br class="wikidpad" />
+X-RateLimit-Limit: 60 //this line and the next two are custom<br class="wikidpad" />
+X-RateLimit-Remaining: 55<br class="wikidpad" />
+X-RateLimit-Reset: 1450725762<br class="wikidpad" />
+Cache-Control: public, max-age=60, s-maxage=60<br class="wikidpad" />
+ETag: "d251d84fc3f78921c16c7f9c99d74eae"<br class="wikidpad" />
+Vary: Accept<br class="wikidpad" />
+X-GitHub-Media-Type: github.v3<br class="wikidpad" />
+Access-Control-Allow-Credentials: true<br class="wikidpad" />
+Access-Control-Expose-Headers: ETag, Link, X-GitHub-OTP, X-RateLimit-Limit, X-RateLimit-Remaining, X-RateLimit-Reset, X-OAuth-Scopes, X-Accepted-OAuth-Scopes, X-Poll-Interval<br class="wikidpad" />
+Access-Control-Allow-Origin: *<br class="wikidpad" />
+Content-Security-Policy: default-src 'none'<br class="wikidpad" />
+Strict-Transport-Security: max-age=31536000; includeSubdomains; preload<br class="wikidpad" />
+X-Content-Type-Options: nosniff<br class="wikidpad" />
+X-Frame-Options: deny<br class="wikidpad" />
+X-XSS-Protection: 1; mode=block<br class="wikidpad" />
+Vary: Accept-Encoding<br class="wikidpad" />
+X-Served-By: 5aeb3f30c9e3ef6ef7bcbcddfd9a68f7<br class="wikidpad" />
+X-GitHub-Request-Id: C0C547BD:1D262:131C52B6:567846A2<br class="wikidpad" />
+<br class="wikidpad" />
+<b class="wikidpad">6 Constraints of REST</b><br class="wikidpad" />
+<br class="wikidpad" />
+1) Client-Server <br class="wikidpad" />
+You need a server to host the data and a client-side to query the data. Both can be upgraded independently from the other<br class="wikidpad" />
+<br class="wikidpad" />
+2) Stateless<br class="wikidpad" />
+Each and every request stands on its own. Every request can be done in any order.<br class="wikidpad" />
+<br class="wikidpad" />
+3) Cacheable<br class="wikidpad" />
+Each message should describe whether it's cacheable. Look into Etags <span class="wikidpad url-link"><a href="https://en.wikipedia.org/wiki/HTTP_ETag" class="wikidpad">https://en.wikipedia.org/wiki/HTTP_ETag</a></span><br class="wikidpad" />
+<br class="wikidpad" />
+4) Layered System<br class="wikidpad" />
+Client should not interact directly with the server, we will use additional layers. If done improperly, this will add invisible dependencies. Allows load balancers, caches, logging, authorization, etc.<br class="wikidpad" />
+<br class="wikidpad" />
+5) Code on Demand (optional)<br class="wikidpad" />
+A request doesn't just retrieve a resource but also the code to act upon it. We don't have to know or understand the code, just how to run it.<br class="wikidpad" />
+<br class="wikidpad" />
+6) Uniform Interface<br class="wikidpad" />
+4 key principles:<ul class="wikidpad normalindent">- Identification of Resources (unique URL)<ul class="wikidpad normalindent">/nount/id<br class="wikidpad" />
+/noun/action/id<br class="wikidpad" />
+OR<br class="wikidpad" />
+/?n=nound&amp;id=id<br class="wikidpad" />
+/?n=noun&amp;a=action&amp;id=id<br class="wikidpad" />
+(the first set is better)</ul>
+- Manipulation of Resources through these Representations<ul class="wikidpad normalindent">/2010-04-01/Accounts/{AccountsSid}/Calls/{CAxxx}<br class="wikidpad" />
+/2010-04-01/Accounts/{AccountsSid}/Recordings/{RExxx}<br class="wikidpad" />
+/2010-04-01/Accounts/{AccountsSid}/SMS/{SMxxx}<br class="wikidpad" />
+<br class="wikidpad" />
+GET {all}<br class="wikidpad" />
+POST {only for Calls &amp; SMS}<br class="wikidpad" />
+PUT n/a<br class="wikidpad" />
+DELETE {only for Recordings}    </ul>
+- Self-descriptive messages<br class="wikidpad" />
+- Hypermedia as the engine of application state (HATEOAS)<ul class="wikidpad normalindent"><span class="wikidpad url-link"><a href="https://en.wikipedia.org/wiki/Representational_state_transfer" class="wikidpad">https://en.wikipedia.org/wiki/Representational_state_transfer</a></span><br class="wikidpad" />
+<br class="wikidpad" />
+</ul>
+</ul>
+<b class="wikidpad">Learn how to use the API</b><br class="wikidpad" />
+<br class="wikidpad" />
+curl <span class="wikidpad url-link"><a href="https://api.github.com" class="wikidpad">https://api.github.com</a></span><br class="wikidpad" />
+<br class="wikidpad" />
+{<ul class="wikidpad normalindent">"current_user_url": "<span class="wikidpad url-link"><a href="https://api.github.com/user" class="wikidpad">https://api.github.com/user</a></span>",<br class="wikidpad" />
+"current_user_authorizations_html_url": "<span class="wikidpad url-link"><a href="https://github.com/settings/connections/applications{/client_id}" class="wikidpad">https://github.com/settings/connections/applications{/client_id}</a></span>",<br class="wikidpad" />
+"authorizations_url": "<span class="wikidpad url-link"><a href="https://api.github.com/authorizations" class="wikidpad">https://api.github.com/authorizations</a></span>",<br class="wikidpad" />
+"code_search_url": "<span class="wikidpad url-link"><a href="https://api.github.com/search/code?q={query}{&page,per_page,sort,order}" class="wikidpad">https://api.github.com/search/code?q={query}{&amp;page,per_page,sort,order}</a></span>",<br class="wikidpad" />
+"emails_url": "<span class="wikidpad url-link"><a href="https://api.github.com/user/emails" class="wikidpad">https://api.github.com/user/emails</a></span>",<br class="wikidpad" />
+"emojis_url": "<span class="wikidpad url-link"><a href="https://api.github.com/emojis" class="wikidpad">https://api.github.com/emojis</a></span>",<br class="wikidpad" />
+"events_url": "<span class="wikidpad url-link"><a href="https://api.github.com/events" class="wikidpad">https://api.github.com/events</a></span>",<br class="wikidpad" />
+"feeds_url": "<span class="wikidpad url-link"><a href="https://api.github.com/feeds" class="wikidpad">https://api.github.com/feeds</a></span>",<br class="wikidpad" />
+"followers_url": "<span class="wikidpad url-link"><a href="https://api.github.com/user/followers" class="wikidpad">https://api.github.com/user/followers</a></span>",<br class="wikidpad" />
+"following_url": "<span class="wikidpad url-link"><a href="https://api.github.com/user/following{/target}" class="wikidpad">https://api.github.com/user/following{/target}</a></span>",<br class="wikidpad" />
+"gists_url": "<span class="wikidpad url-link"><a href="https://api.github.com/gists{/gist_id}" class="wikidpad">https://api.github.com/gists{/gist_id}</a></span>",<br class="wikidpad" />
+"hub_url": "<span class="wikidpad url-link"><a href="https://api.github.com/hub" class="wikidpad">https://api.github.com/hub</a></span>",<br class="wikidpad" />
+"issue_search_url": "<span class="wikidpad url-link"><a href="https://api.github.com/search/issues?q={query}{&page,per_page,sort,order}" class="wikidpad">https://api.github.com/search/issues?q={query}{&amp;page,per_page,sort,order}</a></span>",<br class="wikidpad" />
+"issues_url": "<span class="wikidpad url-link"><a href="https://api.github.com/issues" class="wikidpad">https://api.github.com/issues</a></span>",<br class="wikidpad" />
+"keys_url": "<span class="wikidpad url-link"><a href="https://api.github.com/user/keys" class="wikidpad">https://api.github.com/user/keys</a></span>",<br class="wikidpad" />
+"notifications_url": "<span class="wikidpad url-link"><a href="https://api.github.com/notifications" class="wikidpad">https://api.github.com/notifications</a></span>",<br class="wikidpad" />
+"organization_repositories_url": "<span class="wikidpad url-link"><a href="https://api.github.com/orgs/{org}/repos{?type,page,per_page,sort}" class="wikidpad">https://api.github.com/orgs/{org}/repos{?type,page,per_page,sort}</a></span>",<br class="wikidpad" />
+"organization_url": "<span class="wikidpad url-link"><a href="https://api.github.com/orgs/{org}" class="wikidpad">https://api.github.com/orgs/{org}</a></span>",<br class="wikidpad" />
+"public_gists_url": "<span class="wikidpad url-link"><a href="https://api.github.com/gists/public" class="wikidpad">https://api.github.com/gists/public</a></span>",<br class="wikidpad" />
+"rate_limit_url": "<span class="wikidpad url-link"><a href="https://api.github.com/rate_limit" class="wikidpad">https://api.github.com/rate_limit</a></span>",<br class="wikidpad" />
+"repository_url": "<span class="wikidpad url-link"><a href="https://api.github.com/repos/{owner}/{repo}" class="wikidpad">https://api.github.com/repos/{owner}/{repo}</a></span>",<br class="wikidpad" />
+"repository_search_url": "<span class="wikidpad url-link"><a href="https://api.github.com/search/repositories?q={query}{&page,per_page,sort,order}" class="wikidpad">https://api.github.com/search/repositories?q={query}{&amp;page,per_page,sort,order}</a></span>",<br class="wikidpad" />
+"current_user_repositories_url": "<span class="wikidpad url-link"><a href="https://api.github.com/user/repos{?type,page,per_page,sort}" class="wikidpad">https://api.github.com/user/repos{?type,page,per_page,sort}</a></span>",<br class="wikidpad" />
+"starred_url": "<span class="wikidpad url-link"><a href="https://api.github.com/user/starred{/owner}{/repo}" class="wikidpad">https://api.github.com/user/starred{/owner}{/repo}</a></span>",<br class="wikidpad" />
+"starred_gists_url": "<span class="wikidpad url-link"><a href="https://api.github.com/gists/starred" class="wikidpad">https://api.github.com/gists/starred</a></span>",<br class="wikidpad" />
+"team_url": "<span class="wikidpad url-link"><a href="https://api.github.com/teams" class="wikidpad">https://api.github.com/teams</a></span>",<br class="wikidpad" />
+"user_url": "<span class="wikidpad url-link"><a href="https://api.github.com/users/{user}" class="wikidpad">https://api.github.com/users/{user}</a></span>",<br class="wikidpad" />
+"user_organizations_url": "<span class="wikidpad url-link"><a href="https://api.github.com/user/orgs" class="wikidpad">https://api.github.com/user/orgs</a></span>",<br class="wikidpad" />
+"user_repositories_url": "<span class="wikidpad url-link"><a href="https://api.github.com/users/{user}/repos{?type,page,per_page,sort}" class="wikidpad">https://api.github.com/users/{user}/repos{?type,page,per_page,sort}</a></span>",<br class="wikidpad" />
+"user_search_url": "<span class="wikidpad url-link"><a href="https://api.github.com/search/users?q={query}{&page,per_page,sort,order}" class="wikidpad">https://api.github.com/search/users?q={query}{&amp;page,per_page,sort,order}</a></span>"</ul>
+}<br class="wikidpad" />
+<br class="wikidpad" />
+    </body>
+</html>

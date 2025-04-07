@@ -1,0 +1,123 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html>
+    <head>
+        <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+        <title>Website Checklist</title>
+        <link type="text/css" rel="stylesheet" href="appbase.css">
+    </head>
+    <body class="wikidpad">
+<span class="wikidpad parent-nodes">parent nodes: <span class="wikidpad parent-node"><a href="General.html" class="wikidpad">General</a></span><br class="wikidpad" /><br class="wikidpad" /></span>
+<a name=".h0" class="wikidpad"></a><h2 class="wikidpad heading-level2">Website Checklist</h2>
+<span class="wikidpad property attribute">[camelCaseWordsEnabled: false]</span><br class="wikidpad" />
+<br class="wikidpad" />
+<b class="wikidpad">FAVICON</b><br class="wikidpad" />
+<br class="wikidpad" />
+<b class="wikidpad">TITLES AND META DATA</b> (Make sure it changes on every page and relates to that page’s content.)<br class="wikidpad" />
+<br class="wikidpad" />
+&lt;title&gt;10 Things To Consider When Choosing The Perfect CMS | How-To | Smashing Magazine&lt;/title&gt;<br class="wikidpad" />
+&lt;meta name="description" content="By Paul Boag Choosing a content management system can be tricky. Without a clearly defined set of requirements, you will be seduced by fancy functionality that you will never use. What then should you look" /&gt;<br class="wikidpad" />
+<br class="wikidpad" />
+<b class="wikidpad">CROSS-BROWSER CHECKS</b><br class="wikidpad" />
+<br class="wikidpad" />
+<b class="wikidpad">PROOFREAD</b><br class="wikidpad" />
+<br class="wikidpad" />
+<b class="wikidpad">LINKS</b><br class="wikidpad" />
+<br class="wikidpad" />
+<b class="wikidpad">FUNCTIONALITY CHECK</b><br class="wikidpad" />
+<br class="wikidpad" />
+<b class="wikidpad">GRACEFUL DEGRADATION</b><br class="wikidpad" />
+<br class="wikidpad" />
+Your website should work with JavaScript and/or Flash turned off. Users often have JavaScript turned off for security, so you should be prepared for this. You can easily turn off JavaScript in Firefox. Test your forms to make sure they still perform server-side validation checks, and test any cool AJAX stuff you have going on.<br class="wikidpad" />
+<br class="wikidpad" />
+<b class="wikidpad">VALIDATION</b><br class="wikidpad" />
+<br class="wikidpad" />
+You should aim for a 100% valid website. That said, it isn’t the end of the world if your website doesn’t validate, but it’s important to know the reasons why it doesn’t so that you can fix any nasty errors. Common gotchas include no “alt” tags, no closing tags and using “&amp;” instead of “&amp;” for ampersands.<br class="wikidpad" />
+<span class="wikidpad url-link"><a href="http://validator.w3.org/" class="wikidpad">http://validator.w3.org/</a></span><br class="wikidpad" />
+<br class="wikidpad" />
+<b class="wikidpad">RSS LINK</b><br class="wikidpad" />
+<br class="wikidpad" />
+If your website has a blog or newsreel, you should have an RSS feed that users can subscribe to. Users should be able to easily find your RSS feed: the common convention is to put a small RSS icon in the browser’s address bar.<br class="wikidpad" />
+Put this code between your &lt;head&gt; tags.<br class="wikidpad" />
+&lt;link rel="alternate" type="application/rss+xml" title="Site or RSS title" href="link-to-feed" /&gt;<br class="wikidpad" />
+<br class="wikidpad" />
+<b class="wikidpad">ANALYTICS</b><br class="wikidpad" />
+<br class="wikidpad" />
+<b class="wikidpad">SITEMAP</b><br class="wikidpad" />
+<br class="wikidpad" />
+Adding a sitemap.xml file to your root directory allows the major search engines to easily index your website. The file points crawlers to all the pages on your website. XML-Sitemaps automatically creates a sitemap.xml file for you. After creating the file, upload it to your root directory so that its location is www.mydomain.com/sitemap.xml.<br class="wikidpad" />
+<br class="wikidpad" />
+If you use WordPress, install the Google XML Sitemaps plug-in, which automatically updates the sitemap when you write new posts. Also, add your website and sitemap to Google Webmaster Tools. This tells Google that you have a sitemap, and the service provides useful statistics on how and when your website was last indexed.<br class="wikidpad" />
+<br class="wikidpad" />
+<b class="wikidpad">DEFENSIVE DESIGN</b><br class="wikidpad" />
+<br class="wikidpad" />
+The most commonly overlooked defensive design element is the 404 page. If a user requests a page that doesn’t exist, your 404 page is displayed. This may happen for a variety of reasons, including another website linking to a page that doesn’t exist. Get your users back on track by providing a useful 404 page that directs them to the home page or suggests other pages they may be interested in.<br class="wikidpad" />
+<br class="wikidpad" />
+Another defensive design technique is checking your forms for validation. Try submitting unusual information in your form fields (e.g. lots of characters, letters in number fields, etc.) and make sure that if there is an error, the user is provided with enough feedback to be able to fix it.<br class="wikidpad" />
+<br class="wikidpad" />
+<b class="wikidpad">OPTIMIZE</b><br class="wikidpad" />
+Optimize speed, images, minify js and css...<br class="wikidpad" />
+Consider using: <span class="wikidpad url-link"><a href="http://requirejs.org/" class="wikidpad">http://requirejs.org/</a></span><br class="wikidpad" />
+<br class="wikidpad" />
+<b class="wikidpad">BACK UP</b><br class="wikidpad" />
+If your website runs off a database, you need a back-up strategy. Or else, the day will come when you regret not having one. If you use WordPress, install WordPress Database Backup, which you can set up to automatically email you backups. Configure backup schedule, and test recovery from backup.<br class="wikidpad" />
+<br class="wikidpad" />
+<b class="wikidpad">PRINT STYLE SHEET</b><br class="wikidpad" />
+If a user wants to print a page from your website, chances are she or he wants only the main content and not the navigation or extra design elements. That’s why it is a good idea to create a print-specific style sheet. Also, certain CSS elements, such as floats, don’t come out well when printed.<br class="wikidpad" />
+<br class="wikidpad" />
+To point to a special CSS style sheet that computers automatically use when users print a page, simply include the following code between your &lt;head&gt; tags.<br class="wikidpad" />
+<br class="wikidpad" />
+&lt;link rel="stylesheet" type="text/css" href="print.css" media="print" /&gt;<br class="wikidpad" />
+<br class="wikidpad" />
+<b class="wikidpad">COLOUR CONTRAST</b><br class="wikidpad" />
+Use <span class="wikidpad url-link"><a href="http://www.vischeck.com/" class="wikidpad">http://www.vischeck.com/</a></span> to simulate colorblind vision<br class="wikidpad" />
+<br class="wikidpad" />
+<b class="wikidpad">SEARCH</b><br class="wikidpad" />
+<br class="wikidpad" />
+Test the Search functionality<br class="wikidpad" />
+<br class="wikidpad" />
+<br class="wikidpad" />
+<br class="wikidpad" />
+<b class="wikidpad">Extra</b><br class="wikidpad" />
+Configure Google Webmaster Console and Yahoo! Site Explorer<br class="wikidpad" />
+FeedBurner?<br class="wikidpad" />
+Use robots.txt where necessary?<br class="wikidpad" />
+Set-up email/SMS monitoring/alerts (e.g. for errors, server warnings); consider internal and external monitoring services<br class="wikidpad" />
+Check correct database indexing<br class="wikidpad" />
+<br class="wikidpad" />
+<br class="wikidpad" />
+‘Click here for the latest company news’ becomes ‘Latest company news’<br class="wikidpad" />
+‘Buy now’ becomes ‘Buy 4 socket extension cable now’<br class="wikidpad" />
+‘More info’ becomes ‘More info on our product range’<br class="wikidpad" />
+<br class="wikidpad" />
+Do not have a set of navigational links that is any larger than 8 items<br class="wikidpad" />
+<br class="wikidpad" />
+Avoid placing important navigation at the top. While scanning pages, which is the way the huge majority of web users use the Internet, they blank out anything they don’t recognise, know they don’t want or that looks like advertising – which they have come to expect in the top part of the page<br class="wikidpad" />
+<br class="wikidpad" />
+Place legals (copyright notice, privacy policy, terms and conditions) at the bottom of all web pages where they are typically found, but you should also draw them to users’ attention by including links within content where it is timely for them to be read<br class="wikidpad" />
+<br class="wikidpad" />
+Home should be the first link. Any site/company logo and image in the top left corner should also be a link to home to follow web convention<br class="wikidpad" />
+<br class="wikidpad" />
+Don’t make the mistake of deciding on the top level navigation before you have created a site map for the whole site<br class="wikidpad" />
+<br class="wikidpad" />
+Include a search and site map if your site has many pages. Note that some users have learned searching gets them to the info they seek quicker than browsing and look for a search box, rather than at navigation, as soon as they come to a new website<br class="wikidpad" />
+<br class="wikidpad" />
+Unless you have a very small, simple site, plan to include a ‘You are here’ navigation before the page title (i.e. show the user where they are in the site). Also show what step they’re on of how many, in stepped interactions such as making a purchase<br class="wikidpad" />
+<br class="wikidpad" />
+Minimise the amount of links on the page, keep it under 20<br class="wikidpad" />
+<br class="wikidpad" />
+Decide how you would like to lead users through the site and identify a key link – calls to action work well as buttons aligned to the right of the main content<br class="wikidpad" />
+<br class="wikidpad" />
+Are links labeled with anchor text that provides a clear indication of where they lead without over using exact match anchor text?<br class="wikidpad" />
+<br class="wikidpad" />
+Is there a clear statement of PURPOSE of the site? Purpose must be clear within a few seconds.<br class="wikidpad" />
+<br class="wikidpad" />
+Do you have clear call to action on each page?<br class="wikidpad" />
+<br class="wikidpad" />
+Is text broken into small, readable chunks and highlighted using headings, sub-headings, and emphasis features where appropriate to assist in skimming?<br class="wikidpad" />
+<br class="wikidpad" />
+Are private directories password protected via .htaccess?<br class="wikidpad" />
+<br class="wikidpad" />
+Is customer data stored online? If so, is this database appropriately safeguarded against external access?<br class="wikidpad" />
+<br class="wikidpad" />
+Privacy Policy up (especially if you collect data, email, names, and web analytics tracking cookies)?    </body>
+</html>

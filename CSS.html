@@ -1,0 +1,728 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html>
+    <head>
+        <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+        <title>CSS</title>
+        <link type="text/css" rel="stylesheet" href="appbase.css">
+    </head>
+    <body class="wikidpad">
+<span class="wikidpad parent-nodes">parent nodes: <span class="wikidpad parent-node"><a href="WebDesign.html" class="wikidpad">WebDesign</a></span><br class="wikidpad" /><br class="wikidpad" /></span>
+<a name=".h0" class="wikidpad"></a><h2 class="wikidpad heading-level2">CSS</h2>
+<span class="wikidpad property attribute">[camelCaseWordsEnabled: false]</span><br class="wikidpad" />
+<br class="wikidpad" />
+<span class="wikidpad wiki-link"><a href="Bootstrap.html" class="wikidpad">Bootstrap</a></span><br class="wikidpad" />
+<span class="wikidpad wiki-link"><a href="CSS%20with%20SASS%20and%20Compass.html" class="wikidpad">CSS with SASS and Compass</a></span><br class="wikidpad" />
+<span class="wikidpad wiki-link"><a href="Foundation.html" class="wikidpad">Foundation</a></span><br class="wikidpad" />
+<span class="wikidpad wiki-link"><a href="Fonts.html" class="wikidpad">Fonts</a></span><br class="wikidpad" />
+<span class="wikidpad wiki-link"><a href="Styling%20links.html" class="wikidpad">Styling links</a></span><br class="wikidpad" />
+<br class="wikidpad" />
+Neat select: <span class="wikidpad url-link"><a href="https://select2.github.io/examples.html" class="wikidpad">https://select2.github.io/examples.html</a></span><br class="wikidpad" />
+<br class="wikidpad" />
+Control the way your document looks based on what type of screen you're looking at:<br class="wikidpad" />
+screen.css<br class="wikidpad" />
+print.css<br class="wikidpad" />
+mobile.css<br class="wikidpad" />
+<br class="wikidpad" />
+Different browsers have different "default styling" that you can remove by using css reset. <span class="wikidpad url-link"><a href="http://meyerweb.com/eric/tools/css/reset/" class="wikidpad">http://meyerweb.com/eric/tools/css/reset/</a></span><br class="wikidpad" />
+<br class="wikidpad" />
+p {font-family: Arial, Helvetica, sans-serif;<ul class="wikidpad normalindent">font-size: 1em;</ul>
+}<br class="wikidpad" />
+<br class="wikidpad" />
+selector: p<br class="wikidpad" />
+declaration: anything between {}<br class="wikidpad" />
+property: font-family: <br class="wikidpad" />
+value: Arial, Helvetica, sans-serif;<br class="wikidpad" />
+<br class="wikidpad" />
+<b class="wikidpad">Different types of selectors</b><br class="wikidpad" />
+<br class="wikidpad" />
+- Element selectors: Global selectors based on individual HTML elements (example: p, ul, h1, etc.)<br class="wikidpad" />
+<br class="wikidpad" />
+- Class selectors: Attribute selector based on class attributes applied to HTML elements <br class="wikidpad" />
+<ul class="wikidpad normalindent">HTML: &lt;h2 class="subheading"&gt; Item 2 &lt;/h2&gt;<br class="wikidpad" />
+CSS: .subheading {color: blue;}<br class="wikidpad" />
+<br class="wikidpad" />
+</ul>
+- ID selectors: Attribute selector based on ID attributes applied to HTML elements (IDs must be unique)<ul class="wikidpad normalindent">HTML: &lt;div id="sidebar"&gt;[...]&lt;/div&gt;<br class="wikidpad" />
+CSS: #sidebar {font-size: 80%;}<br class="wikidpad" />
+</ul>
+- Element-specific selectors: Modified class or ID selector which limits application to a specific elements. Require more processing work from browser.<ul class="wikidpad normalindent">CSS: h2.subheading {color:blue;} (h2s with a class of subheading)<br class="wikidpad" />
+CSS: div#sidebar {font-size: 80%;} (divs within an ID of sidebar)<br class="wikidpad" />
+</ul>
+- Descendent selectors: Highly specific selectors that target elements based on their location within other elements<ul class="wikidpad normalindent">CSS: div p span {color: blue;} (parent selector first followed by each successive nested selector)<ul class="wikidpad normalindent">In this example, it would affect span elements that are inside p which are inside a div. More than 3 layers starts to become inefficient.<br class="wikidpad" />
+</ul>
+</ul>
+- Grouping selectors: Allows you to group selectors together that share formatting<ul class="wikidpad normalindent">CSS: h1, h2, .quote {font-weight: normal; color: blue;}<br class="wikidpad" />
+</ul>
+- Universal selector: Affects every single element on the page. Author said he never ever needed to use it.<ul class="wikidpad bulletlist">
+<li class="wikidpad" />{color:blue;}<br class="wikidpad" />
+</ul>
+- Child selectors: Similar to descendant selectors, however they don't apply to every single descendant elements. Only those that are direct descendants. <ul class="wikidpad normalindent">article &gt; h2 {color=#7D6855;}<br class="wikidpad" />
+</ul>
+- Adjacent selector: Let you style an element based on which element comes before it in the document, provided that both are inside the same parent. For example you might want to italicize first paragraph right after a heading.<ul class="wikidpad normalindent">h2 + p {font-style: italic;}<br class="wikidpad" />
+</ul>
+- Attribute selector (support is not always good in older browsers)<ul class="wikidpad normalindent">HTML: <br class="wikidpad" />
+&lt;p class="red blue green"&gt;Red, blue and green classes are applied&lt;/p&gt;<br class="wikidpad" />
+&lt;p class="red"&gt;Red is the only one applied&lt;/p&gt;<br class="wikidpad" />
+<br class="wikidpad" />
+CSS: <br class="wikidpad" />
+a[title] {  <ul class="wikidpad normalindent">color:red;		//targets the "a" elements that have a title attribute applied to it</ul>
+}<br class="wikidpad" />
+<br class="wikidpad" />
+a[title="Visit Lynda.com"]{<ul class="wikidpad normalindent">color:red;		//targets the "a" elements that have a SPECIFC title attribute</ul>
+}<br class="wikidpad" />
+<br class="wikidpad" />
+p[class="red"]{<ul class="wikidpad normalindent">color:red;		//will only target the second "p" in the HTML code above (not the first). Exactly the same as saying p.red</ul>
+}<br class="wikidpad" />
+<br class="wikidpad" />
+p[class~="red"]{<ul class="wikidpad normalindent">color:red;		//Added an extra ~ after class. Now it will target first and second "p" from HTML above</ul>
+}<br class="wikidpad" />
+<br class="wikidpad" />
+a[href^="http://"] {  <ul class="wikidpad normalindent">color:red;		//Because of ^, it will target everything that has an href attribute that STARTS WITH "http://"<ul class="wikidpad normalindent">//It's a good way of targeting external links</ul>
+</ul>
+}<br class="wikidpad" />
+<br class="wikidpad" />
+a[href$="pdf"] {  <ul class="wikidpad normalindent">color:red;		//Because of $, it will target everything that has an href attribute that ENDS WITH "pdf"<ul class="wikidpad normalindent">//It's a good way of adding a PDF icon next to links that are PDF files</ul>
+</ul>
+}<br class="wikidpad" />
+<br class="wikidpad" />
+a[title*="Visit"]{<ul class="wikidpad normalindent">color:red;		//Because of $, it will target everything that has a title attribute that CONTAINS "Visit"</ul>
+}<br class="wikidpad" />
+</ul>
+<b class="wikidpad">Pseudo-class selectors</b><br class="wikidpad" />
+<br class="wikidpad" />
+Helps you target elements outside of the DOM (Document Object Model) such as user hovering over an element or focusing on a form element, or elements that are too specific for simple selectors to target.<ul class="wikidpad normalindent">:hover -&gt; pseudo-class selector<br class="wikidpad" />
+a:hover -&gt; targeted pseudo-class selector<br class="wikidpad" />
+ul a:hover -&gt; descendant selector with a pseudo-class selector<br class="wikidpad" />
+</ul>
+- Dynamic pseudo-class selectors: Target elements based on something other than attributes, content or element type. Usually refers to something that can change over time, or that is based on user interaction. <ul class="wikidpad normalindent">a:link {...}				//will target <a href...> but not <a id=...><br class="wikidpad" />
+a:visited{color:black;}	<br class="wikidpad" />
+a:hover{background:orange;}	<br class="wikidpad" />
+a:active{background:green;}	//Either in focus or currently being clicked on<br class="wikidpad" />
+//You must put the above selectors in that order, otherwise some styling will overwrite others. <br class="wikidpad" />
+a:target{color:red;}	//it goes with <a id="section1">. If your URL finishes with .html#section1, then the styling target applies to section1<br class="wikidpad" />
+</ul>
+UI Element state pseudo-class selectors: Target specific user interface elements in regards to whether or not they are currently enabled. (relatively new as of 2011)<br class="wikidpad" />
+<br class="wikidpad" />
+- Structural pseudo-class selectors: Target elements based on specialized information within the DOM that simple selectors cannot target. This can be pattern-matching, child-to-parent relationship or other structural information. <ul class="wikidpad normalindent">span:first-child{font-weight:bold}	//Targets span elements that are the first child of their parent. There is also a last-child option.<br class="wikidpad" />
+h2:first-of-type{border-bottom: 1px solid #42403E;}		//Only the first h2 under a parent. There is also a last-of-type option<br class="wikidpad" />
+p:only-child{font-style:italic;}<br class="wikidpad" />
+<br class="wikidpad" />
+nth:<br class="wikidpad" />
+- nth-child<br class="wikidpad" />
+- nth-of-type<br class="wikidpad" />
+- nth-last-child<br class="wikidpad" />
+- nth-last-of-type<br class="wikidpad" />
+<br class="wikidpad" />
+Examples of simple nth-child:<br class="wikidpad" />
+li:nth-child(odd){color:red;}		//change color of odd elements (just like iTunes)<br class="wikidpad" />
+li:nth-child(2) {color:tan;}		//change color of second element only<br class="wikidpad" />
+li:nth-child(2n) {color:tan;}		//targets every second element (synonym to saying nth-child(even)<br class="wikidpad" />
+li:nth-child(2n+1) {color:tan;}		//the offset (+1) changes where you start counting. "start to count at 1, and then target every 2nd element"<br class="wikidpad" />
+li:nth-child(5n+5) {color:tan;}		//start to count at 5, and then target every fifth element<br class="wikidpad" />
+li:nth-child(-2n+1) {color:tan;}	//start to count at 8 and then go backward and target every second element (going UP the list instead of DOWN)<br class="wikidpad" />
+li:nth-child(5n-1) {color:tan;}		//start to count at -1 (which does not exist), so the first colored element is 4. <br class="wikidpad" />
+<br class="wikidpad" />
+Examples of complex nth-child:<br class="wikidpad" />
+li:nth-child(1n+6):nth-last-child(1n+6){color:tan;}<br class="wikidpad" />
+li:nth-child(-1n+6), li:nth-last-child(-1n+5){color:tan;}<br class="wikidpad" />
+</ul>
+Using Structural pseudo-class selectors helps you to select specific elements without going through classes. Not all supported evenly by all browsers.<br class="wikidpad" />
+<br class="wikidpad" />
+Other pseudo-class selectors: Can't be really grouped into any one category. These selectors give you even more specific targeting capabilities based on things like language or URL targeting. <br class="wikidpad" />
+<br class="wikidpad" />
+<b class="wikidpad">Pseudo-element selectors</b><br class="wikidpad" />
+<br class="wikidpad" />
+Allow you to target first line or first letter of an element. Also allows you to create what is known as generated content (place content on the page that is not contained in the structure of the document).<ul class="wikidpad normalindent">h1 + p::first-line{font-style: italic;} //The double colon is the W3C standard, however it is not recognized by IE8. You CAN use single colon.<br class="wikidpad" />
+h1 + p::first-letter{font-size: 3em;}<br class="wikidpad" />
+</ul>
+Generated content:<br class="wikidpad" />
+Use a property called "content". Here is what is available to use:<br class="wikidpad" />
+- string<br class="wikidpad" />
+- uri (like a picture for example)<br class="wikidpad" />
+- counter (count count chapters?)<br class="wikidpad" />
+- open-quote and close-quote<br class="wikidpad" />
+- no-open-quote and no-close-quote (no " but content will be offset<br class="wikidpad" />
+- attr(X)  (will show value of attribute)<br class="wikidpad" />
+<br class="wikidpad" />
+a::after{content: " (outside link)";} 	//will add a text saying (outside link) after an A tag<br class="wikidpad" />
+a::after{content: attr(href);}			//will show the href value of a<br class="wikidpad" />
+a::after{content: " [" attr(href) "]";}	//concatenate strings and attr stuff. <ul class="wikidpad normalindent">//This is very useful to do in the "print" style sheet, otherwise you would never know where the link goes<br class="wikidpad" />
+</ul>
+Class and ID Naming:<br class="wikidpad" />
+- No whitespace or special character<br class="wikidpad" />
+- Case sensitive<br class="wikidpad" />
+<br class="wikidpad" />
+Style locations:<br class="wikidpad" />
+- External styles (main.css)<br class="wikidpad" />
+- Embedded styles (index.htm, in the head of the HTML document)<br class="wikidpad" />
+- Inline style (in HTML file, style can be applied directly to an HTML element)<br class="wikidpad" />
+<br class="wikidpad" />
+To write a rule that applies to every single element on the page, use "body"<ul class="wikidpad normalindent">body {font-family: Arial;}<br class="wikidpad" />
+</ul>
+<b class="wikidpad">External styles</b><br class="wikidpad" />
+You need to link them in the HTML file in the head section<ul class="wikidpad normalindent">&lt;html&gt;<br class="wikidpad" />
+&lt;head&gt;<ul class="wikidpad normalindent">&lt;link href:"main.css" rel="stylesheet" type="text/css" media="screen"&gt; </ul>
+&lt;/head&gt;<br class="wikidpad" />
+&lt;/html&gt;<br class="wikidpad" />
+</ul>
+Media controls where the style is to be applied, on computer or when printing)<br class="wikidpad" />
+<br class="wikidpad" />
+<b class="wikidpad">Embedded styles</b><br class="wikidpad" />
+Inefficient to style a whole site but perfect to style a page differently<br class="wikidpad" />
+<br class="wikidpad" />
+<b class="wikidpad">Inline style</b><br class="wikidpad" />
+It is discouraged<br class="wikidpad" />
+Only used in HTML e-mails<br class="wikidpad" />
+<br class="wikidpad" />
+<b class="wikidpad">Cascade</b><br class="wikidpad" />
+External styles are applied first<br class="wikidpad" />
+Followed by Embedded styles<br class="wikidpad" />
+Followed by Inline styles<br class="wikidpad" />
+<br class="wikidpad" />
+If they conflict, the last rule applied wins (inline styles in this case)<br class="wikidpad" />
+<br class="wikidpad" />
+<b class="wikidpad">Rendering engine for each browser</b><br class="wikidpad" />
+IE &amp; AOL: Trident<br class="wikidpad" />
+Opera: Presto<br class="wikidpad" />
+Firefox: Gecko<br class="wikidpad" />
+Safari &amp; Chrome: Webkit<br class="wikidpad" />
+<br class="wikidpad" />
+Vendor prefix:<br class="wikidpad" />
+Microsoft: -ms-<br class="wikidpad" />
+Mozilla: -moz-<br class="wikidpad" />
+Opera: -o-<br class="wikidpad" />
+Konqueror: -khtml-<br class="wikidpad" />
+Webkit: -webkit-<br class="wikidpad" />
+<br class="wikidpad" />
+The following syntax:<br class="wikidpad" />
+<br class="wikidpad" />
+p {<ul class="wikidpad normalindent">font-family: Arial, Helvetica, Verdana, sans-serif; //if Arial is not find, use Helvetica. If not found, use Verdana etc.</ul>
+}<br class="wikidpad" />
+<br class="wikidpad" />
+<b class="wikidpad">Difference between pixels and ems</b><br class="wikidpad" />
+Pixels are FIXED units, displayed at the requested size regardless of device or context<br class="wikidpad" />
+Ems are RELATIVE units, displayed relative to the environment in which they are found. 1em = 100% of it's default font size<br class="wikidpad" />
+<br class="wikidpad" />
+<b class="wikidpad">Sizing with ems</b><br class="wikidpad" />
+<br class="wikidpad" />
+Example 1: <br class="wikidpad" />
+<br class="wikidpad" />
+body{<ul class="wikidpad normalindent">font-size: 100%;</ul>
+}<br class="wikidpad" />
+<br class="wikidpad" />
+which means the base font size will be: 16px<br class="wikidpad" />
+<br class="wikidpad" />
+16px = 1.00em = 100% = 12pt = p<br class="wikidpad" />
+18px = 1.125em = 112.5% = 14pt = h3<br class="wikidpad" />
+24px = 1.50em = 150% = 18pt = h2<br class="wikidpad" />
+48px = 2.250em = 300% = 36pt = h1<br class="wikidpad" />
+<br class="wikidpad" />
+Example 2:<br class="wikidpad" />
+<br class="wikidpad" />
+body {<ul class="wikidpad normalindent">font-size: 62.5%;</ul>
+}<br class="wikidpad" />
+<br class="wikidpad" />
+which means the base font size will be: 10px<br class="wikidpad" />
+<br class="wikidpad" />
+So it's easier to convert ems into pixels in your mind thanks to the 10 multiplier.<br class="wikidpad" />
+<br class="wikidpad" />
+16px = 1.6em<br class="wikidpad" />
+18px = 1.8em<br class="wikidpad" />
+24px = 2.4em<br class="wikidpad" />
+48px = 4.8em <br class="wikidpad" />
+etc.<br class="wikidpad" />
+<br class="wikidpad" />
+pxtoem.com<br class="wikidpad" />
+<br class="wikidpad" />
+<b class="wikidpad">Most important font-related CSS attributes</b><br class="wikidpad" />
+<br class="wikidpad" />
+font-size: size of the text<br class="wikidpad" />
+font-weight: different level of bold-ness<br class="wikidpad" />
+font-style: normal/italic etc.<br class="wikidpad" />
+font-variant: small-caps for example<br class="wikidpad" />
+font-color<br class="wikidpad" />
+background-color<br class="wikidpad" />
+text-transform: upper-case / small-caps etc.<br class="wikidpad" />
+text-align: choose alignment<br class="wikidpad" />
+text-decoration: undecorate / underline / overline / strike-through / blink<br class="wikidpad" />
+text-indent: Indent the first line<br class="wikidpad" />
+letter-spacing<br class="wikidpad" />
+word-spacing<br class="wikidpad" />
+line-height: space between lines<br class="wikidpad" />
+<br class="wikidpad" />
+<b class="wikidpad">Font Shorthand notation</b><br class="wikidpad" />
+Allows you to control these properties all at once:<br class="wikidpad" />
+- font-weight<br class="wikidpad" />
+- font-style<br class="wikidpad" />
+- font-variant<br class="wikidpad" />
+- font-size<br class="wikidpad" />
+- line-height<br class="wikidpad" />
+- font-family<br class="wikidpad" />
+<br class="wikidpad" />
+Syntax: <br class="wikidpad" />
+font: normal normal normal 100%/1.5 Georgia; //all of the above in order<br class="wikidpad" />
+font: 100% Georgia; //most minimal version (font-size, font-family). Normal will be passed by default<br class="wikidpad" />
+<br class="wikidpad" />
+If you want to pass all three values that were normal that we skipped in version 2, you can pass only one of them and that'll work<br class="wikidpad" />
+font: bold 100% Georgia;<br class="wikidpad" />
+<br class="wikidpad" />
+<b class="wikidpad">Box model</b> <span class="wikidpad url-link"><a href="http://guistuff.com/css/css_boxmodel.html" class="wikidpad">http://guistuff.com/css/css_boxmodel.html</a></span><br class="wikidpad" />
+<br class="wikidpad" />
+Definition: refers to the physical properties of an element's rectangular box. Margins, borders, padding and content width and height.<br class="wikidpad" />
+<br class="wikidpad" />
+Properties:<br class="wikidpad" />
+- border-width<br class="wikidpad" />
+- border-style (solid, dashed, dotted or double)<br class="wikidpad" />
+- border-color<br class="wikidpad" />
+- border-radius (rounded corners)<br class="wikidpad" />
+- border-image<br class="wikidpad" />
+And you can control each of the 4 sizes individually (this is true too for padding and margins)<br class="wikidpad" />
+<br class="wikidpad" />
+Total element width = left border + left padding + content width + right padding + right border<ul class="wikidpad normalindent">Margin values are not calculated as part of an element's total width<br class="wikidpad" />
+</ul>
+For example:<br class="wikidpad" />
+<br class="wikidpad" />
+p{<ul class="wikidpad normalindent">padding: 20px;<br class="wikidpad" />
+border: 1px solid black;<br class="wikidpad" />
+width: 200px;</ul>
+}<br class="wikidpad" />
+<br class="wikidpad" />
+total width = 1px + 20px + 200px + 20px + 1px = 242px<br class="wikidpad" />
+<br class="wikidpad" />
+Considerations:<br class="wikidpad" />
+- If a property is not declared, don't assume that the value is 0<br class="wikidpad" />
+- Elements often have default margins that you need to account for<br class="wikidpad" />
+- A 100% width property when combined with padding and borders will create elements that are larger than their parent<br class="wikidpad" />
+<br class="wikidpad" />
+padding: 10px 20px 15px 10px; (applied to top, right, bottom, left)<br class="wikidpad" />
+padding: 10px 20px 15px; (applied to top, right &amp; left, bottom)<br class="wikidpad" />
+padding: 10px 20px; (applied to top &amp;  bottom, right &amp; left)<br class="wikidpad" />
+padding: 10px; (applied to all sides equally)<br class="wikidpad" />
+<br class="wikidpad" />
+Unlike padding, most elements have a default margin that you must account for<br class="wikidpad" />
+<br class="wikidpad" />
+Two elements side by side: Both of the element's margins will apply<br class="wikidpad" />
+Two elements on top of each other: Only one margin will apply (higher value wins)<br class="wikidpad" />
+<br class="wikidpad" />
+individual properties of borders can be quite specific. Examples:<br class="wikidpad" />
+border-top-style<br class="wikidpad" />
+border-bottom-width<br class="wikidpad" />
+border-right-color<br class="wikidpad" />
+<br class="wikidpad" />
+border style "none" and "hidden" are very similar except when tables come into play<br class="wikidpad" />
+<br class="wikidpad" />
+Background properties:<br class="wikidpad" />
+- background-color<br class="wikidpad" />
+- background-image<br class="wikidpad" />
+- background-position<br class="wikidpad" />
+- background-origin<br class="wikidpad" />
+- background-repeat<br class="wikidpad" />
+- background-size<br class="wikidpad" />
+- background-clip (crop the image)<br class="wikidpad" />
+<br class="wikidpad" />
+You can have both a background color AND a background image. You can even have multiple images for the background.<br class="wikidpad" />
+<br class="wikidpad" />
+Backgrounds extend all the way to the inside edge of an element's border. <br class="wikidpad" />
+<br class="wikidpad" />
+opacity attribute range from 0 to 1<br class="wikidpad" />
+<br class="wikidpad" />
+<b class="wikidpad">Pixels</b><br class="wikidpad" />
+The size of the pixel is relative to the display of the device that it's shown on.<br class="wikidpad" />
+<br class="wikidpad" />
+<b class="wikidpad">Ems</b><br class="wikidpad" />
+When used with font-size, 1em is equal to the default font size of the device.<br class="wikidpad" />
+The value of em changes depending upon where it's used within your CSS. If it's used to define fonts, 1em is equal to the value of it's parent element's font size. An em tells an element to calculate its size relative to the size of the parent.<br class="wikidpad" />
+<br class="wikidpad" />
+body {font-size: 100%;}<br class="wikidpad" />
+h1 {font-size: 1.6em;}<br class="wikidpad" />
+h2 {font-size: 1.4em;}<br class="wikidpad" />
+h3 {font-size: 1.2em;}<br class="wikidpad" />
+P {font-size: 1em;}<br class="wikidpad" />
+<br class="wikidpad" />
+The starting size of the text is up to the device<br class="wikidpad" />
+<br class="wikidpad" />
+If an em value is set outside of a font-size, it's equal to the computed size of the text of that element<br class="wikidpad" />
+<br class="wikidpad" />
+h1{<ul class="wikidpad normalindent">font-size: 2em;<br class="wikidpad" />
+margin-bottom: 1em;</ul>
+}<br class="wikidpad" />
+<br class="wikidpad" />
+device font size: 16px<br class="wikidpad" />
+<br class="wikidpad" />
+SO<br class="wikidpad" />
+- font-size will be 32px<br class="wikidpad" />
+- margin-bottom will ALSO be 32 because it is based on the text value of that element. If margin-bottom was 2em, it would be 64px<br class="wikidpad" />
+<br class="wikidpad" />
+<b class="wikidpad">EX and REM</b><br class="wikidpad" />
+Based on the "x-height" of a font<br class="wikidpad" />
+Root ems (rem) are like ems but they are relative to the root unit (body, html), not the element's immediate parent<br class="wikidpad" />
+rems not fully supported yet (as of 2011) <br class="wikidpad" />
+<br class="wikidpad" />
+<b class="wikidpad">Percentages</b><br class="wikidpad" />
+They are great to build fluid layouts <br class="wikidpad" />
+<br class="wikidpad" />
+You can also use centimetres and inches as a measure, this is mostly done for the printing look.<br class="wikidpad" />
+<br class="wikidpad" />
+<b class="wikidpad">Positioning elements</b><br class="wikidpad" />
+<br class="wikidpad" />
+3 position schemes:<br class="wikidpad" />
+- Normal flow (static): that's what happens when you do nothing at all <br class="wikidpad" />
+- Element floating<br class="wikidpad" />
+- Absolute positioning<br class="wikidpad" />
+<br class="wikidpad" />
+position value:<br class="wikidpad" />
+- static (this is the normal flow)<br class="wikidpad" />
+- relative (still considered part of normal flow but you can offset the element from it's original position relative to another element)<br class="wikidpad" />
+- absolute (not normal flow. Elements are placed relative to the nearest positioned ancester)<br class="wikidpad" />
+- fixed (considered "absolutely" positioned but they are always positioned relative to the active viewport. Meaning if you scroll down, the element stays exactly where it is) <br class="wikidpad" />
+- inherit<br class="wikidpad" />
+<br class="wikidpad" />
+As soon as you declare a position that is NOT static, you escape from the normal flow and open up the ability to call on four new properties: top, right, bottom and left<br class="wikidpad" />
+<br class="wikidpad" />
+Example relative:<br class="wikidpad" />
+.box1 {<ul class="wikidpad normalindent">position: relative;<br class="wikidpad" />
+left: 100px;<br class="wikidpad" />
+top: 50px;</ul>
+}<br class="wikidpad" />
+<br class="wikidpad" />
+The box will move 100px to the right and down 50px. It will create a hole where the element would normally be (instead of the other elements to take it's place)<br class="wikidpad" />
+<br class="wikidpad" />
+Example absolute:<br class="wikidpad" />
+.box1 {<ul class="wikidpad normalindent">position: absolute;<br class="wikidpad" />
+left: 100px;<br class="wikidpad" />
+top: 50px;</ul>
+}<br class="wikidpad" />
+<br class="wikidpad" />
+The box will move 100px to the right and down 50px. The other elements under will replace the empty spot and move up. <br class="wikidpad" />
+<br class="wikidpad" />
+.content {<ul class="wikidpad normalindent">position:relative; //this is done so that the content is now positioned and .quote will be placed based on the top and left of the content. Otherwise, it would use the body of the page as a base. </ul>
+}<br class="wikidpad" />
+<br class="wikidpad" />
+. quote{<ul class="wikidpad normalindent">position: absolute;<br class="wikidpad" />
+left: 20px;<br class="wikidpad" />
+top: 40px;</ul>
+}<br class="wikidpad" />
+<br class="wikidpad" />
+Example fixed:<br class="wikidpad" />
+.ad {<ul class="wikidpad normalindent">position: fixed;<br class="wikidpad" />
+top: 50px;<br class="wikidpad" />
+right: 100px;</ul>
+}<br class="wikidpad" />
+<br class="wikidpad" />
+Elements can stack one on top of each other. Can be controlled by the z-index property, which allows you to control which elements are on top of others. By default, positioned elements will appear on top of non-positioned elements if those two overlap. <br class="wikidpad" />
+<br class="wikidpad" />
+The default value for z-index is 0. If you want something to go behind your main working layer, give it a negative value. If you want it in front, give it a number greater than 0.<br class="wikidpad" />
+<br class="wikidpad" />
+<b class="wikidpad">Floats</b><br class="wikidpad" />
+<br class="wikidpad" />
+One of the most popular CSS technique<br class="wikidpad" />
+<br class="wikidpad" />
+Definition: Basically an element that's been shifted to the right or to the left of its current position.<br class="wikidpad" />
+<br class="wikidpad" />
+.box1 {float: right;}<br class="wikidpad" />
+<br class="wikidpad" />
+box1 will move as far to the right as possible. The elements below will move up to occupy the space where box1 was (so floating an element removes it from normal document flow). Different elements react differently to floated elements. "Inline" elements will react to floated elements by wrapping around them if they have enough room. <br class="wikidpad" />
+<br class="wikidpad" />
+.content {float:right;}<br class="wikidpad" />
+.sidebar {float: left;}<br class="wikidpad" />
+<br class="wikidpad" />
+If you leave just these two, the footer will move up. But if you add this:<br class="wikidpad" />
+<br class="wikidpad" />
+.footer{clear: both;} <br class="wikidpad" />
+<br class="wikidpad" />
+...then this means that the floating has been cleared. It tells the browser to stop floating elements and go back to normal flow.<br class="wikidpad" />
+<br class="wikidpad" />
+Additional learning to develop:<br class="wikidpad" />
+- Learn how floated elements affect their parents<br class="wikidpad" />
+- Learn how clearing works<br class="wikidpad" />
+- Learn how margins work between floated elements and static elements<br class="wikidpad" />
+- Learn how the width of parent elements affect the floating ability of nested elements<br class="wikidpad" />
+- Look into best practices that have evolved around floats<br class="wikidpad" />
+- Learn how browser rendering differences affect layout<br class="wikidpad" />
+- Research multiple layout techniques<br class="wikidpad" />
+<br class="wikidpad" />
+Interesting Layout concept: Header (and probably others as well), if you don't define a height it will be determined by its content.<br class="wikidpad" />
+<br class="wikidpad" />
+<b class="wikidpad">Media type</b><br class="wikidpad" />
+List of media types:<br class="wikidpad" />
+- all<br class="wikidpad" />
+- braille<br class="wikidpad" />
+- embossed<br class="wikidpad" />
+- handheld (mobile devices)<br class="wikidpad" />
+- print<br class="wikidpad" />
+- projection<br class="wikidpad" />
+- screen <br class="wikidpad" />
+- speech<br class="wikidpad" />
+- tty<br class="wikidpad" />
+- tv<br class="wikidpad" />
+<br class="wikidpad" />
+Many phones use screen media type rather than handheld<br class="wikidpad" />
+<br class="wikidpad" />
+List of media features:<br class="wikidpad" />
+- width<br class="wikidpad" />
+- height<br class="wikidpad" />
+- device-width<br class="wikidpad" />
+- device-height<br class="wikidpad" />
+- orientation<br class="wikidpad" />
+- aspect-ratio<br class="wikidpad" />
+- device-aspect-ratio<br class="wikidpad" />
+- color<br class="wikidpad" />
+- color-index<br class="wikidpad" />
+- monochrome<br class="wikidpad" />
+- resolution<br class="wikidpad" />
+- scan<br class="wikidpad" />
+- grid<br class="wikidpad" />
+<br class="wikidpad" />
+media query syntax:<br class="wikidpad" />
+link rel="stylesheet" href="desktop.css"<br class="wikidpad" />
+media="only screen and (min-width:0px) and (max-width:480px)"<br class="wikidpad" />
+<br class="wikidpad" />
+<b class="wikidpad">CSS Reset</b> <span class="wikidpad url-link"><a href="http://www.cssreset.com" class="wikidpad">http://www.cssreset.com</a></span><br class="wikidpad" />
+Definition: A set of styles that nullify a browser's default style sheet, allowing designers to avoid conflicts between their styles and browser default styles<br class="wikidpad" />
+<br class="wikidpad" />
+Common reset properties:<br class="wikidpad" />
+- margins<br class="wikidpad" />
+- padding<br class="wikidpad" />
+- borders<br class="wikidpad" />
+- font-size<br class="wikidpad" />
+- line-height<br class="wikidpad" />
+<br class="wikidpad" />
+CSS-reset must be at the top of the CSS style sheet<br class="wikidpad" />
+<br class="wikidpad" />
+//css-reset<br class="wikidpad" />
+body{<ul class="wikidpad normalindent">margin: 0;<br class="wikidpad" />
+padding: 0;</ul>
+}<br class="wikidpad" />
+<br class="wikidpad" />
+Pros and cons:<br class="wikidpad" />
+- Often setting the same property twice<br class="wikidpad" />
+- Large resets can cause the browser to do intensive parsing &amp; styling<br class="wikidpad" />
+- Gives designers a consistent baseline for building styles<br class="wikidpad" />
+<br class="wikidpad" />
+<b class="wikidpad">CSS Frameworks</b><br class="wikidpad" />
+Pre-prepared CSS files that provide a templating system for site layout and design<br class="wikidpad" />
+<br class="wikidpad" />
+Common content:<br class="wikidpad" />
+- CSS reset<br class="wikidpad" />
+- Basic element styling<br class="wikidpad" />
+- Basic structural styling<br class="wikidpad" />
+- Browser inconsistencies<br class="wikidpad" />
+- Form and table styling<br class="wikidpad" />
+- Typography<br class="wikidpad" />
+- CSS grid<br class="wikidpad" />
+<br class="wikidpad" />
+Pros:<br class="wikidpad" />
+- Save considerable time when designing sites<br class="wikidpad" />
+- Most of them assist with creating cross-browser compliant code<br class="wikidpad" />
+- Built-in CSS grids speed up layout development<br class="wikidpad" />
+- Consistent code base for teams<br class="wikidpad" />
+- Well written frameworks are a good way to learn certain techniques<br class="wikidpad" />
+<br class="wikidpad" />
+Cons:<br class="wikidpad" />
+- Most sites do not use all the features contained within framworks (lots of codes that you don't use)<br class="wikidpad" />
+- Some frameworks are structured with multiple CSS files<br class="wikidpad" />
+- Tends to rely heavily on classes<br class="wikidpad" />
+- Class structure is usually not user-friendly<br class="wikidpad" />
+- Can be difficult to update or debug<br class="wikidpad" />
+- Adding functionality can be time-consuming<br class="wikidpad" />
+- Be prepared to spend time mastering the Framework<br class="wikidpad" />
+<br class="wikidpad" />
+Might not be good for beginners<br class="wikidpad" />
+<br class="wikidpad" />
+Popular Frameworks:<br class="wikidpad" />
+- Blueprint (blueprintcss.org)<br class="wikidpad" />
+- 52 framework (52framework.com)<br class="wikidpad" />
+- 960 grid system (960.gs)<br class="wikidpad" />
+- YUI 2 (developer.yahoo.com/yui/grids)<br class="wikidpad" />
+- CSS-boilerplate (code.google.com/p/css-boilerplate<br class="wikidpad" />
+- Baseline (baselinecss.com)<br class="wikidpad" />
+<br class="wikidpad" />
+<b class="wikidpad">Online Tools</b><br class="wikidpad" />
+- <span class="wikidpad url-link"><a href="http://www.css3generator.com" class="wikidpad">http://www.css3generator.com</a></span><br class="wikidpad" />
+- <span class="wikidpad url-link"><a href="http://www.css3.me" class="wikidpad">http://www.css3.me</a></span><br class="wikidpad" />
+- <span class="wikidpad url-link"><a href="http://www.css3please.com" class="wikidpad">http://www.css3please.com</a></span><br class="wikidpad" />
+- <span class="wikidpad url-link"><a href="http://www.layerstyles.org/builder.html" class="wikidpad">http://www.layerstyles.org/builder.html</a></span><br class="wikidpad" />
+- <span class="wikidpad url-link"><a href="http://www.css3.mikeplate.com" class="wikidpad">http://www.css3.mikeplate.com</a></span><br class="wikidpad" />
+- <span class="wikidpad url-link"><a href="http://www.css3maker.com" class="wikidpad">http://www.css3maker.com</a></span><br class="wikidpad" />
+- <span class="wikidpad url-link"><a href="http://www.colorzilla.com/gradient-editor" class="wikidpad">http://www.colorzilla.com/gradient-editor</a></span><br class="wikidpad" />
+- <span class="wikidpad url-link"><a href="http://www.westciv.com/tools" class="wikidpad">http://www.westciv.com/tools</a></span><br class="wikidpad" />
+- <span class="wikidpad url-link"><a href="http://www.validator.w3.org" class="wikidpad">http://www.validator.w3.org</a></span><br class="wikidpad" />
+- <span class="wikidpad url-link"><a href="http://www.csslint.net" class="wikidpad">http://www.csslint.net</a></span><br class="wikidpad" />
+- <span class="wikidpad url-link"><a href="http://www.alvit.de/handbook" class="wikidpad">http://www.alvit.de/handbook</a></span><br class="wikidpad" />
+- <span class="wikidpad url-link"><a href="http://www.reference.sitepoint.com/css" class="wikidpad">http://www.reference.sitepoint.com/css</a></span><br class="wikidpad" />
+- <span class="wikidpad url-link"><a href="http://www.css-tricks.com" class="wikidpad">http://www.css-tricks.com</a></span><br class="wikidpad" />
+<br class="wikidpad" />
+<br class="wikidpad" />
+Author's blog: <span class="wikidpad url-link"><a href="http://www.simpleprimate.com" class="wikidpad">http://www.simpleprimate.com</a></span><br class="wikidpad" />
+<br class="wikidpad" />
+Using this way, you can style dates a certain way:<br class="wikidpad" />
+<br class="wikidpad" />
+&lt;ul&gt;<br class="wikidpad" />
+&lt;li&gt; Tobias will be there on &lt;span class="date"&gt;August 23 &lt;/span&gt;&lt;/li&gt;<br class="wikidpad" />
+&lt;li&gt; &lt;span class="date"&gt;August 24&lt;/span&gt; is Pride Parade&lt;/li&gt;<br class="wikidpad" />
+&lt;/ul&gt;<br class="wikidpad" />
+<br class="wikidpad" />
+A lot of people use IDs in HTML because javascript allows us to target IDs on the page<br class="wikidpad" />
+<br class="wikidpad" />
+<b class="wikidpad">Conflicts</b><br class="wikidpad" />
+<br class="wikidpad" />
+p{<ul class="wikidpad normalindent">font-size: 1em;<br class="wikidpad" />
+color: white;<br class="wikidpad" />
+background: tan;</ul>
+}<br class="wikidpad" />
+p{<ul class="wikidpad normalindent">font-size: 1.2em;<br class="wikidpad" />
+color: black;<br class="wikidpad" />
+padding: 10px;</ul>
+}<br class="wikidpad" />
+<br class="wikidpad" />
+In this case, the rules applied will be the following:<br class="wikidpad" />
+- font-size: 1.2em;		//From the 2nd p<br class="wikidpad" />
+- color: black;			//From the 2nd p<br class="wikidpad" />
+- padding: 10px;		//From the 2nd p<br class="wikidpad" />
+- background: tan;		//From the 1st p<br class="wikidpad" />
+<br class="wikidpad" />
+<b class="wikidpad">Cascade</b><br class="wikidpad" />
+The last rule applied WINS<br class="wikidpad" />
+<br class="wikidpad" />
+If you have a style in an external CSS file that conflict with a style in the &lt;style&gt; tag in the HTML file, the HTML file wins, unless the link to the external file comes AFTER the style tag. <br class="wikidpad" />
+<br class="wikidpad" />
+<b class="wikidpad">Inheritance</b><br class="wikidpad" />
+If you apply a property to a parent element, all the elements inside of it will have that property applied to it as well<br class="wikidpad" />
+<br class="wikidpad" />
+<b class="wikidpad">Specificity</b><br class="wikidpad" />
+Usually the culprit when styling errors. <br class="wikidpad" />
+<br class="wikidpad" />
+#mainContent p{color:red;}<br class="wikidpad" />
+p{color:blue;}<br class="wikidpad" />
+<br class="wikidpad" />
+You would think that because the "blue" p comes last, it wins. But NO! The one with main content has a higher specificity so it wins!<br class="wikidpad" />
+<br class="wikidpad" />
+IDs are worth 100<br class="wikidpad" />
+Classes are worth 10<br class="wikidpad" />
+Elemens and selectors are worth 1<br class="wikidpad" />
+<br class="wikidpad" />
+If you are trying to apply a style and it does not work, it could be because there is another selector somewhere with a higher degree of specificity. This is one reason why some people avoid using ID selectors. <br class="wikidpad" />
+<br class="wikidpad" />
+Low specificity rules are easier to parse and easier to overwrite later on<br class="wikidpad" />
+<br class="wikidpad" />
+<b class="wikidpad">!important</b><br class="wikidpad" />
+In the event of a conflict, the !important declaration wins<br class="wikidpad" />
+<br class="wikidpad" />
+p{color:red !important;} 		//this one wins<br class="wikidpad" />
+#mainContent p {color:green;}	//even though this one is more specific<br class="wikidpad" />
+<br class="wikidpad" />
+Recommended not to use it much, only in last resort.<br class="wikidpad" />
+Author: I have NEVER used it<br class="wikidpad" />
+<br class="wikidpad" />
+<b class="wikidpad">Advices</b><br class="wikidpad" />
+- Avoid using local styles whenever possible<br class="wikidpad" />
+- Do not use inline styles except for very specific circumstances<br class="wikidpad" />
+- Don't mix class and ID selectors without having a plan that guides when they are to be used<br class="wikidpad" />
+- Sections of ID selectors can be hard to overwrite later if not accounted for<br class="wikidpad" />
+- If you find yourself writing descendant selectors with three of more selectors, consider revising your strategy<br class="wikidpad" />
+- If you are familiar with your page structure, you should be able to identify global formatting across your site<br class="wikidpad" />
+- Those formatting needs can be written as global styles on parent elements, and inherited by the rest of the site<br class="wikidpad" />
+- This results in fewer rules to write and easier styles to maintain<br class="wikidpad" />
+- Think about how styles relate to one another<br class="wikidpad" />
+- New designers often make the mistake of styling each element individually, as it is encountered<br class="wikidpad" />
+- This can lead to bloated style sheets and hard to maintain styles<br class="wikidpad" />
+- Thinking of styles as related formatting allows you to plan and write organized style sheets<br class="wikidpad" />
+<br class="wikidpad" />
+<b class="wikidpad">Generic Font Families</b><br class="wikidpad" />
+- serif<br class="wikidpad" />
+- sans-serif<br class="wikidpad" />
+- monospace<br class="wikidpad" />
+- cursive<br class="wikidpad" />
+- fantasy<br class="wikidpad" />
+<br class="wikidpad" />
+When using @font-face, if you have several declarations for normal, italic, bold and bold-italic, you want to put them in the order I just put them in.  <br class="wikidpad" />
+<br class="wikidpad" />
+access to bootstrap? (to be placed in head section)<br class="wikidpad" />
+<ul class="wikidpad normalindent">&lt;link rel="stylesheet" href="http://s3.amazonaws.com/codecademy-content/courses/ltp/css/bootstrap.css"&gt;<br class="wikidpad" />
+</ul>
+<b class="wikidpad">Block Elements vs. Inline Elements</b><br class="wikidpad" />
+<br class="wikidpad" />
+Block:<br class="wikidpad" />
+- Paragraphs (p)<br class="wikidpad" />
+- Headers (h1, h2...)<br class="wikidpad" />
+- Lists (ul, ol, li)<br class="wikidpad" />
+- Divs (div)<br class="wikidpad" />
+<br class="wikidpad" />
+Inline:<br class="wikidpad" />
+- Hyperlink (a)<br class="wikidpad" />
+- Images (img)<br class="wikidpad" />
+- Form fields (input)<br class="wikidpad" />
+- Spans (span)<br class="wikidpad" />
+<br class="wikidpad" />
+If you use text-align: right on an inline element, it won't work. Instead, you can use float. <br class="wikidpad" />
+<br class="wikidpad" />
+<b class="wikidpad">Gradients</b><br class="wikidpad" />
+<br class="wikidpad" />
+Radial gradients radiate outward in all directions from a central point<br class="wikidpad" />
+Lineau gradients only go in one direction in a line<br class="wikidpad" />
+<br class="wikidpad" />
+IE does not support gradients, but if you put background-color FIRST, IE will be safe! You also need vendor prefixes for now.<br class="wikidpad" />
+<br class="wikidpad" />
+p {<ul class="wikidpad normalindent">background-color: black;<br class="wikidpad" />
+background: linear-gradient(bottom, rgba(0,0,0,1), rgba(0,0,0, .4));<br class="wikidpad" />
+background: -webkit-linear-gradient(bottom, rgba(0,0,0,1), rgba(0,0,0, .4));<br class="wikidpad" />
+background: -moz-linear-gradient(bottom, rgba(0,0,0,1), rgba(0,0,0, .4));</ul>
+}<br class="wikidpad" />
+<br class="wikidpad" />
+div{<ul class="wikidpad normalindent">background: radial-gradient(shape, centercolor, outercolor);</ul>
+} <br class="wikidpad" />
+<br class="wikidpad" />
+Shape: circle or ellips<br class="wikidpad" />
+<br class="wikidpad" />
+<b class="wikidpad">Border-radius</b><br class="wikidpad" />
+<br class="wikidpad" />
+To create a perfectly circular curve, make the radius at least HALF the lenght of the shape's edge.<br class="wikidpad" />
+<br class="wikidpad" />
+.circle{<ul class="wikidpad normalindent">height: 40px;<br class="wikidpad" />
+width: 40px;<br class="wikidpad" />
+border-radius: 20px;</ul>
+}<br class="wikidpad" />
+<br class="wikidpad" />
+<b class="wikidpad">Animation</b><br class="wikidpad" />
+<br class="wikidpad" />
+There are two parts to CSS animation:<br class="wikidpad" />
+1. You define it<br class="wikidpad" />
+2. You assign it<br class="wikidpad" />
+<br class="wikidpad" />
+@keyframes blink{<ul class="wikidpad normalindent">50% {<ul class="wikidpad normalindent">background: radial-gradient(circle, red 15%, transparent 40%), #cc5;</ul>
+}</ul>
+}<br class="wikidpad" />
+<br class="wikidpad" />
+@-webkit-keyframes blink{<ul class="wikidpad normalindent">50% {<ul class="wikidpad normalindent">background: -webkit-radial-gradient(circle, red 15%, transparent 40%), #cc5;</ul>
+}</ul>
+}<br class="wikidpad" />
+<br class="wikidpad" />
+@-moz-keyframes blink{<ul class="wikidpad normalindent">50% {<ul class="wikidpad normalindent">background: -moz-radial-gradient(circle, red 15%, transparent 40%), #cc5;</ul>
+}</ul>
+}<br class="wikidpad" />
+<br class="wikidpad" />
+.brain{<ul class="wikidpad normalindent">animation: blink .5s infinite;<br class="wikidpad" />
+-webkit-animation: blink .5s infinite;<br class="wikidpad" />
+-moz-animation: blink .5s infinite;<br class="wikidpad" />
+background: radial-gradient(circle, white 15%, transparent 40%), #cc5;</ul>
+}<br class="wikidpad" />
+<br class="wikidpad" />
+<b class="wikidpad">Other notes</b><br class="wikidpad" />
+<br class="wikidpad" />
+It's a good idea to include normalize.css in all your projects (maybe you don't need to when it's Bootstrap?)<br class="wikidpad" />
+<br class="wikidpad" />
+If you use max-width: 500px instead of width: 500px, your website becomes responsive... <br class="wikidpad" />
+<br class="wikidpad" />
+To use absolute and relative...<br class="wikidpad" />
+<br class="wikidpad" />
+let's say you have 3 divs, each with a paragraph in it. <br class="wikidpad" />
+<br class="wikidpad" />
+div{<ul class="wikidpad normalindent">position: relative;</ul>
+}<br class="wikidpad" />
+<br class="wikidpad" />
+p{<ul class="wikidpad normalindent">position: absolute;<br class="wikidpad" />
+bottom: 0;</ul>
+}<br class="wikidpad" />
+<br class="wikidpad" />
+This will put the paragraph at the bottom of the divs.     </body>
+</html>

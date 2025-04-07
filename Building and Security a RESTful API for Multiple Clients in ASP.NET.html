@@ -1,0 +1,111 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html>
+    <head>
+        <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+        <title>Building and Security a RESTful API for Multiple Clients in ASP.NET</title>
+        <link type="text/css" rel="stylesheet" href="appbase.css">
+    </head>
+    <body class="wikidpad">
+<span class="wikidpad parent-nodes">parent nodes: <span class="wikidpad parent-node"><a href="ASP.html" class="wikidpad">ASP</a></span><br class="wikidpad" /><br class="wikidpad" /></span>
+<a name=".h0" class="wikidpad"></a><h2 class="wikidpad heading-level2">Building and Security a RES Tful API for Multiple Clients in ASP.NET</h2>
+<span class="wikidpad property attribute">[camelCaseWordsEnabled: false]</span><br class="wikidpad" />
+<br class="wikidpad" />
+REST: Representational State Transfer<br class="wikidpad" />
+<br class="wikidpad" />
+REST is an Architectural style of networked systems NOT a standard<br class="wikidpad" />
+<br class="wikidpad" />
+NuGet Package: Microsoft.AspNet.WebApi<br class="wikidpad" />
+<br class="wikidpad" />
+ASP.NET Web API is a framework that makes it easy to build HTTP services that reach a broad range of clients.<br class="wikidpad" />
+<br class="wikidpad" />
+Requirements for API:<br class="wikidpad" />
+- Technical<br class="wikidpad" />
+- Functional<br class="wikidpad" />
+- Environmental<br class="wikidpad" />
+<br class="wikidpad" />
+Consider hosting your API outside of the company's firewall if you want exterior people to access it.<br class="wikidpad" />
+<br class="wikidpad" />
+<b class="wikidpad">Architectural Constraints</b><br class="wikidpad" />
+<br class="wikidpad" />
+Not following all the constraints does not make a bad API<br class="wikidpad" />
+<br class="wikidpad" />
+1) Uniform Interface (see below)<br class="wikidpad" />
+<br class="wikidpad" />
+2) Statelessness<br class="wikidpad" />
+State to handle the request is contained within the request itself<br class="wikidpad" />
+<br class="wikidpad" />
+3) Client-Server<br class="wikidpad" />
+Client and Server are separated<br class="wikidpad" />
+<br class="wikidpad" />
+4) Cacheable<br class="wikidpad" />
+Each response must define itself as cacheable or not<br class="wikidpad" />
+<br class="wikidpad" />
+5) Layered System<br class="wikidpad" />
+A client cannot tell whether it's connected to the end server<br class="wikidpad" />
+<br class="wikidpad" />
+6) OPTIONAL: Code on Demand<br class="wikidpad" />
+Server can extend/Customize client functionality<br class="wikidpad" />
+<br class="wikidpad" />
+<b class="wikidpad">Uniform Interface</b><br class="wikidpad" />
+<br class="wikidpad" />
+1) Identification of resource<br class="wikidpad" />
+Resources are identified through a URI<br class="wikidpad" />
+resource != representation (often JSON)<br class="wikidpad" />
+<br class="wikidpad" />
+URI examples:<br class="wikidpad" />
+<span class="wikidpad url-link"><a href="http://domain/api/expensegroups/1" class="wikidpad">http://domain/api/expensegroups/1</a></span><br class="wikidpad" />
+<span class="wikidpad url-link"><a href="http://domain/api/expensegroups/1/expenses" class="wikidpad">http://domain/api/expensegroups/1/expenses</a></span><br class="wikidpad" />
+<span class="wikidpad url-link"><a href="http://domain/api/expensegroups/1/expenses/1" class="wikidpad">http://domain/api/expensegroups/1/expenses/1</a></span><br class="wikidpad" />
+<br class="wikidpad" />
+2) Manipulation of resources through representations<br class="wikidpad" />
+Enough information to modify/delete the resource on the server<br class="wikidpad" />
+<br class="wikidpad" />
+3) Self-descriptive message<br class="wikidpad" />
+Message must include enough info to process the message<br class="wikidpad" />
+<br class="wikidpad" />
+4) HATEOAS (Hypermedia as the Engine of Application State)<br class="wikidpad" />
+<br class="wikidpad" />
+<b class="wikidpad">HATEOAS</b><br class="wikidpad" />
+<br class="wikidpad" />
+Hypermedia:<br class="wikidpad" />
+- Generalization of hypertext<br class="wikidpad" />
+- Adds other media types<br class="wikidpad" />
+<br class="wikidpad" />
+Self-documenting, very dynamic API:<br class="wikidpad" />
+- Allows changes to the API without having to rewrite the client<br class="wikidpad" />
+<br class="wikidpad" />
+HATEOAS drives how to consume and use the API<br class="wikidpad" />
+<br class="wikidpad" />
+<b class="wikidpad">Building the API</b><br class="wikidpad" />
+<br class="wikidpad" />
+Better to use plurals<br class="wikidpad" />
+<br class="wikidpad" />
+1) Design Resource URI's<br class="wikidpad" />
+api/expensegroups<br class="wikidpad" />
+api/expensegroups/1<br class="wikidpad" />
+api/expensegroups/1/expenses<br class="wikidpad" />
+<br class="wikidpad" />
+(you can use two different URIs for the same resource)<br class="wikidpad" />
+api/expensegroups/1/expenses/1<br class="wikidpad" />
+api/expenses/1<br class="wikidpad" />
+<br class="wikidpad" />
+calculating totals, 2 methods:<br class="wikidpad" />
+api/expensegrouptotals/1<br class="wikidpad" />
+api/expensegroups/1/total -&gt; This one breaks REST principles<br class="wikidpad" />
+<br class="wikidpad" />
+<b class="wikidpad">Interacting with Resources</b><br class="wikidpad" />
+<br class="wikidpad" />
+GET api/expenses -&gt; get resource, OK<br class="wikidpad" />
+POST api/expense -&gt; create resource, Created<br class="wikidpad" />
+<br class="wikidpad" />
+GET api/expenses/1 -&gt; get resource, OK<br class="wikidpad" />
+DELETE ap/expenses/1 -&gt; delete resource, NoContent<br class="wikidpad" />
+PUT api/expenses/1 -&gt; update resource (full), OK (when you know the full resource attributes)<br class="wikidpad" />
+PATCH api/expense/1 -&gt; update resouce (partial), OK (when you want to partially update resource)<br class="wikidpad" />
+<br class="wikidpad" />
+Typically APIs do not allow to delete a full collection. DELETE api/expenses. You will normally get a 404 not found if you try this.<br class="wikidpad" />
+<br class="wikidpad" />
+See Status Code and API status code section here: <span class="wikidpad wiki-link"><a href="HTTP.html" class="wikidpad">HTTP</a></span> <br class="wikidpad" />
+<br class="wikidpad" />
+I stopped taking the course because I couldn't run the exercise file (need Visual Studio 2013)    </body>
+</html>

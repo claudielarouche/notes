@@ -1,0 +1,59 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html>
+    <head>
+        <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+        <title>Testing Speed</title>
+        <link type="text/css" rel="stylesheet" href="appbase.css">
+    </head>
+    <body class="wikidpad">
+<span class="wikidpad parent-nodes">parent nodes: <span class="wikidpad parent-node"><a href="Testing.html" class="wikidpad">Testing</a></span><br class="wikidpad" /><br class="wikidpad" /></span>
+<a name=".h0" class="wikidpad"></a><h2 class="wikidpad heading-level2">Testing Speed</h2>
+<span class="wikidpad property attribute">[camelCaseWordsEnabled: false]</span><br class="wikidpad" />
+<br class="wikidpad" />
+1) Right click inspect element to go into Chrome's DevTools<br class="wikidpad" />
+2) Go in the Network tab<br class="wikidpad" />
+3) Hold SHIFT so that everything gets redownloaded even if you have them already on your machine<br class="wikidpad" />
+4) Refresh the page<br class="wikidpad" />
+5) Investigate!<br class="wikidpad" />
+<br class="wikidpad" />
+You can also do a new incognito window which will also make sure no cookies are used.<br class="wikidpad" />
+<br class="wikidpad" />
+The pale part of the graph is the start when the browser started requesting the resource<br class="wikidpad" />
+The darker part is when the resource started being downloaded<br class="wikidpad" />
+<br class="wikidpad" />
+The colour code is the filetype.<br class="wikidpad" />
+<br class="wikidpad" />
+You can click on each filename to investigate if it has the proper cache settings.<br class="wikidpad" />
+<br class="wikidpad" />
+Consider adding async attribute to your javascript calls if you only need javascript for user interaction AFTER the page is done loading.<br class="wikidpad" />
+<br class="wikidpad" />
+Make sure your CSS comes before your Javascript<br class="wikidpad" />
+<br class="wikidpad" />
+<b class="wikidpad">Timeline</b><br class="wikidpad" />
+<br class="wikidpad" />
+The timeline tab allows you to figure out your frame per seconds. Click on the "recording" button to start recording, and then interact with your page. Stop the recording and go to the Frames tab. The page will be filled with colours:<br class="wikidpad" />
+<br class="wikidpad" />
+Green: Painting<br class="wikidpad" />
+Purple: Rendering (style recalculation)<br class="wikidpad" />
+Yellow: Scripting<br class="wikidpad" />
+Blue: HTML<br class="wikidpad" />
+<br class="wikidpad" />
+The highest the frame rate, the better.<br class="wikidpad" />
+<br class="wikidpad" />
+<b class="wikidpad">CPU Profiling</b><br class="wikidpad" />
+<br class="wikidpad" />
+Click on the Profile page and select "Collect Javascript CPU Profile" to investigate which script is slow. Click start and interact with your page, then click stop. <br class="wikidpad" />
+<br class="wikidpad" />
+<b class="wikidpad">Finding Memory Leaks</b><br class="wikidpad" />
+<br class="wikidpad" />
+Click on the Timeline tab and click on Memory.<br class="wikidpad" />
+Click recording, interact with the web page and stop the recording. <br class="wikidpad" />
+If you notice something that looks like memory leak, you would need to use Heap Snapshot<br class="wikidpad" />
+<br class="wikidpad" />
+Go to the Profile tab and select Take Heap Snapshot<br class="wikidpad" />
+Interact with the site and take another snapshot (recording button)<br class="wikidpad" />
+Compare the two snapshots (arrow next to summary)<br class="wikidpad" />
+One sign of memory leak is under Detached DOM tree<br class="wikidpad" />
+<br class="wikidpad" />
+(not sure about this...)    </body>
+</html>

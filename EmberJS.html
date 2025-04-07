@@ -1,0 +1,207 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html>
+    <head>
+        <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+        <title>EmberJS</title>
+        <link type="text/css" rel="stylesheet" href="appbase.css">
+    </head>
+    <body class="wikidpad">
+<span class="wikidpad parent-nodes">parent nodes: <span class="wikidpad parent-node"><a href="Javascript.html" class="wikidpad">Javascript</a></span> | <span class="wikidpad parent-node"><a href="MVC%20Frameworks.html" class="wikidpad">MVC Frameworks</a></span><br class="wikidpad" /><br class="wikidpad" /></span>
+<a name=".h0" class="wikidpad"></a><h2 class="wikidpad heading-level2">Ember JS</h2>
+Example of sites built using Ember:<br class="wikidpad" />
+- discourse.org<br class="wikidpad" />
+- squareup.com<br class="wikidpad" />
+- admanager.yahoo.com<br class="wikidpad" />
+<br class="wikidpad" />
+<b class="wikidpad">What is Ember</b><br class="wikidpad" />
+<br class="wikidpad" />
+- Used to build large web apps<br class="wikidpad" />
+- Ideal for building small web apps<br class="wikidpad" />
+- Favours "convention over configuration", also called "abstraction" (Ember has many blocks of best-practice conventional javascript code)<br class="wikidpad" />
+- Ember is based on MVC<ul class="wikidpad normalindent">- Models: Describe the data<br class="wikidpad" />
+- Views: Display the data<br class="wikidpad" />
+- Controller: sends data to the view</ul>
+NOTE: Ember uses other components, especially a Router (lists all the links in your app) So Ember is sometimes described as MVC + R<br class="wikidpad" />
+<br class="wikidpad" />
+<b class="wikidpad">Ember routers</b><br class="wikidpad" />
+<br class="wikidpad" />
+- Prebuild lots of code internally<br class="wikidpad" />
+- Some code can be ignored, some need configuration<br class="wikidpad" />
+- Routers are where "convention over configuration" starts (Once you create a route, Ember builds supporting code for you based on common coding conventions.)<br class="wikidpad" />
+<br class="wikidpad" />
+<b class="wikidpad">Ember as an SPA (Single Page Application)</b><br class="wikidpad" />
+<br class="wikidpad" />
+- All the "pages" are contained inside one file (new data loads without a page refresh)<br class="wikidpad" />
+- SPAs use lots of HTML, CSS and javascript<br class="wikidpad" />
+- Ember optimizes all this code very well with caching<br class="wikidpad" />
+<br class="wikidpad" />
+<b class="wikidpad">Documentation</b><br class="wikidpad" />
+<br class="wikidpad" />
+Two sections:<br class="wikidpad" />
+- Guides: <span class="wikidpad url-link"><a href="http://guides.emberjs.com/v2.0.0/" class="wikidpad">http://guides.emberjs.com/v2.0.0/</a></span><br class="wikidpad" />
+- API: <span class="wikidpad url-link"><a href="http://emberjs.com/api/" class="wikidpad">http://emberjs.com/api/</a></span><br class="wikidpad" />
+<br class="wikidpad" />
+<b class="wikidpad">Core Concepts</b><br class="wikidpad" />
+<br class="wikidpad" />
+<span class="wikidpad url-link"><a href="http://guides.emberjs.com/v2.0.0/getting-started/core-concepts/" class="wikidpad">http://guides.emberjs.com/v2.0.0/getting-started/core-concepts/</a></span><br class="wikidpad" />
+<br class="wikidpad" />
+- Routing<br class="wikidpad" />
+- Templates<br class="wikidpad" />
+- Components<br class="wikidpad" />
+- Models<br class="wikidpad" />
+- Controllers<br class="wikidpad" />
+<br class="wikidpad" />
+This class will not discuss:<br class="wikidpad" />
+- Ember.Object<br class="wikidpad" />
+- Ember.View<br class="wikidpad" />
+<br class="wikidpad" />
+<b class="wikidpad">Ember Starter Kit</b><br class="wikidpad" />
+<br class="wikidpad" />
+from command prompt, run the following commands:<br class="wikidpad" />
+<br class="wikidpad" />
+npm install -g ember-cli<br class="wikidpad" />
+ember new my-app<br class="wikidpad" />
+<br class="wikidpad" />
+This will create a starter Ember app. It comes with two CSS files:<br class="wikidpad" />
+- normalize.css (reset file)<br class="wikidpad" />
+- style.css<br class="wikidpad" />
+<br class="wikidpad" />
+It also comes with 4 js files:<br class="wikidpad" />
+- libs &gt; ember-1.16.1.js (Includes functionality that returns some really helpful information about your app to the browser console)<br class="wikidpad" />
+- libs &gt; handlebars-1.1.2.js (templating engine that Ember uses to load model data into our app)<br class="wikidpad" />
+- libs &gt; jquery-1.10.2.js<br class="wikidpad" />
+- app.js (contains some minimal code needed to start Ember app)<br class="wikidpad" />
+<br class="wikidpad" />
+If you run index.html and go to the console, you will have all sorts of info about the app.<br class="wikidpad" />
+<br class="wikidpad" />
+<b class="wikidpad">app.js</b><br class="wikidpad" />
+<br class="wikidpad" />
+App = Ember.Application.create(); //starts the Ember app in a web browser. Ember code won't run if app is not started with this command. App is the default name but you can give any name as long as it starts with a capital letter<br class="wikidpad" />
+<br class="wikidpad" />
+App.Router.map(function() {<ul class="wikidpad normalindent">// put your routes here</ul>
+});<br class="wikidpad" />
+<br class="wikidpad" />
+App.IndexRoute = Ember.Route.extend({<ul class="wikidpad normalindent">model: function() {<ul class="wikidpad normalindent">return ['red', 'yellow', 'blue'];</ul>
+}</ul>
+});<br class="wikidpad" />
+<br class="wikidpad" />
+<b class="wikidpad">Tests folder</b><br class="wikidpad" />
+<br class="wikidpad" />
+The starter kit comes with a tests folder. The test folder contains a testing framework called Q unit, and you can use it to test your Ember code. Now testing code with a tool like Q unit is important and it's something you should strive to do regularly.<br class="wikidpad" />
+<br class="wikidpad" />
+<b class="wikidpad">Routes</b><br class="wikidpad" />
+<br class="wikidpad" />
+Routes are essentially URLs. All the routes need to be grouped as what's known as a "Router".<br class="wikidpad" />
+<br class="wikidpad" />
+Ember uses naming convention to build code once a route is declared:<br class="wikidpad" />
+<br class="wikidpad" />
+- Route Object (It will tell the route what the specific model data is for the page it's loading.)<br class="wikidpad" />
+- Controller (sends data to the view)<br class="wikidpad" />
+- Template (smaller versions of views. Ember assumes that the ID of the template is the same as the route name)<br class="wikidpad" />
+- URL (#/[name of route])<br class="wikidpad" />
+<br class="wikidpad" />
+It is important to note that Ember has a route already created for us (home page)<br class="wikidpad" />
+<br class="wikidpad" />
+To find out the URL of a route, use the Ember tool in Google Chrome<br class="wikidpad" />
+<br class="wikidpad" />
+<b class="wikidpad">How to add a route</b><br class="wikidpad" />
+<br class="wikidpad" />
+1) Go to app.js<br class="wikidpad" />
+2) Add the following code:<br class="wikidpad" />
+<br class="wikidpad" />
+App.Router.map(function() {<ul class="wikidpad normalindent">this.route("about");<br class="wikidpad" />
+this.route("collections");<br class="wikidpad" />
+this.resource("exhibits");<br class="wikidpad" />
+this.route("notes");</ul>
+});<br class="wikidpad" />
+<br class="wikidpad" />
+<b class="wikidpad">Default Ember Routes</b><br class="wikidpad" />
+<br class="wikidpad" />
+- Application Route: Renders the primary application template<br class="wikidpad" />
+<br class="wikidpad" />
+There are two routes below the application template information, the loading route and the error route. You use these when you want your route to perform more complicated actions as they load content onto the page, as well as if this loading process generates an error. Using these routes in a project takes a firm understanding of how routes load content asynchronously, as well as understanding a concept known as javascript promises.<br class="wikidpad" />
+<br class="wikidpad" />
+<b class="wikidpad">Templates</b><br class="wikidpad" />
+<br class="wikidpad" />
+Ember uses the Handlebars templating library for creating templates<br class="wikidpad" />
+Routes point to templates<br class="wikidpad" />
+The app template is already on the page<br class="wikidpad" />
+<br class="wikidpad" />
+Templates for other pages load into the app template but they need to be told in which spot. That's gets done with what's called an outlet.<br class="wikidpad" />
+<br class="wikidpad" />
+{{outlet}} is known as Handlebars "helper". It loads other tmeplates into the app template<br class="wikidpad" />
+<br class="wikidpad" />
+You can use the "link to" helper for Ember to create the proper URL to the route you want to display on the screen.<br class="wikidpad" />
+<br class="wikidpad" />
+{{#link-to "routeName" class="some-class"}}Some Links{{/link-to}}<br class="wikidpad" />
+<br class="wikidpad" />
+{{outlet}} is called helper<br class="wikidpad" />
+{{link-to}} is called block helper<br class="wikidpad" />
+<br class="wikidpad" />
+<b class="wikidpad">Component</b><br class="wikidpad" />
+<br class="wikidpad" />
+- Can contain a complete HTML layout<br class="wikidpad" />
+- Reusable page elements like HTML tags<br class="wikidpad" />
+<br class="wikidpad" />
+Step 1: Create component definition<br class="wikidpad" />
+<ul class="wikidpad normalindent">&lt;script type="text/x-handlebars" id="components/single-collection"&gt; &lt;!-- MUSTS be two words separated by a dash --&gt;<ul class="wikidpad normalindent">&lt;h2&gt;Collections&lt;/h2&gt;<br class="wikidpad" />
+This is the SAMOCA Collections Page</ul>
+&lt;/script&gt;<br class="wikidpad" />
+</ul>
+The component definition creates what's known in Ember as a custom element. And it has the same name as the component you just created. You then place this custom element inside your page template<br class="wikidpad" />
+<br class="wikidpad" />
+Ember components are usually displaying data and must be told exactly what that data is.<br class="wikidpad" />
+<br class="wikidpad" />
+Step 2: Display the component<br class="wikidpad" />
+<ul class="wikidpad normalindent">&lt;script type="text/x-handlebars" id="collections"&gt;<ul class="wikidpad normalindent">&lt;section class="pageClass clearfix"&gt;<ul class="wikidpad normalindent">{{single-collection}}</ul>
+&lt;/section&gt;</ul>
+&lt;/script&gt;<br class="wikidpad" />
+</ul>
+When an ember component generates content and loads it into a template, it's automatically placed inside a div tag, but it's simple to change this as well as customize other parts of the component.<br class="wikidpad" />
+<br class="wikidpad" />
+<b class="wikidpad">Models</b><br class="wikidpad" />
+<br class="wikidpad" />
+- Describe application data<br class="wikidpad" />
+- Model data is placed inside route objects<br class="wikidpad" />
+- "Model hook": model data defined inside a route object<br class="wikidpad" />
+<br class="wikidpad" />
+Models are the way you describe application data, and in Ember, models are closely tied to the route. We've learned that when a route is created in Ember, it automatically creates a lot of code behind the scenes. And one of these pieces of code is a route object. It's inside this route object where you tell Ember which model data gets passed to which particular template. And this process of defining a template's model data inside of a route object is commonly referred to as creating the model hook.<br class="wikidpad" />
+<br class="wikidpad" />
+We need to build templates for our component related code before loading in the model data.<br class="wikidpad" />
+<br class="wikidpad" />
+<b class="wikidpad">Controllers</b><br class="wikidpad" />
+<br class="wikidpad" />
+- Controllers send model data to views in MVC<br class="wikidpad" />
+- Controllers send model data to templates in Ember<br class="wikidpad" />
+- Models aren't aware of templates<br class="wikidpad" />
+- This makes code efficient<br class="wikidpad" />
+<br class="wikidpad" />
+Two types of controllers in Ember:<br class="wikidpad" />
+- ObjectController: sends info about 1 piece of data<br class="wikidpad" />
+- ArrayController: sends info about all the data<br class="wikidpad" />
+- Controllers can do more: decorate data, format data...<br class="wikidpad" />
+<br class="wikidpad" />
+<b class="wikidpad">Nested Routes</b><br class="wikidpad" />
+<br class="wikidpad" />
+- Nested Routes are Routes within a route (i.e. sub-routes)<br class="wikidpad" />
+- Load content in the existing and not go to a new page<br class="wikidpad" />
+- Best to list that as "Resources" instead of routes<br class="wikidpad" />
+<br class="wikidpad" />
+e.g.   <br class="wikidpad" />
+this.resource("exhibits", function(){<ul class="wikidpad normalindent">this.resource("exhibit", { path: "/:exhibit_id"});</ul>
+});<br class="wikidpad" />
+<br class="wikidpad" />
+<b class="wikidpad">getJson()</b><br class="wikidpad" />
+<br class="wikidpad" />
+- Finds and returns JSON content<br class="wikidpad" />
+- Works well with jQuery .then() to return "promises"<br class="wikidpad" />
+- .then() waits for getJSON to load data before working<br class="wikidpad" />
+- Server functionality is needed to test getJSON()<br class="wikidpad" />
+<br class="wikidpad" />
+<b class="wikidpad">Ember Data</b><br class="wikidpad" />
+<br class="wikidpad" />
+- Manages a "Store": the place where model data is persisted<br class="wikidpad" />
+- DS.Model: refers to the model properties<br class="wikidpad" />
+- DS.LSAdapter: stores the model data, like "cookies"<br class="wikidpad" />
+- Ember data is in beta    </body>
+</html>

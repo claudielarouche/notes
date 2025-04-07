@@ -1,0 +1,68 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html>
+    <head>
+        <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+        <title>A/B Split Testing Post Title</title>
+        <link type="text/css" rel="stylesheet" href="appbase.css">
+    </head>
+    <body class="wikidpad">
+<span class="wikidpad parent-nodes">parent nodes: <span class="wikidpad parent-node"><a href="Wordpress.html" class="wikidpad">Wordpress</a></span><br class="wikidpad" /><br class="wikidpad" /></span>
+<a name=".h0" class="wikidpad"></a><h2 class="wikidpad heading-level2">A/B Split Testing Post Title</h2>
+<span class="wikidpad property attribute">[camelCaseWordsEnabled: false]</span><br class="wikidpad" />
+<br class="wikidpad" />
+First thing you need to do is install and activate Title Experiments Free plugin. Upon activation, you need to visit Settings » Title Exp Settings to configure the plugin.<br class="wikidpad" />
+<br class="wikidpad" />
+If your site uses heavy caching, then you can choose to use JavaScript for post titles. This will ensure that the plugin works as intended instead of having the same title being shown to everyone due to caching issues.<br class="wikidpad" />
+<br class="wikidpad" />
+For SEO purposes, by default the plugin shows the first title to the search engines. However you can change this setting if you want.<br class="wikidpad" />
+<br class="wikidpad" />
+The plugin recalculates display probabilities every 5 minutes to ensure maximum results. You can increase or decrease this time if you want. However please understand that setting it below 5 minutes may cause our site to slow down.<br class="wikidpad" />
+<br class="wikidpad" />
+Once you are done, click on the save settings button to store your settings.<br class="wikidpad" />
+<br class="wikidpad" />
+Now you need to head over to Post » Add New to see the plugin in action. On the post edit screen, you can add multiple post titles for your post. Try creating different variations of SEO friendly post titles with different keywords.<br class="wikidpad" />
+<br class="wikidpad" />
+After you have added a few titles, you can save and publish your post.<br class="wikidpad" />
+<br class="wikidpad" />
+Once your post has attracted enough traffic, you can see which titles performed better by editing the post. The plugin calculates the click probability based on how many times a title is displayed, and how often it is clicked by the users.<br class="wikidpad" />
+<br class="wikidpad" />
+For busy websites, you will instantly start noticing which keywords trigger a more positive response from your users. You can then start using those keywords creatively into your post titles to write more effective headlines. For smaller sites, this kind of micro-testing might not be as useful because of the small sample size.<br class="wikidpad" />
+<br class="wikidpad" />
+<b class="wikidpad">How to Do A/B Split Testing in WordPress using Google Analytics</b><br class="wikidpad" />
+<br class="wikidpad" />
+Before we move forward, there are a few things you would need for this tutorial. If you haven’t already done so, then the first thing you need to do is install Google Analytics in WordPress. The second thing you would need is variations of the original page that you want to test. For example, if you are running tests on your registration page, then create another copy of the page with different copy, style, or layout. You can create multiple variations of a page with different layouts or copy. Make sure that you publish your original page and all its variations, so that they are publicly accessible.<br class="wikidpad" />
+<br class="wikidpad" />
+<b class="wikidpad">Setting up Content Experiment in Google Analytics</b><br class="wikidpad" />
+<br class="wikidpad" />
+A/B split testing is called Content Experiments in Google Analytics. Sign in to your Analytics account and then go to Content » Experiments. Provide the URL of your original page and click on create experiment button to get started.<br class="wikidpad" />
+<br class="wikidpad" />
+<b class="wikidpad">Start A/B Testing Content Experiment in Analytics</b><br class="wikidpad" />
+<br class="wikidpad" />
+On the next page you will be asked to provide a title for this A/B testing experiment and choose an objective for it. Objectives are goals which you can create in Google Analytics. You can create a new goal by clicking on add an objective link, or use an existing one. Analytics will track how many visitors to each variation of page meet your objective or goal. For example, if you have a registration page where users are redirected to a thank you page after registration, then you can set that as your objective. When a user on your website fills the form and gets redirected to the thank you page, then this equals to the completion of your goal.<br class="wikidpad" />
+<br class="wikidpad" />
+<b class="wikidpad">Setting up A/B testing or content experiments in Google Analytics</b><br class="wikidpad" />
+After providing your original page URL and choosing objective or goal for this experiment, you can now add variations of this page. Create different variations of this page in WordPress and make sure all of them are live and publicly accessible. You can add multiple variations of the same page with different design, call to action, layout and copy.<br class="wikidpad" />
+<br class="wikidpad" />
+<b class="wikidpad">Adding page variations in Google Analytics Content Experiments for A/B Testing</b><br class="wikidpad" />
+<br class="wikidpad" />
+On the next screen you will be provided with a code to add to your WordPress website’s header. Click on Manually insert the code button and copy the code.<br class="wikidpad" />
+<br class="wikidpad" />
+Copy the code for A/B Testing content experiment code from Google Analytics<br class="wikidpad" />
+<br class="wikidpad" />
+Now all you need to do is add this code to your WordPress theme’s header.php file. Once added, this code will start redirecting all visitors to a variation of your testing page. To add the split test code, you need to paste this code in your theme’s header.php file:<br class="wikidpad" />
+<br class="wikidpad" />
+&lt;?php if (is_page($page_id)) :<br class="wikidpad" />
+//Add Google Analytics Content Experiment<ul class="wikidpad normalindent">?&gt; </ul>
+Paste content experiment code here<br class="wikidpad" />
+&lt;?php endif; ?&gt;<br class="wikidpad" />
+<br class="wikidpad" />
+Replace $page_id with the id of your original page. (Look at page in wp-admin editor and check the URL to get the ID)<br class="wikidpad" />
+<br class="wikidpad" />
+If you don’t want to modify the code in your theme, then you can use this plugin called Google Content Experiments.<br class="wikidpad" />
+<br class="wikidpad" />
+Once you have added the code to your original page and published the original and variation pages, go back to Google analytics and click the Next button. Analytics will now verify that you have the content experiment code properly installed on your pages. After that you can click on start experiment button to launch your A/B split testing content experiment.<br class="wikidpad" />
+<br class="wikidpad" />
+<b class="wikidpad">A/B Split Testing Content Experiment Launched in Google Analytics</b><br class="wikidpad" />
+<br class="wikidpad" />
+That’s all you need to get started. You have successfully installed A/B Split Testing on your WordPress site using Google Analytic’s content experiments. It will take some time before Google Analytics will start showing test data. Visitors to your original page will now be randomly redirected to one of the variation pages and some would still see the original page. Users will continue to see the same variation of the page on their next visits during the experimentation. Based on your goal settings, Google Analytics will show you which variation is working best towards achieving your goal and will choose a winner if it feels that one variation is out-performing other variations of the page.    </body>
+</html>

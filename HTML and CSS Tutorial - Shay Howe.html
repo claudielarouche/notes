@@ -1,0 +1,1824 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html>
+    <head>
+        <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+        <title>HTML and CSS Tutorial - Shay Howe</title>
+        <link type="text/css" rel="stylesheet" href="appbase.css">
+    </head>
+    <body class="wikidpad">
+<span class="wikidpad parent-nodes">parent nodes: <span class="wikidpad parent-node"><a href="General.html" class="wikidpad">General</a></span><br class="wikidpad" /><br class="wikidpad" /></span>
+<a name=".h0" class="wikidpad"></a><h2 class="wikidpad heading-level2">HTML and CSS Tutorial - Shay Howe</h2>
+<span class="wikidpad property attribute">[camelCaseWordsEnabled: false]</span><br class="wikidpad" />
+<br class="wikidpad" />
+Tutorial located here: <span class="wikidpad url-link"><a href="http://learn.shayhowe.com" class="wikidpad">http://learn.shayhowe.com</a></span><br class="wikidpad" />
+<br class="wikidpad" />
+Here is your basic HTML page with the strict minimum:<br class="wikidpad" />
+<br class="wikidpad" />
+&lt;!DOCTYPE html&gt;<br class="wikidpad" />
+&lt;html lang="en"&gt;<br class="wikidpad" />
+&lt;head&gt;<ul class="wikidpad normalindent">&lt;meta charset="utf-8"&gt;<br class="wikidpad" />
+&lt;title&gt;Styles Conference&lt;/title&gt;</ul>
+&lt;/head&gt;<br class="wikidpad" />
+&lt;body&gt;<br class="wikidpad" />
+&lt;/body&gt;<br class="wikidpad" />
+&lt;/html&gt;<br class="wikidpad" />
+<br class="wikidpad" />
+Then you should add your CSS link along with CSS resets<br class="wikidpad" />
+<br class="wikidpad" />
+Summary of steps:<br class="wikidpad" />
+<br class="wikidpad" />
+1. Create a folder called assets and inside that "assets" folder, another folder called "stylesheets"<br class="wikidpad" />
+2. Create a file called main.css and place it under stylesheet<br class="wikidpad" />
+3. In main.css, copy Eric Meyer's CSS reset: <span class="wikidpad url-link"><a href="http://meyerweb.com/eric/tools/css/reset/" class="wikidpad">http://meyerweb.com/eric/tools/css/reset/</a></span><br class="wikidpad" />
+4. Add the link from index.html to main.css in the head, just after the title <ul class="wikidpad normalindent">&lt;link rel="stylesheet" href="assets/stylesheets/main.css"&gt; <br class="wikidpad" />
+</ul>
+OR<br class="wikidpad" />
+<br class="wikidpad" />
+1. Download Boilerplate template (<span class="wikidpad url-link"><a href="http://html5boilerplate.com/" class="wikidpad">http://html5boilerplate.com/</a></span>)<br class="wikidpad" />
+<br class="wikidpad" />
+5. Now start outlining the structure of the page (header, footer, aside, nav, etc.) Make sure you create the nav as an unordered list<br class="wikidpad" />
+6. Create files for the other pages of our website<br class="wikidpad" />
+7. Apply some CSS to place elements on the page where they should be<br class="wikidpad" />
+8.Add the clearfix code to fix the floating issues in the page structure<br class="wikidpad" />
+9. Style body (font family) <br class="wikidpad" />
+10. Style h1 to h5, strong, cite, em<br class="wikidpad" />
+11. Style links (a, a:hover)<br class="wikidpad" />
+12. Style the header<br class="wikidpad" />
+13. Style the nav<br class="wikidpad" />
+14. Style the footer<br class="wikidpad" />
+15. Add images and other media (audio, video, iframes...)<br class="wikidpad" />
+<br class="wikidpad" />
+Divisions, or &lt;div&gt;s, and &lt;span&gt;s are HTML elements that act as containers solely for styling purposes<br class="wikidpad" />
+<br class="wikidpad" />
+<b class="wikidpad">Block vs. Inline Elements</b><br class="wikidpad" />
+<br class="wikidpad" />
+Most elements are either block- or inline-level elements. What’s the difference?<br class="wikidpad" />
+<br class="wikidpad" />
+Block-level elements begin on a new line, stacking one on top of the other, and occupy any available width. Block-level elements may be nested inside one another and may wrap inline-level elements. We’ll most commonly see block-level elements used for larger pieces of content, such as paragraphs.<br class="wikidpad" />
+<br class="wikidpad" />
+Inline-level elements do not begin on a new line. They fall into the normal flow of a document, lining up one after the other, and only maintain the width of their content. Inline-level elements may be nested inside one another; however, they cannot wrap block-level elements. We’ll usually see inline-level elements with smaller pieces of content, such as a few words.<br class="wikidpad" />
+<br class="wikidpad" />
+A &lt;div&gt; is a block-level element that is commonly used to identify large groupings of content, and which helps to build a web page’s layout and design. A &lt;span&gt;, on the other hand, is an inline-level element commonly used to identify smaller groupings of text within a block-level element.<br class="wikidpad" />
+<br class="wikidpad" />
+Each heading level (h1 to h6) should be used where it is semantically valued, and should not be used to make text bold or big—there are other, better ways to do that.<br class="wikidpad" />
+<br class="wikidpad" />
+<b class="wikidpad">Bold Text with Strong</b><br class="wikidpad" />
+<br class="wikidpad" />
+To make text bold and place a strong importance on it, we’ll use the &lt;strong&gt; inline-level element. There are two elements that will bold text for us: the &lt;strong&gt; and &lt;b&gt; elements. It is important to understand the semantic difference between the two.<br class="wikidpad" />
+<br class="wikidpad" />
+The &lt;strong&gt; element is semantically used to give strong importance to text, and is thus the most popular option for bolding text. The &lt;b&gt; element, on the other hand, semantically means to stylistically offset text, which isn’t always the best choice for text deserving prominent attention. We have to gauge the significance of the text we wish to set as bold and to choose an element accordingly.<br class="wikidpad" />
+<br class="wikidpad" />
+<b class="wikidpad">Italicize Text with Emphasis</b><br class="wikidpad" />
+<br class="wikidpad" />
+To italicize text, thereby placing emphasis on it, we’ll use the &lt;em&gt; inline-level element. As with the elements for bold text, there are two different elements that will italicize text, each with a slightly different semantic meaning.<br class="wikidpad" />
+<br class="wikidpad" />
+The &lt;em&gt; element is used semantically to place a stressed emphasis on text; it is thus the most popular option for italicizing text. The other option, the &lt;i&gt; element, is used semantically to convey text in an alternative voice or tone, almost as if it were placed in quotation marks. Again, we will need to gauge the significance of the text we want to italicize and choose an element accordingly.<br class="wikidpad" />
+<br class="wikidpad" />
+<b class="wikidpad">Building Structure</b><br class="wikidpad" />
+<br class="wikidpad" />
+For the longest time the structure of a web page was built using divisions. The problem was that divisions provide no semantic value, and it was fairly difficult to determine the intention of these divisions. Fortunately HTML5 introduced new structurally based elements, including the &lt;header&gt;, &lt;nav&gt;, &lt;article&gt;, &lt;section&gt;, &lt;aside&gt;, and &lt;footer&gt; elements.<br class="wikidpad" />
+<br class="wikidpad" />
+All of these new elements are intended to give meaning to the organization of our pages and improve our structural semantics. They are all block-level elements and do not have any implied position or style. Additionally, all of these elements may be used multiple times per page, so long as each use reflects the proper semantic meaning.<br class="wikidpad" />
+<br class="wikidpad" />
+<code><br class="wikidpad" />
+|---------------------------------------|<br class="wikidpad" />
+|..................Header...............|<br class="wikidpad" />
+|.......................................|<br class="wikidpad" />
+|---------------------------------------|<br class="wikidpad" />
+|...........................|...........|<br class="wikidpad" />
+|..........Section..........|...........|<br class="wikidpad" />
+|...|-------------------|...|...Aside...|<br class="wikidpad" />
+|...|....Article........|...|...........|<br class="wikidpad" />
+|...|...................|...|...........|<br class="wikidpad" />
+|...|-------------------|...|...........|<br class="wikidpad" />
+|...........................|...........|<br class="wikidpad" />
+|...........................|...........|<br class="wikidpad" />
+|---------------------------------------|<br class="wikidpad" />
+|..................Footer...............|<br class="wikidpad" />
+|.......................................|<br class="wikidpad" />
+|---------------------------------------|<br class="wikidpad" />
+</code><br class="wikidpad" />
+<br class="wikidpad" />
+<b class="wikidpad">Navigation</b><br class="wikidpad" />
+<br class="wikidpad" />
+The &lt;nav&gt; element identifies a section of major navigational links on a page. The &lt;nav&gt; element should be reserved for primary navigation sections only, such as global navigation, a table of contents, previous/next links, or other noteworthy groups of navigational links.<br class="wikidpad" />
+<br class="wikidpad" />
+Most commonly, links included within the &lt;nav&gt; element will link to other pages within the same website or to parts of the same web page. Miscellaneous one-off links should not be wrapped within the &lt;nav&gt; element; they should use the anchor element, &lt;a&gt;, and the anchor element alone.<br class="wikidpad" />
+<br class="wikidpad" />
+<b class="wikidpad">Article</b><br class="wikidpad" />
+<br class="wikidpad" />
+The &lt;article&gt; element is used to identify a section of independent, self-contained content that may be independently distributed or reused. We’ll often use the &lt;article&gt; element to mark up blog posts, newspaper articles, user-submitted content, and the like.<br class="wikidpad" />
+<br class="wikidpad" />
+When deciding whether to use the &lt;article&gt; element, we must determine if the content within the element could be replicated elsewhere without any confusion. If the content within the &lt;article&gt; element were removed from the context of the page and placed, for example, within an email or printed work, that content should still make sense.<br class="wikidpad" />
+<br class="wikidpad" />
+<b class="wikidpad">Section</b><br class="wikidpad" />
+<br class="wikidpad" />
+The &lt;section&gt; element is used to identify a thematic grouping of content, which generally, but not always, includes a heading. The grouping of content within the &lt;section&gt; element may be generic in nature, but it’s useful to identify all of the content as related.<br class="wikidpad" />
+<br class="wikidpad" />
+The &lt;section&gt; element is commonly used to break up and provide hierarchy to a page.<br class="wikidpad" />
+<br class="wikidpad" />
+<b class="wikidpad">Deciding Between &lt;article&gt;, &lt;section&gt;, or &lt;div&gt; Elements</b><br class="wikidpad" />
+<br class="wikidpad" />
+At times it becomes fairly difficult to decide which element—&lt;article&gt;, &lt;section&gt;, or &lt;div&gt;—is the best element for the job based on its semantic meaning. The trick here, as with every semantic decision, is to look at the content.<br class="wikidpad" />
+<br class="wikidpad" />
+Both the &lt;article&gt; and &lt;section&gt; elements contribute to a document’s structure and help to outline a document. If the content is being grouped solely for styling purposes and doesn’t provide value to the outline of a document, use the &lt;div&gt; element.<br class="wikidpad" />
+<br class="wikidpad" />
+If the content adds to the document outline and it can be independently redistributed or syndicated, use the &lt;article&gt; element.<br class="wikidpad" />
+<br class="wikidpad" />
+If the content adds to the document outline and represents a thematic group of content, use the &lt;section&gt; element.<br class="wikidpad" />
+<br class="wikidpad" />
+<b class="wikidpad">Aside</b><br class="wikidpad" />
+<br class="wikidpad" />
+The &lt;aside&gt; element holds content, such as sidebars, inserts, or brief explanations, that is tangentially related to the content surrounding it. When used within an &lt;article&gt; element, for example, the &lt;aside&gt; element may identify content related to the author of the article.<br class="wikidpad" />
+<br class="wikidpad" />
+We may instinctively think of an &lt;aside&gt; element as an element that appears off to the left or right side of a page. We have to remember, though, that all of the structural elements, including the &lt;aside&gt; element, are block-level elements and as such will appear on a new line, occupying the full available width of the page or of the element they are nested within, also known as their parent element.<br class="wikidpad" />
+<br class="wikidpad" />
+<b class="wikidpad">Footer</b><br class="wikidpad" />
+<br class="wikidpad" />
+The &lt;footer&gt; element identifies the closing or end of a page, article, section, or other segment of a page. Generally the &lt;footer&gt; element is found at the bottom of its parent. Content within the &lt;footer&gt; element should be relative information and should not diverge from the document or section it is included within.<br class="wikidpad" />
+<br class="wikidpad" />
+<b class="wikidpad">Anchors</b><br class="wikidpad" />
+<br class="wikidpad" />
+By nature the anchor element, &lt;a&gt;, is an inline element, and, according to web standards, inline-level elements may not wrap block-level elements. With the introduction of HTML5, however, anchor elements specifically have permission to wrap either block-, inline-, or any other level elements. This is a break from the standard convention, but it’s permissible in order to enable entire blocks of content on a page to become links.<br class="wikidpad" />
+<br class="wikidpad" />
+<b class="wikidpad">E-mail</b><br class="wikidpad" />
+<br class="wikidpad" />
+To create an email link, the href attribute value needs to start with <span class="wikidpad url-link"><a href="mailto:" class="wikidpad">mailto:</a></span> followed by the email address to which the email should be sent. To create an email link to shay@awesome.com, for example, the href attribute value would be <span class="wikidpad url-link"><a href="mailto:shay@awesome.com" class="wikidpad">mailto:shay@awesome.com</a></span>.<br class="wikidpad" />
+<br class="wikidpad" />
+Additionally, subject, body text, and other information for the email may be populated. To add a subject line, we’ll include the subject= parameter after the email address. The first parameter following the email address must begin with a question mark, ?, to bind it to the hyperlink path. Multiple words within a subject line require that spaces be encoded using %20.<br class="wikidpad" />
+<br class="wikidpad" />
+Adding body text works in the same way as adding the subject, this time using the body= parameter in the href attribute value. Because we are binding one parameter to another we need to use the ampersand, &amp;, to separate the two. As with the subject, spaces must be encoded using %20, and line breaks must be encoded using %0A.<br class="wikidpad" />
+<br class="wikidpad" />
+Altogether, a link to shay@awesome.com with the subject of “Reaching Out” and body text of “How are you” would require an href attribute value of <span class="wikidpad url-link"><a href="mailto:shay@awesome.com?subject=Reaching%20Out&body=How%20are%20you" class="wikidpad">mailto:shay@awesome.com?subject=Reaching%20Out&amp;body=How%20are%20you</a></span>.<br class="wikidpad" />
+<br class="wikidpad" />
+Here’s the full breakdown:<br class="wikidpad" />
+<br class="wikidpad" />
+&lt;a href="<span class="wikidpad url-link"><a href="mailto:shay@awesome.com?subject=Reaching%20Out&body=How%20are%20you" class="wikidpad">mailto:shay@awesome.com?subject=Reaching%20Out&amp;body=How%20are%20you</a></span>"&gt;Email Me&lt;/a&gt;<br class="wikidpad" />
+<br class="wikidpad" />
+Opening links in new window: &lt;a href="<span class="wikidpad url-link"><a href="http://shayhowe.com/" class="wikidpad">http://shayhowe.com/</a></span>" target="_blank"&gt;Shay Howe&lt;/a&gt;<br class="wikidpad" />
+<br class="wikidpad" />
+<b class="wikidpad">Back to top link</b><br class="wikidpad" />
+<br class="wikidpad" />
+&lt;body id="top"&gt;<ul class="wikidpad normalindent">...<br class="wikidpad" />
+&lt;a href="#top"&gt;Back to top&lt;/a&gt;<br class="wikidpad" />
+...</ul>
+&lt;/body&gt;<br class="wikidpad" />
+<br class="wikidpad" />
+<b class="wikidpad">Calculating CSS Specificity</b><br class="wikidpad" />
+<br class="wikidpad" />
+Every selector in CSS has a specificity weight. A selector’s specificity weight, along with its placement in the cascade, identifies how its styles will be rendered.<br class="wikidpad" />
+<br class="wikidpad" />
+The type selector has the lowest specificity weight and holds a point value of 0-0-1. <br class="wikidpad" />
+The class selector has a medium specificity weight and holds a point value of 0-1-0. <br class="wikidpad" />
+Lastly, the ID selector has a high specificity weight and holds a point value of 1-0-0. <br class="wikidpad" />
+<br class="wikidpad" />
+<b class="wikidpad">Combining Selectors</b><br class="wikidpad" />
+<br class="wikidpad" />
+When selectors are combined they should be read from right to left. The selector farthest to the right, directly before the opening curly bracket, is known as the key selector. The key selector identifies exactly which element the styles will be applied to. Any selector to the left of the key selector will serve as a prequalifier.<br class="wikidpad" />
+<br class="wikidpad" />
+The first combined selector above, .hotdog p, includes two selectors: a class and a type selector. These two selectors are separated by a single space. The key selector is a type selector targeting paragraph elements. And because this type selector is prequalified with a class selector of hotdog, the full combined selector will only select paragraph elements that reside within an element with a class attribute value of hotdog.<br class="wikidpad" />
+<br class="wikidpad" />
+One way to keep the specificity weights of our selectors low is to be as modular as possible, sharing similar styles from element to element. And one way to be as modular as possible is to layer on different styles by using multiple classes.<br class="wikidpad" />
+<br class="wikidpad" />
+Let’s take a look at buttons, for example. Say we want all of our buttons to have a font size of 16 pixels, but we want the background color of our buttons to vary depending on where the buttons are used. We can create a few classes and layer them on an element as necessary to apply the desired styles.<br class="wikidpad" />
+<br class="wikidpad" />
+HTML<br class="wikidpad" />
+<br class="wikidpad" />
+&lt;a class="btn btn-danger"&gt;...&lt;/a&gt;<br class="wikidpad" />
+&lt;a class="btn btn-success"&gt;...&lt;/a&gt;<br class="wikidpad" />
+<br class="wikidpad" />
+CSS<br class="wikidpad" />
+<br class="wikidpad" />
+.btn {<ul class="wikidpad normalindent">font-size: 16px;</ul>
+}<br class="wikidpad" />
+.btn-danger {<ul class="wikidpad normalindent">background: red;</ul>
+}<br class="wikidpad" />
+.btn-success {<ul class="wikidpad normalindent">background: green;</ul>
+}<br class="wikidpad" />
+<br class="wikidpad" />
+Here you can see two anchor elements, both with multiple class attribute values. The first class, btn, is used to apply a font size of 16 pixels to each of the elements. Then, the first anchor element uses an additional class of btn-danger to apply a red background color while the second anchor element uses an additional class of btn-success to apply a green background color. Our styles here are clean and modular.<br class="wikidpad" />
+<br class="wikidpad" />
+<b class="wikidpad">Colors</b><br class="wikidpad" />
+<br class="wikidpad" />
+All color values within CSS are defined on an sRGB (or standard red, green, and blue) color space. Colors within this space are formed by mixing red, green, and blue color channels together, mirroring the way that televisions and monitors generate all the different colors they display. By mixing different levels of red, green, and blue, we can create millions of colors—and find nearly any color we’d like.<br class="wikidpad" />
+<br class="wikidpad" />
+Currently there are four primary ways to represent sRGB colors within CSS: keywords, hexadecimal notation, and RGB and HSL values.<br class="wikidpad" />
+<br class="wikidpad" />
+<b class="wikidpad">RGB &amp; RGBa Colors</b><br class="wikidpad" />
+<br class="wikidpad" />
+RGB color values are stated using the rgb() function, which stands for red, green, and blue. The function accepts three comma-separated values, each of which is an integer from 0 to 255. A value of 0 would be pure black; a value of 255 would be pure white.<br class="wikidpad" />
+<br class="wikidpad" />
+As we might expect, the first value within the rgb() function represents the red channel, the second value represents the green channel, and the third value represents the blue channel.<br class="wikidpad" />
+<br class="wikidpad" />
+If we were to recreate the shade of orange from before as an RGB color value, it would be represented as rgb(255, 102, 0).<br class="wikidpad" />
+<br class="wikidpad" />
+RGB color values may also include an alpha, or transparency, channel by using the rgba() function. The rgba() function requires a fourth value, which must be a number between 0 and 1, including decimals. A value of 0 creates a fully transparent color, meaning it would be invisible, and a value of 1 creates a fully opaque color. Any decimal value in between 0 and 1 would create a semi-transparent color.<br class="wikidpad" />
+<br class="wikidpad" />
+If we wanted our shade of orange to appear 50% opaque, we would use an RGBa color value of rgba(255, 102, 0, .5).<br class="wikidpad" />
+<br class="wikidpad" />
+<b class="wikidpad">HSL &amp; HSLa Colors</b><br class="wikidpad" />
+<br class="wikidpad" />
+HSL color values are stated using the hsl() function, which stands for hue, saturation, and lightness. Within the parentheses, the function accepts three comma-separated values, much like rgb().<br class="wikidpad" />
+<br class="wikidpad" />
+The first value, the hue, is a unitless number from 0 to 360. The numbers 0 through 360 represent the color wheel, and the value identifies the degree of a color on the color wheel.<br class="wikidpad" />
+<br class="wikidpad" />
+The second and third values, the saturation and lightness, are percentage values from 0 to 100%. The saturation value identifies how saturated with color the hue is, with 0 being grayscale and 100% being fully saturated. The lightness identifies how dark or light the hue value is, with 0 being completely black and 100% being completely white.<br class="wikidpad" />
+<br class="wikidpad" />
+Returning to our shade of orange, as an HSL color value it would be written as hsl(24, 100%, 100%).<br class="wikidpad" />
+<br class="wikidpad" />
+HSL color values, like RGBa, may also include an alpha, or transparency, channel with the use of the hsla() function. The behavior of the alpha channel is just like that of the rgba() function. A fourth value between 0 and 1, including decimals, must be added to the function to identify the degree of opacity.<br class="wikidpad" />
+<br class="wikidpad" />
+Our shade of orange as an HSLa color set to 50% opaque would be represented as hsla(24, 100%, 100%, .5).<br class="wikidpad" />
+<br class="wikidpad" />
+The HSL color value is the newest color value available within CSS. Due to its age and support within browsers, though, it isn’t as widely used as the other values.<br class="wikidpad" />
+<br class="wikidpad" />
+For the time being, hexadecimal color values remain the most popular as they are widely supported; though when an alpha channel for transparency is needed, RGBa color values are preferred.<br class="wikidpad" />
+<br class="wikidpad" />
+<b class="wikidpad">Lengths</b><br class="wikidpad" />
+<br class="wikidpad" />
+Length values within CSS are similar to colors in that there are a handful of different types of values for length, all of which serve distinct purposes. Length values come in two different forms, absolute and relative, each of which uses different units of measurement.<br class="wikidpad" />
+<br class="wikidpad" />
+We’re going to stick to the more common—and more straightforward—values at the moment, as more complex values will provide much more power than we need for now.<br class="wikidpad" />
+<br class="wikidpad" />
+<b class="wikidpad">Absolute Lengths</b><br class="wikidpad" />
+<br class="wikidpad" />
+Absolute length values are the simplest length values, as they are fixed to a physical measurement, such as inches, centimeters, or millimeters. The most popular absolute unit of measurement is known as the pixel and is represented by the px unit notation.<br class="wikidpad" />
+<br class="wikidpad" />
+<b class="wikidpad">Pixels</b><br class="wikidpad" />
+<br class="wikidpad" />
+The pixel is equal to 1/96th of an inch; thus there are 96 pixels in an inch. The exact measurement of a pixel, however, may vary slightly between high-density and low-density viewing devices.<br class="wikidpad" />
+<br class="wikidpad" />
+Pixels have been around for quite some time and are commonly used with a handful of different properties. The code here is using pixels to set the font size of all paragraphs to 14 pixels.<br class="wikidpad" />
+<br class="wikidpad" />
+p {<ul class="wikidpad normalindent">font-size: 14px;</ul>
+}<br class="wikidpad" />
+With the changing landscape of viewing devices and their varying screen sizes, pixels have lost some of their popularity. As an absolute unit of measurement, they don’t provide too much flexibility. Pixels are, however, trustworthy and great for getting started. We’re going to lean on them quite a bit as we’re learning the ropes of HTML and CSS.<br class="wikidpad" />
+<br class="wikidpad" />
+<b class="wikidpad">Relative Lengths</b><br class="wikidpad" />
+<br class="wikidpad" />
+In addition to absolute length values, there are also relative length values. Relative length values are a little more complicated, as they are not fixed units of measurement; they rely on the length of another measurement.<br class="wikidpad" />
+<br class="wikidpad" />
+<b class="wikidpad">Percentages</b><br class="wikidpad" />
+<br class="wikidpad" />
+Percentages, represented by the % unit notation, are one of the most popular relative values. Percentage lengths are defined in relation to the length of another object. For example, to set the width of an element to 50%, we have to know the width of its parent element, the element it is nested within, and then identify 50% of the parent element’s width.<br class="wikidpad" />
+<br class="wikidpad" />
+.col {<ul class="wikidpad normalindent">width: 50%;</ul>
+}<br class="wikidpad" />
+Here we’ve set the width of the element with the class attribute value of col to 50%. That 50% will be calculated relative to the width of the element’s parent.<br class="wikidpad" />
+<br class="wikidpad" />
+Percentages are extremely helpful for setting the height and width of elements and building out a web page’s layout. We’re going to rely on them often to help us out in these areas.<br class="wikidpad" />
+<br class="wikidpad" />
+<b class="wikidpad">Em</b><br class="wikidpad" />
+<br class="wikidpad" />
+The em unit is also a very popular relative value. The em unit is represented by the em unit notation, and its length is calculated based on an element’s font size.<br class="wikidpad" />
+<br class="wikidpad" />
+A single em unit is equivalent to an element’s font size. So, for example, if an element has a font size of 14 pixels and a width set to 5em, the width would equal 70 pixels (14 pixels multiplied by 5).<br class="wikidpad" />
+<br class="wikidpad" />
+.banner {<ul class="wikidpad normalindent">font-size: 14px;<br class="wikidpad" />
+width: 5em;</ul>
+}<br class="wikidpad" />
+When a font size is not explicitly stated for an element, the em unit will be relative to the font size of the closest parent element with a stated font size.<br class="wikidpad" />
+<br class="wikidpad" />
+The em unit is often used for styling text, including font sizes, as well as spacing around text, including margins and paddings.<br class="wikidpad" />
+<br class="wikidpad" />
+There are a lot more absolute and relative units of measurement than those mentioned here. However, these three—pixels, percentages, and em units—are the most popular and the ones we’re going to primarily use.<br class="wikidpad" />
+<br class="wikidpad" />
+<b class="wikidpad">How are elements displayed</b><br class="wikidpad" />
+<br class="wikidpad" />
+To quickly recap, block-level elements occupy any available width, regardless of their content, and begin on a new line. Inline-level elements occupy only the width their content requires and line up on the same line, one after the other. Block-level elements are generally used for larger pieces of content, such as headings and structural elements. Inline-level elements are generally used for smaller pieces of content, such as a few words selected to be bold or italicized.<br class="wikidpad" />
+<br class="wikidpad" />
+Exactly how elements are displayed—as block-level elements, inline elements, or something else—is determined by the display property. Every element has a default display property value; however, as with all other property values, that value may be overwritten. There are quite a few values for the display property, but the most common are block, inline, inline-block, and none.<br class="wikidpad" />
+<br class="wikidpad" />
+Things get interesting with the inline-block value. Using this value will allow an element to behave as a block-level element, accepting all box model properties. However, the element will be displayed in line with other elements, and it will not begin on a new line by default.<br class="wikidpad" />
+<br class="wikidpad" />
+Using a value of none will completely hide an element and render the page as if that element doesn’t exist. Any elements nested within this element will also be hidden.<br class="wikidpad" />
+<br class="wikidpad" />
+<b class="wikidpad">The Space Between Inline-Block Elements</b><br class="wikidpad" />
+<br class="wikidpad" />
+One important distinction with inline-block elements is that they are not always touching, or displayed directly against one another. Usually a small space will exist between two inline-block elements. This space, though perhaps annoying, is normal. <br class="wikidpad" />
+<br class="wikidpad" />
+<b class="wikidpad">What Is the Box Model?</b><br class="wikidpad" />
+<br class="wikidpad" />
+According to the box model concept, every element on a page is a rectangular box and may have width, height, padding, borders, and margins.<br class="wikidpad" />
+<br class="wikidpad" />
+That’s worth repeating: Every element on a page is a rectangular box.<br class="wikidpad" />
+<br class="wikidpad" />
+<b class="wikidpad">Working with the Box Model</b><br class="wikidpad" />
+<br class="wikidpad" />
+Every element is a rectangular box, and there are several properties that determine the size of that box. The core of the box is defined by the width and height of an element, which may be determined by the display property, by the contents of the element, or by specified width and height properties. padding and then border expand the dimensions of the box outward from the element’s width and height. Lastly, any margin we have specified will follow the border.<br class="wikidpad" />
+<br class="wikidpad" />
+Each part of the box model corresponds to a CSS property: width, height, padding, border, and margin.<br class="wikidpad" />
+<br class="wikidpad" />
+Let’s look these properties inside some code:<br class="wikidpad" />
+<br class="wikidpad" />
+div {<ul class="wikidpad normalindent">border: 6px solid #949599;<br class="wikidpad" />
+height: 100px;<br class="wikidpad" />
+margin: 20px;<br class="wikidpad" />
+padding: 20px;<br class="wikidpad" />
+width: 400px;</ul>
+}<br class="wikidpad" />
+<br class="wikidpad" />
+According to the box model, the total width of an element can be calculated using the following formula:<br class="wikidpad" />
+margin-right + border-right + padding-right + width + padding-left + border-left + margin-left<br class="wikidpad" />
+<br class="wikidpad" />
+In comparison, according to the box model, the total height of an element can be calculated using the following formula:<br class="wikidpad" />
+margin-top + border-top + padding-top + height + padding-bottom + border-bottom + margin-bottom<br class="wikidpad" />
+<br class="wikidpad" />
+Image: <img src="http://learn.shayhowe.com/assets/images/courses/html-css/opening-the-box-model/box-model.png" alt="" border="0" class="wikidpad" /><br class="wikidpad" />
+<br class="wikidpad" />
+<b class="wikidpad">Width</b><br class="wikidpad" />
+<br class="wikidpad" />
+The default width of an element depends on its display value. Block-level elements have a default width of 100%, consuming the entire horizontal space available. Inline and inline-block elements expand and contract horizontally to accommodate their content. Inline-level elements cannot have a fixed size, thus the width and height properties are only relevant to non-inline elements.<br class="wikidpad" />
+<br class="wikidpad" />
+<b class="wikidpad">Height</b><br class="wikidpad" />
+<br class="wikidpad" />
+The default height of an element is determined by its content. An element will expand and contract vertically as necessary to accommodate its content. <br class="wikidpad" />
+<br class="wikidpad" />
+<b class="wikidpad">Sizing Inline-Level Elements</b><br class="wikidpad" />
+<br class="wikidpad" />
+Please keep in mind that inline-level elements will not accept the width and height properties or any values tied to them. Block and inline-block elements will, however, accept the width and height properties and their corresponding values.<br class="wikidpad" />
+<br class="wikidpad" />
+<b class="wikidpad">Margin</b><br class="wikidpad" />
+<br class="wikidpad" />
+The margin property allows us to set the amount of space that surrounds an element. Margins for an element fall outside of any border and are completely transparent in color. Margins can be used to help position elements in a particular place on a page or to provide breathing room, keeping all other elements a safe distance away<br class="wikidpad" />
+<br class="wikidpad" />
+One oddity with the margin property is that vertical margins, top and bottom, are not accepted by inline-level elements. These vertical margins are, however, accepted by block-level and inline-block elements.<br class="wikidpad" />
+<br class="wikidpad" />
+<b class="wikidpad">Padding</b><br class="wikidpad" />
+<br class="wikidpad" />
+The padding property is very similar to the margin property; however, it falls inside of an element’s border, should an element have a border. The padding property is used to provide spacing directly within an element. <br class="wikidpad" />
+<br class="wikidpad" />
+The padding property, unlike the margin property, works vertically on inline-level elements. This vertical padding may blend into the line above or below the given element, but it will be displayed.<br class="wikidpad" />
+<br class="wikidpad" />
+<b class="wikidpad">Margin &amp; Padding on Inline-Level Elements</b><br class="wikidpad" />
+<br class="wikidpad" />
+Inline-level elements are affected a bit differently than block and inline-block elements when it comes to margins and padding. Margins only work horizontally—left and right—on inline-level elements. Padding works on all four sides of inline-level elements; however, the vertical padding—the top and bottom—may bleed into the lines above and below an element.<br class="wikidpad" />
+<br class="wikidpad" />
+Margins and padding work like normal for block and inline-block elements.<br class="wikidpad" />
+<br class="wikidpad" />
+<b class="wikidpad">Margin &amp; Padding Colors</b><br class="wikidpad" />
+<br class="wikidpad" />
+The margin and padding properties are completely transparent and do not accept any color values. Being transparent, though, they show the background colors of relative elements. For margins, we see the background color of the parent element, and for padding, we see the background color of the element the padding is applied to.<br class="wikidpad" />
+<br class="wikidpad" />
+<b class="wikidpad">Borders</b><br class="wikidpad" />
+<br class="wikidpad" />
+Borders fall between the padding and margin, providing an outline around an element. The border property requires three values: width, style, and color. Shorthand values for the border property are stated in that order—width, style, color. In longhand, these three values can be broken up into the border-width, border-style, and border-color properties. These longhand properties are useful for changing, or overwriting, a single border value.<br class="wikidpad" />
+<br class="wikidpad" />
+The width and color of borders can be defined using common CSS units of length and color.<br class="wikidpad" />
+<br class="wikidpad" />
+Borders can have different appearances. The most common style values are solid, double, dashed, dotted, and none, but there are several others to choose from.<br class="wikidpad" />
+<br class="wikidpad" />
+Here is the code for a 6-pixel-wide, solid, gray border that wraps around all four sides of a &lt;div&gt;:<br class="wikidpad" />
+<br class="wikidpad" />
+div {<ul class="wikidpad normalindent">border: 6px solid #949599;</ul>
+}<br class="wikidpad" />
+<br class="wikidpad" />
+Styles for individual border sides may be controlled at an even finer level. For example, if we wish to change only the width of the bottom border we can use the following code:<br class="wikidpad" />
+<br class="wikidpad" />
+div {<ul class="wikidpad normalindent">border-bottom-width: 12px;</ul>
+}<br class="wikidpad" />
+<br class="wikidpad" />
+These highly specific longhand border properties include a series of hyphen-separated words starting with the border base, followed by the selected side—top, right, bottom, or left—and then width, style, or color, depending on the desired property.<br class="wikidpad" />
+<br class="wikidpad" />
+<b class="wikidpad">Border Radius</b><br class="wikidpad" />
+<br class="wikidpad" />
+While we’re looking at borders and their different properties, we need to examine the border-radius property, which enables us to round the corners of an element.<br class="wikidpad" />
+<br class="wikidpad" />
+The border-radius property accepts length units, including percentages and pixels, that identify the radius by which the corners of an element are to be rounded. A single value will round all four corners of an element equally; two values will round the top-left/bottom-right and top-right/bottom-left corners in that order; four values will round the top-left, top-right, bottom-right, and bottom-left corners in that order.<br class="wikidpad" />
+<br class="wikidpad" />
+When considering the order in which multiple values are applied to the border-radius property (as well as the margin and padding properties), remember that they move in a clockwise fashion starting at the top left of an element.<br class="wikidpad" />
+<br class="wikidpad" />
+￼The border-radius property may also be broken out into longhand properties that allow us to change the radii of individual corners of an element. These longhand properties begin with border, continue with the corner’s vertical location (top or bottom) and the corner’s horizontal location (left or right), and then end with radius. For example, to change the top-right corner radius of a &lt;div&gt;, the border-top-right-radius property can be used.<br class="wikidpad" />
+<br class="wikidpad" />
+div {<ul class="wikidpad normalindent">border-top-right-radius: 5px;</ul>
+}<br class="wikidpad" />
+<br class="wikidpad" />
+<b class="wikidpad">Box Sizing</b><br class="wikidpad" />
+<br class="wikidpad" />
+Until now the box model has been an additive design. If you set the width of an element to 400 pixels and then add 20 pixels of padding and a border of 10 pixels on every side, the actual full width of the element becomes 460 pixels. Remember, we need to add the width, padding, and border property values together to get the actual, full width of an element.<br class="wikidpad" />
+<br class="wikidpad" />
+The box model may, however, be changed to support different calculations. CSS3 introduced the box-sizing property, which allows us to change exactly how the box model works and how an element’s size is calculated. The property accepts three primary values—content-box, padding-box, and border-box—each of which has a slightly different impact on how the box size is calculated.<br class="wikidpad" />
+<br class="wikidpad" />
+<b class="wikidpad">Content Box</b><br class="wikidpad" />
+<br class="wikidpad" />
+The content-box value is the default value, leaving the box model as an additive design. If we don’t use the box-sizing property, this will be the default value for all elements. The size of an element begins with the width and height properties, and then any padding, border, or margin property values are added on from there.<br class="wikidpad" />
+<br class="wikidpad" />
+div {<ul class="wikidpad normalindent">-webkit-box-sizing: content-box;<ul class="wikidpad normalindent">-moz-box-sizing: content-box;<ul class="wikidpad normalindent">box-sizing: content-box;</ul>
+</ul>
+</ul>
+}<br class="wikidpad" />
+<br class="wikidpad" />
+<b class="wikidpad">Browser-Specific Properties &amp; Values</b><br class="wikidpad" />
+<br class="wikidpad" />
+What are all those hyphens and letters on the box-sizing property?<br class="wikidpad" />
+<br class="wikidpad" />
+As CSS3 was introduced, browsers gradually began to support different properties and values, including the box-sizing property, by way of vendor prefixes. As parts of the CSS3 specification are finalized and new browser versions are released, these vendor prefixes become less and less relevant. As time goes on, vendor prefixes are unlikely to be a problem; however, they still provide support for some of the older browsers that leveraged them. We may run across them from time to time, and we may even want to use them should we wish to support older browsers.<br class="wikidpad" />
+<br class="wikidpad" />
+Vendor prefixes may be seen on both properties and values, all depending on the CSS specification. Here they are shown on the box-sizing property. Browser vendors were free to chose when to use a prefix and when not to. Thus, some properties and values require vendor prefixes for certain browser vendors but not for others.<br class="wikidpad" />
+<br class="wikidpad" />
+For reference, the most common vendor prefixes are outlined here:<br class="wikidpad" />
+<br class="wikidpad" />
+Mozilla Firefox: -moz-<br class="wikidpad" />
+Microsoft Internet Explorer: -ms-<br class="wikidpad" />
+Webkit (Google Chrome and Apple Safari): -webkit-<br class="wikidpad" />
+<br class="wikidpad" />
+<b class="wikidpad">Padding Box</b><br class="wikidpad" />
+<br class="wikidpad" />
+The padding-box value alters the box model by including any padding property values within the width and height of an element. When using the padding-box value, if an element has a width of 400 pixels and a padding of 20 pixels around every side, the actual width will remain 400 pixels. As any padding values increase, the content size within an element shrinks proportionately.<br class="wikidpad" />
+<br class="wikidpad" />
+If we add a border or margin, those values will be added to the width or height properties to calculate the full box size. For example, if we add a border of 10 pixels and a padding of 20 pixels around every side of the element with a width of 400 pixels, the actual full width will become 420 pixels.<br class="wikidpad" />
+<br class="wikidpad" />
+div {<ul class="wikidpad normalindent">box-sizing: padding-box;</ul>
+}<br class="wikidpad" />
+<br class="wikidpad" />
+<b class="wikidpad">Border Box</b><br class="wikidpad" />
+<br class="wikidpad" />
+Lastly, the border-box value alters the box model so that any border or padding property values are included within the width and height of an element. When using the border-box value, if an element has a width of 400 pixels, a padding of 20 pixels around every side, and a border of 10 pixels around every side, the actual width will remain 400 pixels.<br class="wikidpad" />
+<br class="wikidpad" />
+If we add a margin, those values will need to be added to calculate the full box size. No matter which box-sizing property value is used, any margin values will need to be added to calculate the full size of the element.<br class="wikidpad" />
+<br class="wikidpad" />
+div {<ul class="wikidpad normalindent">box-sizing: border-box;</ul>
+}<br class="wikidpad" />
+<br class="wikidpad" />
+<b class="wikidpad">Picking a Box Size</b><br class="wikidpad" />
+<br class="wikidpad" />
+Generally speaking, the best box-sizing value to use is border-box. The border-box value makes our math much, much easier. If we want an element to be 400 pixels wide, it is, and it will remain 400 pixels wide no matter what padding or border values we add to it.<br class="wikidpad" />
+<br class="wikidpad" />
+Additionally, we can easily mix length values. Say we want our box to be 40% wide. Adding a padding of 20 pixels and a border of 10 pixels around every side of an element isn’t difficult, and we can still guarantee that the actual width of our box will remain 40% despite using pixel values elsewhere.<br class="wikidpad" />
+<br class="wikidpad" />
+The only drawback to using the box-sizing property is that as part of the CSS3 specification, it isn’t supported in every browser; it especially lacks support in older browsers. Fortunately this is becoming less and less relevant as new browsers are released. Chances are we’re safe to use the box-sizing property, but should we notice any issues, it’s worth looking into which browser those issues are occurring with.<br class="wikidpad" />
+<br class="wikidpad" />
+We can use the universal selector, *, along with universal pseudo-elements, *:before and *:after, to select every imaginable element and change the box-sizing to border-box.<br class="wikidpad" />
+<br class="wikidpad" />
+*,<br class="wikidpad" />
+*:before,<br class="wikidpad" />
+*:after {<ul class="wikidpad normalindent">-webkit-box-sizing: border-box;<ul class="wikidpad normalindent">-moz-box-sizing: border-box;<ul class="wikidpad normalindent">box-sizing: border-box;</ul>
+</ul>
+</ul>
+}<br class="wikidpad" />
+<br class="wikidpad" />
+<b class="wikidpad">The Universal Selector</b><br class="wikidpad" />
+<br class="wikidpad" />
+In the first step of this exercise we were introduced to the universal selector. In CSS the asterisk, *, is the universal selector, which selects every element. Rather than listing every single element imaginable, we can use the asterisk as a catch-all to select all elements for us.<br class="wikidpad" />
+<br class="wikidpad" />
+The :before and :after pseudo-elements also mentioned in this step are elements that can be dynamically generated with CSS. We’re not going to be using these elements within our project; however, when using the universal selector it’s a good practice to also include these pseudo-elements in case they should ever appear.<br class="wikidpad" />
+<br class="wikidpad" />
+<b class="wikidpad">Setting various stuff :)</b><br class="wikidpad" />
+<br class="wikidpad" />
+Setting a width tells the browser definitively how wide any element with the class of container should be. Using a left and right margin of auto in conjunction with this width lets the browser automatically figure out equal left and right margins for the element, thus centering it on the page. Lastly, the left and right padding ensures that our content isn’t sitting directly on the edge of the element and provides a little breathing room for the content.<br class="wikidpad" />
+<br class="wikidpad" />
+.container {<ul class="wikidpad normalindent">margin: 0 auto;<br class="wikidpad" />
+padding-left: 30px;<br class="wikidpad" />
+padding-right: 30px;<br class="wikidpad" />
+width: 960px;</ul>
+}<br class="wikidpad" />
+<br class="wikidpad" />
+<b class="wikidpad">Positioning with Floats</b><br class="wikidpad" />
+<br class="wikidpad" />
+One way to position elements on a page is with the float property. The float property is pretty versatile and can be used in a number of different ways.<br class="wikidpad" />
+<br class="wikidpad" />
+Essentially, the float property allows us to take an element, remove it from the normal flow of a page, and position it to the left or right of its parent element. All other elements on the page will then flow around the floated element. An &lt;img&gt; element floated to the side of a few paragraphs of text, for example, will allow the paragraphs to wrap around the image as necessary.<br class="wikidpad" />
+<br class="wikidpad" />
+When the float property is used on multiple elements at the same time, it provides the ability to create a layout by floating elements directly next to or opposite each other, as seen in multiple-column layouts.<br class="wikidpad" />
+<br class="wikidpad" />
+The float property accepts a few values; the two most popular values are left and right, which allow elements to be floated to the left or right of their parent element.<br class="wikidpad" />
+<br class="wikidpad" />
+img {<ul class="wikidpad normalindent">float: left;</ul>
+}<br class="wikidpad" />
+<br class="wikidpad" />
+For reference, when an element is floated, it will float all the way to the edge of its parent element. If there isn’t a parent element, the floated element will then float all the way to the edge of the page.<br class="wikidpad" />
+<br class="wikidpad" />
+When we float an element, we take it out of the normal flow of the HTML document. This causes the width of that element to default to the width of the content within it. Sometimes, such as when we’re creating columns for a reusable layout, this behavior is not desired. It can be corrected by adding a fixed width property value to each column. Additionally, to prevent floated elements from touching one another, causing the content of one to sit directly next to the content of the other, we can use the margin property to create space between elements.<br class="wikidpad" />
+<br class="wikidpad" />
+section {<ul class="wikidpad normalindent">float: left;<br class="wikidpad" />
+margin: 0 1.5%;<br class="wikidpad" />
+width: 63%;</ul>
+}<br class="wikidpad" />
+aside {<ul class="wikidpad normalindent">float: right;<br class="wikidpad" />
+margin: 0 1.5%;<br class="wikidpad" />
+width: 30%;</ul>
+}<br class="wikidpad" />
+<br class="wikidpad" />
+<b class="wikidpad">Floats May Change an Element’s Display Value</b><br class="wikidpad" />
+<br class="wikidpad" />
+When floating an element, it is also important to recognize that an element is removed from the normal flow of a page, and that may change an element’s default display value. The float property relies on an element having a display value of block, and may alter an element’s default display value if it is not already displayed as a block-level element.<br class="wikidpad" />
+<br class="wikidpad" />
+For example, an element with a display value of inline, such as the &lt;span&gt; inline-level element, ignores any height or width property values. However, should that inline-level element be floated, its display value will be changed to block, and it may then accept height or width property values.<br class="wikidpad" />
+<br class="wikidpad" />
+As we float elements we must keep an eye on how their display property values are affected.<br class="wikidpad" />
+<br class="wikidpad" />
+<b class="wikidpad">Clearing &amp; Containing Floats</b><br class="wikidpad" />
+<br class="wikidpad" />
+The float property was originally designed to allow content to wrap around images. An image could be floated, and all of the content surrounding that image could then naturally flow around it. Although this works great for images, the float property was never actually intended to be used for layout and positioning purposes, and thus it comes with a few pitfalls.<br class="wikidpad" />
+<br class="wikidpad" />
+One of those pitfalls is that occasionally the proper styles will not render on an element that it is sitting next to or is a parent element of a floated element. When an element is floated, it is taken out of the normal flow of the page, and, as a result, the styles of elements around that floated element can be negatively impacted.<br class="wikidpad" />
+<br class="wikidpad" />
+Often margin and padding property values aren’t interpreted correctly, causing them to blend into the floated element; other properties can be affected, too.<br class="wikidpad" />
+<br class="wikidpad" />
+Another pitfall is that sometimes unwanted content begins to wrap around a floated element. Removing an element from the flow of the document allows all the elements around the floated element to wrap and consume any available space around the floated element, which is often undesired.<br class="wikidpad" />
+<br class="wikidpad" />
+To prevent content from wrapping around floated elements, we need to clear, or contain, those floats and return the page to its normal flow.<br class="wikidpad" />
+<br class="wikidpad" />
+<b class="wikidpad">Clearing Floats</b><br class="wikidpad" />
+<br class="wikidpad" />
+Clearing floats is accomplished using the clear property, which accepts a few different values: the most commonly used values being left, right, and both.<br class="wikidpad" />
+<br class="wikidpad" />
+div {<ul class="wikidpad normalindent">clear: left;</ul>
+}<br class="wikidpad" />
+<br class="wikidpad" />
+The left value will clear left floats, while the right value will clear right floats. The both value, however, will clear both left and right floats and is often the most ideal value.<br class="wikidpad" />
+<br class="wikidpad" />
+Example:<br class="wikidpad" />
+section {<ul class="wikidpad normalindent">float: left;<br class="wikidpad" />
+margin: 0 1.5%;<br class="wikidpad" />
+width: 30%;</ul>
+}<br class="wikidpad" />
+<br class="wikidpad" />
+In this example, after we floated the &lt;section&gt; elements, and before we set a width property value on either of them, the content within the &lt;footer&gt; element would have wrapped in between the floated elements above it, filling in any available space. Consequently, the &lt;footer&gt; element would have sat in the gutter between the &lt;section&gt; elements, consuming the available space.<br class="wikidpad" />
+<br class="wikidpad" />
+We fix this problem with this code:<br class="wikidpad" />
+footer {<ul class="wikidpad normalindent">clear: both;</ul>
+}<br class="wikidpad" />
+<br class="wikidpad" />
+<b class="wikidpad">Containing Floats</b><br class="wikidpad" />
+<br class="wikidpad" />
+Rather than clearing floats, another option is to contain the floats. The outcomes of containing floats versus those of clearing them are nearly the same; however, containing floats does help to ensure that all of our styles will be rendered properly.<br class="wikidpad" />
+<br class="wikidpad" />
+To contain floats, the floated elements must reside within a parent element. The parent element will act as a container, leaving the flow of the document completely normal outside of it. The CSS for that parent element, represented by the group class below, is shown here:<br class="wikidpad" />
+<br class="wikidpad" />
+.group:before,<br class="wikidpad" />
+.group:after {<ul class="wikidpad normalindent">content: "";<br class="wikidpad" />
+display: table;</ul>
+}<br class="wikidpad" />
+.group:after {<ul class="wikidpad normalindent">clear: both;</ul>
+}<br class="wikidpad" />
+.group {<ul class="wikidpad normalindent">clear: both;<br class="wikidpad" />
+*zoom: 1;</ul>
+}<br class="wikidpad" />
+<br class="wikidpad" />
+There’s quite a bit going on here, but essentially what the CSS is doing is clearing any floated elements within the element with the class of group and returning the flow of the document back to normal.<br class="wikidpad" />
+<br class="wikidpad" />
+More specifically, the :before and :after pseudo-elements, as mentioned in the Lesson 4 exercise, are dynamically generated elements above and below the element with the class of group. Those elements do not include any content and are displayed as table-level elements, much like block-level elements. The dynamically generated element after the element with the class of group is clearing the floats within the element with the class of group, much like the clear from before. And lastly, the element with the class of group itself also clears any floats that may appear above it, in case a left or right float may exist. It also includes a little trickery to get older browsers to play nicely.<br class="wikidpad" />
+<br class="wikidpad" />
+It is more code than the clear: both; declaration alone, but it can prove to be quite useful.<br class="wikidpad" />
+<br class="wikidpad" />
+The technique shown here for containing elements is know as a “clearfix” and can often be found in other websites with the class name of clearfix or cf. We’ve chosen to use the class name of group, though, as it is representing a group of elements, and better expresses the content.<br class="wikidpad" />
+<br class="wikidpad" />
+As elements are floated, it is important to keep note of how they affect the flow of a page and to make sure the flow of a page is reset by either clearing or containing the floats as necessary. Failing to keep track of floats can cause quite a few headaches, especially as pages begin to have multiple rows of multiple columns.<br class="wikidpad" />
+<br class="wikidpad" />
+<b class="wikidpad">Positioning with Inline-Block</b><br class="wikidpad" />
+<br class="wikidpad" />
+In addition to using floats, another way we can position content is by using the display property in conjunction with the inline-block value. The inline-block method, as we’ll discuss, is primarily helpful for laying out pages or for placing elements next to one another within a line.<br class="wikidpad" />
+<br class="wikidpad" />
+Recall that the inline-block value for the display property will display elements within a line while allowing them to accept all box model properties, including height, width, padding, border, and margin. Using inline-block elements allows us to take full advantage of the box model without having to worry about clearing any floats.<br class="wikidpad" />
+<br class="wikidpad" />
+Now instead of floating our three &lt;section&gt; elements, we’ll change their display values to inline-block, leaving the margin and width properties from before alone. Our resulting CSS will look like this:<br class="wikidpad" />
+<br class="wikidpad" />
+section {<ul class="wikidpad normalindent">display: inline-block;<br class="wikidpad" />
+margin: 0 1.5%;<br class="wikidpad" />
+width: 30%;</ul>
+}<br class="wikidpad" />
+<br class="wikidpad" />
+Unfortunately, this code alone doesn’t quite do the trick, and the last &lt;section&gt; element is pushed to a new row. Remember, because inline-block elements are displayed on the same line as one another, they include a single space between them. When the size of each single space is added to the width and horizontal margin values of all the elements in the row, the total width becomes too great, pushing the last &lt;section&gt; element to a new row. In order to display all of the &lt;section&gt; elements on the same row, the white space between each &lt;section&gt; element must be removed.<br class="wikidpad" />
+<br class="wikidpad" />
+<b class="wikidpad">Removing Spaces Between Inline-Block Elements</b><br class="wikidpad" />
+<br class="wikidpad" />
+There are a number of ways to remove the space between inline-block elements, and some are more complex than others. We are going to focus on two of the easiest ways, both of which happen inside HTML.<br class="wikidpad" />
+<br class="wikidpad" />
+The first solution is to put each new &lt;section&gt; element’s opening tag on the same line as the previous &lt;section&gt; element’s closing tag. Rather than using a new line for each element, we’ll end and begin elements on the same line. Our HTML could look like this:<br class="wikidpad" />
+<br class="wikidpad" />
+&lt;header&gt;...&lt;/header&gt;<br class="wikidpad" />
+&lt;section&gt;<ul class="wikidpad normalindent">...</ul>
+&lt;/section&gt;&lt;section&gt;<ul class="wikidpad normalindent">...</ul>
+&lt;/section&gt;&lt;section&gt;<ul class="wikidpad normalindent">...</ul>
+&lt;/section&gt;<br class="wikidpad" />
+&lt;footer&gt;...&lt;/footer&gt;<br class="wikidpad" />
+<br class="wikidpad" />
+Writing inline-block elements this way ensures that the space between inline-block elements within HTML doesn’t exist; consequently, the space will not appear when the page is rendered.<br class="wikidpad" />
+<br class="wikidpad" />
+Another way to remove the white space between inline-block elements is to open an HTML comment directly after an inline-block element’s closing tag. Then, close the HTML com- ment immediately before the next inline-block element’s opening tag. Doing this allows inline-block elements to begin and end on separate lines of HTML and “comments out” any potential spaces between the elements. The resulting code would look like this:<br class="wikidpad" />
+<br class="wikidpad" />
+&lt;header&gt;...&lt;/header&gt;<br class="wikidpad" />
+&lt;section&gt;<ul class="wikidpad normalindent">...</ul>
+&lt;/section&gt;&lt;!--<br class="wikidpad" />
+--&gt;&lt;section&gt;<ul class="wikidpad normalindent">...</ul>
+&lt;/section&gt;&lt;!--<br class="wikidpad" />
+--&gt;&lt;section&gt;<ul class="wikidpad normalindent">...</ul>
+<ul class="wikidpad normalindent">&lt;/section&gt;<br class="wikidpad" />
+&lt;footer&gt;...&lt;/footer&gt;<br class="wikidpad" />
+</ul>
+Neither of these options is perfect, but they are helpful. I tend to favor using comments for better organization, but which option you choose is entirely up to you.<br class="wikidpad" />
+<br class="wikidpad" />
+<b class="wikidpad">Creating Reusable Layouts</b><br class="wikidpad" />
+<br class="wikidpad" />
+When building a website, it is always best to write modular styles that may be reused elsewhere, and reusable layouts are high on the list of reusable code. Layouts can be created using either floats or inline-block elements, but which works best and why?<br class="wikidpad" />
+<br class="wikidpad" />
+Whether it’s better to use floats or inline-block elements to lay out the structure of a page is open to debate. My approach is to use inline-block elements to create the grid—or layout—of a page and to then use floats when I want content to wrap around a given element (as floats were intended to do with images). Generally, I also find inline-block elements easier to work with.<br class="wikidpad" />
+<br class="wikidpad" />
+That said, use whatever works best for you. If you are comfortable with one approach over the other, then go for it.<br class="wikidpad" />
+<br class="wikidpad" />
+Currently there are new CSS specifications in the works—specifically flex- and grid- based properties—that will help address how to best lay out pages. Keep an eye out for these methods as they begin to surface.<br class="wikidpad" />
+<br class="wikidpad" />
+<b class="wikidpad">Uniquely Positioning Elements</b><br class="wikidpad" />
+<br class="wikidpad" />
+Every now and then we’ll want to precisely position an element, but floats or inline-block elements won’t do the trick. Floats, which remove an element from the flow of a page, often produce unwanted results as surrounding elements flow around the floated element. Inline-block elements, unless we’re creating columns, can be fairly awkward to get into the proper position. For these situations we can use the position property in connection with box offset properties.<br class="wikidpad" />
+<br class="wikidpad" />
+The position property identifies how an element is positioned on a page and whether or not it will appear within the normal flow of a document. This is used in conjunction with the box offset properties—top, right, bottom, and left—which identify exactly where an element will be positioned by moving elements in a number of different directions.<br class="wikidpad" />
+<br class="wikidpad" />
+By default every element has a position value of static, which means that it exists in the normal flow of a document and it doesn’t accept any box offset properties. The static value is most commonly overwritten with a relative or absolute value, which we’ll examine next.<br class="wikidpad" />
+<br class="wikidpad" />
+<b class="wikidpad">Relative Positioning</b><br class="wikidpad" />
+<br class="wikidpad" />
+The relative value for the position property allows elements to appear within the normal flow a page, leaving space for an element as intended while not allowing other elements to flow around it; however, it also allows an element’s display position to be modified with the box offset properties. For example, consider the following HTML and CSS:<br class="wikidpad" />
+<br class="wikidpad" />
+HTML<br class="wikidpad" />
+&lt;div&gt;...&lt;/div&gt;<br class="wikidpad" />
+&lt;div class="offset"&gt;...&lt;/div&gt;<br class="wikidpad" />
+&lt;div&gt;...&lt;/div&gt;<br class="wikidpad" />
+<br class="wikidpad" />
+CSS<br class="wikidpad" />
+div {<ul class="wikidpad normalindent">height: 100px;<br class="wikidpad" />
+width: 100px;</ul>
+}<br class="wikidpad" />
+.offset {<ul class="wikidpad normalindent">left: 20px;<br class="wikidpad" />
+position: relative;<br class="wikidpad" />
+top: 20px;</ul>
+}<br class="wikidpad" />
+<br class="wikidpad" />
+Here the second &lt;div&gt; element, the element with the class of offset, has a position value of relative and two box offset properties, left and top. This preserves the original position of the element, and other elements are not allowed to move into this space. Additionally, the box offset properties reposition the element, pushing it 20 pixels from the left and 20 pixels from the top of its original location.<br class="wikidpad" />
+<br class="wikidpad" />
+With relatively positioned elements, it’s important to know that the box offset properties identify where an element will be moved from given its original position. Thus, the left property with a value of 20 pixels will actually push the element towards the right, from the left, 20 pixels. The top property with a value of 20 pixels, then, will push an element towards the bottom, from the top, 20 pixels.<br class="wikidpad" />
+<br class="wikidpad" />
+When we position the element using the box offset properties, the element overlaps the element below it rather than moving that element down as the margin or padding properties would.<br class="wikidpad" />
+<br class="wikidpad" />
+<b class="wikidpad">Absolute Positioning</b><br class="wikidpad" />
+<br class="wikidpad" />
+The absolute value for the position property is different from the relative value in that an element with a position value of absolute will not appear within the normal flow of a document, and the original space and position of the absolutely positioned element will not be preserved.<br class="wikidpad" />
+<br class="wikidpad" />
+Additionally, absolutely positioned elements are moved in relation to their closest relatively positioned parent element. Should a relatively positioned parent element not exist, the absolutely positioned element will be positioned in relation to the &lt;body&gt; element. That’s quite a bit of information; let’s take a look at how this works inside some code:<br class="wikidpad" />
+<br class="wikidpad" />
+HTML<br class="wikidpad" />
+&lt;section&gt;<ul class="wikidpad normalindent">&lt;div class="offset"&gt;...&lt;/div&gt;</ul>
+&lt;/section&gt;<br class="wikidpad" />
+<br class="wikidpad" />
+CSS<br class="wikidpad" />
+section {<ul class="wikidpad normalindent">position: relative;</ul>
+}<br class="wikidpad" />
+div {<ul class="wikidpad normalindent">position: absolute;<br class="wikidpad" />
+right: 20px;<br class="wikidpad" />
+top: 20px;</ul>
+}<br class="wikidpad" />
+<br class="wikidpad" />
+In this example the &lt;section&gt; element is relatively positioned but doesn’t include any box offset properties. Consequently its position doesn’t change. The &lt;div&gt; element with a class of offset includes a position value of absolute. Because the &lt;section&gt; element is the closest relatively positioned parent element to the &lt;div&gt; element, the &lt;div&gt; element will be positioned in relation to the &lt;section&gt; element.<br class="wikidpad" />
+<br class="wikidpad" />
+With relatively positioned elements, the box offset properties identify in which direction an element would be moved in relation to itself. With absolutely positioned elements, the box offset properties identify in which direction an element will be moved in relation to its closest relatively positioned parent element.<br class="wikidpad" />
+<br class="wikidpad" />
+As a result of the right and top box offset properties, the &lt;div&gt; element will appear 20 pixels from the right and 20 pixels from the top of the &lt;section&gt;.<br class="wikidpad" />
+<br class="wikidpad" />
+Because the &lt;div&gt; element is absolutely positioned, it does not sit within the normal flow of the page and will overlap any surrounding elements. Additionally, the original position of the &lt;div&gt; is not preserved, and other elements are able to occupy that space.<br class="wikidpad" />
+<br class="wikidpad" />
+Typically, most positioning can be handled without the use of the position property and box offset properties, but in certain cases they can be extremely helpful.<br class="wikidpad" />
+<br class="wikidpad" />
+<b class="wikidpad">Codes</b><br class="wikidpad" />
+<br class="wikidpad" />
+August 24&ndash;26th &mdash; Chicago, IL <br class="wikidpad" />
+August 24–26th — Chicago, IL (the second dash is longer in webpage)<br class="wikidpad" />
+<br class="wikidpad" />
+&lt;small&gt; element semantically represents side comments and small print—perfect for a copyright.<br class="wikidpad" />
+<br class="wikidpad" />
+<b class="wikidpad">Typeface vs. Font</b><br class="wikidpad" />
+<br class="wikidpad" />
+The terms “typeface” and “font” are often interchanged, causing confusion. Here is a breakdown of exactly what each term means.<br class="wikidpad" />
+<br class="wikidpad" />
+A typeface is what we see. It is the artistic impression of how text looks, feels, and reads.<br class="wikidpad" />
+<br class="wikidpad" />
+A font is a file that contains a typeface. Using a font on a computer allows the computer to access the typeface.<br class="wikidpad" />
+<br class="wikidpad" />
+One way to help clarify the difference between a typeface and a font is to compare them to a song and an MP3. A typeface is very similar to a song in that it is a work of art. It is created by an artist or artists and is open to public interpretation. A font, on the other hand, is very similar to an MP3 in that it is not the artistic impression itself, but only a method of delivering the artistic value.<br class="wikidpad" />
+<br class="wikidpad" />
+<b class="wikidpad">Changing Font Properties</b><br class="wikidpad" />
+<br class="wikidpad" />
+Font Family:<br class="wikidpad" />
+body {<ul class="wikidpad normalindent">font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;</ul>
+}<br class="wikidpad" />
+<br class="wikidpad" />
+Font Size:<br class="wikidpad" />
+body {<ul class="wikidpad normalindent">font-size: 14px;</ul>
+}<br class="wikidpad" />
+<br class="wikidpad" />
+Font Style: accepts four keyword values: normal, italic, oblique, and inherit. Of these four, the most commonly used are italic (sets text to italic) and normal (returns text to its normal style).<br class="wikidpad" />
+.special {<ul class="wikidpad normalindent">font-style: italic;</ul>
+}<br class="wikidpad" />
+<br class="wikidpad" />
+Font Variant: accepts three values: normal, small-caps, and inherit. The most typically seen values are normal and small-caps, which are used to switch typefaces between normal and small caps variants.<br class="wikidpad" />
+.firm {<ul class="wikidpad normalindent">font-variant: small-caps;</ul>
+}<br class="wikidpad" />
+<br class="wikidpad" />
+Font Weight: Keyword values include normal, bold, bolder, lighter, and inherit. Of these keyword values, it is recommended to primarily use normal and bold to change text from normal to bold and vice versa. Rather than using the keyword values bolder or lighter, it’s better to use a numeric value for more specific control. The numeric values 100, 200, 300, 400, 500, 600, 700, 800, and 900 pertain specifically to typefaces that have multiple weights. The order of these weights starts with the thinnest weight, 100, and scales up to the thickest weight, 900. For reference, the keyword value of normal maps to 400 and the keyword bold maps to 700; thus, any numeric value below 400 will be fairly thin, and any value above 700 will be fairly thick.<br class="wikidpad" />
+.daring {<ul class="wikidpad normalindent">font-weight: 600;</ul>
+}<br class="wikidpad" />
+<br class="wikidpad" />
+<b class="wikidpad">Typeface Weights</b><br class="wikidpad" />
+<br class="wikidpad" />
+Before using a numeric value, we need to check and see whether the typeface we are using comes in the weight we’d like to use. Attempting to use a weight that’s not available for a given typeface will cause those styles to default to the closest value.<br class="wikidpad" />
+<br class="wikidpad" />
+For example, the Times New Roman typeface comes in two weights: normal, or 400, and bold, or 700. Attempting to use a weight of 900 will default the typeface to the closest related weight, 700 in this case.<br class="wikidpad" />
+<br class="wikidpad" />
+Line height: the distance between two lines of text (often referred to as leading). The best practice for legibility is to set the line-height to around one and a half times our font-size property value. This could be quickly accomplished by setting the line-height to 150%, or just 1.5. However, if we’re working with a baseline grid, having a little more control over our line-height using pixels may be preferable.<br class="wikidpad" />
+<br class="wikidpad" />
+body {<ul class="wikidpad normalindent">line-height: 22px;</ul>
+}<br class="wikidpad" />
+<br class="wikidpad" />
+Line height may also be used to vertically center a single line of text within an element. Using the same property value for the line-height and height properties will vertically center the text:<br class="wikidpad" />
+<br class="wikidpad" />
+.btn {<ul class="wikidpad normalindent">height: 22px;<br class="wikidpad" />
+line-height: 22px;</ul>
+}<br class="wikidpad" />
+<br class="wikidpad" />
+<b class="wikidpad">Shorthand Font Properties</b><br class="wikidpad" />
+<br class="wikidpad" />
+All of the font-based properties listed earlier may be combined and rolled into one font property and shorthand value. The font property can accept multiple font-based property values. The order of these property values should be as follows, from left to right: font-style, font-variant, font-weight, font-size, line-height, and font-family.<br class="wikidpad" />
+<br class="wikidpad" />
+html {<ul class="wikidpad normalindent">font: italic small-caps bold 14px/22px "Helvetica Neue", Helvetica, Arial, sans-serif;</ul>
+}<br class="wikidpad" />
+<br class="wikidpad" />
+Text Align: Aligning text is an important part of building a rhythm and flow on a page; we do this using the text-align property. The text-align property has five values: left, right, center, justify, and inherit.<br class="wikidpad" />
+<br class="wikidpad" />
+p {<ul class="wikidpad normalindent">text-align: center;</ul>
+}<br class="wikidpad" />
+<br class="wikidpad" />
+The text-align property, however, should not be confused with the float property. The text-align values left and right will align text within an element to the left or right, whereas the float values left and right will move the entire element. Sometimes the text-align property will give us the desired outcome, and other times we may need to use the float property.<br class="wikidpad" />
+<br class="wikidpad" />
+Text Decoration: The text-decoration property provides a handful of ways to spruce up text. It accepts the keyword values of none, underline, overline, line-through, and inherit. Use of the text-decoration property varies, but the most popular use is to underline links, which is a default browser style. Multiple text-decoration values may be applied to an element at once by space-separating each keyword within the value.<br class="wikidpad" />
+<br class="wikidpad" />
+.note {<ul class="wikidpad normalindent">text-decoration: underline;</ul>
+}<br class="wikidpad" />
+<br class="wikidpad" />
+Text Indent: The text-indent property can be used to indent the first line of text within an element, as is commonly seen in printed publications. All common length values are available for this property, including pixels, points, percentages, and so on. Positive values will indent text inward, while negative values will indent text outward.<br class="wikidpad" />
+<br class="wikidpad" />
+p {<ul class="wikidpad normalindent">text-indent: 20px;</ul>
+}<br class="wikidpad" />
+<br class="wikidpad" />
+Text Shadow: The text-shadow property allows us to add a shadow or multiple shadows to text. The property generally takes four values, all listed one after the other from left to right. The first three values are lengths, and the last value is a color. Within the three length values, the first value determines the shadow’s horizontal offset, the second value determines the shadow’s vertical offset, and the third value determines the shadow’s blur radius. The fourth, and last, value is the shadow’s color, which can be any of the color values used within the color property. Using negative length values for the horizontal and vertical offsets allows us to move shadows toward the left and the top. Multiple text shadows can also be chained together using comma-separated values, adding more than one shadow to the text. Using numerous shadows allows us to place them above and below the text, or in any variation we desire.<br class="wikidpad" />
+<br class="wikidpad" />
+p {<ul class="wikidpad normalindent">text-shadow: 3px 6px 2px rgba(0, 0, 0, .3);</ul>
+}<br class="wikidpad" />
+<br class="wikidpad" />
+<b class="wikidpad">Box Shadow</b><br class="wikidpad" />
+<br class="wikidpad" />
+The text-shadow property places a shadow specifically on the text of an element. If we’d like to place a shadow on the element as a whole, we can use the box-shadow property.<br class="wikidpad" />
+<br class="wikidpad" />
+The box-shadow property works just like the text-shadow property, accepting values for horizontal and vertical offsets, a blur, and a color.<br class="wikidpad" />
+<br class="wikidpad" />
+The box-shadow property also accepts an optional fourth length value, before the color value, for the spread of a shadow. As a positive length value, the spread will expand the shadow larger than the size of the element it’s applied to, and as a negative length value the spread will shrink the shadow to be smaller than the size of the element it’s applied to.<br class="wikidpad" />
+<br class="wikidpad" />
+Lastly, the box-shadow property may include an optional inset value at the beginning of the value to place the shadow inside an element as opposed to outside the element.<br class="wikidpad" />
+<br class="wikidpad" />
+Text Transform: Similar to the font-variant property, there is the text-transform property. While the font-variant property looks for an alternate variant of a typeface, the text-transform property will change the text inline without the need for an alternate typeface. The text-transform property accepts five values: none, capitalize, uppercase, lowercase, and inherit. The capitalize value will capitalize the first letter of each word, the uppercase value will capitalize every letter, and the lowercase value will make every letter lowercase. Using none will return any of these inherited values back to the original text style.<br class="wikidpad" />
+<br class="wikidpad" />
+p {<ul class="wikidpad normalindent">text-transform: uppercase;</ul>
+}<br class="wikidpad" />
+<br class="wikidpad" />
+Letter Spacing: Using the letter-spacing property, we can adjust the space (or tracking) between the letters on a page. A positive length value will push letters farther apart from one another, while a negative length value will pull letters closer together. The keyword value none will return the space between letters back to its normal size. Using a relative length value with the letter-spacing property will help ensure that we maintain the correct spacing between letters as the font-size of the text is changed. It is, however, always a good idea to double-check our work.<br class="wikidpad" />
+<br class="wikidpad" />
+p {<ul class="wikidpad normalindent">letter-spacing: -.5em;</ul>
+}<br class="wikidpad" />
+<br class="wikidpad" />
+Word Spacing: Much like the letter-spacing property, we can also adjust the space between words within an element using the word-spacing property. The word-spacing property accepts the same length values and keywords as the letter-spacing property. Instead of spacing letters apart, though, the word-spacing property applies those values between words.<br class="wikidpad" />
+<br class="wikidpad" />
+p {<ul class="wikidpad normalindent">word-spacing: .25em;</ul>
+}<br class="wikidpad" />
+<br class="wikidpad" />
+<b class="wikidpad">Including Citations &amp; Quotes</b><br class="wikidpad" />
+<br class="wikidpad" />
+Writing online sometimes involves citing different sources or quotations. All of the different citation and quotation cases can be covered semantically in HTML using the &lt;cite&gt;, &lt;q&gt;, and &lt;blockquote&gt; elements. <br class="wikidpad" />
+<br class="wikidpad" />
+Knowing when to use which element and attribute to properly mark up citations and quotes takes a bit of practice. In general, follow these rules:<br class="wikidpad" />
+<br class="wikidpad" />
+&lt;cite&gt;: Used to reference a creative work, author, or resource<br class="wikidpad" />
+&lt;q&gt;: Used for short, inline quotations<br class="wikidpad" />
+&lt;blockquote&gt;: Used for longer external quotations<br class="wikidpad" />
+<br class="wikidpad" />
+<b class="wikidpad">Citing a Creative Work</b><br class="wikidpad" />
+<br class="wikidpad" />
+The &lt;cite&gt; inline element is used in HTML to specifically cite a creative work; the element must include either the title of the work, the author’s name, or a URL reference to the work. By default, content wrapped within the &lt;cite&gt; element will appear in italics within the browser.<br class="wikidpad" />
+<br class="wikidpad" />
+For additional reference, it helps to include a hyperlink to the original source of the citation when relevant.<br class="wikidpad" />
+<br class="wikidpad" />
+Here the book Steve Jobs, by Walter Isaacson, is referenced within the &lt;cite&gt; element. Inside the citation is also a hyperlink to the book.<br class="wikidpad" />
+&lt;p&gt;The book &lt;cite&gt;&lt;a href="<span class="wikidpad url-link"><a href="http://www.amazon.com/Steve-Jobs-Walter-Isaacson/dp/1451648537" class="wikidpad">http://www.amazon.com/Steve-Jobs-Walter-Isaacson/dp/1451648537</a></span>"&gt;Steve Jobs&lt;/a&gt;&lt;/cite&gt; is truly inspirational.&lt;/p&gt;<br class="wikidpad" />
+<br class="wikidpad" />
+<b class="wikidpad">Dialogue &amp; Prose Quotation</b><br class="wikidpad" />
+<br class="wikidpad" />
+Quite often, dialogue or prose is quoted inline, within other text. For this purpose, the &lt;q&gt; (or quote) inline element should be applied. The &lt;q&gt; element semantically indicates quoted dialogue or prose and shouldn’t be used for any other purposes.<br class="wikidpad" />
+<br class="wikidpad" />
+By default, the browser will insert the proper quotation marks for us and will even change the quotation marks based on the language identified within the lang global attribute.<br class="wikidpad" />
+<br class="wikidpad" />
+&lt;p&gt;Steve Jobs once said, &lt;q&gt;One home run is much better than two doubles.&lt;/q&gt;&lt;/p&gt;<br class="wikidpad" />
+<br class="wikidpad" />
+An optional attribute to include on the &lt;q&gt; element is the cite attribute. The cite attribute acts as a citation reference to the quote in the form of a URL. This attribute doesn’t alter the appearance of the element; it simply adds value for screen readers and other devices. Because the attribute isn’t viewable within the browser, it’s also helpful to provide a hyperlink to this source next to the actual quotation.<br class="wikidpad" />
+<br class="wikidpad" />
+&lt;p&gt;&lt;a href="<span class="wikidpad url-link"><a href="http://www.businessweek.com/magazine/content/06\_06/b3970001.htm" class="wikidpad">http://www.businessweek.com/magazine/content/06\_06/b3970001.htm</a></span>"&gt;Steve Jobs&lt;/a&gt; once said, &lt;q cite="<span class="wikidpad url-link"><a href="http://www.businessweek.com/magazine/content/06\_06/b3970001.htm" class="wikidpad">http://www.businessweek.com/magazine/content/06\_06/b3970001.htm</a></span>"&gt;One home run is much better than two doubles.&lt;/q&gt;&lt;/p&gt;<br class="wikidpad" />
+<br class="wikidpad" />
+<b class="wikidpad">External Quotation</b><br class="wikidpad" />
+<br class="wikidpad" />
+To quote a large block of text that comes from an external source and spans several lines, we’ll use the &lt;blockquote&gt; element. The &lt;blockquote&gt; is a block-level element that may have other block-level elements nested inside it, including headings and paragraphs.<br class="wikidpad" />
+<br class="wikidpad" />
+&lt;blockquote&gt;<ul class="wikidpad normalindent">&lt;p&gt;&#8220;In most people&#8217;s vocabularies, design is a veneer. It&#8217;s interior decorating. It&#8217;s the fabric of the curtains, of the sofa. But to me, nothing could be further from the meaning of design. Design is the fundamental soul of a human-made creation that ends up expressing itself in successive outer layers of the product.&#8221;&lt;/p&gt;</ul>
+&lt;/blockquote&gt;<br class="wikidpad" />
+<br class="wikidpad" />
+Longer quotes used within the &lt;blockquote&gt; element will often include a citation. This citation may comprise both the cite attribute and the &lt;cite&gt; element.<br class="wikidpad" />
+<br class="wikidpad" />
+The cite attribute can be included on the &lt;blockquote&gt; element—in the same way that it was used on the &lt;q&gt; element earlier—to provide a citation reference to the quote in the form of a URL. The &lt;cite&gt; element then can fall after the actual quote itself to specify the original source of the quote, if relevant.<br class="wikidpad" />
+<br class="wikidpad" />
+&lt;blockquote cite="<span class="wikidpad url-link"><a href="http://money.cnn.com/magazines/fortune/fortune\_archive/2000/01/24/272277/index.htm" class="wikidpad">http://money.cnn.com/magazines/fortune/fortune\_archive/2000/01/24/272277/index.htm</a></span>"&gt;<ul class="wikidpad normalindent">&lt;p&gt;&#8220;In most people&#8217;s vocabularies, design is a veneer. It&#8217;s interior decorating. It&#8217;s the fabric of the curtains, of the sofa. But to me, nothing could be further from the meaning of design. Design is the fundamental soul of a human-made creation that ends up expressing itself in successive outer layers of the product.&#8221;&lt;/p&gt;<br class="wikidpad" />
+&lt;p&gt;&lt;cite&gt;&#8212; Steve Jobs in &lt;a href="<span class="wikidpad url-link"><a href="http://money.cnn.com/" class="wikidpad">http://money.cnn.com/</a></span> magazines/fortune/fortune_archive/2000/01/24/272277/index.htm"&gt; Fortune Magazine&lt;/a&gt;&lt;/cite&gt;&lt;/p&gt;</ul>
+&lt;/blockquote&gt;<br class="wikidpad" />
+<br class="wikidpad" />
+<b class="wikidpad">Google Font</b><br class="wikidpad" />
+<br class="wikidpad" />
+Let’s head over to the Google Fonts website and search for the font we’d like to use: Lato. Once we’ve found it, let’s proceed with adding it to our collection and following the steps on their website to use the font.<br class="wikidpad" />
+<br class="wikidpad" />
+When the time comes to choose which font weights we’d like to use, let’s make sure to select 300 and 400, as we’ve already been using those within our CSS. Let’s also add 100 to the collection for another variation, too.<br class="wikidpad" />
+<br class="wikidpad" />
+Google will give us an additional &lt;link&gt; element to include in the &lt;head&gt; element of all of our pages. We’ll place this new &lt;link&gt; element directly below our existing &lt;link&gt; element. The new element will include the proper style sheet reference to Google, which will take care of including a new CSS file with the proper @font-face at-rule necessary for us to use the Lato font.<br class="wikidpad" />
+<br class="wikidpad" />
+Lato can now be used in your CSS in font-family<br class="wikidpad" />
+<br class="wikidpad" />
+body {<ul class="wikidpad normalindent">color: #888;<br class="wikidpad" />
+font: 300 16px/22px "Lato", "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;</ul>
+}<br class="wikidpad" />
+<br class="wikidpad" />
+<b class="wikidpad">Adding a Background Color</b><br class="wikidpad" />
+<br class="wikidpad" />
+The quickest way to add a background to an element is to add a single-color background using the background or background-color property. The background property accepts colors and images in shorthand form, while the background-color property is used strictly for setting solid background colors. Either property will work, and which one you decide to use depends on your preference as well as the case for which you’re using it.<br class="wikidpad" />
+<br class="wikidpad" />
+<b class="wikidpad">Transparent Backgrounds</b><br class="wikidpad" />
+<br class="wikidpad" />
+When using an RGBa or HSLa value as a transparent background color, it’s a good idea to provide a fallback color, too, because not all browsers recognize RGBa or HSLa values. And when a browser comes across a value it doesn’t recognize, it will ignore it.<br class="wikidpad" />
+<br class="wikidpad" />
+Fortunately, there is an easy way to provide a fallback background. CSS cascades from the top of a file to the bottom of a file; thus, we can use two background-color properties within a single rule set. The first background-color property will use a “safe” background color, such as a hexadecimal value, and the second background-color property will use an RGBa or HSLa value. Here, if a browser understands the RGBa or HSLa value it will render it, and if it doesn’t, it will fall back to the hexadecimal value above it.<br class="wikidpad" />
+<br class="wikidpad" />
+div {<ul class="wikidpad normalindent">background-color: #b2b2b2;<br class="wikidpad" />
+background-color: rgba(0, 0, 0, .3);</ul>
+}<br class="wikidpad" />
+<br class="wikidpad" />
+<b class="wikidpad">Adding a Background Image</b><br class="wikidpad" />
+<br class="wikidpad" />
+div {<ul class="wikidpad normalindent">background-image: url("alert.png");</ul>
+}<br class="wikidpad" />
+<br class="wikidpad" />
+Adding a background image solely using a url value can provide undesirable results, as by default the background image will repeat horizontally and vertically from the top left of the given element to fill up the element’s background. Thankfully we can use the background-repeat and background-position properties to control how or even whether the image repeats. By default, a background image will repeat indefinitely, both vertically and horizontally, unless otherwise specified. The background-repeat property may be used to change the direction in which a background image is repeated, if repeated at all.<br class="wikidpad" />
+<br class="wikidpad" />
+div {<ul class="wikidpad normalindent">background-image: url("alert.png");<br class="wikidpad" />
+background-repeat: no-repeat;</ul>
+}<br class="wikidpad" />
+<br class="wikidpad" />
+The background-repeat property accepts four different values: repeat, repeat-x, repeat-y, and no-repeat. The repeat value is the default value and will repeat a background image both vertically and horizontally.<br class="wikidpad" />
+<br class="wikidpad" />
+The repeat-x value will repeat the background image horizontally, while the repeat-y value will repeat the background image vertically. Lastly, the no-repeat value will tell the browser to display the background image once—that is, do not repeat it at all.<br class="wikidpad" />
+<br class="wikidpad" />
+<b class="wikidpad">Background Position</b><br class="wikidpad" />
+<br class="wikidpad" />
+By default, background images are positioned at the left top corner of an element. However, by using the background-position property, we can control exactly where the background image is placed relative to that corner.<br class="wikidpad" />
+<br class="wikidpad" />
+div {<ul class="wikidpad normalindent">background-image: url("alert.png");<br class="wikidpad" />
+background-position: 20px 10px;<br class="wikidpad" />
+background-repeat: no-repeat;</ul>
+}<br class="wikidpad" />
+<br class="wikidpad" />
+The background-position property requires two values: a horizontal offset (the first value) and a vertical offset (the second value). If only one value is specified, that value is used for both the horizontal offset and the vertical offset will default to 50%.<br class="wikidpad" />
+<br class="wikidpad" />
+Because we’re moving the background image from the left top corner of the element, length values specifically will be in relation to that corner.<br class="wikidpad" />
+<br class="wikidpad" />
+To set a background-position value, we can use the top, right, bottom, and left keywords, pixels, percentages, or any length measurement. Keywords and percentages work very similarly. The keyword value left top is identical to the percentage value 0 0, which will keep an image positioned at the left top corner of the element. The keyword value right bottom is identical to the percentage value 100% 100%, which will position an image in the right bottom corner of the element.<br class="wikidpad" />
+<br class="wikidpad" />
+One advantage of percentages over keywords is the ability to center a background image by using 50% as a value. To center the background image at the top of an element, we can use the value 50% 0. Using pixels for a background-position value is also common, as pixels give us precise control over where our background will be positioned.<br class="wikidpad" />
+<br class="wikidpad" />
+<b class="wikidpad">Shorthand Background Image Values</b><br class="wikidpad" />
+<br class="wikidpad" />
+The order of the image properties as a shorthand background property value may vary, however it commonly falls as background-color, background-image, background-position, and then background-repeat.<br class="wikidpad" />
+<br class="wikidpad" />
+div {<ul class="wikidpad normalindent">background: #b2b2b2 url("alert.png") 20px 10px no-repeat;</ul>
+}<br class="wikidpad" />
+<br class="wikidpad" />
+<b class="wikidpad">Linear Gradient Background</b><br class="wikidpad" />
+<br class="wikidpad" />
+Linear gradients are identified by using the linear-gradient() function within the background or background-image property. The linear-gradient() function must include two color values, the first of which will be the beginning color value and the second of which will be the ending color value. The browser will then handle the transition between the two colors.<br class="wikidpad" />
+<br class="wikidpad" />
+Before any gradient backgrounds are identified, we’ll also put in a default background property with a solid color. The solid color is to be used as a fallback should a browser not support gradient backgrounds.<br class="wikidpad" />
+<br class="wikidpad" />
+div {<ul class="wikidpad normalindent">background: #466368;<br class="wikidpad" />
+background: -webkit-linear-gradient(#648880, #293f50);<br class="wikidpad" />
+background:    -moz-linear-gradient(#648880, #293f50);<br class="wikidpad" />
+background:         linear-gradient(#648880, #293f50);</ul>
+}<br class="wikidpad" />
+<br class="wikidpad" />
+<b class="wikidpad">Changing the Direction of a Gradient Background</b><br class="wikidpad" />
+<br class="wikidpad" />
+By default, linear gradient backgrounds move from the top to the bottom of an element, transitioning smoothly between the first color value and the second. This direction, however, may be changed with the use of keywords or a degree value stated before any color values.<br class="wikidpad" />
+<br class="wikidpad" />
+For example, should we want a gradient to move from the left of an element to the right, we can use the keyword value to right to identify the direction in which the linear gradient should progress. Keyword values may also be combined. If we want the gradient to move from the left top to the right bottom of an element, we can use the keyword value of to right bottom.<br class="wikidpad" />
+<br class="wikidpad" />
+div {<ul class="wikidpad normalindent">background: #466368;<br class="wikidpad" />
+background: linear-gradient(to right bottom, #648880, #293f50);</ul>
+}<br class="wikidpad" />
+<br class="wikidpad" />
+<b class="wikidpad">Radial Gradient Background</b><br class="wikidpad" />
+<br class="wikidpad" />
+While the linear gradient is perfect for a gradient moving from one direction to another, often the need for a radial gradient arises. Radial background gradients work just like linear gradients and share many of the same values. For radial gradients, instead of using the linear-gradient() function within the background or background-image property, we’ll use the radial-gradient() function.<br class="wikidpad" />
+<br class="wikidpad" />
+div {<ul class="wikidpad normalindent">background: #466368;<br class="wikidpad" />
+background: radial-gradient(#648880, #293f50);</ul>
+}<br class="wikidpad" />
+<br class="wikidpad" />
+CSS3 Gradient Background Generator: <span class="wikidpad url-link"><a href="http://ie.microsoft.com/testdrive/graphics/cssgradientbackgroundmaker/default.html" class="wikidpad">http://ie.microsoft.com/testdrive/graphics/cssgradientbackgroundmaker/default.html</a></span><br class="wikidpad" />
+<br class="wikidpad" />
+<b class="wikidpad">Gradient Color Stops</b><br class="wikidpad" />
+<br class="wikidpad" />
+At a minimum, gradient backgrounds will transition from one color to another; however, we may add multiple colors to a gradient and have the browser transition between all of them. To do this we’ll add color stops to the given gradient function, with commas separating each color stop from the next.<br class="wikidpad" />
+<br class="wikidpad" />
+div {<ul class="wikidpad normalindent">background: #648880;<br class="wikidpad" />
+background: linear-gradient(to right, #f6f1d3, #648880, #293f50);</ul>
+}<br class="wikidpad" />
+<br class="wikidpad" />
+By default, the browser will position every color stop an equal distance from the next and will transition between them accordingly. If more control over how colors are positioned is desired, a location along the gradient may be identified for each color stop. The location should be declared as a length value and should fall after the color value.<br class="wikidpad" />
+<br class="wikidpad" />
+div {<ul class="wikidpad normalindent">background: #648880;<br class="wikidpad" />
+background: linear-gradient(to right, #f6f1d3, #648880 85%, #293f50);</ul>
+}<br class="wikidpad" />
+<br class="wikidpad" />
+<b class="wikidpad">Using Multiple Background Images</b><br class="wikidpad" />
+<br class="wikidpad" />
+The background image value that comes first will be the foremost background image, and the background image that’s listed last will be the rearmost background image. Any value between the first and the last will reside within the middle ground accordingly. Here’s an example of the CSS for a &lt;div&gt; element that uses three background images:<br class="wikidpad" />
+div {<ul class="wikidpad normalindent">background:  url("foreground.png") 0 0 no-repeat, url("middle-ground.png") 0 0 no-repeat, url("background.png") 0 0 no-repeat;</ul>
+}<br class="wikidpad" />
+<br class="wikidpad" />
+<b class="wikidpad">Exploring New Background Properties</b><br class="wikidpad" />
+<br class="wikidpad" />
+Along with gradient backgrounds and multiple background images, CSS3 also introduced three new CSS properties: background-size, background-clip, and background-origin.<br class="wikidpad" />
+<br class="wikidpad" />
+The background-size property allows us to change the size of a background image, while the background-clip and background-origin properties allow us to control where a background image is cropped and where a background image is contained within the element (inside the border or inside the padding, for example).<br class="wikidpad" />
+<br class="wikidpad" />
+<b class="wikidpad">CSS3 Background Size</b><br class="wikidpad" />
+<br class="wikidpad" />
+The background-size property allows us to specify a size for a background image. The property accepts a few different values, including length and keyword values.<br class="wikidpad" />
+<br class="wikidpad" />
+When using length values, we can specify a width and a height value by using two space-separated values. The first value will set the width of the background image, while the second value will set the height of the background image. It’s important to note that percentage values are in relation to the element’s size, not the background image’s original size.<br class="wikidpad" />
+<br class="wikidpad" />
+Consequently, setting a background-size property with a 100% width will make the background image occupy the full width of the element. If a second value isn’t identified after the width, the height value will be automatically set to preserve the aspect ratio of the background image.<br class="wikidpad" />
+<br class="wikidpad" />
+The keyword value auto may be used as either the width or height value to preserve the aspect ratio of the background image. For example, if we want to set the height of the background image to be 75% of the height of the element while maintaining the image’s aspect ratio, we can use a background-size property value of auto 75%.<br class="wikidpad" />
+<br class="wikidpad" />
+div {<ul class="wikidpad normalindent">background: url("shay.jpg") 0 0 no-repeat;<br class="wikidpad" />
+background-size: auto 75%;<br class="wikidpad" />
+border: 2px dashed #9799a7;<br class="wikidpad" />
+height: 240px;<br class="wikidpad" />
+width: 200px;</ul>
+}<br class="wikidpad" />
+<br class="wikidpad" />
+<b class="wikidpad">Cover &amp; Contain Keyword Values</b><br class="wikidpad" />
+<br class="wikidpad" />
+In addition to length background-size property values, there are also cover and contain keyword values available to the background-size property.<br class="wikidpad" />
+<br class="wikidpad" />
+The cover keyword value specifies that the background image will be resized to completely cover an element’s width and height. The background image’s original aspect ratio will be preserved, yet the image will stretch or shrink as necessary to cover the entire element. Often when using the cover keyword value, part of the background image is cut off in order for the image to occupy the full available space of the element.<br class="wikidpad" />
+<br class="wikidpad" />
+The contain keyword value, on the other hand, specifies that the background image will be resized to reside entirely contained within an element’s width and height. In doing so the background image’s original aspect ratio will be preserved, but the image will stretch or shrink as necessary to remain within the width and height of the element. In contrast with the cover keyword value, the contain keyword value will always show the full background image; however, oftentimes it will not occupy the full available space of the element.<br class="wikidpad" />
+<br class="wikidpad" />
+Both the cover and contain keyword values may result in slightly distorted background images, particularly when the images are stretched beyond their original dimensions. We’ll want to keep an eye out for this when using these values, to make sure the resulting styles are satisfactory.<br class="wikidpad" />
+<br class="wikidpad" />
+<b class="wikidpad">CSS3 Background Clip &amp; Background Origin</b><br class="wikidpad" />
+<br class="wikidpad" />
+The background-clip property specifies the surface area a background image will cover, and the background-origin property specifies where the background-position should originate. The introduction of these two new properties corresponds with the introduction of three new keyword values: border-box, padding-box, and content-box. Each of these three values may be used for the background-clip and background-origin properties.<br class="wikidpad" />
+<br class="wikidpad" />
+div {<ul class="wikidpad normalindent">background: url("shay.jpg") 0 0 no-repeat;<br class="wikidpad" />
+background-clip: padding-box;<br class="wikidpad" />
+background-origin: border-box;</ul>
+}<br class="wikidpad" />
+<br class="wikidpad" />
+<b class="wikidpad">Ordered Lists</b><br class="wikidpad" />
+<br class="wikidpad" />
+Ordered lists have unique attributes available to them including start and reversed.<br class="wikidpad" />
+<br class="wikidpad" />
+<b class="wikidpad">Start Attribute</b><br class="wikidpad" />
+<br class="wikidpad" />
+The start attribute defines the number from which an ordered list should start. By default, ordered lists start at 1. However, there may be cases where a list should start at 30 or another number. When we use the start attribute on the &lt;ol&gt; element, we can identify exactly which number an ordered list should begin counting from.<br class="wikidpad" />
+<br class="wikidpad" />
+The start attribute accepts only integer values, even though ordered lists may use different numbering systems, such as roman numerals.<br class="wikidpad" />
+<br class="wikidpad" />
+&lt;ol start="30"&gt;<ul class="wikidpad normalindent">&lt;li&gt;Head north on N Halsted St&lt;/li&gt;<br class="wikidpad" />
+&lt;li&gt;Turn right on W Diversey Pkwy&lt;/li&gt;<br class="wikidpad" />
+&lt;li&gt;Turn left on N Orchard St&lt;/li&gt;</ul>
+&lt;/ol&gt;<br class="wikidpad" />
+<br class="wikidpad" />
+<b class="wikidpad">Reversed Attribute</b><br class="wikidpad" />
+<br class="wikidpad" />
+The reversed attribute, when used on the &lt;ol&gt; element, allows a list to appear in reverse order. An ordered list of five items numbered 1 to 5 may be reversed and ordered from 5 to 1.<br class="wikidpad" />
+<br class="wikidpad" />
+The reversed attribute is a Boolean attribute, and as such it doesn’t accept any value. It is either true or false. False is the default value; the value becomes true when the attribute name reversed appears on the &lt;ol&gt; element.<br class="wikidpad" />
+<br class="wikidpad" />
+&lt;ol reversed&gt;<ul class="wikidpad normalindent">&lt;li&gt;Head north on N Halsted St&lt;/li&gt;<br class="wikidpad" />
+&lt;li&gt;Turn right on W Diversey Pkwy&lt;/li&gt;<br class="wikidpad" />
+&lt;li&gt;Turn left on N Orchard St&lt;/li&gt;</ul>
+&lt;/ol&gt;<br class="wikidpad" />
+<br class="wikidpad" />
+<b class="wikidpad">Value Attribute</b><br class="wikidpad" />
+<br class="wikidpad" />
+The value attribute may be used on an individual &lt;li&gt; element within an ordered list to change its value within the list. The number of any list item appearing below a list item with a value attribute will be recalculated accordingly.<br class="wikidpad" />
+<br class="wikidpad" />
+As an example, if the second list item has a value attribute value of 9, the number on that list item marker will appear as if it is the ninth item. All subsequent list items will be numbered upwards from 9.<br class="wikidpad" />
+<br class="wikidpad" />
+&lt;ol&gt;<ul class="wikidpad normalindent">&lt;li&gt;Head north on N Halsted St&lt;/li&gt;<br class="wikidpad" />
+&lt;li value="9"&gt;Turn right on W Diversey Pkwy&lt;/li&gt;<br class="wikidpad" />
+&lt;li&gt;Turn left on N Orchard St&lt;/li&gt;</ul>
+&lt;/ol&gt;<br class="wikidpad" />
+<br class="wikidpad" />
+<b class="wikidpad">Description Lists</b><br class="wikidpad" />
+<br class="wikidpad" />
+Another type of list seen online (but not as often as unordered or ordered lists) is the description list. Description lists are used to outline multiple terms and their descriptions, as in a glossary, for example.<br class="wikidpad" />
+<br class="wikidpad" />
+Creating a description list in HTML is accomplished using the description list block-level element, &lt;dl&gt;. Instead of using a &lt;li&gt; element to mark up list items, the description list requires two block-level elements: the description term element, &lt;dt&gt;, and the description element, &lt;dd&gt;.<br class="wikidpad" />
+<br class="wikidpad" />
+A description list may contain numerous terms and descriptions, one after the other. Additionally, a description list may have multiple terms per description, as well as multiple descriptions per term. A single term may have multiple meanings and warrant multiple descriptions. Conversely, a single description may be suitable for multiple terms.<br class="wikidpad" />
+<br class="wikidpad" />
+When adding a description list, the &lt;dt&gt; element must come before the &lt;dd&gt; element. The definition term and the description that directly follows it correspond to one another; thus, the order of these elements is important.<br class="wikidpad" />
+<br class="wikidpad" />
+By default, the &lt;dl&gt; element will include vertical margins, just like the &lt;ul&gt; and &lt;ol&gt; elements. Additionally, the &lt;dd&gt; element includes a left margin by default.<br class="wikidpad" />
+<br class="wikidpad" />
+&lt;dl&gt;<ul class="wikidpad normalindent">&lt;dt&gt;study&lt;/dt&gt;<br class="wikidpad" />
+&lt;dd&gt;The devotion of time and attention to acquiring knowledge on an academic subject, especially by means of books&lt;/dd&gt;<br class="wikidpad" />
+&lt;dt&gt;design&lt;/dt&gt;<br class="wikidpad" />
+&lt;dd&gt;A plan or drawing produced to show the look and function or workings of a building, garment, or other object before it is built or made&lt;/dd&gt;<br class="wikidpad" />
+&lt;dd&gt;Purpose, planning, or intention that exists or is thought to exist behind an action, fact, or material object&lt;/dd&gt;<br class="wikidpad" />
+&lt;dt&gt;business&lt;/dt&gt;<br class="wikidpad" />
+&lt;dt&gt;work&lt;/dt&gt;<br class="wikidpad" />
+&lt;dd&gt;A person's regular occupation, profession, or trade&lt;/dd&gt;</ul>
+&lt;/dl&gt;<br class="wikidpad" />
+<br class="wikidpad" />
+Result:<br class="wikidpad" />
+<dl><ul class="wikidpad normalindent"><dt>study</dt><br class="wikidpad" />
+<dd>The devotion of time and attention to acquiring knowledge on an academic subject, especially by means of books</dd><br class="wikidpad" />
+<dt>design</dt><br class="wikidpad" />
+<dd>A plan or drawing produced to show the look and function or workings of a building, garment, or other object before it is built or made</dd><br class="wikidpad" />
+<dd>Purpose, planning, or intention that exists or is thought to exist behind an action, fact, or material object</dd><br class="wikidpad" />
+<dt>business</dt><br class="wikidpad" />
+<dt>work</dt><br class="wikidpad" />
+<dd>A person's regular occupation, profession, or trade</dd></ul>
+</dl><br class="wikidpad" />
+<br class="wikidpad" />
+<b class="wikidpad">Nesting Lists</b><br class="wikidpad" />
+<br class="wikidpad" />
+&lt;ol&gt;<ul class="wikidpad normalindent">&lt;li&gt;Walk the dog&lt;/li&gt;<br class="wikidpad" />
+&lt;li&gt;Fold laundry&lt;/li&gt;<br class="wikidpad" />
+&lt;li&gt;<ul class="wikidpad normalindent">Go to the grocery and buy:<br class="wikidpad" />
+&lt;ul&gt;<ul class="wikidpad normalindent">&lt;li&gt;Milk&lt;/li&gt;<br class="wikidpad" />
+&lt;li&gt;Bread&lt;/li&gt;<br class="wikidpad" />
+&lt;li&gt;Cheese&lt;/li&gt;</ul>
+&lt;/ul&gt;</ul>
+&lt;/li&gt;<br class="wikidpad" />
+&lt;li&gt;Mow the lawn&lt;/li&gt;<br class="wikidpad" />
+&lt;li&gt;Make dinner&lt;/li&gt;</ul>
+&lt;/ol&gt;<br class="wikidpad" />
+<br class="wikidpad" />
+Because nesting lists can be a little tricky—and unwanted styles will appear if it’s done incorrectly—let’s quickly review. The &lt;ul&gt; and &lt;ol&gt; elements may contain only &lt;li&gt; elements. The &lt;li&gt; element may contain any normal element as desired; however, the &lt;li&gt; element has to be a direct child of either a &lt;ul&gt; or &lt;ol&gt; element.<br class="wikidpad" />
+<br class="wikidpad" />
+It’s also worth noting that as lists are nested inside of other lists, their list item markers will change according to how deeply the list is nested. In the previous example, the unordered list nested within the ordered list uses hollow circles instead of solid discs as the list item marker. This change happens because the unordered list is nested one level into the ordered list.<br class="wikidpad" />
+<br class="wikidpad" />
+<b class="wikidpad">List Style Type Property</b><br class="wikidpad" />
+<br class="wikidpad" />
+The list-style-type property is used to set the content of a list item marker. The available values range from squares and decimal numbers all the way to Armenian numbering, and the style may be placed on either the &lt;ul&gt;, &lt;ol&gt;, or &lt;li&gt; elements within CSS.<br class="wikidpad" />
+<br class="wikidpad" />
+Any list-style-type property value can be added to either unordered or ordered lists. With this in mind, it is possible to use a numeric list item marker on an unordered list and a nonnumeric marker on an ordered list.<br class="wikidpad" />
+<br class="wikidpad" />
+ul {<ul class="wikidpad normalindent">list-style-type: square;</ul>
+}<br class="wikidpad" />
+<br class="wikidpad" />
+<b class="wikidpad">Using an Image as a List Item Marker</b><br class="wikidpad" />
+<br class="wikidpad" />
+There may come a time when the default list-style-type property values are not enough, and we want to customize our own list item marker. Doing so is most commonly accomplished by placing a background image on each &lt;li&gt; element within a list.<br class="wikidpad" />
+<br class="wikidpad" />
+The process includes removing any default list-style-type property value and adding a background image and padding to the &lt;li&gt; element.<br class="wikidpad" />
+<br class="wikidpad" />
+In detail, the list-style-type property value of none will remove existing list item markers. The background property will identify a background image, along with its position and repeat value, if necessary. And the padding property will provide space to the left of the text for the background image.<br class="wikidpad" />
+<br class="wikidpad" />
+li {<ul class="wikidpad normalindent">background: url("arrow.png") 0 50% no-repeat;<br class="wikidpad" />
+list-style-type: none;<br class="wikidpad" />
+padding-left: 12px;</ul>
+}<br class="wikidpad" />
+<br class="wikidpad" />
+<b class="wikidpad">List Style Position Property</b><br class="wikidpad" />
+<br class="wikidpad" />
+By default the list item marker is to the left of the content within the &lt;li&gt; element. This list style positioning is described as outside, meaning all of the content will appear directly to the right, outside of the list item marker. Using the list-style-position property, we can change the default value of outside to inside or inherit.<br class="wikidpad" />
+<br class="wikidpad" />
+The outside property value places the list item marker to the left of the &lt;li&gt; element and doesn’t allow any content to wrap below the list item marker. The inside property value (which is rarely seen or used) places the list item marker in line with the first line of the &lt;li&gt; element and allows other content to wrap below it as needed.<br class="wikidpad" />
+<br class="wikidpad" />
+ul {<ul class="wikidpad normalindent">list-style-position: inside;</ul>
+}<br class="wikidpad" />
+<br class="wikidpad" />
+<b class="wikidpad">Horizontally Displaying List</b><br class="wikidpad" />
+<br class="wikidpad" />
+Occasionally we may want to display lists horizontally rather than vertically. Perhaps we want to divide a list into multiple columns, to build a navigational list, or to put a few list items in a single row. Depending on the content and desired appearance, there are a few different ways to display lists as a single line, such as by making the display property value of &lt;li&gt; elements inline or inline-block or by floating them.<br class="wikidpad" />
+<br class="wikidpad" />
+The quickest way to display a list on a single line is to give the &lt;li&gt; elements a display property value of inline or inline-block. Doing so places all the &lt;li&gt; elements within a single line, with a single space between each list item.<br class="wikidpad" />
+<br class="wikidpad" />
+More often than not, we’ll use the inline-block property value rather than the inline property value. The inline-block property value allows us to easily add vertical margins and other spacing to the &lt;li&gt; elements, whereas the inline property value does not.<br class="wikidpad" />
+<br class="wikidpad" />
+When changing the display property value to inline or inline-block, the list item marker, be it a bullet, number, or other style, is removed.<br class="wikidpad" />
+<br class="wikidpad" />
+li {<ul class="wikidpad normalindent">display: inline-block;<br class="wikidpad" />
+margin: 0 10px;</ul>
+}<br class="wikidpad" />
+<br class="wikidpad" />
+<b class="wikidpad">Floating List</b><br class="wikidpad" />
+<br class="wikidpad" />
+Changing the display property value to inline or inline-block is quick; however, it removes the list item marker. If the list item marker is needed, floating each &lt;li&gt; element is a better option than changing the display property.<br class="wikidpad" />
+<br class="wikidpad" />
+Setting all &lt;li&gt; elements’ float property to left will horizontally align all &lt;li&gt; elements directly next to each other without any space between them. When we float each &lt;li&gt; element, the list item marker is displayed by default and will actually sit on top of the &lt;li&gt; element next to it. To prevent the list item marker from being displayed on top of other &lt;li&gt; elements, a horizontal margin or padding should be added.<br class="wikidpad" />
+<br class="wikidpad" />
+li {<ul class="wikidpad normalindent">float: left;<br class="wikidpad" />
+margin: 0 20px;</ul>
+}<br class="wikidpad" />
+<br class="wikidpad" />
+As when floating any element, this breaks the flow of the page. We must remember to clear our floats—most commonly with the clearfix technique—and return the page back to its normal flow.<br class="wikidpad" />
+<br class="wikidpad" />
+<b class="wikidpad">Navigational List Example</b><br class="wikidpad" />
+<br class="wikidpad" />
+We’ll often develop, and find, navigation menus using unordered lists. These lists are commonly laid out as horizontal lists, using either of the two techniques previously mentioned. Here is an example of a horizontal navigation menu marked up using an unordered list with &lt;li&gt; elements displayed as inline-block elements.<br class="wikidpad" />
+<br class="wikidpad" />
+HTML:<br class="wikidpad" />
+&lt;nav class="navigation"&gt;<ul class="wikidpad normalindent">&lt;ul&gt;<ul class="wikidpad normalindent">&lt;li&gt;&lt;a href="#"&gt;Profile&lt;/a&gt;&lt;/li&gt;&lt;!--<br class="wikidpad" />
+--&gt;&lt;li&gt;&lt;a href="#"&gt;Settings&lt;/a&gt;&lt;/li&gt;&lt;!--<br class="wikidpad" />
+--&gt;&lt;li&gt;&lt;a href="#"&gt;Notifications&lt;/a&gt;&lt;/li&gt;&lt;!--<br class="wikidpad" />
+--&gt;&lt;li&gt;&lt;a href="#"&gt;Logout&lt;/a&gt;&lt;/li&gt;</ul>
+&lt;/ul&gt;</ul>
+&lt;/nav&gt;<br class="wikidpad" />
+<br class="wikidpad" />
+CSS: <br class="wikidpad" />
+.navigation ul {<ul class="wikidpad normalindent">font: bold 11px "Helvetica Neue", Helvetica, Arial, sans-serif;<br class="wikidpad" />
+margin: 0;<br class="wikidpad" />
+padding: 0;<br class="wikidpad" />
+text-transform: uppercase;</ul>
+}<br class="wikidpad" />
+.navigation li {<ul class="wikidpad normalindent">display: inline-block;</ul>
+}<br class="wikidpad" />
+.navigation a {<ul class="wikidpad normalindent">background: #395870;<br class="wikidpad" />
+background: linear-gradient(#49708f, #293f50);<br class="wikidpad" />
+border-right: 1px solid rgba(0, 0, 0, .3);<br class="wikidpad" />
+color: #fff;<br class="wikidpad" />
+padding: 12px 20px;<br class="wikidpad" />
+text-decoration: none;</ul>
+}<br class="wikidpad" />
+.navigation a:hover {<ul class="wikidpad normalindent">background: #314b60;<br class="wikidpad" />
+box-shadow: inset 0 0 10px 1px rgba(0, 0, 0, .3);</ul>
+}<br class="wikidpad" />
+.navigation li:first-child a {<ul class="wikidpad normalindent">border-radius: 4px 0 0 4px;</ul>
+}<br class="wikidpad" />
+.navigation li:last-child a {<ul class="wikidpad normalindent">border-right: 0;<br class="wikidpad" />
+border-radius: 0 4px 4px 0;</ul>
+}<br class="wikidpad" />
+<br class="wikidpad" />
+<b class="wikidpad">Adding Images</b><br class="wikidpad" />
+<br class="wikidpad" />
+To add images to a page, we use the &lt;img&gt; inline element. The &lt;img&gt; element is a self-containing, or empty, element, which means that it doesn’t wrap any other content and it exists as a single tag. For the &lt;img&gt; element to work, a src attribute and value must be included to specify the source of the image. The src attribute value is a URL, typically relative to the server where a website is hosted.<br class="wikidpad" />
+<br class="wikidpad" />
+In conjunction with the src attribute, the alt (alternative text) attribute, which describes the contents of an image, should be applied. The alt attribute value is picked up by search engines and assistive technologies to help convey the purpose of an image. The alt text will be displayed in place of the image if for some reason the image is not available.<br class="wikidpad" />
+<br class="wikidpad" />
+&lt;img src="dog.jpg" alt="A black, brown, and white dog wearing a kerchief"&gt;<br class="wikidpad" />
+<br class="wikidpad" />
+<b class="wikidpad">Supported Image Formats</b><br class="wikidpad" />
+<br class="wikidpad" />
+Images come in a variety of different file formats, and each browser may support (or not support) different formats. By and large, the most commonly supported formats online are gif, jpg, and png images. Of these, the most widely used formats today are jpg and png. The jpg format provides quality images with high color counts while maintaining a decent file size, ideal for faster load times. The png format is great for images with transparencies or low color counts. We most commonly see jpg images used for photographs and png images used for icons or background patterns.<br class="wikidpad" />
+<br class="wikidpad" />
+<b class="wikidpad">Sizing Images</b><br class="wikidpad" />
+<br class="wikidpad" />
+It is important to identify the size of an image in order to tell the browser how large the image should be before the page even loads; thus the browser can reserve space for the image and render the page faster. There are a few different ways to size images so that they work well on a page. One option is to use the width and height attributes directly within the &lt;img&gt; tag in HTML.<br class="wikidpad" />
+<br class="wikidpad" />
+Additionally, images may be sized using the width and height properties in CSS. When both the HTML attributes and CSS properties are used, the CSS attributes will take precedence over the HTML attributes.<br class="wikidpad" />
+<br class="wikidpad" />
+Specifying either a width or height will cause the other dimension to adjust automatically to maintain the aspect ratio of the image. As an example, if we want an image to be 200 pixels tall but are less specifically concerned about how wide it is, we can set the height to 200 pixels, and the width of the image will adjust accordingly. Setting both a width and height will work also; however, doing so may break the aspect ratio of an image, causing it to appear distorted.<br class="wikidpad" />
+<br class="wikidpad" />
+While using the width and height attributes directly in HTML provides some semantic value by noting an image’s original size, it can be difficult to manage numerous images that all need to be the same size. In this event, it’s common practice to use CSS to resize the images.<br class="wikidpad" />
+<br class="wikidpad" />
+<b class="wikidpad">Positioning Images</b><br class="wikidpad" />
+<br class="wikidpad" />
+We can use a number of different approaches to position images on a web page. By default images are positioned as inline-level elements; however, their positions may be changed using CSS, specifically the float, display, and box model properties, including padding, border, and margin.<br class="wikidpad" />
+<br class="wikidpad" />
+<b class="wikidpad">Block Positioning Images</b><br class="wikidpad" />
+<br class="wikidpad" />
+Adding the display property to an image and setting its value to block forces the image to be a block-level element. This makes the image appear on its own line, allowing the surrounding content to be positioned above and below the image.<br class="wikidpad" />
+<br class="wikidpad" />
+img {<ul class="wikidpad normalindent">display: block;</ul>
+}<br class="wikidpad" />
+<br class="wikidpad" />
+<b class="wikidpad">Positioning Images Flush Left or Right</b><br class="wikidpad" />
+<br class="wikidpad" />
+Sometimes displaying an image as inline or block, or perhaps even inline-block, isn’t ideal. We may want the image to appear on the left or right side of its containing element, while all of the other content wraps around the image as necessary. To do this, we use the float property with a value of either left or right.<br class="wikidpad" />
+<br class="wikidpad" />
+Remembering back to Lesson 5, “Positioning Content,” we recall that the float property was originally intended to position images to the left or right of a containing element. Now we’ll use it for that original purpose.<br class="wikidpad" />
+<br class="wikidpad" />
+Floating an image is a start; however, all other content will align directly against it. To provide spacing around an image, we’ll use the margin property. Additionally, we can use the padding, border, and background properties to build a frame for the image, if desired.<br class="wikidpad" />
+<br class="wikidpad" />
+img {<ul class="wikidpad normalindent">background: #eaeaed;<br class="wikidpad" />
+border: 1px solid #9799a7;<br class="wikidpad" />
+float: right;<br class="wikidpad" />
+margin: 8px 0 0 20px;<br class="wikidpad" />
+padding: 4px;</ul>
+}<br class="wikidpad" />
+<br class="wikidpad" />
+<b class="wikidpad">Adding Audio</b><br class="wikidpad" />
+<br class="wikidpad" />
+HTML5 provides a quick and easy way to add audio files to a website by way of the &lt;audio&gt; element. As with the &lt;img&gt; element, the &lt;audio&gt; element accepts a source URL specified by the src attribute. Unlike the &lt;img&gt; element, though, the &lt;audio&gt; element requires both opening and closing tags, which we’ll discuss soon.<br class="wikidpad" />
+<br class="wikidpad" />
+&lt;audio src="jazz.ogg"&gt;&lt;/audio&gt;<br class="wikidpad" />
+<br class="wikidpad" />
+<b class="wikidpad">Audio Attributes</b><br class="wikidpad" />
+<br class="wikidpad" />
+Several other attributes may accompany the src attribute on the &lt;audio&gt; element; the most popular include autoplay, controls, loop, and preload.<br class="wikidpad" />
+<br class="wikidpad" />
+The autoplay, controls, and loop attributes are all Boolean attributes. As Boolean attributes, they don’t require a stated value. Instead, when each is present on the &lt;audio&gt; element its value will be set to true, and the &lt;audio&gt; element will behave accordingly.<br class="wikidpad" />
+<br class="wikidpad" />
+By default, the &lt;audio&gt; element isn’t displayed on a page. If the autoplay Boolean attribute is present on the &lt;audio&gt; element, nothing will appear on the page, but the audio file will automatically play upon loading.<br class="wikidpad" />
+<br class="wikidpad" />
+To display the &lt;audio&gt; element on a page, the controls Boolean attribute is necessary. When it’s applied to the &lt;audio&gt; element, the controls Boolean attribute will display a browser’s default audio controls, including play and pause, seek, and volume controls.<br class="wikidpad" />
+<br class="wikidpad" />
+When present on the &lt;audio&gt; element, the loop Boolean attribute will cause an audio file to repeat continually, from beginning to end.<br class="wikidpad" />
+<br class="wikidpad" />
+Lastly, the preload attribute for the &lt;audio&gt; element helps identify what, if any, information about the audio file should be loaded before the clip is played. It accepts three values: none, auto, and metadata. The none value won’t preload any information about an audio file, while the auto value will preload all information about an audio file. The metadata value sits in between the none and auto values, as it will preload any available metadata information about an audio file, such as the clip’s length, but not all information.<br class="wikidpad" />
+<br class="wikidpad" />
+When the preload attribute isn’t present on the &lt;audio&gt; element, all information about an audio file is loaded, as if the value was set to auto. For this reason, using the preload attribute with a value of metadata or none is a good idea when an audio file is not essential to a page. It’ll help to conserve bandwidth and allow pages to load faster.<br class="wikidpad" />
+<br class="wikidpad" />
+&lt;audio src="jazz.ogg" autoplay&gt;&lt;/audio&gt;<br class="wikidpad" />
+&lt;audio src="jazz.ogg" controls&gt;&lt;/audio&gt;<br class="wikidpad" />
+<br class="wikidpad" />
+<b class="wikidpad">Audio Fallbacks &amp; Multiple Sources</b><br class="wikidpad" />
+<br class="wikidpad" />
+To begin, we’ll remove the src attribute from the &lt;audio&gt; element. Instead, we’ll use the &lt;source&gt; element, with a src attribute, nested inside the &lt;audio&gt; element to define a new source.<br class="wikidpad" />
+<br class="wikidpad" />
+Using a &lt;source&gt; element and src attribute for each file format, we can list one audio file format after the other. We’ll use the type attribute to quickly help the browser identify which audio types are available. When a browser recognizes an audio file format it will load that file and ignore all the others.<br class="wikidpad" />
+<br class="wikidpad" />
+Because it was introduced in HTML5, some browsers may not support the &lt;audio&gt; element. In this case, we can provide a link to download the audio file after any &lt;source&gt; elements within the &lt;audio&gt; element.<br class="wikidpad" />
+<br class="wikidpad" />
+&lt;audio controls&gt;<ul class="wikidpad normalindent">&lt;source src="jazz.ogg" type="audio/ogg"&gt;<br class="wikidpad" />
+&lt;source src="jazz.mp3" type="audio/mpeg"&gt;<br class="wikidpad" />
+&lt;source src="jazz.wav" type="audio/wav"&gt;<br class="wikidpad" />
+Please &lt;a href="jazz.mp3" download&gt;download&lt;/a&gt; the audio file.</ul>
+&lt;/audio&gt;<br class="wikidpad" />
+<br class="wikidpad" />
+<b class="wikidpad">Adding Video</b><br class="wikidpad" />
+<br class="wikidpad" />
+Adding video in HTML5 is very similar to adding audio. We use the &lt;video&gt; element in place of the &lt;audio&gt; element. All of the same attributes (src, autoplay, controls, loop, and preload) and fallbacks apply here, too.<br class="wikidpad" />
+<br class="wikidpad" />
+Since videos take up space on the page, it doesn’t hurt to specify their dimensions, which is most commonly done with width and height properties in CSS. This helps ensure that the video isn’t too large and stays within the implied layout of a page. Additionally, specifying a size, as with images, helps the browser render videos faster and allows it to allocate the proper space needed for the video to be displayed.<br class="wikidpad" />
+<br class="wikidpad" />
+<b class="wikidpad">Poster Attribute</b><br class="wikidpad" />
+<br class="wikidpad" />
+One additional attribute available for the &lt;video&gt; element is the poster attribute. The poster attribute allows us to specify an image, in the form of a URL, to be shown before a video is played. The example below uses a screen capture from the video as the poster for the Earth video.<br class="wikidpad" />
+<br class="wikidpad" />
+&lt;video src="earth.ogv" controls poster="earth-video-screenshot.jpg"&gt;&lt;/video&gt;<br class="wikidpad" />
+<br class="wikidpad" />
+<b class="wikidpad">Video Fallbacks</b><br class="wikidpad" />
+<br class="wikidpad" />
+As with the &lt;audio&gt; element, video fallbacks are also necessary. The same markup format, with multiple &lt;source&gt; elements for each file type and a plain text fallback, also applies within the &lt;video&gt; element.<br class="wikidpad" />
+<br class="wikidpad" />
+&lt;video controls&gt;<ul class="wikidpad normalindent">&lt;source src="earth.ogv" type="video/ogg"&gt;<br class="wikidpad" />
+&lt;source src="earth.mp4" type="video/mp4"&gt;<br class="wikidpad" />
+Please &lt;a href="earth.mp4" download&gt;download&lt;/a&gt; the video.</ul>
+&lt;/video&gt;<br class="wikidpad" />
+<br class="wikidpad" />
+<b class="wikidpad">Adding Inline Frames</b><br class="wikidpad" />
+<br class="wikidpad" />
+Another way to add content to a page is to embed another HTML page within the current page. This is done using an inline frame, or &lt;iframe&gt; element. The &lt;iframe&gt; element accepts the URL of another HTML page within the src attribute value; this causes the content from the embedded HTML page to be displayed on the current page. The value of the src attribute may be a URL relative to the page the &lt;iframe&gt; element appears on or an absolute URL for an entirely external page.<br class="wikidpad" />
+<br class="wikidpad" />
+Many pages use the &lt;iframe&gt; element to embed media onto a page from an external website such as Google Maps, YouTube, and others.<br class="wikidpad" />
+<br class="wikidpad" />
+&lt;iframe src="https://www.google.com/maps/embed?..."&gt;&lt;/iframe&gt;<br class="wikidpad" />
+<br class="wikidpad" />
+The &lt;iframe&gt; element has a few default styles, including an inset border and a width and height. These styles can be adjusted using the frameborder, width, and height HTML attributes or by using the border, width, and height CSS properties.<br class="wikidpad" />
+<br class="wikidpad" />
+<b class="wikidpad">Seamless Inline Frames</b><br class="wikidpad" />
+<br class="wikidpad" />
+Pages referenced within the src attribute of an &lt;iframe&gt; element play by their own rules, as they do not inherit any styles or behaviors from the page they are referenced on. Any styles applied to a page that includes an &lt;iframe&gt; element will not be inherited by the page referenced within the &lt;iframe&gt; element. Additionally, links within the page referenced within the &lt;iframe&gt; element will open inside that frame, leaving the page that contains the &lt;iframe&gt; element unchanged.<br class="wikidpad" />
+<br class="wikidpad" />
+There will be times when we’ll want to change these behaviors, and the seamless Boolean attribute will allow us to do just that. When present on the &lt;iframe&gt; element, the seamless Boolean attribute allows styles from the page that includes an &lt;iframe&gt; element to be inherited by the page referenced within the &lt;iframe&gt; element. Additionally, the seamless Boolean attribute allows links clicked on a page referenced within an &lt;iframe&gt; element to be opened within the same window as the original page that includes the &lt;iframe&gt; element.<br class="wikidpad" />
+<br class="wikidpad" />
+&lt;iframe src="contact.html" seamless&gt;&lt;/iframe&gt;<br class="wikidpad" />
+<br class="wikidpad" />
+The seamless Boolean attribute is a new attribute introduced in HTML5. Although the browser support for this attribute is growing, it will not work within older browsers. It’s advisable to test the seamless Boolean attribute before using it.<br class="wikidpad" />
+<br class="wikidpad" />
+<b class="wikidpad">Figure</b><br class="wikidpad" />
+<br class="wikidpad" />
+The &lt;figure&gt; block-level element is used to identify and wrap self-contained content, often in the form of media. It may surround images, audio clips, videos, blocks of code, diagrams, illustrations, or other self-contained media. More than one item of self-contained content, such as multiple images or videos, may be contained within the &lt;figure&gt; element at a time. If the &lt;figure&gt; element is moved from the main portion of a page to another location (for example, the bottom of the page), it should not disrupt the content or legibility of the page.<br class="wikidpad" />
+<br class="wikidpad" />
+&lt;figure&gt;<ul class="wikidpad normalindent">&lt;img src="dog.jpg" alt="A black, brown, and white dog wearing a kerchief"&gt;</ul>
+&lt;/figure&gt;<br class="wikidpad" />
+<br class="wikidpad" />
+<b class="wikidpad">Figure Caption</b><br class="wikidpad" />
+<br class="wikidpad" />
+To add a caption or legend to the &lt;figure&gt; element, the &lt;figcaption&gt; element is used. The &lt;figcaption&gt; may appear at the top of, bottom of, or anywhere within the &lt;figure&gt; element; however, it may only appear once. When it’s used, the &lt;figcaption&gt; element will serve as the caption for all content within the &lt;figure&gt; element.<br class="wikidpad" />
+<br class="wikidpad" />
+Additionally, the &lt;figcaption&gt; element may replace an &lt;img&gt; element’s alt attribute if the content of the &lt;figcaption&gt; element provides a useful description of the visual content of the image.<br class="wikidpad" />
+<br class="wikidpad" />
+&lt;figure&gt;<ul class="wikidpad normalindent">&lt;img src="dog.jpg"&gt;<br class="wikidpad" />
+&lt;figcaption&gt;A beautiful black, brown, and white hound dog wearing kerchief.&lt;/figcaption&gt;</ul>
+&lt;/figure&gt;<br class="wikidpad" />
+<br class="wikidpad" />
+Not all forms of media need to be included within a &lt;figure&gt; element or include a &lt;figcaption&gt; element; only those that are self-contained and belong together as a group.<br class="wikidpad" />
+<br class="wikidpad" />
+<b class="wikidpad">Initializing a Form</b><br class="wikidpad" />
+<br class="wikidpad" />
+A handful of different attributes can be applied to the &lt;form&gt; element, the most common of which are action and method. The action attribute contains the URL to which information included within the form will be sent for processing by the server. The method attribute is the HTTP method browsers should use to submit the form data. Both of these &lt;form&gt; attributes pertain to submitting and processing data.<br class="wikidpad" />
+<br class="wikidpad" />
+Originally, the only two text-based type attribute values were text and password (for password inputs); however, HTML5 brought along a handful of new type attribute values.<br class="wikidpad" />
+<br class="wikidpad" />
+<b class="wikidpad">Text Fields</b><br class="wikidpad" />
+<br class="wikidpad" />
+One of the primary elements used to obtain text from users is the &lt;input&gt; element. The &lt;input&gt; element uses the type attribute to define what type of information is to be captured within the control. The most popular type attribute value is text, which denotes a single line of text input.<br class="wikidpad" />
+<br class="wikidpad" />
+&lt;input type="text" name="username"&gt;<br class="wikidpad" />
+<br class="wikidpad" />
+These values were added to provide clearer semantic meaning for inputs as well as to provide better controls for users. Should a browser not understand one of these HTML5 type attribute values, it will automatically fall back to the text attribute value. Below is a list of the new HTML5 input types.<br class="wikidpad" />
+<br class="wikidpad" />
+- color			- date			- datetime<br class="wikidpad" />
+- email			- month			- number<br class="wikidpad" />
+- range			- search		- tel<br class="wikidpad" />
+- time			- url			- week<br class="wikidpad" />
+<br class="wikidpad" />
+<b class="wikidpad">Submit Input</b><br class="wikidpad" />
+<br class="wikidpad" />
+Users click the submit button to process data after filling out a form. The submit button is created using the &lt;input&gt; element with a type attribute value of submit. The value attribute is used to specify the text that appears within the button.<br class="wikidpad" />
+<br class="wikidpad" />
+&lt;input type="submit" name="submit" value="Send"&gt;<br class="wikidpad" />
+<br class="wikidpad" />
+<b class="wikidpad">Hidden Input</b><br class="wikidpad" />
+<br class="wikidpad" />
+Hidden inputs provide a way to pass data to the server without displaying it to users. Hidden inputs are typically used for tracking codes, keys, or other information that is not pertinent to the user but is helpful when processing the form. This information is not displayed on the page; however, it can be found by viewing the source code of a page. It should therefore not be used for sensitive or secure information.<br class="wikidpad" />
+<br class="wikidpad" />
+To create a hidden input, you use the hidden value for the type attribute. Additionally, include the appropriate name and value attribute values.<br class="wikidpad" />
+<br class="wikidpad" />
+&lt;input type="hidden" name="tracking-code" value="abc-123"&gt;<br class="wikidpad" />
+<br class="wikidpad" />
+<b class="wikidpad">File Input</b><br class="wikidpad" />
+<br class="wikidpad" />
+To allow users to add a file to a form, much like attaching a file to an email, use the file value for the type attribute.<br class="wikidpad" />
+<br class="wikidpad" />
+&lt;input type="file" name="file"&gt;<br class="wikidpad" />
+<br class="wikidpad" />
+<b class="wikidpad">Label</b><br class="wikidpad" />
+<br class="wikidpad" />
+Labels provide captions or headings for form controls, unambiguously tying them together and creating an accessible form for all users and assistive technologies. Created using the &lt;label&gt; element, labels should include text that describes the inputs or controls they pertain to.<br class="wikidpad" />
+<br class="wikidpad" />
+Labels may include a for attribute. The value of the for attribute should be the same as the value of the id attribute on the form control the label corresponds to. Matching up the for and id attribute values ties the two elements together, allowing users to click on the &lt;label&gt; element to bring focus to the proper form control.<br class="wikidpad" />
+<br class="wikidpad" />
+&lt;label for="username"&gt;Username&lt;/label&gt;<br class="wikidpad" />
+&lt;input type="text" name="username" id="username"&gt;<br class="wikidpad" />
+<br class="wikidpad" />
+If desired, the &lt;label&gt; element may wrap form controls, such as radio buttons or check boxes. Doing so allows omission of the for and id attributes.<br class="wikidpad" />
+<br class="wikidpad" />
+&lt;label&gt;<ul class="wikidpad normalindent">&lt;input type="radio" name="day" value="Friday" checked&gt; Friday</ul>
+&lt;/label&gt;<br class="wikidpad" />
+&lt;label&gt;<ul class="wikidpad normalindent">&lt;input type="radio" name="day" value="Saturday"&gt; Saturday</ul>
+&lt;/label&gt;<br class="wikidpad" />
+&lt;label&gt;<ul class="wikidpad normalindent">&lt;input type="radio" name="day" value="Sunday"&gt; Sunday</ul>
+&lt;/label&gt;<br class="wikidpad" />
+<br class="wikidpad" />
+<b class="wikidpad">Fieldset</b><br class="wikidpad" />
+<br class="wikidpad" />
+Fieldsets group form controls and labels into organized sections. Much like a &lt;section&gt; or other structural element, the &lt;fieldset&gt; is a block-level element that wraps related elements, specifically within a &lt;form&gt; element, for better organization. Fieldsets, by default, also include a border outline, which can be modified using CSS.<br class="wikidpad" />
+<br class="wikidpad" />
+&lt;fieldset&gt;<ul class="wikidpad normalindent">&lt;label&gt;<ul class="wikidpad normalindent">Username<br class="wikidpad" />
+&lt;input type="text" name="username"&gt;</ul>
+&lt;/label&gt;<br class="wikidpad" />
+&lt;label&gt;<ul class="wikidpad normalindent">Password<br class="wikidpad" />
+&lt;input type="text" name="password"&gt;</ul>
+&lt;/label&gt;</ul>
+&lt;/fieldset&gt;<br class="wikidpad" />
+<br class="wikidpad" />
+<b class="wikidpad">Legend</b><br class="wikidpad" />
+<br class="wikidpad" />
+A legend provides a caption, or heading, for the &lt;fieldset&gt; element. The &lt;legend&gt; element wraps text describing the form controls that fall within the fieldset. The markup should include the &lt;legend&gt; element directly after the opening &lt;fieldset&gt; tag. On the page, the legend will appear within the top left part of the fieldset border.<br class="wikidpad" />
+<br class="wikidpad" />
+&lt;fieldset&gt;<ul class="wikidpad normalindent">&lt;legend&gt;Login&lt;/legend&gt;<br class="wikidpad" />
+&lt;label&gt;<ul class="wikidpad normalindent">Username<br class="wikidpad" />
+&lt;input type="text" name="username"&gt;</ul>
+&lt;/label&gt;<br class="wikidpad" />
+&lt;label&gt;<ul class="wikidpad normalindent">Password<br class="wikidpad" />
+&lt;input type="text" name="password"&gt;</ul>
+&lt;/label&gt;</ul>
+&lt;/fieldset&gt;<br class="wikidpad" />
+<br class="wikidpad" />
+<b class="wikidpad">Disabled</b><br class="wikidpad" />
+<br class="wikidpad" />
+The disabled Boolean attribute turns off an element or control so that it is not available for interaction or input. Elements that are disabled will not send any value to the server for form processing.<br class="wikidpad" />
+<br class="wikidpad" />
+Applying the disabled Boolean attribute to a &lt;fieldset&gt; element will disable all of the form controls within the fieldset. If the type attribute has a hidden value, the hidden Boolean attribute is ignored.<br class="wikidpad" />
+<br class="wikidpad" />
+&lt;label&gt;<ul class="wikidpad normalindent">Username<br class="wikidpad" />
+&lt;input type="text" name="username" disabled&gt;</ul>
+&lt;/label&gt;<br class="wikidpad" />
+<br class="wikidpad" />
+<b class="wikidpad">Placeholder</b><br class="wikidpad" />
+<br class="wikidpad" />
+The placeholder HTML5 attribute provides a hint or tip within the form control of an &lt;input&gt; or &lt;textarea&gt; element that disappears once the control is clicked in or gains focus. This is used to give users further information on how the form input should be filled in, for example, the email address format to use.<br class="wikidpad" />
+<br class="wikidpad" />
+&lt;label&gt;<ul class="wikidpad normalindent">Email Address<br class="wikidpad" />
+&lt;input type="email" name="email-address" placeholder="name@domain.com"&gt;</ul>
+&lt;/label&gt;<br class="wikidpad" />
+<br class="wikidpad" />
+<b class="wikidpad">Required</b><br class="wikidpad" />
+<br class="wikidpad" />
+The required HTML5 Boolean attribute enforces that an element or form control must contain a value upon being submitted to the server. Should an element or form control not have a value, an error message will be displayed requesting that the user complete the required field. Currently, error message styles are controlled by the browser and cannot be styled with CSS. Invalid elements and form controls, on the other hand, can be styled using the :optional and :required CSS pseudo-classes.<br class="wikidpad" />
+<br class="wikidpad" />
+Validation also occurs specific to a control’s type. For example, an &lt;input&gt; element with a type attribute value of email will require not only that a value exist within the control, but also that it is a valid email address.<br class="wikidpad" />
+<br class="wikidpad" />
+&lt;label&gt;<ul class="wikidpad normalindent">Email Address<br class="wikidpad" />
+&lt;input type="email" name="email-address" required&gt;</ul>
+&lt;/label&gt;<br class="wikidpad" />
+<br class="wikidpad" />
+<b class="wikidpad">Additional Attributes</b><br class="wikidpad" />
+<br class="wikidpad" />
+Other form and form control attributes include, but are not limited to, the following. Please feel free to research these attributes as necessary.<br class="wikidpad" />
+<br class="wikidpad" />
+- accept					- autocomplete					- autofocus<br class="wikidpad" />
+- formaction				- formenctype					- formmethod<br class="wikidpad" />
+- formnovalidate			- formtarget					- max<br class="wikidpad" />
+- maxlength					- min							- pattern<br class="wikidpad" />
+- readonly					- selectionDirection			- step<br class="wikidpad" />
+<br class="wikidpad" />
+<b class="wikidpad">Login Form Example</b><br class="wikidpad" />
+<br class="wikidpad" />
+The following is an example of a complete login form that includes several different elements and attributes to illustrate what we’ve covered so far. These elements are then styled using CSS.<br class="wikidpad" />
+<br class="wikidpad" />
+HTML<br class="wikidpad" />
+&lt;form&gt;<ul class="wikidpad normalindent">&lt;fieldset class="account-info"&gt;<ul class="wikidpad normalindent">&lt;label&gt;<ul class="wikidpad normalindent">Username<br class="wikidpad" />
+&lt;input type="text" name="username"&gt;</ul>
+&lt;/label&gt;<br class="wikidpad" />
+&lt;label&gt;<ul class="wikidpad normalindent">Password<br class="wikidpad" />
+&lt;input type="password" name="password"&gt;</ul>
+&lt;/label&gt;</ul>
+&lt;/fieldset&gt;<br class="wikidpad" />
+&lt;fieldset class="account-action"&gt;<ul class="wikidpad normalindent">&lt;input class="btn" type="submit" name="submit" value="Login"&gt;<br class="wikidpad" />
+&lt;label&gt;<ul class="wikidpad normalindent">&lt;input type="checkbox" name="remember"&gt; Stay signed in</ul>
+&lt;/label&gt;</ul>
+&lt;/fieldset&gt;</ul>
+&lt;/form&gt;<br class="wikidpad" />
+<br class="wikidpad" />
+CSS<br class="wikidpad" />
+*,<br class="wikidpad" />
+*:before,<br class="wikidpad" />
+*:after {<ul class="wikidpad normalindent">box-sizing: border-box;</ul>
+}<br class="wikidpad" />
+form {<ul class="wikidpad normalindent">border: 1px solid #c6c7cc;<br class="wikidpad" />
+border-radius: 5px;<br class="wikidpad" />
+font: 14px/1.4 "Helvetica Neue", Helvetica, Arial, sans-serif;<br class="wikidpad" />
+overflow: hidden;<br class="wikidpad" />
+width: 240px;</ul>
+}<br class="wikidpad" />
+fieldset {<ul class="wikidpad normalindent">border: 0;<br class="wikidpad" />
+margin: 0;<br class="wikidpad" />
+padding: 0;</ul>
+}<br class="wikidpad" />
+input {<ul class="wikidpad normalindent">border-radius: 5px;<br class="wikidpad" />
+font: 14px/1.4 "Helvetica Neue", Helvetica, Arial, sans-serif;<br class="wikidpad" />
+margin: 0;</ul>
+}<br class="wikidpad" />
+.account-info {<ul class="wikidpad normalindent">padding: 20px 20px 0 20px;</ul>
+}<br class="wikidpad" />
+.account-info label {<ul class="wikidpad normalindent">color: #395870;<br class="wikidpad" />
+display: block;<br class="wikidpad" />
+font-weight: bold;<br class="wikidpad" />
+margin-bottom: 20px;</ul>
+}<br class="wikidpad" />
+.account-info input {<ul class="wikidpad normalindent">background: #fff;<br class="wikidpad" />
+border: 1px solid #c6c7cc;<ul class="wikidpad normalindent">box-shadow: inset 0 1px 1px rgba(0, 0, 0, .1);</ul>
+color: #636466;<br class="wikidpad" />
+padding: 6px;<br class="wikidpad" />
+margin-top: 6px;<br class="wikidpad" />
+width: 100%;</ul>
+}<br class="wikidpad" />
+.account-action {<ul class="wikidpad normalindent">background: #f0f0f2;<br class="wikidpad" />
+border-top: 1px solid #c6c7cc;<br class="wikidpad" />
+padding: 20px;</ul>
+}<br class="wikidpad" />
+.account-action .btn {<ul class="wikidpad normalindent">background: linear-gradient(#49708f, #293f50);<br class="wikidpad" />
+border: 0;<br class="wikidpad" />
+color: #fff;<br class="wikidpad" />
+cursor: pointer;<br class="wikidpad" />
+font-weight: bold;<br class="wikidpad" />
+float: left;<br class="wikidpad" />
+padding: 8px 16px;</ul>
+}<br class="wikidpad" />
+.account-action label {<ul class="wikidpad normalindent">color: #7c7c80;<br class="wikidpad" />
+font-size: 12px;<br class="wikidpad" />
+float: left;<br class="wikidpad" />
+margin: 10px 0 0 20px;</ul>
+}<br class="wikidpad" />
+<br class="wikidpad" />
+<b class="wikidpad">Creating a Table</b><br class="wikidpad" />
+<br class="wikidpad" />
+Tables are made up of data that is contained within columns and rows, and HTML supplies several different elements for defining and structuring these items. At a minimum a table must consist of &lt;table&gt;, &lt;tr&gt; (table row), and &lt;td&gt; (table data) elements. For greater structure and additional semantic value, tables may include the &lt;th&gt; (table header) element and a few other elements as well. When all of these elements are working together, they produce a solid table.<br class="wikidpad" />
+<br class="wikidpad" />
+<b class="wikidpad">Table Headers</b><br class="wikidpad" />
+<br class="wikidpad" />
+Table headers may be used within both columns and rows; the data within a table determines where the headers are appropriate. The scope attribute helps to identify exactly what content a table header relates to. The scope attribute indicates with the values col, row, colgroup, and rowgroup whether a table header applies to a row or column. The most commonly used values are col and row. The col value indicates that every cell within the column relates directly to that table header, and the row value indicates that every cell within the row relates directly to that table header.<br class="wikidpad" />
+<br class="wikidpad" />
+Using the &lt;th&gt; element, along with the scope attribute, tremendously helps screen readers and assistive technologies make sense of a table. Therefore, they are also beneficial to those browsing a web page using those technologies.<br class="wikidpad" />
+<br class="wikidpad" />
+Additionally, depending on the browser, table headers may receive some default styling, usually bold and centered.<br class="wikidpad" />
+<br class="wikidpad" />
+<b class="wikidpad">Table Structure</b><br class="wikidpad" />
+<br class="wikidpad" />
+Knowing how to build a table and arrange data is extremely powerful; however, there are a few additional elements to help us organize the data and structure of a table. These elements include &lt;caption&gt;, &lt;thead&gt;, &lt;tbody&gt;, and &lt;tfoot&gt;.<br class="wikidpad" />
+<br class="wikidpad" />
+Table Caption<br class="wikidpad" />
+<br class="wikidpad" />
+The &lt;caption&gt; element provides a caption or title for a table. A caption will help users identify what the table pertains to and what data they can expect to find within it. The &lt;caption&gt; element must come immediately after the opening &lt;table&gt; tag, and it is positioned at the top of a table by default.<br class="wikidpad" />
+<br class="wikidpad" />
+&lt;table&gt;<ul class="wikidpad normalindent">&lt;caption&gt;Design and Front-End Development Books&lt;/caption&gt;<br class="wikidpad" />
+...</ul>
+&lt;/table&gt;<br class="wikidpad" />
+<br class="wikidpad" />
+Table Head, Body, &amp; Foot<br class="wikidpad" />
+<br class="wikidpad" />
+The content within tables can be broken up into multiple groups, including a head, a body, and a foot. The &lt;thead&gt; (table head), &lt;tbody&gt; (table body), and &lt;tfoot&gt; (table foot) elements help to structurally organize tables.<br class="wikidpad" />
+<br class="wikidpad" />
+The table head element, &lt;thead&gt;, wraps the heading row or rows of a table to denote the head. The table head should be placed at the top of a table, after any &lt;caption&gt; element and before any &lt;tbody&gt; element.<br class="wikidpad" />
+<br class="wikidpad" />
+After the table head may come either the &lt;tbody&gt; or &lt;tfoot&gt; elements. Originally the &lt;tfoot&gt; element had to come immediately after the &lt;thead&gt; element, but HTML5 has provided leeway here. These elements may now occur in any order so long as they are never parent elements of one another. The &lt;tbody&gt; element should contain the primary data within a table, while the &lt;tfoot&gt; element contains data that outlines the contents of a table.<br class="wikidpad" />
+<br class="wikidpad" />
+<b class="wikidpad">Combining Multiple Cells</b><br class="wikidpad" />
+<br class="wikidpad" />
+Often, two or more cells need to be combined into one without breaking the overall row and column layout. Perhaps two cells next to each other contain the same data, there’s an empty cell, or the cells should be combined for styling purposes. In these cases we can use the colspan and rowspan attributes. These two attributes work on either the &lt;td&gt; or &lt;th&gt; elements.<br class="wikidpad" />
+<br class="wikidpad" />
+The colspan attribute is used to span a single cell across multiple columns within a table, while the rowspan attribute is used to span a single cell across multiple rows. Each attribute accepts an integer value that indicates the number of cells to span across, with 1 being the default value.<br class="wikidpad" />
+<br class="wikidpad" />
+&lt;table&gt;<ul class="wikidpad normalindent">&lt;caption&gt;Design and Front-End Development Books&lt;/caption&gt;<br class="wikidpad" />
+&lt;thead&gt;<ul class="wikidpad normalindent">&lt;tr&gt;<ul class="wikidpad normalindent">&lt;th scope="col" colspan="2"&gt;Item&lt;/th&gt;<br class="wikidpad" />
+&lt;th scope="col"&gt;Qty&lt;/th&gt;<br class="wikidpad" />
+&lt;th scope="col"&gt;Price&lt;/th&gt;</ul>
+&lt;/tr&gt;</ul>
+&lt;/thead&gt;<br class="wikidpad" />
+&lt;tbody&gt;<ul class="wikidpad normalindent">&lt;tr&gt;<ul class="wikidpad normalindent">&lt;td&gt;Don&#8217;t Make Me Think by Steve Krug&lt;/td&gt;<br class="wikidpad" />
+&lt;td&gt;In Stock&lt;/td&gt;<br class="wikidpad" />
+&lt;td&gt;1&lt;/td&gt;<br class="wikidpad" />
+&lt;td&gt;$30.02&lt;/td&gt;</ul>
+&lt;/tr&gt;<br class="wikidpad" />
+...</ul>
+&lt;/tbody&gt;<br class="wikidpad" />
+&lt;tfoot&gt;<ul class="wikidpad normalindent">&lt;tr&gt;<ul class="wikidpad normalindent">&lt;td colspan="3"&gt;Subtotal&lt;/td&gt;<br class="wikidpad" />
+&lt;td&gt;$135.36&lt;/td&gt;</ul>
+&lt;/tr&gt;<br class="wikidpad" />
+&lt;tr&gt;<ul class="wikidpad normalindent">&lt;td colspan="3"&gt;Tax&lt;/td&gt;<br class="wikidpad" />
+&lt;td&gt;$13.54&lt;/td&gt;</ul>
+&lt;/tr&gt;<br class="wikidpad" />
+&lt;tr&gt;<ul class="wikidpad normalindent">&lt;td colspan="3"&gt;Total&lt;/td&gt;<br class="wikidpad" />
+&lt;td&gt;$148.90&lt;/td&gt;</ul>
+&lt;/tr&gt;</ul>
+&lt;/tfoot&gt;</ul>
+&lt;/table&gt;<br class="wikidpad" />
+<br class="wikidpad" />
+<b class="wikidpad">Table Borders</b><br class="wikidpad" />
+<br class="wikidpad" />
+Effective use of borders can help make tables more comprehensible. Borders around a table or individual cells can make a large impact when a user is trying to interpret data and quickly scan for information. When styling table borders with CSS there are two properties that will quickly come in handy: border-collapse and border-spacing.<br class="wikidpad" />
+<br class="wikidpad" />
+<b class="wikidpad">Border Collapse Property</b><br class="wikidpad" />
+<br class="wikidpad" />
+Tables consist of a parent &lt;table&gt; element as well as nested &lt;th&gt; or &lt;td&gt; elements. When we apply borders around these elements those borders will begin to stack up, with the border of one element sitting next to that of another element. For example, if we put a 2-pixel border around an entire table and then an additional 2-pixel border around each table cell, there would be a 4-pixel border around every cell in the table.<br class="wikidpad" />
+<br class="wikidpad" />
+The border-collapse property determines a table’s border model. There are three values for the border-collapse property: collapse, separate, and inherit. By default, the border-collapse property value is separate, meaning that all of the different borders will stack up next to one another, as described above. The collapse property, on the other hand, condenses the borders into one, choosing the table cell as the primary border.<br class="wikidpad" />
+<br class="wikidpad" />
+table {<ul class="wikidpad normalindent">border-collapse: collapse;</ul>
+}<br class="wikidpad" />
+th,<br class="wikidpad" />
+td {<ul class="wikidpad normalindent">border: 1px solid #cecfd5;<br class="wikidpad" />
+padding: 10px 15px;</ul>
+}<br class="wikidpad" />
+<br class="wikidpad" />
+<b class="wikidpad">Border Spacing Property</b><br class="wikidpad" />
+<br class="wikidpad" />
+As the border-collapse property with the separate value allows borders to be stacked up against one another, the border-spacing property can determine how much space, if any, appears between the borders.<br class="wikidpad" />
+<br class="wikidpad" />
+For example, a table with a 1-pixel border around the entire table and a 1-pixel border around each cell will have a 2-pixel border all around every cell because the borders stack up next to one another. Adding in a border-spacing value of 4 pixels separates the borders by 4 pixels.<br class="wikidpad" />
+<br class="wikidpad" />
+table {<ul class="wikidpad normalindent">border-collapse: separate;<br class="wikidpad" />
+border-spacing: 4px;</ul>
+}<br class="wikidpad" />
+table,<br class="wikidpad" />
+th,<br class="wikidpad" />
+td {<ul class="wikidpad normalindent">border: 1px solid #cecfd5;</ul>
+}<br class="wikidpad" />
+th,<br class="wikidpad" />
+td {<ul class="wikidpad normalindent">padding: 10px 15px;</ul>
+}<br class="wikidpad" />
+<br class="wikidpad" />
+The border-spacing property works only when the border-collapse property value is separate, its default value. If the border-collapse property hasn’t been previously used, we can use the border-spacing property without worry.<br class="wikidpad" />
+<br class="wikidpad" />
+Additionally, the border-spacing property may accept two length values: the first value for horizontal spacing and the second value for vertical spacing. The declaration border-spacing: 5px 10px;, for example, will place 5 pixels of horizontal spacing between borders and 10 pixels of vertical spacing between borders.<br class="wikidpad" />
+<br class="wikidpad" />
+<b class="wikidpad">Adding Borders to Rows</b><br class="wikidpad" />
+<br class="wikidpad" />
+Adding borders to a table can be tricky at times, particularly when putting borders between rows. Within a table, borders cannot be applied to &lt;tr&gt; elements or table structural elements, so when we want to put a border between rows some thought is required.<br class="wikidpad" />
+<br class="wikidpad" />
+We’ll begin by making sure the table’s border-collapse property value is set to collapse, and then we’ll add a bottom border to each table cell, regardless of whether it’s a &lt;th&gt; or &lt;td&gt; element. If we wish, we can remove the bottom border from the cells within the last row of the table by using the :last-child pseudo-class selector to select the last &lt;tr&gt; element within the table and target the &lt;td&gt; elements within that row. Additionally, if a table is using the structural elements, we’ll want to make sure to prequalify the last row of the table as being within the &lt;tfoot&gt; element.<br class="wikidpad" />
+<br class="wikidpad" />
+table {<ul class="wikidpad normalindent">border-collapse: collapse;</ul>
+}<br class="wikidpad" />
+th,<br class="wikidpad" />
+td {<ul class="wikidpad normalindent">border-bottom: 1px solid #cecfd5;<br class="wikidpad" />
+padding: 10px 15px;</ul>
+}<br class="wikidpad" />
+tfoot tr:last-child td {<ul class="wikidpad normalindent">border-bottom: 0;</ul>
+}<br class="wikidpad" />
+<br class="wikidpad" />
+<b class="wikidpad">Table Striping</b><br class="wikidpad" />
+<br class="wikidpad" />
+In the effort to make tables more legible, one common design practice is to “stripe” table rows with alternating background colors. This makes the rows clearer and provides a visual cue for scanning information. One way to do this is to place a class on every other &lt;tr&gt; element and set a background color to that class. Another, easier way is to use the :nth-child pseudo-class selector with an even or odd argument to select every other &lt;tr&gt; element.<br class="wikidpad" />
+<br class="wikidpad" />
+Here, our table of books uses the :nth-child pseudo-class selector with an even argument to select all even table rows within the table and apply a gray background. Consequently, every other row within the table body is gray.<br class="wikidpad" />
+<br class="wikidpad" />
+table {<ul class="wikidpad normalindent">border-collapse: separate;<br class="wikidpad" />
+border-spacing: 0;</ul>
+}<br class="wikidpad" />
+th,<br class="wikidpad" />
+td {<ul class="wikidpad normalindent">padding: 10px 15px;</ul>
+}<br class="wikidpad" />
+thead {<ul class="wikidpad normalindent">background: #395870;<br class="wikidpad" />
+color: #fff;</ul>
+}<br class="wikidpad" />
+tbody tr:nth-child(even) {<ul class="wikidpad normalindent">background: #f0f0f2;</ul>
+}<br class="wikidpad" />
+td {<ul class="wikidpad normalindent">border-bottom: 1px solid #cecfd5;<br class="wikidpad" />
+border-right: 1px solid #cecfd5;</ul>
+}<br class="wikidpad" />
+td:first-child {<ul class="wikidpad normalindent">border-left: 1px solid #cecfd5;</ul>
+}<br class="wikidpad" />
+<br class="wikidpad" />
+Within this code there are a few intricacies worth mentioning. To begin, the &lt;table&gt; element has an explicit border-collapse property set to separate and a border-spacing property set to 0. The reason for this is that the &lt;td&gt; elements include borders, while the &lt;th&gt; elements do not. Without the border-collapse property set to separate the borders of the &lt;td&gt; elements would make the body and foot of the table wider than the head.<br class="wikidpad" />
+<br class="wikidpad" />
+Since the border-collapse property is set to separate we need to be careful as to how borders are applied to &lt;td&gt; elements. Here borders are set to the right and bottom of all &lt;td&gt; elements. Then, the very first &lt;td&gt; element within a &lt;tr&gt; element will receive a left border. As all of the &lt;td&gt; elements stack together so do their borders, providing the appearance of a solid border around each element.<br class="wikidpad" />
+<br class="wikidpad" />
+Lastly, all &lt;th&gt; elements receive a blue background, and every even &lt;tr&gt; element receives a gray background by way of the :nth-child pseudo-class selector.<br class="wikidpad" />
+<br class="wikidpad" />
+<a name=".h119476" class="wikidpad"></a><h3 class="wikidpad heading-level3">Other notes</h3>
+HTML<br class="wikidpad" />
+- Strictly use double quotes, not single or completely omitted quotes<br class="wikidpad" />
+- Remove the forward slash at the end of self-closing elements<ul class="wikidpad normalindent">BAD: &lt;img src=chicago.jpg alt="Chicago, the third most populous city in the United States" /&gt;<br class="wikidpad" />
+GOOD: &lt;img src="chicago.jpg" alt="Chicago, the third most populous city in the United States"&gt;</ul>
+- Images should always include the alt attribute. Screen readers and other accessibility software rely on the alt attribute to provide context for images. If the image doesn’t contain anything of relevance, the alt attribute should still be included; however, the value should be left blank so that screen readers will ignore it rather than read the name of the image file.<br class="wikidpad" />
+- If an image doesn’t have a meaningful value—perhaps it is part of the user interface, for example—it should be included as a CSS background image if at all possible, not as an &lt;img&gt; element.<br class="wikidpad" />
+<br class="wikidpad" />
+CSS:<br class="wikidpad" />
+- It is a good practice to use comments to build a table of contents at the top the CSS file. <br class="wikidpad" />
+- Class names should be all lowercase and should use hyphen delimiters. (.alert-message)<br class="wikidpad" />
+- Try your best not to use IDs within our selectors<br class="wikidpad" />
+- Try to keep the specificity of your selectors as low as possible<br class="wikidpad" />
+- Nest your selectors only two to three levels deep, and remove as many location-based qualifying selectors as possible.<br class="wikidpad" />
+- Use Shorthand Properties &amp; Values<br class="wikidpad" />
+- Drop Units from Zero Values<br class="wikidpad" />
+- Group &amp; Align Vendor Prefixes<br class="wikidpad" />
+<br class="wikidpad" />
+BAD:<br class="wikidpad" />
+div {<ul class="wikidpad normalindent">background: -webkit-linear-gradient(#a1d3b0, #f6f1d3);<br class="wikidpad" />
+background: -moz-linear-gradient(#a1d3b0, #f6f1d3);<br class="wikidpad" />
+background: linear-gradient(#a1d3b0, #f6f1d3);<br class="wikidpad" />
+-webkit-box-sizing: border-box;<br class="wikidpad" />
+-moz-box-sizing: border-box;<br class="wikidpad" />
+box-sizing: border-box;</ul>
+}<br class="wikidpad" />
+<br class="wikidpad" />
+GOOD: <br class="wikidpad" />
+div {<br class="wikidpad" />
+background: -webkit-linear-gradient(#a1d3b0, #f6f1d3);<br class="wikidpad" />
+background:    -moz-linear-gradient(#a1d3b0, #f6f1d3);<br class="wikidpad" />
+background:         linear-gradient(#a1d3b0, #f6f1d3);<br class="wikidpad" />
+-webkit-box-sizing: border-box;<ul class="wikidpad normalindent">-moz-box-sizing: border-box;<ul class="wikidpad normalindent">box-sizing: border-box;</ul>
+</ul>
+}<br class="wikidpad" />
+<br class="wikidpad" />
+- When using vendor prefixes we need to make sure to place an unprefixed version of our property and value last, after any prefixed versions. <br class="wikidpad" />
+<br class="wikidpad" />
+<b class="wikidpad">Improving site performance</b><br class="wikidpad" />
+<br class="wikidpad" />
+Best practice for separating styles:<br class="wikidpad" />
+<br class="wikidpad" />
+# Base<ul class="wikidpad normalindent">– normalize.css<br class="wikidpad" />
+– layout.css<br class="wikidpad" />
+– typography.css<br class="wikidpad" />
+</ul>
+# Components<ul class="wikidpad normalindent">– alerts.css<br class="wikidpad" />
+– buttons.css<br class="wikidpad" />
+– forms.css<br class="wikidpad" />
+– list.css<br class="wikidpad" />
+– nav.css<br class="wikidpad" />
+– tables.css<br class="wikidpad" />
+</ul>
+# Modules<ul class="wikidpad normalindent">– aside.css<br class="wikidpad" />
+– footer.css<br class="wikidpad" />
+– header.css<br class="wikidpad" />
+</ul>
+The architecture outlined above includes three directories, all with individual groups of styles. The goal here is to start thinking of websites as systems rather than individual pages, and the code architecture should reflect this mindset. Notice how there aren’t any page specific styles here.<br class="wikidpad" />
+<br class="wikidpad" />
+The base directory includes common styles and variables to be used across the entire website, layout and typography styles for example. The components directory includes styles for specific user interface elements which are broken down into different component files such as alerts and buttons. Lastly, the modules directory includes styles for different sections of a page, which are determined by business needs.<br class="wikidpad" />
+<br class="wikidpad" />
+The sidebar of a page may have list and button styles that are defined within component styles while other styles needed for the sidebar are inherited from the module style.<br class="wikidpad" />
+<br class="wikidpad" />
+How elements are selected within CSS affects performance, including how fast a page renders as well as how practical and modular the styles are in the overall site architecture.<br class="wikidpad" />
+<br class="wikidpad" />
+Simply removing duplicate and unnecessary code is the best way to cut down on file size, however there are additional ways. One way includes minifying and compressing files, such as HTML, CSS, and JavaScript files. Additionally, images may be compressed, removing any unnecessary comments and color profiles.<br class="wikidpad" />
+<br class="wikidpad" />
+Setting up gzip is fairly painless, and the HTML5 Boilerplate has done a great job of getting this going. To gzip files an .htaccess file needs to be added to the root directory of the web server, labeling the specific files to be gzipped. The dot at the beginning of the file name is correct, as the .htaccess file is a hidden file.<br class="wikidpad" />
+<br class="wikidpad" />
+<span class="wikidpad url-link"><a href="http://html5boilerplate.com/" class="wikidpad">http://html5boilerplate.com/</a></span><br class="wikidpad" />
+<br class="wikidpad" />
+Additionally, it is worth noting that .htaccess files only work on Apache web servers, which need to have the following modules enabled.<br class="wikidpad" />
+<br class="wikidpad" />
+mod_setenvif.c 		mod_headers.c 		mod_deflate.c <br class="wikidpad" />
+mod_filter.c 		mod_expires.c 		mod_rewrite.c<br class="wikidpad" />
+<br class="wikidpad" />
+Within the Google Chrome web browser the web inspector gives a plethora of data around performance, particularly within the Network tab. Additionally, there are a few websites that help identify if gzip compression is enabled.<br class="wikidpad" />
+<br class="wikidpad" />
+Image compression: <span class="wikidpad url-link"><a href="http://pnggauntlet.com/" class="wikidpad">http://pnggauntlet.com/</a></span><br class="wikidpad" />
+<br class="wikidpad" />
+It should also be noted, setting an image’s dimensions in HTML by way of the height and width attributes does help render the page quicker, setting aside the appropriate space for the image. Understand, these attributes are to only be used to identify the exact image dimensions and not to shrink an image. Using a larger image, then scaling it down with the height and width attributes is bad practice as it loads more data than necessary.<br class="wikidpad" />
+<br class="wikidpad" />
+Next to file size, the number of HTTP requests a website makes is one of the largest performance pitfalls. Each time a request is made to the server the page load time increases. Some request have to finish before others can start, and too many request can bloat the server.<br class="wikidpad" />
+<br class="wikidpad" />
+One way, and perhaps the easiest way, to reduce the number of HTTP requests is to combine like files. Specifically, combine all of the CSS files into one and all of the JavaScript files into one. Combining these files then compressing them creates one, hopefully small, HTTP request.<br class="wikidpad" />
+<br class="wikidpad" />
+In general, the CSS for a web page should be loaded at the beginning of the document within the head, while the JavaScript for a web page should be loaded at the end, just before the closing body tag. The reason for these unique placements is because CSS can be loaded while the rest of the website is being loaded as well. JavaScript, on the other hand, can only render one file at a time, thus prohibiting anything else from loading. One caveat here is when JavaScript files are asynchronously loaded after the page itself is done rendering. Another caveat is when JavaScript is needed in helping render the page, as such the case with the HTML5 shiv.<br class="wikidpad" />
+<br class="wikidpad" />
+<b class="wikidpad">Image Sprites</b><br class="wikidpad" />
+<br class="wikidpad" />
+The practice of spriting images within CSS includes using one background image across multiple elements. The goal here is to cut down the number of HTTP requests made by using multiple background images.<br class="wikidpad" />
+<br class="wikidpad" />
+To create a sprite take a handful of background images, ones that are commonly used, and arrange them into one single image. Then using CSS add the sprite as a background image to an element, and use the background-position property to display the correct background image.<br class="wikidpad" />
+<br class="wikidpad" />
+Think of the background image sliding around behind elements, only to expose the proper background image on a given element. For example, if an element is 16 pixels wide by 16 pixels tall it can only expose a background image of 16 pixels by 16 pixels, with the rest of the background image being hidden.<br class="wikidpad" />
+<br class="wikidpad" />
+Additionally, instead of spriting images, the encoded data for an image can be included within HTML and CSS directly by way of the data URI, removing the need for a HTTP request all together. <span class="wikidpad url-link"><a href="http://css-tricks.com/data-uris/" class="wikidpad">http://css-tricks.com/data-uris/</a></span> There are, however, a couple of problems with data URIs. They can be difficult to change and maintain, leading to having to generate another encoding. And, they don’t work in older browsers, specifically Internet Explorer 7 and below. Be careful though, and always double check to see that the actual data URI is less weight than the actual image.<br class="wikidpad" />
+<br class="wikidpad" />
+Another way to help cut down HTTP requests, and to serve up pages faster, is to cache common files. When a page loads for the first time specific files may then be cached. Now the browser doesn’t have to request the same files again on repeating visits for quite some time. How long a period of time is up to you, all depending on how long you would like users to hold on to specific file types.<br class="wikidpad" />
+<br class="wikidpad" />
+As with gzipping files, setting the expires headers for caching files can be set within the .htaccess file. Images, videos, web fonts, and common media types are often cached for a month, while CSS and JavaScript files are often cached for a year. Should the CSS, or any other file, change more often than once each year the file name will need to be changed, preferably versioned, in order to be loaded. Alternatively, the expires headers can be changed to a smaller period of time.<br class="wikidpad" />
+<br class="wikidpad" />
+<b class="wikidpad">Positioning Elements</b><br class="wikidpad" />
+<br class="wikidpad" />
+When a parent contains only floated elements, it loses the fact that it has elements inside and the height will suddenly become zero. One way of fixing this is through the clearfix that we did previously, or using overflow. Setting the overflow property value to auto within the parent element will contain the floats, resulting in an actual height for the parent element.<br class="wikidpad" />
+<br class="wikidpad" />
+&lt;div class="box-set"&gt;<ul class="wikidpad normalindent">&lt;figure class="box"&gt;Box 1&lt;/figure&gt;<br class="wikidpad" />
+&lt;figure class="box"&gt;Box 2&lt;/figure&gt;<br class="wikidpad" />
+&lt;figure class="box"&gt;Box 3&lt;/figure&gt;</ul>
+&lt;/div&gt;<br class="wikidpad" />
+<br class="wikidpad" />
+.box-set {<ul class="wikidpad normalindent">background: #eaeaed;</ul>
+}<br class="wikidpad" />
+.box {<ul class="wikidpad normalindent">background: #2db34a;<br class="wikidpad" />
+float: left;<br class="wikidpad" />
+margin: 1.858736059%;<br class="wikidpad" />
+width: 29.615861214%;</ul>
+}<br class="wikidpad" />
+<br class="wikidpad" />
+For this to work within Internet Explorer 6 a height or width is required on the parent element. Since the height may likely be variable a width of 100% will do the trick. Using overflow: auto; in Internet Explorer on an Apple computer will also add scrollbars to the parent element, in which it is better to use the overflow: hidden; declaration. Different browsers treat the overflow property differently, and thus could also implement scrollbars in different fashions here too. <br class="wikidpad" />
+<br class="wikidpad" />
+.box-set {<ul class="wikidpad normalindent">overflow: auto;</ul>
+}<br class="wikidpad" />
+<br class="wikidpad" />
+The clearfix technique is a bit more complex but does have better support as compared to the overflow technique.<br class="wikidpad" />
+<br class="wikidpad" />
+The clearfix technique is based off using the :before and :after pseudo-elements on the parent element. Using these pseudo-elements we can create hidden elements above and below the parent containing the floats. The :before pseudo-element is used to prevent the top margin of child elements from collapsing by creating an anonymous table-cell element using the display: table; declaration. This also helps ensure consistency within Internet Explorer 6 and 7. The :after pseudo-element is used to prevent the bottom margin of child elements from collapsing, as well as to clear the nested floats. Adding the *zoom property to the parent element triggers the hasLayout mechanism specifically within Internet Explorer 6 and 7, which determines how elements should draw and bound their content, as well as how elements should interact with and relate to other elements.<br class="wikidpad" />
+<br class="wikidpad" />
+.box-set:before,<br class="wikidpad" />
+.box-set:after {<ul class="wikidpad normalindent">content: "";<br class="wikidpad" />
+display: table;</ul>
+}<br class="wikidpad" />
+.box-set:after {<ul class="wikidpad normalindent">clear: both;</ul>
+}<br class="wikidpad" />
+.box-set {<ul class="wikidpad normalindent">*zoom: 1;</ul>
+}<br class="wikidpad" />
+<br class="wikidpad" />
+Which techniques to use boils down to the content at hand and your personal preference. Some people prefer to stick strictly with the clearfix technique as it is consistent across the board. Others feel the clearfix technique is a bit too much code in some cases and prefer a mix of techniques based on the content. <br class="wikidpad" />
+<br class="wikidpad" />
+<b class="wikidpad">Single Pseudo-Elements</b><br class="wikidpad" />
+<br class="wikidpad" />
+It is worth noting only one :before and one :after pseudo-element are allowed per element, for the time being. When trying to use the clearfix technique with other :before and :after pseudo-element content you may not achieve the desired outcome.<br class="wikidpad" />
+<br class="wikidpad" />
+Fixed Header or Footer<br class="wikidpad" />
+<br class="wikidpad" />
+One of the most common uses of fixed positioning is to build a fixed header, or footer, anchored to one side of a page. As a user scrolls the element stays prevalent, always within the viewport for users to interact with.<br class="wikidpad" />
+<br class="wikidpad" />
+The code and demonstration below outline how this may be achieved. Notice how both left and right box offset properties are declared. This allows the footer to span the entire width of the bottom of the page, and it does so without disrupting the box model, allowing margins, borders, and padding to be applied freely.<br class="wikidpad" />
+<br class="wikidpad" />
+HTML<br class="wikidpad" />
+&lt;footer&gt;Fixed Footer&lt;/footer&gt;<br class="wikidpad" />
+<br class="wikidpad" />
+CSS<br class="wikidpad" />
+body {<ul class="wikidpad normalindent">background: #eaeaed;</ul>
+}<br class="wikidpad" />
+footer {<ul class="wikidpad normalindent">background: #2db34a;<br class="wikidpad" />
+bottom: 0;<br class="wikidpad" />
+left: 0;<br class="wikidpad" />
+position: fixed;<br class="wikidpad" />
+right: 0;</ul>
+}<br class="wikidpad" />
+<br class="wikidpad" />
+<span class="wikidpad url-link"><a href="http://learn.shayhowe.com/advanced-html-css/complex-selectors/" class="wikidpad">http://learn.shayhowe.com/advanced-html-css/complex-selectors/</a></span>    </body>
+</html>

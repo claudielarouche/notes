@@ -1,0 +1,348 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html>
+    <head>
+        <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+        <title>Introduction to the ASP.NET Web API</title>
+        <link type="text/css" rel="stylesheet" href="appbase.css">
+    </head>
+    <body class="wikidpad">
+<span class="wikidpad parent-nodes">parent nodes: <span class="wikidpad parent-node"><a href="ASP.html" class="wikidpad">ASP</a></span><br class="wikidpad" /><br class="wikidpad" /></span>
+<a name=".h0" class="wikidpad"></a><h2 class="wikidpad heading-level2">Introduction to the ASP.NET Web API</h2>
+<span class="wikidpad property attribute">[camelCaseWordsEnabled: false]</span><br class="wikidpad" />
+<br class="wikidpad" />
+<b class="wikidpad">What is it?</b><br class="wikidpad" />
+<br class="wikidpad" />
+A fully supported and extensible framework for building HTTP based endpoints built on top of ASP.NET<br class="wikidpad" />
+<br class="wikidpad" />
+Also includes a new HTTP client<br class="wikidpad" />
+<br class="wikidpad" />
+The ASP.NET Web API doesn't dictate an architectural style, however you can build a RESTful service on top of it. <br class="wikidpad" />
+<br class="wikidpad" />
+<b class="wikidpad">ASP.NET Routing</b><br class="wikidpad" />
+<br class="wikidpad" />
+ASP.NET Hosting layer maps URIs and Verbs to controller (class, specifically a method on the class)<ul class="wikidpad normalindent">- Must derive from APIController<br class="wikidpad" />
+</ul>
+New extension method for routing - MapHttpRoute<ul class="wikidpad normalindent">- Registers a different Handler to the routing infrastructure - HttpControllerHandler<br class="wikidpad" />
+</ul>
+ASP.NET Routing is the most common way to map URIs and Verbs to your methods<ul class="wikidpad normalindent">- Not the only way howev3er<br class="wikidpad" />
+- Self hosting can use this system or replace it with your own<br class="wikidpad" />
+</ul>
+So basically, ASP.NET Web API has a built in convention for mapping verbs to methods in your controller class, OR you can write methods without regard to that convention. You'll need to annotate your methods with attributes to provide routing information.<br class="wikidpad" />
+<br class="wikidpad" />
+<b class="wikidpad">Assemblies</b><br class="wikidpad" />
+<br class="wikidpad" />
+System.Net.Http                         Client and raw message types<br class="wikidpad" />
+System.Net.Http.Formatting              Model Binding and media type formatters<br class="wikidpad" />
+System.Web.Http                         Basic Hosting Infrastructure<br class="wikidpad" />
+System.Web.Http.Common                  Common APIs<br class="wikidpad" />
+System.Web.Http.WebHost                 ASP.NET hosting<br class="wikidpad" />
+System.Web.Http.SelfHost                Self Hosting<br class="wikidpad" />
+System.Web.Http.Data                    DataController is an APIController that handles CRUD type ops<br class="wikidpad" />
+System.Web.Http.Data.EntityFramework    Specific Implementation of DataController<br class="wikidpad" />
+System.Web.Http.Data.Helpers            Common code for Data API<br class="wikidpad" />
+<br class="wikidpad" />
+<b class="wikidpad">Model Binding and Formatters</b><br class="wikidpad" />
+<br class="wikidpad" />
+By default, the Web API will bind incoming data to CLR types<ul class="wikidpad normalindent">- Body, header and/or query string<br class="wikidpad" />
+- Very similar to the model binding of ASP.NET MVC<br class="wikidpad" />
+</ul>
+MediaTypeFormatters are used to bind both input and output<ul class="wikidpad normalindent">- Mapped to content types<br class="wikidpad" />
+- So basically if the PUT comes in JSON format or XML format, MediaTypeFormatter will format it properly<br class="wikidpad" />
+</ul>
+Validation via attributes can also be used<br class="wikidpad" />
+<br class="wikidpad" />
+HttpRequestMessage and HttpResponseMessage can be used to go down further into the HTTP stack<ul class="wikidpad normalindent">- Enables you to directly set headers, etc.<br class="wikidpad" />
+</ul>
+<b class="wikidpad">Content Negotiation</b><br class="wikidpad" />
+<br class="wikidpad" />
+The web API handles automatic content negotiation for the most common scenarios<ul class="wikidpad normalindent">- Automatically handles Accept headers for XML or JSON<br class="wikidpad" />
+</ul>
+Configuration enables you to customize for others<ul class="wikidpad normalindent">- File extension or query string common cases<br class="wikidpad" />
+</ul>
+<b class="wikidpad">OData query syntax</b><br class="wikidpad" />
+<br class="wikidpad" />
+OData (<span class="wikidpad url-link"><a href="http://odata.org" class="wikidpad">http://odata.org</a></span>) is open specification written by Microsoft to provide a standard query syntax on top of resources<br class="wikidpad" />
+<br class="wikidpad" />
+Implemented by WCF Data Service<ul class="wikidpad normalindent">- Atom publishing protocol on top of an Entity Framework model<br class="wikidpad" />
+</ul>
+ASP.NET Web API includes automatic support for this syntax<ul class="wikidpad normalindent">- Return IQueryable<T> instead of IEnumerable<T> (will enable you to automatically support queries)<br class="wikidpad" />
+</ul>
+<b class="wikidpad">Configuration</b><br class="wikidpad" />
+(configuration object)<br class="wikidpad" />
+<br class="wikidpad" />
+The Web API provides a simple configuration model:<br class="wikidpad" />
+- HttpConfiguration class<br class="wikidpad" />
+- GlobalConfiguration.Configuration static object -&gt; here is the object<br class="wikidpad" />
+<br class="wikidpad" />
+It holds onto the DependencyResolver<br class="wikidpad" />
+- IOC mechanism<br class="wikidpad" />
+- Enhances testability<br class="wikidpad" />
+<br class="wikidpad" />
+<b class="wikidpad">Web Api Hosting</b><br class="wikidpad" />
+<br class="wikidpad" />
+Multiple ways to host and expose Web APIs:<br class="wikidpad" />
+- Within ASP.NET applications inside IIS<br class="wikidpad" />
+- Self hosted within any custom app (console, Windows Service, etc.)<br class="wikidpad" />
+- IIS Express or Cassini (VS Web Server) for development<br class="wikidpad" />
+<br class="wikidpad" />
+Same programming model<br class="wikidpad" />
+- Maximum flexibility<br class="wikidpad" />
+<br class="wikidpad" />
+<b class="wikidpad">Security</b><br class="wikidpad" />
+<br class="wikidpad" />
+No extra security layer provided in the Web API<br class="wikidpad" />
+<br class="wikidpad" />
+Can use built in IIS/ASP.NET security<br class="wikidpad" />
+- Typically basic in a Web API scenario<br class="wikidpad" />
+<br class="wikidpad" />
+You can add support for token authentication (e.g. oAuth) fairly easily<br class="wikidpad" />
+<br class="wikidpad" />
+<b class="wikidpad">REST</b><br class="wikidpad" />
+<br class="wikidpad" />
+Based on the advantages of the Web:<br class="wikidpad" />
+- URIs<br class="wikidpad" />
+- Uniform Interface<br class="wikidpad" />
+- Stateless<br class="wikidpad" />
+- Hypermedia-driven (i.e. links)<br class="wikidpad" />
+- Cache-ability<br class="wikidpad" />
+<br class="wikidpad" />
+<b class="wikidpad">Creating an API</b><br class="wikidpad" />
+<br class="wikidpad" />
+New &gt; Project (empty website)<br class="wikidpad" />
+Name: HelloWebApiDemo<br class="wikidpad" />
+<br class="wikidpad" />
+Right-click on the Solution name (not the very first item but the second) and click Manage NUGet Packages.<br class="wikidpad" />
+<br class="wikidpad" />
+Search for web-api<br class="wikidpad" />
+<br class="wikidpad" />
+Click Install<br class="wikidpad" />
+<br class="wikidpad" />
+Close NUGet<br class="wikidpad" />
+<br class="wikidpad" />
+You will notice that a bunch of References have been added<br class="wikidpad" />
+<br class="wikidpad" />
+<b class="wikidpad">Add a new class</b><br class="wikidpad" />
+<br class="wikidpad" />
+Right click the solution &gt; Add &gt; class<br class="wikidpad" />
+Name: HelloApiController<br class="wikidpad" />
+<br class="wikidpad" />
+In the Cs file that was created, add this Using:<br class="wikidpad" />
+using System.Web.Http;<br class="wikidpad" />
+<br class="wikidpad" />
+And change this line:<br class="wikidpad" />
+<br class="wikidpad" />
+public class HelloApiController<br class="wikidpad" />
+to: <br class="wikidpad" />
+public class HelloApiController : ApiController<br class="wikidpad" />
+<br class="wikidpad" />
+Put some function called Get inside the class, mine is like this: <br class="wikidpad" />
+public string Get() {<ul class="wikidpad normalindent">return "Hello from API at " + DateTime.Now.ToString();</ul>
+}<br class="wikidpad" />
+<br class="wikidpad" />
+And now we need Routing!<br class="wikidpad" />
+<br class="wikidpad" />
+(you could also add another class called Second so that you have two controllers)<br class="wikidpad" />
+<br class="wikidpad" />
+<b class="wikidpad">Routing</b><br class="wikidpad" />
+<br class="wikidpad" />
+This is used to tell the ASP.NET infrastructure that based upon the URL, we want the URL to resolve to this particular controller that we just created (class).<br class="wikidpad" />
+<br class="wikidpad" />
+Right click project &gt; Add &gt; New Item<br class="wikidpad" />
+Type global in the search<br class="wikidpad" />
+Select Global Application Class and click Add<br class="wikidpad" />
+<br class="wikidpad" />
+Add these using:<br class="wikidpad" />
+using System.Web.Http;<br class="wikidpad" />
+using System.Web.Http.Routing;<br class="wikidpad" />
+<br class="wikidpad" />
+Change Application_Start to:<br class="wikidpad" />
+<br class="wikidpad" />
+protected void Application_Start(object sender, EventArgs e)<br class="wikidpad" />
+{<ul class="wikidpad normalindent">GlobalConfiguration.Configuration.Routes.Add("default",<ul class="wikidpad normalindent">new HttpRoute("{controller}"));</ul>
+</ul>
+}<br class="wikidpad" />
+<br class="wikidpad" />
+Basically this is adding a route called Default<br class="wikidpad" />
+<br class="wikidpad" />
+Run the app and use Fiddler to troubleshoot<br class="wikidpad" />
+<br class="wikidpad" />
+<span class="wikidpad url-link"><a href="http://localhost:49700/HelloApi" class="wikidpad">http://localhost:49700/HelloApi</a></span><br class="wikidpad" />
+<span class="wikidpad url-link"><a href="http://localhost:49700/Second" class="wikidpad">http://localhost:49700/Second</a></span><br class="wikidpad" />
+<br class="wikidpad" />
+(will return a different response because is using two different Controllers)<br class="wikidpad" />
+<br class="wikidpad" />
+<b class="wikidpad">Web API Project</b><br class="wikidpad" />
+<br class="wikidpad" />
+Instead of starting from an empty project in Visual Studio, you can do new &gt; project &gt; web &gt; Web API<br class="wikidpad" />
+<br class="wikidpad" />
+This will create a project that has all sorts of default classes and stuff!<br class="wikidpad" />
+<br class="wikidpad" />
+We can make this interesting by replacing the class ValuesController.cs as such:<br class="wikidpad" />
+<br class="wikidpad" />
+using System;<br class="wikidpad" />
+using System.Collections.Generic;<br class="wikidpad" />
+using System.Linq;<br class="wikidpad" />
+using System.Net;<br class="wikidpad" />
+using System.Net.Http;<br class="wikidpad" />
+using System.Web.Http;<br class="wikidpad" />
+<br class="wikidpad" />
+namespace HelloApiTemplateDemo.Controllers<br class="wikidpad" />
+{<ul class="wikidpad normalindent">public class ValuesController : ApiController<br class="wikidpad" />
+{<ul class="wikidpad normalindent">static List<string> data = initList();<br class="wikidpad" />
+<br class="wikidpad" />
+private static List<string> initList()<br class="wikidpad" />
+{<ul class="wikidpad normalindent">var ret = new List<string>();<br class="wikidpad" />
+ret.Add("value1");<br class="wikidpad" />
+ret.Add("value2");<br class="wikidpad" />
+return ret;</ul>
+}<br class="wikidpad" />
+<br class="wikidpad" />
+// GET api/values<br class="wikidpad" />
+public IEnumerable<string> Get()<br class="wikidpad" />
+{<ul class="wikidpad normalindent">return data;</ul>
+}<br class="wikidpad" />
+<br class="wikidpad" />
+// GET api/values/5<br class="wikidpad" />
+public string Get(int id)<br class="wikidpad" />
+{<ul class="wikidpad normalindent">return data[id];</ul>
+}<br class="wikidpad" />
+<br class="wikidpad" />
+// POST api/values<br class="wikidpad" />
+public void Post([FromBody]string value)<br class="wikidpad" />
+{<ul class="wikidpad normalindent">data.Add(value);</ul>
+}<br class="wikidpad" />
+<br class="wikidpad" />
+// PUT api/values/5<br class="wikidpad" />
+public void Put(int id, [FromBody]string value)<br class="wikidpad" />
+{<ul class="wikidpad normalindent">data[id] = value;</ul>
+}<br class="wikidpad" />
+<br class="wikidpad" />
+// DELETE api/values/5<br class="wikidpad" />
+public void Delete(int id)<br class="wikidpad" />
+{<ul class="wikidpad normalindent">data.RemoveAt(id);</ul>
+}</ul>
+}</ul>
+}<br class="wikidpad" />
+<br class="wikidpad" />
+Routing is now located in a WebApiConfig.Register (you can find a link to it from global.asax.cs). It's actually located in the App_Start folder<br class="wikidpad" />
+<br class="wikidpad" />
+<b class="wikidpad">Make your functions more HTTP-like</b><br class="wikidpad" />
+<br class="wikidpad" />
+Change your Get into this:<br class="wikidpad" />
+<br class="wikidpad" />
+public HttpResponseMessage Get(int id)<br class="wikidpad" />
+{<ul class="wikidpad normalindent">if (data.Count &gt; id)<ul class="wikidpad normalindent">return Request.CreateResponse<string>(HttpStatusCode.OK, data[id]);</ul>
+return Request.CreateErrorResponse(HttpStatusCode.NotFound, "Item Not Found");</ul>
+}<br class="wikidpad" />
+<br class="wikidpad" />
+And your Post into this:<br class="wikidpad" />
+<br class="wikidpad" />
+public HttpResponseMessage Post([FromBody]string value)<br class="wikidpad" />
+{<ul class="wikidpad normalindent">data.Add(value);<br class="wikidpad" />
+var msg = Request.CreateResponse(HttpStatusCode.Created);<br class="wikidpad" />
+msg.Headers.Location = new Uri(Request.RequestUri + (data.Count - 1).ToString());<br class="wikidpad" />
+return msg;</ul>
+}<br class="wikidpad" />
+<br class="wikidpad" />
+<b class="wikidpad">Adding controllers</b><br class="wikidpad" />
+<br class="wikidpad" />
+In your Web API project, you can right click on the "Controllers" folder &gt; Add &gt; Controller. From there, you will have several templates:<br class="wikidpad" />
+- Empty MVC<br class="wikidpad" />
+- Empty Web API Controller<br class="wikidpad" />
+- Web API Controller with actions using Entity Framework<br class="wikidpad" />
+- etc.<br class="wikidpad" />
+<br class="wikidpad" />
+<b class="wikidpad">Home page</b><br class="wikidpad" />
+<br class="wikidpad" />
+The code for the home page is located under Views &gt; Home &gt; Index.cshtml<br class="wikidpad" />
+<br class="wikidpad" />
+I modified it like that:<br class="wikidpad" />
+<br class="wikidpad" />
+&lt;div id="body"&gt;<ul class="wikidpad normalindent">&lt;ol id="courses"&gt;&lt;/ol&gt;</ul>
+&lt;/div&gt;<br class="wikidpad" />
+@section scripts{<ul class="wikidpad normalindent">&lt;script&gt;<ul class="wikidpad normalindent">$.ajax({<ul class="wikidpad normalindent">url: '/api/courses',<br class="wikidpad" />
+success: function (courses) {<ul class="wikidpad normalindent">var list = $('#courses');<br class="wikidpad" />
+for (var i = 0; i &lt; courses.length; i++) {<ul class="wikidpad normalindent">var course = courses[i];<br class="wikidpad" />
+list.append('&lt;li&gt;' + course.title + '&lt;/li&gt;');</ul>
+}</ul>
+}</ul>
+});</ul>
+&lt;/script&gt;</ul>
+}<br class="wikidpad" />
+<br class="wikidpad" />
+<b class="wikidpad">Adding the methods</b><br class="wikidpad" />
+<br class="wikidpad" />
+public course Get(int id) {<ul class="wikidpad normalindent">var ret = (from c in courses<ul class="wikidpad normalindent">where c.id == id<br class="wikidpad" />
+select c).FirstOrDefault();</ul>
+//if null - I should return a 404<br class="wikidpad" />
+return ret;</ul>
+}<br class="wikidpad" />
+<br class="wikidpad" />
+public void Post([FromBody]course c) {<ul class="wikidpad normalindent">c.id = courses.Count;<br class="wikidpad" />
+courses.Add(c);<br class="wikidpad" />
+//And then we should return a 201 with a location header</ul>
+}<br class="wikidpad" />
+<br class="wikidpad" />
+public void Put(int id, [FromBody]course course)<br class="wikidpad" />
+{<ul class="wikidpad normalindent">var ret = (from c in courses<ul class="wikidpad normalindent">where c.id == id<br class="wikidpad" />
+select c).FirstOrDefault();</ul>
+ret.title = course.title;<br class="wikidpad" />
+</ul>
+}<br class="wikidpad" />
+<br class="wikidpad" />
+public void Delete(int id) {<ul class="wikidpad normalindent">var ret = (from c in courses<ul class="wikidpad normalindent">where c.id == id<br class="wikidpad" />
+select c).FirstOrDefault();</ul>
+courses.Remove(ret);</ul>
+}<br class="wikidpad" />
+<br class="wikidpad" />
+<b class="wikidpad">Api controller class</b><br class="wikidpad" />
+<br class="wikidpad" />
+<span class="wikidpad url-link"><a href="https://msdn.microsoft.com/en-us/library/system.web.http.apicontroller(v=vs.118).aspx" class="wikidpad">https://msdn.microsoft.com/en-us/library/system.web.http.apicontroller(v=vs.118).aspx</a></span><br class="wikidpad" />
+<br class="wikidpad" />
+<b class="wikidpad">Using different method names</b><br class="wikidpad" />
+<br class="wikidpad" />
+As we said before, we don't HAVE to name our methods the same as the verbs. We can use AcceptVerbs to specify multiple verbs to one method<br class="wikidpad" />
+<br class="wikidpad" />
+//this code is identical to "Get" above but the function is named differently so I add a line to specify which verb it goes with<br class="wikidpad" />
+[HttpGet]<br class="wikidpad" />
+public course AllCourses() {<ul class="wikidpad normalindent">return courses;</ul>
+}<br class="wikidpad" />
+<br class="wikidpad" />
+<b class="wikidpad">Content Negotiation</b><br class="wikidpad" />
+<br class="wikidpad" />
+Dynamically determining the media type of a resource based on client request<br class="wikidpad" />
+- Client sends Accept header with 1..n media type<br class="wikidpad" />
+- Server sends back appropriate response with Content-Type header<br class="wikidpad" />
+- Client also sends Content-Type header when sending a body<br class="wikidpad" />
+<br class="wikidpad" />
+Web API provides automatic content type negotiation<br class="wikidpad" />
+<br class="wikidpad" />
+Implemented using MediaTypeFormatter base class<br class="wikidpad" />
+<br class="wikidpad" />
+<b class="wikidpad">Model Binding and Formatting</b><br class="wikidpad" />
+<br class="wikidpad" />
+The Web API will automatically bind URI and HTTP Body data to your methods<br class="wikidpad" />
+- Body data can be passed to MediaTypeFormatter based on Content-Type<br class="wikidpad" />
+- Model Binding (same as ASP.NET MVC) is used on Query String (URI) data<br class="wikidpad" />
+<br class="wikidpad" />
+Rule - Body can only be read once<br class="wikidpad" />
+<br class="wikidpad" />
+FromBody and FromUri attributes used to control<br class="wikidpad" />
+<br class="wikidpad" />
+ModelBinding attribute can specify a custom ModelBinding for a parameter<br class="wikidpad" />
+<br class="wikidpad" />
+<b class="wikidpad">HTTP - Diving Deeper</b><br class="wikidpad" />
+<br class="wikidpad" />
+Routing and controllers take care of the basics of HTTP<br class="wikidpad" />
+- URI + Verb<br class="wikidpad" />
+<br class="wikidpad" />
+What if you want to reach down further in to the HTTP stack?<br class="wikidpad" />
+- Send back particular return methods<br class="wikidpad" />
+- Interrogate additional HTTP headers<br class="wikidpad" />
+<br class="wikidpad" />
+HttpRequestMessage/HttpResponseMessage are the answer in the Web API<br class="wikidpad" />
+- HttpRequestMessage can replace body parameter<br class="wikidpad" />
+<span class="wikidpad url-link"><a href="https://msdn.microsoft.com/en-us/library/system.net.http.httprequestmessage(v=vs.118).aspx" class="wikidpad">https://msdn.microsoft.com/en-us/library/system.net.http.httprequestmessage(v=vs.118).aspx</a></span><br class="wikidpad" />
+- HttpResponseMessage can replace return parameter<br class="wikidpad" />
+<span class="wikidpad url-link"><a href="https://msdn.microsoft.com/en-us/library/system.net.http.httpresponsemessage(v=vs.118).aspx" class="wikidpad">https://msdn.microsoft.com/en-us/library/system.net.http.httpresponsemessage(v=vs.118).aspx</a></span>    </body>
+</html>

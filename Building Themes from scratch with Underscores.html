@@ -1,0 +1,539 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html>
+    <head>
+        <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+        <title>Building Themes from scratch with Underscores</title>
+        <link type="text/css" rel="stylesheet" href="appbase.css">
+    </head>
+    <body class="wikidpad">
+<span class="wikidpad parent-nodes">parent nodes: <span class="wikidpad parent-node"><a href="Wordpress.html" class="wikidpad">Wordpress</a></span><br class="wikidpad" /><br class="wikidpad" /></span>
+<a name=".h0" class="wikidpad"></a><h2 class="wikidpad heading-level2">Building Themes from scratch with Underscores</h2>
+<span class="wikidpad property attribute">[camelCaseWordsEnabled: false]</span><br class="wikidpad" />
+<br class="wikidpad" />
+Underscores website: <span class="wikidpad url-link"><a href="http://www.underscores.me" class="wikidpad">http://www.underscores.me</a></span><br class="wikidpad" />
+<br class="wikidpad" />
+Test data: <span class="wikidpad url-link"><a href="http://codex.wordpress.org/Theme\_Unit\_Test" class="wikidpad">http://codex.wordpress.org/Theme\_Unit\_Test</a></span><br class="wikidpad" />
+Tools &gt; Import &gt; Wordpress<br class="wikidpad" />
+Follow the steps...<br class="wikidpad" />
+Leave Author blank<br class="wikidpad" />
+Check "Download and Import the attachments"<br class="wikidpad" />
+<br class="wikidpad" />
+Install the "Developer" plugin by automattic<br class="wikidpad" />
+<br class="wikidpad" />
+Install the following:<br class="wikidpad" />
+- Debug bar<br class="wikidpad" />
+- Debug bar console<br class="wikidpad" />
+- Debug bar cron<br class="wikidpad" />
+- Debug bar extender<br class="wikidpad" />
+- Monster widget<br class="wikidpad" />
+- Regenerate thumbnails<br class="wikidpad" />
+<br class="wikidpad" />
+Notepad++ replacement: netbeans.org (requires JDK)<br class="wikidpad" />
+<br class="wikidpad" />
+single.php calls all sorts of other files:<br class="wikidpad" />
+- header.php<br class="wikidpad" />
+- content.php<br class="wikidpad" />
+- sidebar.php<br class="wikidpad" />
+- footer.php<br class="wikidpad" />
+<br class="wikidpad" />
+DRY: Don't Repeat Yourself<br class="wikidpad" />
+<br class="wikidpad" />
+Wordpress Template Hierarchy: <img src="http://codex.wordpress.org/images/1/18/Template_Hierarchy.png" alt="" border="0" class="wikidpad" /><br class="wikidpad" />
+<br class="wikidpad" />
+If no template is available, Wordpress will always default to Index.php<br class="wikidpad" />
+<br class="wikidpad" />
+The strict minimum files a theme needs:<br class="wikidpad" />
+- style.css<br class="wikidpad" />
+- functions.php<br class="wikidpad" />
+- index.php<br class="wikidpad" />
+<br class="wikidpad" />
+<b class="wikidpad">Adding theme information</b><br class="wikidpad" />
+<br class="wikidpad" />
+Do this so that when you go appearance &gt; Theme &gt; Theme details, there is actually something there!<br class="wikidpad" />
+<br class="wikidpad" />
+1. Open style.css and change the top information from the comment section:<br class="wikidpad" />
+<br class="wikidpad" />
+Theme Name: My Simone<br class="wikidpad" />
+Theme URI: http://lynda.com<br class="wikidpad" />
+Author: Claudie Larouche<br class="wikidpad" />
+Author URI: http://claudiewebdesign.com<br class="wikidpad" />
+Description: Custom responsive theme based on Underscores<br class="wikidpad" />
+Version: 1.0<br class="wikidpad" />
+License: GNU General Public License v2 or later<br class="wikidpad" />
+License URI: http://www.gnu.org/licenses/gpl-2.0.html<br class="wikidpad" />
+Text Domain: my-simone<br class="wikidpad" />
+Domain Path: /languages/<br class="wikidpad" />
+Tags: two-columns, responsive-layout, left-sidebar, white, blue, black<br class="wikidpad" />
+<br class="wikidpad" />
+For a list of tags you are allowed to use: <span class="wikidpad url-link"><a href="https://wordpress.org/themes/tag-filter" class="wikidpad">https://wordpress.org/themes/tag-filter</a></span><br class="wikidpad" />
+<br class="wikidpad" />
+<b class="wikidpad">Make changed to functions.php</b><br class="wikidpad" />
+Please see My Simone theme and search for "Claudie" for changes that were made<br class="wikidpad" />
+<br class="wikidpad" />
+<b class="wikidpad">Use custom fonts</b><br class="wikidpad" />
+<br class="wikidpad" />
+It is recommended to put the font calls into the head, so you could be tempted to put them in header.php. But it is better to actually enqueue them in functions.php. By enqueuing styles and scripts, we can control where, when and how each style sheet and each script is called, and what dependencies each of them have.<br class="wikidpad" />
+<br class="wikidpad" />
+<br class="wikidpad" />
+When I build WordPress themes, I try to work in a systematic fashion. <br class="wikidpad" />
+- First, apply CSS to the existing elements to get the existing theme to match my designs as closely as possible<br class="wikidpad" />
+- Then add new elements and change those existing elements one at a time and style them as they appear.<br class="wikidpad" />
+<br class="wikidpad" />
+The underscore theme comes with a folder called Layout. This will control the look of the page (sidebar, header, footer, etc.) It's good to keep it separate from style.css in case you want to have different layout for different type of pages. Please note that these CSS sheets are not applied to the website until you actually enqueue them in functions.php<br class="wikidpad" />
+<br class="wikidpad" />
+Header typically contain 3 elements:<br class="wikidpad" />
+- Site title<br class="wikidpad" />
+- Site tagline<br class="wikidpad" />
+- Main menu<br class="wikidpad" />
+<br class="wikidpad" />
+The custom header feature in WordPress enables the site owner to interact with how the header is displayed<br class="wikidpad" />
+<br class="wikidpad" />
+Sometimes the customizer needs to be modified to mimic the behaviour of the site. If that's the case, you can modify it in theme folder &gt; js &gt; customizer.js<br class="wikidpad" />
+<br class="wikidpad" />
+Menus are registered in functions.php. Out of the box, underscores come with one primary menu. (register_nav_menus). Once the menu is registered, it has to be displayed somewhere. In this case, it is in header.php. wp_nav_menu, theme location, primary -&gt; that's the function that calls the menu.<br class="wikidpad" />
+<br class="wikidpad" />
+<b class="wikidpad">Superfish</b><br class="wikidpad" />
+<br class="wikidpad" />
+To make menus accessible (being able to tab through the menu), download Superfish: <span class="wikidpad url-link"><a href="http://users.tpg.com.au/j_birch/plugins/superfish/download/" class="wikidpad">http://users.tpg.com.au/j_birch/plugins/superfish/download/</a></span> The only file you actually need is located here: superfish-masterdistjs and is called superfish.min.js. Put it in your theme's js folder. Now you must enqueue the script in functions.php:<br class="wikidpad" />
+wp_enqueue_script( 'my-simone-superfish', get_template_directory_uri() . '/js/superfish.min.js', array('jquery'), '20140328', true );<br class="wikidpad" />
+<br class="wikidpad" />
+array('jquery') means that jquery is a dependancy<br class="wikidpad" />
+20140328 is the version number (today's date)<br class="wikidpad" />
+true means footer, false would mean header. <br class="wikidpad" />
+<br class="wikidpad" />
+Now you need to create a new file under js called superfish-settings.js. Must enqueue this one as well in functions.php.<br class="wikidpad" />
+<br class="wikidpad" />
+<b class="wikidpad">Creating a social media menu</b><br class="wikidpad" />
+<br class="wikidpad" />
+Step 1:<br class="wikidpad" />
+- Make Wordpress aware that there is a new menu (in functions.php)<br class="wikidpad" />
+add this line: 'social' =&gt; __( 'Social Menu', 'my-simone' ),<br class="wikidpad" />
+into register_nav_menus<br class="wikidpad" />
+<br class="wikidpad" />
+Step 2:<br class="wikidpad" />
+- Add the menu information in wordpress dashboard (create menu and add links to twitter and facebook), and set location to social menu<br class="wikidpad" />
+<br class="wikidpad" />
+Step 3:<br class="wikidpad" />
+- Go to inc folder, edit the file called template-tags.php<br class="wikidpad" />
+Go to the very bottom of the file and add the following code:<br class="wikidpad" />
+<br class="wikidpad" />
+/*<ul class="wikidpad normalindent">* Social media icon menu as per <span class="wikidpad url-link"><a href="http://justintadlock.com/archives/2013/08/14/social-nav-menus-part-2" class="wikidpad">http://justintadlock.com/archives/2013/08/14/social-nav-menus-part-2</a></span><br class="wikidpad" />
+*/<br class="wikidpad" />
+</ul>
+function my_simone_social_menu() {<ul class="wikidpad normalindent">if ( has_nav_menu( 'social' ) ) {</ul>
+<ul class="wikidpad normalindent">wp_nav_menu(<ul class="wikidpad normalindent">array(<ul class="wikidpad normalindent">'theme_location'  =&gt; 'social',<br class="wikidpad" />
+'container'       =&gt; 'div',<br class="wikidpad" />
+'container_id'    =&gt; 'menu-social',<br class="wikidpad" />
+'container_class' =&gt; 'menu-social',<br class="wikidpad" />
+'menu_id'         =&gt; 'menu-social-items',<br class="wikidpad" />
+'menu_class'      =&gt; 'menu-items',<br class="wikidpad" />
+'depth'           =&gt; 1,<br class="wikidpad" />
+'fallback_cb'     =&gt; '',</ul>
+)</ul>
+);<ul class="wikidpad normalindent">}</ul>
+</ul>
+}<br class="wikidpad" />
+<br class="wikidpad" />
+Step 4:<br class="wikidpad" />
+- Call the new function in header.php<br class="wikidpad" />
+The following line is added under &lt;?php wp_nav_menu...<br class="wikidpad" />
+&lt;?php my_simone_social_menu() ?&gt;<br class="wikidpad" />
+<br class="wikidpad" />
+Step 5: <br class="wikidpad" />
+- Replace the text of each social media thingy with the equivalent icon from FontAwesome.io<br class="wikidpad" />
+<br class="wikidpad" />
+We can use unicode (example twitter unicode is f099) and then using this code in style.css<br class="wikidpad" />
+.menu-social li a:before {<ul class="wikidpad normalindent">display: inline-block;<br class="wikidpad" />
+padding: 0 5px;<br class="wikidpad" />
+vertical-align: top;<br class="wikidpad" />
+font-family: 'Fontawesome';<br class="wikidpad" />
+font-size: 20px;<br class="wikidpad" />
+color: #fff;<br class="wikidpad" />
+-webkit-font-smoothing: antialiased;<br class="wikidpad" />
+content: 'f0c0';</ul>
+}<br class="wikidpad" />
+<br class="wikidpad" />
+and then add these lines (and others if needed) for each social media <br class="wikidpad" />
+<br class="wikidpad" />
+.menu-social li a[href*="facebook.com"]::before { content: 'f09a'; }<br class="wikidpad" />
+<br class="wikidpad" />
+.menu-social li a[href*="twitter.com"]::before { content: 'f099'; }<br class="wikidpad" />
+<br class="wikidpad" />
+Step 6:<br class="wikidpad" />
+- Make the menu responsive with the following code:<br class="wikidpad" />
+<br class="wikidpad" />
+@media screen and (max-width: 600px) {<ul class="wikidpad normalindent">#menu-social ul {<ul class="wikidpad normalindent">position: absolute;<ul class="wikidpad normalindent">top: 0;<br class="wikidpad" />
+right: 6rem;<br class="wikidpad" />
+display: block;</ul>
+</ul>
+}<br class="wikidpad" />
+<br class="wikidpad" />
+#menu-social li a { <ul class="wikidpad normalindent">padding-left:.5em;<br class="wikidpad" />
+padding-right: .5em;</ul>
+}</ul>
+}<br class="wikidpad" />
+<br class="wikidpad" />
+<b class="wikidpad">Adding a search button</b><br class="wikidpad" />
+<br class="wikidpad" />
+Step 1:<br class="wikidpad" />
+- In header.php, add the following code under the closing nav tag<br class="wikidpad" />
+&lt;div id="search-container" class="search-box-wrapper clear"&gt;<ul class="wikidpad normalindent">&lt;div class="search-box clear"&gt;<ul class="wikidpad normalindent">&lt;?php get_search_form(); ?&gt;</ul>
+&lt;/div&gt;</ul>
+&lt;/div&gt; <br class="wikidpad" />
+<br class="wikidpad" />
+Step 2:<br class="wikidpad" />
+Style it with this code in the header section of style.css:<br class="wikidpad" />
+/* Header search */<br class="wikidpad" />
+<br class="wikidpad" />
+input[type="search"] {<ul class="wikidpad normalindent">box-sizing: border-box;<br class="wikidpad" />
+width: 100%;</ul>
+}<br class="wikidpad" />
+<br class="wikidpad" />
+.search-box-wrapper {<ul class="wikidpad normalindent">z-index: 2;<br class="wikidpad" />
+width: 100%;</ul>
+}<br class="wikidpad" />
+<br class="wikidpad" />
+.search-box {<ul class="wikidpad normalindent">padding: 1em;<br class="wikidpad" />
+background: #4d4d4d;<br class="wikidpad" />
+background: hsl(0, 0%, 30%);</ul>
+}<br class="wikidpad" />
+<br class="wikidpad" />
+.search-box .search-field {<ul class="wikidpad normalindent">max-width: 362px;<br class="wikidpad" />
+float: right;<br class="wikidpad" />
+padding: 1rem 2rem 1rem 4rem;<br class="wikidpad" />
+font-size: 20px;<br class="wikidpad" />
+font-size: 2rem;<br class="wikidpad" />
+background-color: #fff;<br class="wikidpad" />
+border: 0;</ul>
+}<br class="wikidpad" />
+<br class="wikidpad" />
+.error404 .search-submit,<br class="wikidpad" />
+.search .search-submit,<br class="wikidpad" />
+.search-box .search-submit { <ul class="wikidpad normalindent">display: none; </ul>
+}<br class="wikidpad" />
+<br class="wikidpad" />
+Step 2: Adding the search icon<br class="wikidpad" />
+In header.php, place following code between nav menu and social menu (code from Font awesome wrapped around classes so that we can style it):<br class="wikidpad" />
+&lt;div class="search-toggle"&gt;<ul class="wikidpad normalindent">&lt;i class="fa fa-search"&gt;&lt;/i&gt;<br class="wikidpad" />
+&lt;a href="#search-container" class="screen-reader-text"&gt;&lt;?php _e( 'Search', 'my-simone' ); ?&gt;&lt;/a&gt;</ul>
+&lt;/div&gt;<br class="wikidpad" />
+<br class="wikidpad" />
+Step 3: Style the search icon<br class="wikidpad" />
+.search-toggle {<ul class="wikidpad normalindent">float: right;<br class="wikidpad" />
+width: 54px;<br class="wikidpad" />
+height: 54px;<br class="wikidpad" />
+padding: 12px;<br class="wikidpad" />
+margin-right: 20px;<br class="wikidpad" />
+color: #fff;<br class="wikidpad" />
+text-align: center;<br class="wikidpad" />
+cursor: pointer;</ul>
+}<br class="wikidpad" />
+<br class="wikidpad" />
+.search-toggle:hover,<br class="wikidpad" />
+.search-toggle.active {<ul class="wikidpad normalindent">background: #4d4d4d;<br class="wikidpad" />
+background: hsl(0, 0%, 30%);</ul>
+}<br class="wikidpad" />
+<br class="wikidpad" />
+@media screen and (max-width: 600px) {<ul class="wikidpad normalindent">.search-toggle {<ul class="wikidpad normalindent">position: absolute;<br class="wikidpad" />
+top: 0;<br class="wikidpad" />
+right: 0;<br class="wikidpad" />
+margin-right: 0;</ul>
+}</ul>
+}<br class="wikidpad" />
+<br class="wikidpad" />
+Step 4: Adding toggle functionality with javascript<br class="wikidpad" />
+<br class="wikidpad" />
+Step 4.1: Create a file called hide-search.js that you save in the js folder with the following code:<br class="wikidpad" />
+/*<ul class="wikidpad normalindent">* Toggles header search on and off<br class="wikidpad" />
+*/<br class="wikidpad" />
+<br class="wikidpad" />
+jQuery(document).ready(function($){<br class="wikidpad" />
+$(".search-toggle").click(function(){<ul class="wikidpad normalindent">$("#search-container").slideToggle('slow');</ul>
+});<br class="wikidpad" />
+});<br class="wikidpad" />
+</ul>
+Step 4.2: Enqueue the script<br class="wikidpad" />
+Add this line to functions.php:<br class="wikidpad" />
+wp_enqueue_script( 'my-simone-hide-search', get_template_directory_uri() . '/js/hide-search.js', array('jquery'), '20141102', true );<br class="wikidpad" />
+<br class="wikidpad" />
+Step 4.3: Hide the search field by default<br class="wikidpad" />
+In style.css, add this line in .search-box-wrapper {<br class="wikidpad" />
+display: none;<br class="wikidpad" />
+<br class="wikidpad" />
+Step 4.4: Search button highlighted when search box is toggled on<br class="wikidpad" />
+Change the jquery to this:<br class="wikidpad" />
+jQuery(document).ready(function($){<ul class="wikidpad normalindent">$(".search-toggle").click(function(){<ul class="wikidpad normalindent">$("#search-container").slideToggle('slow', function(){<ul class="wikidpad normalindent">$(".search-toggle").toggleClass('active')</ul>
+});</ul>
+});</ul>
+});<br class="wikidpad" />
+<br class="wikidpad" />
+<b class="wikidpad">Adding a widgetized area to the footer</b><br class="wikidpad" />
+<br class="wikidpad" />
+Step 1: Register the sidebar in functions.php<br class="wikidpad" />
+register_sidebar( array(<ul class="wikidpad normalindent">'name'          =&gt; __( 'Footer widgets', 'my-simone' ),		<br class="wikidpad" />
+'description'   =&gt; __( 'Footer widget', 'my-simone' ),<br class="wikidpad" />
+'id'            =&gt; 'sidebar-2',<br class="wikidpad" />
+'description'   =&gt; '',<br class="wikidpad" />
+'before_widget' =&gt; '&lt;aside id="%1$s" class="widget %2$s"&gt;',<br class="wikidpad" />
+'after_widget'  =&gt; '&lt;/aside&gt;',<br class="wikidpad" />
+'before_title'  =&gt; '&lt;h1 class="widget-title"&gt;',<br class="wikidpad" />
+'after_title'   =&gt; '&lt;/h1&gt;',</ul>
+) );<br class="wikidpad" />
+<br class="wikidpad" />
+Step 2: Create a new sidebar file called sidebar-footer.php (saved directly under theme folder)<br class="wikidpad" />
+put this code in:<br class="wikidpad" />
+&lt;?php<br class="wikidpad" />
+/**<ul class="wikidpad normalindent">* The footer sidebar<br class="wikidpad" />
+*<br class="wikidpad" />
+*/<br class="wikidpad" />
+</ul>
+if ( ! is_active_sidebar( 'sidebar-2' ) ) {<ul class="wikidpad normalindent">return;</ul>
+}<br class="wikidpad" />
+?&gt;<br class="wikidpad" />
+<br class="wikidpad" />
+&lt;div id="supplementary"&gt;<ul class="wikidpad normalindent">&lt;div id="footer-widgets" class="footer-widgets widget-area clear" role="complementary"&gt;<ul class="wikidpad normalindent">&lt;?php dynamic_sidebar( 'sidebar-2' ); ?&gt;</ul>
+&lt;/div&gt;&lt;!-- #footer-sidebar --&gt;</ul>
+&lt;/div&gt;&lt;!-- #supplementary --&gt;<br class="wikidpad" />
+<br class="wikidpad" />
+Step 3: In footer.php<br class="wikidpad" />
+Add this line:<br class="wikidpad" />
+&lt;?php get_sidebar('footer'); ?&gt;<br class="wikidpad" />
+<br class="wikidpad" />
+It is recommended to test your widgetized area by adding every single possible widget to them. You can use the developer plugin called Monster widget for this purpose. Add the Monster widget from Appearance &gt; Widget.<br class="wikidpad" />
+<br class="wikidpad" />
+Step 4: Style the footer<br class="wikidpad" />
+See style.css in the footer section<br class="wikidpad" />
+<br class="wikidpad" />
+Step 5: Style the widgets and individual widgets<br class="wikidpad" />
+See style.css Widget section<br class="wikidpad" />
+<br class="wikidpad" />
+<b class="wikidpad">Turn on masonry for the footer</b><br class="wikidpad" />
+Step 1: Create a new file in the JS folder called masonry-settings.js with following code:<br class="wikidpad" />
+// Masonry settings to organize footer widgets<br class="wikidpad" />
+jQuery(document).ready(function($){<ul class="wikidpad normalindent">var $container = $('#footer-widgets');<br class="wikidpad" />
+var $masonryOn;<br class="wikidpad" />
+var $columnWidth = 400;<br class="wikidpad" />
+<br class="wikidpad" />
+if ($(document).width() &gt; 879) {;<ul class="wikidpad normalindent">$masonryOn = true;<br class="wikidpad" />
+runMasonry();</ul>
+};<br class="wikidpad" />
+<br class="wikidpad" />
+$(window).resize( function() {<ul class="wikidpad normalindent">if ($(document).width() &lt; 879) {<ul class="wikidpad normalindent">if ($masonryOn){<ul class="wikidpad normalindent">$container.masonry('destroy');<br class="wikidpad" />
+$masonryOn = false;</ul>
+}<br class="wikidpad" />
+</ul>
+} else {<ul class="wikidpad normalindent">$masonryOn = true;<br class="wikidpad" />
+runMasonry();</ul>
+}</ul>
+});<br class="wikidpad" />
+<br class="wikidpad" />
+function runMasonry() {<ul class="wikidpad normalindent">// initialize<br class="wikidpad" />
+$container.masonry({<ul class="wikidpad normalindent">columnWidth: $columnWidth,<br class="wikidpad" />
+itemSelector: '.widget',<br class="wikidpad" />
+isFitWidth: true,<br class="wikidpad" />
+isAnimated: true</ul>
+});</ul>
+};<br class="wikidpad" />
+</ul>
+});<br class="wikidpad" />
+<br class="wikidpad" />
+Step 2: Enqueue masonry in functions.php<br class="wikidpad" />
+wp_enqueue_script( 'my-simone-masonry', get_template_directory_uri() . '/js/masonry-settings.js', array('masonry'), '20140401', true );<br class="wikidpad" />
+<br class="wikidpad" />
+Step 3: make footer widget responsive<br class="wikidpad" />
+in style.css<br class="wikidpad" />
+/* Footer widgets responsive */<br class="wikidpad" />
+@media screen and (max-width: 879px) {<ul class="wikidpad normalindent">#footer-widgets { width: 100%!important; }<br class="wikidpad" />
+<br class="wikidpad" />
+.footer-widgets .widget {<ul class="wikidpad normalindent">float: none;<br class="wikidpad" />
+width: 100%;<br class="wikidpad" />
+margin: 0 0 8rem;</ul>
+}</ul>
+}<br class="wikidpad" />
+<br class="wikidpad" />
+<b class="wikidpad">Work on the single post template</b><br class="wikidpad" />
+<br class="wikidpad" />
+Step 1:<br class="wikidpad" />
+In content-single.php right under header class = entry header<br class="wikidpad" />
+&lt;?php<ul class="wikidpad normalindent">/* translators: used between list items, there is a space after the comma */<br class="wikidpad" />
+$category_list = get_the_category_list( __( ', ', 'my-simone' ) );<br class="wikidpad" />
+<br class="wikidpad" />
+if ( my_simone_categorized_blog() ) {<ul class="wikidpad normalindent">echo '&lt;div class="category-list"&gt;' . $category_list . '&lt;/div&gt;';</ul>
+}</ul>
+?&gt;<br class="wikidpad" />
+<br class="wikidpad" />
+And I made a variety of changes to my_simone_posted_on in inc &gt; template-tag<br class="wikidpad" />
+<br class="wikidpad" />
+All sorts of styles were also added to section 10.1 in style.css and to the Meta section and alignment and caption and section 12<br class="wikidpad" />
+<br class="wikidpad" />
+Step 2: Changes to the post navigation at the bottom of the post<br class="wikidpad" />
+In inc &gt; template-tags.php, replace the entire nav section of my_simone_post_nav with this:<br class="wikidpad" />
+<br class="wikidpad" />
+&lt;nav class="navigation post-navigation" role="navigation"&gt;<ul class="wikidpad normalindent">&lt;div class="post-nav-box clear"&gt;<ul class="wikidpad normalindent">&lt;h1 class="screen-reader-text"&gt;&lt;?php _e( 'Post navigation', 'my-simone' ); ?&gt;&lt;/h1&gt;<br class="wikidpad" />
+&lt;div class="nav-links"&gt;<ul class="wikidpad normalindent">&lt;?php<br class="wikidpad" />
+previous_post_link( '&lt;div class="nav-previous"&gt;&lt;div class="nav-indicator"&gt;' . _x( 'Previous Post:', 'Previous post', 'my-simone' ) . '&lt;/div&gt;&lt;h1&gt;%link&lt;/h1&gt;&lt;/div&gt;', '%title' );<br class="wikidpad" />
+next_post_link(     '&lt;div class="nav-next"&gt;&lt;div class="nav-indicator"&gt;' . _x( 'Next Post:', 'Next post', 'my-simone' ) . '&lt;/div&gt;&lt;h1&gt;%link&lt;/h1&gt;&lt;/div&gt;', '%title' );<br class="wikidpad" />
+?&gt;</ul>
+&lt;/div&gt;&lt;!-- .nav-links --&gt;</ul>
+&lt;/div&gt;&lt;!-- .post-nav-box --&gt;</ul>
+&lt;/nav&gt;&lt;!-- .navigation --&gt;<br class="wikidpad" />
+<br class="wikidpad" />
+And change a few things in style.css as always :)<br class="wikidpad" />
+<br class="wikidpad" />
+<b class="wikidpad">Comments</b><br class="wikidpad" />
+<br class="wikidpad" />
+Comments are controlled by the function comments_template() in single.php. That is a very smart function. If there is a file called comments.php in the theme, it will use that, if not it will use Wordpress default. <br class="wikidpad" />
+<br class="wikidpad" />
+Gravatars are controlled in wp_list_comments in comments.php. By default, the gravatar that's output is 32 X 32 pixels.<br class="wikidpad" />
+<br class="wikidpad" />
+wp_list_comments( array(<ul class="wikidpad normalindent">'style'      =&gt; 'ol',<br class="wikidpad" />
+'short_ping' =&gt; true,</ul>
+<ul class="wikidpad normalindent">) );<br class="wikidpad" />
+</ul>
+Just add a line for avatar_size if you want to change the size. It is possible to target post author comments in the CSS (bypostauthor class)<br class="wikidpad" />
+<br class="wikidpad" />
+Remember to apply styles to both comments form: when people are logged in and when people are NOT logged in.<br class="wikidpad" />
+<br class="wikidpad" />
+<b class="wikidpad">Featured images</b><br class="wikidpad" />
+<br class="wikidpad" />
+the_content() function returns the whole post content along with images. <br class="wikidpad" />
+the_post_thumbnail() function returns only the featured image.<br class="wikidpad" />
+<br class="wikidpad" />
+The featured image can have different sizes and you can call them like this:<br class="wikidpad" />
+the_post_thumbnail('index-thumb')<br class="wikidpad" />
+the_post_thumbnail('single-thumb')<br class="wikidpad" />
+<br class="wikidpad" />
+The first step in setting up featured images is to enable theme support for post thumbnails (functions.php) and define the featured image sizes (add add_image_size)<br class="wikidpad" />
+<br class="wikidpad" />
+add_image_size('large-thumb', 1060, 650, true);<br class="wikidpad" />
+<br class="wikidpad" />
+If I set the crop value to true then WordPress will take an image that's much larger. Scale it down to match the width, and then crop it to match the height. That also means if the image is really wide but is not the full height, then the image will just be scaled down. If I set this value to false however and I upload a very, very large image, then WordPress will just take the large image as it is and just display it as 1060 by 650. So in most cases it's a good idea to set this value to true, but if you don't want WordPress to crop the image you may want to set it to false<br class="wikidpad" />
+<br class="wikidpad" />
+In some rare cases, you may want the ability to upload feature images. That have variable height and will allow any height of image. In that case, what you want to do is change the height value here to 9999. That way, WordPress will never crop the height of an image. Well, it'll crop it if it's bigger than 9,999 pixels but that's a very, very large image and you would never use it in a WordPress site. So by setting this value this big. You ensure that no matter what size of image people upload, so that way the height of the object will never be cropped<br class="wikidpad" />
+<br class="wikidpad" />
+Each feature image is associated to a post through the post ID. Featured image is in content-single.php. To add a featured image, add this line:<br class="wikidpad" />
+<ul class="wikidpad normalindent">&lt;?php <br class="wikidpad" />
+if (has_post_thumbnail()) {<ul class="wikidpad normalindent">echo '&lt;div class="single-post-thumbnail clear"&gt;';<br class="wikidpad" />
+echo '&lt;div class="image-shifter"&gt;';<br class="wikidpad" />
+echo the_post_thumbnail('large-thumb');<br class="wikidpad" />
+echo '&lt;/div&gt;';<br class="wikidpad" />
+echo '&lt;/div&gt;';</ul>
+}<br class="wikidpad" />
+?&gt;<br class="wikidpad" />
+</ul>
+'large-thumb' is a size we already specified (in functions.php)<br class="wikidpad" />
+<br class="wikidpad" />
+<b class="wikidpad">INDEX PAGES</b><br class="wikidpad" />
+<br class="wikidpad" />
+If you want to make changes to Wordpress's front page, chances are you want to deal with index.php<br class="wikidpad" />
+<br class="wikidpad" />
+Here is the "edit" button: &lt;?php edit_post_link( __( 'Edit', 'my-simone' ), '&lt;span class="edit-link"&gt;', '&lt;/span&gt;' ); ?&gt;<br class="wikidpad" />
+<br class="wikidpad" />
+When you have a "continue reading" link, you don't need to put continue reading [post title] for everybody. Just put the [post title] as the "title" of the link and people with reading devices will "see" that whereas people that see the normal view will just see "continue reading". Very clever :)<br class="wikidpad" />
+<br class="wikidpad" />
+The navigation at the bottom of index pages is called my_simone_paging_nav and it is located in template-tags.php (in inc)<br class="wikidpad" />
+<br class="wikidpad" />
+<b class="wikidpad">Post formats</b><br class="wikidpad" />
+<br class="wikidpad" />
+Morten said he is very reluctant to use post fomats other than "aside" because each theme control them widely differently. <br class="wikidpad" />
+<br class="wikidpad" />
+If you create a file called content-aside.php, this content will automatically be used for the Asides. Possible post formats:  Aside, gallery, link, image, quote, status, video, audio and chat. Don't forget to enable them in functions.php<br class="wikidpad" />
+<br class="wikidpad" />
+<b class="wikidpad">Custom page templates</b><br class="wikidpad" />
+<br class="wikidpad" />
+Custom page templates may be one of the most powerful tools available to you as a WordPress developer because you can build as many as you like and add any code you like within them.<br class="wikidpad" />
+<br class="wikidpad" />
+1. Create a new folder for the new page template (page-templates)<br class="wikidpad" />
+2. Copy page.php into that new folder<br class="wikidpad" />
+3. Rename page.php in new folder to page-nosidebar<br class="wikidpad" />
+4. Open page-nosidebar.php<br class="wikidpad" />
+5. Replace the comment at the top with this:<br class="wikidpad" />
+/**<ul class="wikidpad normalindent">* Template Name: Page with No Sidebar<br class="wikidpad" />
+*/<br class="wikidpad" />
+</ul>
+6. Now you should have a Template option when you modify pages in Wordpress<br class="wikidpad" />
+7. Copy-paste content-sidebar under "layout" and rename the new one no-sidebar.css<br class="wikidpad" />
+8. Change the content of no-sidebar accordingly<br class="wikidpad" />
+9. Enqueue no-sidebar.css by adding the following lines to functions.php<br class="wikidpad" />
+<br class="wikidpad" />
+if (is_page_template('page-templates/page-nosidebar.php')) {<ul class="wikidpad normalindent">wp_enqueue_style( 'my-sinome-layout-style' , get_template_directory_uri() . '/layouts/no-sidebar.css');</ul>
+} else {<ul class="wikidpad normalindent">wp_enqueue_style( 'my-sinome-layout-style' , get_template_directory_uri() . '/layouts/content-sidebar.css');</ul>
+}<br class="wikidpad" />
+<br class="wikidpad" />
+<b class="wikidpad">Adding editor styles to match front-end styles</b><br class="wikidpad" />
+<br class="wikidpad" />
+1. in inc folder, create a new file called editor-style.css<br class="wikidpad" />
+2. put proper styles in editor-style.css. They will be the same as style.css but simplified. Use Morten's file as a template<br class="wikidpad" />
+3. In functions.php add this code into my_simone_setup()<br class="wikidpad" />
+<br class="wikidpad" />
+// This theme styles the visual editor to resemble the theme style.<br class="wikidpad" />
+$font_url = '<span class="wikidpad url-link"><a href="http://fonts.googleapis.com/css?family=Lato:300,400,400italic,700,900,900italic" class="wikidpad">http://fonts.googleapis.com/css?family=Lato:300,400,400italic,700,900,900italic</a></span>|PT+Serif:400,700,400italic,700italic';<br class="wikidpad" />
+add_editor_style( array( 'inc/editor-style.css', str_replace( ',', '%2C', $font_url ) ) );<br class="wikidpad" />
+<br class="wikidpad" />
+<b class="wikidpad">Other resources</b><br class="wikidpad" />
+<br class="wikidpad" />
+<span class="wikidpad url-link"><a href="http://codex.wordpress.org/Theme\_Development" class="wikidpad">http://codex.wordpress.org/Theme\_Development</a></span><br class="wikidpad" />
+And don't forget that I have the code snippets for every section in Dropbox<br class="wikidpad" />
+<br class="wikidpad" />
+<br class="wikidpad" />
+<br class="wikidpad" />
+<b class="wikidpad">List of steps</b><br class="wikidpad" />
+Getting and installing Underscores<br class="wikidpad" />
+Installing WordPress Theme Unit Test data<br class="wikidpad" />
+Installing the Developer plugin<br class="wikidpad" />
+Setting up style.css<br class="wikidpad" />
+Configuring baseline settings and functions<br class="wikidpad" />
+Enabling custom fonts and font icons<br class="wikidpad" />
+Applying global styles<br class="wikidpad" />
+Styling basic layout components<br class="wikidpad" />
+Making the site layout responsive<br class="wikidpad" />
+Styling the default header<br class="wikidpad" />
+Hiding the site title and tagline<br class="wikidpad" />
+Adding an optional header image function<br class="wikidpad" />
+Placing the header image behind the site title<br class="wikidpad" />
+Setting up menus<br class="wikidpad" />
+Styling the menu<br class="wikidpad" />
+Using Superfish for accessible menus<br class="wikidpad" />
+Making the menu responsive<br class="wikidpad" />
+Creating a custom social media menu<br class="wikidpad" />
+Styling the menu with icons from Font Awesome<br class="wikidpad" />
+Adding the search form<br class="wikidpad" />
+Adding the search icon<br class="wikidpad" />
+Adding show/hide functionality to the search form with jQuery<br class="wikidpad" />
+Adding a widgetized area to the footer<br class="wikidpad" />
+Using the Monster widget plugin to test all widgets<br class="wikidpad" />
+Styling the footer<br class="wikidpad" />
+General widget styling<br class="wikidpad" />
+Adding custom styles to specific widgets<br class="wikidpad" />
+Using Masonry to make footer widgets responsive<br class="wikidpad" />
+Changing the Single Post Template content structure<br class="wikidpad" />
+Changing the output of meta elements<br class="wikidpad" />
+Styling the Single Post Template<br class="wikidpad" />
+Making post meta responsive<br class="wikidpad" />
+Styling blockquotes<br class="wikidpad" />
+Creating pull quotes and pull images<br class="wikidpad" />
+Working with image captions<br class="wikidpad" />
+Working with image galleries<br class="wikidpad" />
+Single-post navigation<br class="wikidpad" />
+Working with the comments template<br class="wikidpad" />
+Using Gravatars in comments<br class="wikidpad" />
+Styling comments<br class="wikidpad" />
+Highlighting post author comments<br class="wikidpad" />
+Styling the comment form and messages<br class="wikidpad" />
+Defining featured image sizes<br class="wikidpad" />
+Generating new featured images with a plugin<br class="wikidpad" />
+Adding featured images to a template<br class="wikidpad" />
+Styling the featured image<br class="wikidpad" />
+Customizing and styling index templates<br class="wikidpad" />
+Displaying excerpts or full content on index pages<br class="wikidpad" />
+Adding a custom Read More link<br class="wikidpad" />
+Adding featured images<br class="wikidpad" />
+Creating custom pagination navigation<br class="wikidpad" />
+Highlighting Sticky Posts<br class="wikidpad" />
+Creating custom post format templates<br class="wikidpad" />
+Highlighting the most recent post in the index template<br class="wikidpad" />
+Customizing the search results and the 404 template<br class="wikidpad" />
+Styling pages<br class="wikidpad" />
+Creating custom page templates<br class="wikidpad" />
+Adding editor styles to match front-end styles    </body>
+</html>

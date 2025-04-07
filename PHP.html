@@ -1,0 +1,467 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html>
+    <head>
+        <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+        <title>PHP</title>
+        <link type="text/css" rel="stylesheet" href="appbase.css">
+    </head>
+    <body class="wikidpad">
+<span class="wikidpad parent-nodes">parent nodes: <span class="wikidpad parent-node"><a href="WebDesign.html" class="wikidpad">WebDesign</a></span><br class="wikidpad" /><br class="wikidpad" /></span>
+<a name=".h0" class="wikidpad"></a><h2 class="wikidpad heading-level2">PHP</h2>
+<span class="wikidpad property attribute">[camelCaseWordsEnabled: false]</span><br class="wikidpad" />
+<br class="wikidpad" />
+<span class="wikidpad wiki-link"><a href="PHP%20-%20Object%20Oriented%20Programming.html" class="wikidpad">PHP - Object Oriented Programming</a></span><br class="wikidpad" />
+<br class="wikidpad" />
+<b class="wikidpad">Includes</b><br class="wikidpad" />
+To add a link to a php file which contains your header or footer, you do like this<br class="wikidpad" />
+<br class="wikidpad" />
+&lt;?php include("../includes/layouts/header.php"); ?&gt;<br class="wikidpad" />
+<br class="wikidpad" />
+Or another option is to like this, which is good for functions that would fail if we include them more than once by mistake. You will also get an error if the page doesn't manage to include the file for some reason.<br class="wikidpad" />
+<br class="wikidpad" />
+&lt;?php require_once("../includes/functions.php"); ?&gt;<br class="wikidpad" />
+<br class="wikidpad" />
+<b class="wikidpad">5 steps of database connectivity</b><br class="wikidpad" />
+<br class="wikidpad" />
+1. Create a database connection<br class="wikidpad" />
+2. Perform database query<br class="wikidpad" />
+3. Use returned data (if any)<br class="wikidpad" />
+4. Release returned data<br class="wikidpad" />
+5. Close database connection<br class="wikidpad" />
+<br class="wikidpad" />
+<b class="wikidpad">Database query example</b><br class="wikidpad" />
+<br class="wikidpad" />
+function find_subject_by_id($subject_id){<ul class="wikidpad normalindent">global $connection;<br class="wikidpad" />
+<br class="wikidpad" />
+$query  = "SELECT * ";<br class="wikidpad" />
+$query .= "FROM subjects ";<br class="wikidpad" />
+$query .= "WHERE id = {$subject_id} ";<br class="wikidpad" />
+$query .= "LIMIT 1";<br class="wikidpad" />
+$subject_set = mysqli_query($connection, $query);<br class="wikidpad" />
+confirm_query($subject_set);<br class="wikidpad" />
+$subject = mysqli_fetc_assoc($subject_set);  //the rest of the query is an "array" but in thise case we get only one so we put that one item in a variable and return that<br class="wikidpad" />
+return $subject;</ul>
+}<br class="wikidpad" />
+<br class="wikidpad" />
+<b class="wikidpad">Constants instead of variables</b><br class="wikidpad" />
+<br class="wikidpad" />
+define("DB_SERVER", "127.0.0.1");<br class="wikidpad" />
+define("DB_USER", "onehour6_widget");<br class="wikidpad" />
+define("DB_PASS", "xkVr5K45vhZND7rg%");<br class="wikidpad" />
+define("DB_NAME", "onehour6_widget_corp");<br class="wikidpad" />
+<br class="wikidpad" />
+// 1. Create a database connection<br class="wikidpad" />
+$connection = mysqli_connect(DB_SERVER, DB_USER, DB_PASS, DB_NAME);<br class="wikidpad" />
+<br class="wikidpad" />
+DB_SERVER instead of $db_server<br class="wikidpad" />
+<br class="wikidpad" />
+<b class="wikidpad">Refactoring</b><br class="wikidpad" />
+<br class="wikidpad" />
+Possible reasons for refactoring code:<br class="wikidpad" />
+- Simplicity<br class="wikidpad" />
+- Clarity<br class="wikidpad" />
+- Maintainability<br class="wikidpad" />
+- Efficiency<br class="wikidpad" />
+- Flexibility<ul class="wikidpad normalindent">- Reusability<br class="wikidpad" />
+- Extensibility<br class="wikidpad" />
+</ul>
+<b class="wikidpad">Global</b><br class="wikidpad" />
+<br class="wikidpad" />
+function find_all_subjects{<ul class="wikidpad normalindent">global $connection;<br class="wikidpad" />
+<br class="wikidpad" />
+$query  = "SELECT * ";<br class="wikidpad" />
+$query .= "FROM subjects ";<br class="wikidpad" />
+$query .= "WHERE visible = 1 ";<br class="wikidpad" />
+$query .= "ORDER BY position ASC";<br class="wikidpad" />
+$subject_set = mysqli_query($connection, $query);<br class="wikidpad" />
+confirm_query($subject_set);<br class="wikidpad" />
+return $subject_set;</ul>
+}<br class="wikidpad" />
+<br class="wikidpad" />
+So this function wouldn't know the variable connection if we had not said "global $connection" at the beginning. The global says: take the connection variable that already exists in the global scope.<br class="wikidpad" />
+<br class="wikidpad" />
+The PHP superglobal variables are:<br class="wikidpad" />
+<br class="wikidpad" />
+$GLOBALS<br class="wikidpad" />
+$GLOBALS is a PHP super global variable which is used to access global variables from anywhere in the PHP script (also from within functions or methods).<br class="wikidpad" />
+<br class="wikidpad" />
+PHP stores all global variables in an array called $GLOBALS[index]. The index holds the name of the variable.<br class="wikidpad" />
+<br class="wikidpad" />
+$_SERVER<br class="wikidpad" />
+$_SERVER is a PHP super global variable which holds information about headers, paths, and script locations.<br class="wikidpad" />
+<br class="wikidpad" />
+The following table lists the most important elements that can go inside $_SERVER:<br class="wikidpad" />
+<br class="wikidpad" />
+Element/Code	Description<br class="wikidpad" />
+$_SERVER['PHP_SELF']	Returns the filename of the currently executing script<br class="wikidpad" />
+$_SERVER['GATEWAY_INTERFACE']	Returns the version of the Common Gateway Interface (CGI) the server is using<br class="wikidpad" />
+$_SERVER['SERVER_ADDR']	Returns the IP address of the host server<br class="wikidpad" />
+$_SERVER['SERVER_NAME']	Returns the name of the host server (such as www.w3schools.com)<br class="wikidpad" />
+$_SERVER['SERVER_SOFTWARE']	Returns the server identification string (such as Apache/2.2.24)<br class="wikidpad" />
+$_SERVER['SERVER_PROTOCOL']	Returns the name and revision of the information protocol (such as HTTP/1.1)<br class="wikidpad" />
+$_SERVER['REQUEST_METHOD']	Returns the request method used to access the page (such as POST)<br class="wikidpad" />
+$_SERVER['REQUEST_TIME']	Returns the timestamp of the start of the request (such as 1377687496)<br class="wikidpad" />
+$_SERVER['QUERY_STRING']	Returns the query string if the page is accessed via a query string<br class="wikidpad" />
+$_SERVER['HTTP_ACCEPT']	Returns the Accept header from the current request<br class="wikidpad" />
+$_SERVER['HTTP_ACCEPT_CHARSET']	Returns the Accept_Charset header from the current request (such as utf-8,ISO-8859-1)<br class="wikidpad" />
+$_SERVER['HTTP_HOST']	Returns the Host header from the current request<br class="wikidpad" />
+$_SERVER['HTTP_REFERER']	Returns the complete URL of the current page (not reliable because not all user-agents support it)<br class="wikidpad" />
+$_SERVER['HTTPS']	Is the script queried through a secure HTTP protocol<br class="wikidpad" />
+$_SERVER['REMOTE_ADDR']	Returns the IP address from where the user is viewing the current page<br class="wikidpad" />
+$_SERVER['REMOTE_HOST']	Returns the Host name from where the user is viewing the current page<br class="wikidpad" />
+$_SERVER['REMOTE_PORT']	Returns the port being used on the user's machine to communicate with the web server<br class="wikidpad" />
+$_SERVER['SCRIPT_FILENAME']	Returns the absolute pathname of the currently executing script<br class="wikidpad" />
+$_SERVER['SERVER_ADMIN']	Returns the value given to the SERVER_ADMIN directive in the web server configuration file (if your script runs on a virtual host, it will be the value defined for that virtual host) (such as someone@w3schools.com)<br class="wikidpad" />
+$_SERVER['SERVER_PORT']	Returns the port on the server machine being used by the web server for communication (such as 80)<br class="wikidpad" />
+$_SERVER['SERVER_SIGNATURE']	Returns the server version and virtual host name which are added to server-generated pages<br class="wikidpad" />
+$_SERVER['PATH_TRANSLATED']	Returns the file system based path to the current script<br class="wikidpad" />
+$_SERVER['SCRIPT_NAME']	Returns the path of the current script<br class="wikidpad" />
+$_SERVER['SCRIPT_URI']	Returns the URI of the current page<br class="wikidpad" />
+<br class="wikidpad" />
+$_REQUEST<br class="wikidpad" />
+PHP $_REQUEST is used to collect data after submitting an HTML form.<br class="wikidpad" />
+(don't bother using that one, use server variable instead)<br class="wikidpad" />
+<br class="wikidpad" />
+$_POST<br class="wikidpad" />
+PHP $_POST is widely used to collect form data after submitting an HTML form with method="post". $_POST is also widely used to pass variables.<br class="wikidpad" />
+<br class="wikidpad" />
+$_GET<br class="wikidpad" />
+PHP $_GET can also be used to collect form data after submitting an HTML form with method="get".<br class="wikidpad" />
+$_GET can also collect data sent in the URL.<br class="wikidpad" />
+<br class="wikidpad" />
+$_FILES<br class="wikidpad" />
+$_ENV<br class="wikidpad" />
+$_COOKIE<br class="wikidpad" />
+$_SESSION<br class="wikidpad" />
+<br class="wikidpad" />
+<b class="wikidpad">Server variables</b><br class="wikidpad" />
+<br class="wikidpad" />
+echo "Server details:&lt;br /&gt;";<br class="wikidpad" />
+echo "SERVER_NAME: ". $_SERVER['SERVER_NAME'] ."&lt;br /&gt;";<br class="wikidpad" />
+echo "SERVER_ADDR: ". $_SERVER['SERVER_ADDR'] ."&lt;br /&gt;";<br class="wikidpad" />
+echo "SERVER_PORT: ". $_SERVER['SERVER_PORT'] ."&lt;br /&gt;";<br class="wikidpad" />
+echo "DOCUMENT_ROOT: ". $_SERVER['DOCUMENT_ROOT'] ."&lt;br /&gt;";<br class="wikidpad" />
+echo "&lt;br /&gt;";<br class="wikidpad" />
+<br class="wikidpad" />
+echo "Page details:&lt;br /&gt;";<br class="wikidpad" />
+echo "PHP_SELF: ". $_SERVER['PHP_SELF'] ."&lt;br /&gt;";<br class="wikidpad" />
+echo "SCRIPT_FILENAME: ". $_SERVER['SCRIPT_FILENAME'] ."&lt;br /&gt;";<br class="wikidpad" />
+echo "&lt;br /&gt;";<br class="wikidpad" />
+<br class="wikidpad" />
+echo "Request details:<br />";<br class="wikidpad" />
+echo "REMOTE_ADDR: ". $_SERVER['REMOTE_ADDR'] ."&lt;br /&gt;";<br class="wikidpad" />
+echo "REMOTE_PORT: ". $_SERVER['REMOTE_PORT'] ."&lt;br /&gt;";<br class="wikidpad" />
+echo "REQUEST_URI: ". $_SERVER['REQUEST_URI'] ."&lt;br /&gt;";<br class="wikidpad" />
+echo "QUERY_STRING: ". $_SERVER['QUERY_STRING'] ."&lt;br /&gt;"; //would return subject=2 if you type <span class="wikidpad url-link"><a href="http://site.php?subject=2" class="wikidpad">http://site.php?subject=2</a></span><br class="wikidpad" />
+echo "REQUEST_METHOD: ". $_SERVER['REQUEST_METHOD'] ."&lt;br /&gt;";<br class="wikidpad" />
+echo "REQUEST_TIME: ". $_SERVER['REQUEST_TIME'] ."&lt;br /&gt;";<br class="wikidpad" />
+echo "HTTP_REFERER: ". $_SERVER['HTTP_REFERER'] ."&lt;br /&gt;";<br class="wikidpad" />
+echo "HTTP_USER_AGENT: ". $_SERVER['HTTP_USER_AGENT'] ."&lt;br /&gt;";<br class="wikidpad" />
+<br class="wikidpad" />
+<b class="wikidpad">Pass parameters in URL</b><br class="wikidpad" />
+<br class="wikidpad" />
+To grab the value of the parameter, use $_GET. Example:<br class="wikidpad" />
+<br class="wikidpad" />
+if (isset($_GET["subject"])){<ul class="wikidpad normalindent">$selected_subject_id = $_GET["subject"];	</ul>
+}<br class="wikidpad" />
+elseif (isset($_GET["page"])){<ul class="wikidpad normalindent">$selected_page_id = $_GET["page"];</ul>
+}<br class="wikidpad" />
+<br class="wikidpad" />
+<b class="wikidpad">Sessions</b><br class="wikidpad" />
+<br class="wikidpad" />
+Sessions are most useful for: <br class="wikidpad" />
+1) User autentication ($logged_in, $user_id)<br class="wikidpad" />
+2) Holding data during a redirect ($message, $error)<br class="wikidpad" />
+3) Frequently referred to data ($username, $account_type)<br class="wikidpad" />
+<br class="wikidpad" />
+At the top of the page, add. You must add that same line on every page from which you want to access the session:<br class="wikidpad" />
+&lt;?php session_start(); ?&gt;<br class="wikidpad" />
+<br class="wikidpad" />
+and then you can set session parameters like this:<br class="wikidpad" />
+$_SESSION["message"] = "Row added successfully";<br class="wikidpad" />
+<br class="wikidpad" />
+if (isset($_SESSION["message"])){<ul class="wikidpad normalindent">$output = "<div class=\"message\">";<br class="wikidpad" />
+$output .= htmlentities($_SESSION["message"]);<br class="wikidpad" />
+$output .= "</div>";<br class="wikidpad" />
+return $output;</ul>
+}<br class="wikidpad" />
+<br class="wikidpad" />
+htmlentities — Convert all applicable characters to HTML entities<br class="wikidpad" />
+<br class="wikidpad" />
+This function is identical to htmlspecialchars() in all ways, except with htmlentities(), all characters which have HTML character entity equivalents are translated into these entities.<br class="wikidpad" />
+<br class="wikidpad" />
+If you want to decode instead (the reverse) you can use html_entity_decode().<br class="wikidpad" />
+<br class="wikidpad" />
+<b class="wikidpad">Context</b><br class="wikidpad" />
+<br class="wikidpad" />
+If we have code that should behave almost the same in more than one context. Then instead of duplicating that code and making a few changes, its better to use a variable to identify the current contacts. And then use conditionals in the code to get the multiple behaviors that we want. The idea's extremely simple, but actually very powerful.<br class="wikidpad" />
+<br class="wikidpad" />
+If you see something like this:<br class="wikidpad" />
+<br class="wikidpad" />
+function find_all_subjects($public=true) {<ul class="wikidpad normalindent">...</ul>
+}<br class="wikidpad" />
+<br class="wikidpad" />
+It means that by default public is true, but you can pass it false if need be. <br class="wikidpad" />
+<br class="wikidpad" />
+Instead of just a variable, you can also have an options array like this:<br class="wikidpad" />
+<br class="wikidpad" />
+function find_it($options=array()){<ul class="wikidpad normalindent">if ($options['visible']) {<ul class="wikidpad normalindent">...</ul>
+}<br class="wikidpad" />
+if ($options['order']){<ul class="wikidpad normalindent">...</ul>
+}<br class="wikidpad" />
+...</ul>
+}<br class="wikidpad" />
+<br class="wikidpad" />
+$opts = array('visible' =&gt; false, 'order', =&gt; 'asc');  //this is an associative array<br class="wikidpad" />
+find_id($opts);<br class="wikidpad" />
+<br class="wikidpad" />
+<b class="wikidpad">Password Hashing algorithms</b><br class="wikidpad" />
+<br class="wikidpad" />
+- MD5<br class="wikidpad" />
+- SHA-1<br class="wikidpad" />
+- SHA-2 (SHA-256, SHA-512)<br class="wikidpad" />
+- Whirlpool, Tiger, AES<br class="wikidpad" />
+- Blowfish<br class="wikidpad" />
+<br class="wikidpad" />
+MD5 used to be a good choice and lots of people used it, but it's not recommended anymore.<br class="wikidpad" />
+<br class="wikidpad" />
+Recommended by PHP.net: Blowfish<br class="wikidpad" />
+<span class="wikidpad url-link"><a href="http://php.net/manual/en/faq.passwords.php" class="wikidpad">http://php.net/manual/en/faq.passwords.php</a></span><br class="wikidpad" />
+<br class="wikidpad" />
+In PHP 5.5: <br class="wikidpad" />
+password_hash($password, PASSWORD_DEFAULT);<br class="wikidpad" />
+<br class="wikidpad" />
+password_verify)$password, $existing_hash);<br class="wikidpad" />
+<br class="wikidpad" />
+Do not store anything related to username and password on a cookie because users can see cookies. Better to store it in the session which resides on the server.<br class="wikidpad" />
+<br class="wikidpad" />
+<b class="wikidpad">Variable variables</b><br class="wikidpad" />
+<br class="wikidpad" />
+$a = "hello";<br class="wikidpad" />
+$hello = "Hello dear everyone!";<br class="wikidpad" />
+<br class="wikidpad" />
+echo $$a;<br class="wikidpad" />
+<br class="wikidpad" />
+This will echo: "Hello dear everyone!"<br class="wikidpad" />
+Because: $$a = $hello = "Hello dear everyone!"<br class="wikidpad" />
+<br class="wikidpad" />
+// What does $$var<a href="#.f1" class="wikidpad">[1]</a> mean?<br class="wikidpad" />
+// #1: get the first element then evaluate dynamically?<br class="wikidpad" />
+// #2: evaluate dynamically then get the first element?<br class="wikidpad" />
+<br class="wikidpad" />
+// Use {} to make it clear:<br class="wikidpad" />
+// echo ${$var<a href="#.f1" class="wikidpad">[1]</a>};  // for #1<br class="wikidpad" />
+// echo ${$var}<a name=".f1" class="wikidpad"></a>[1];	 // for #2<br class="wikidpad" />
+<br class="wikidpad" />
+<b class="wikidpad">Array functions</b><br class="wikidpad" />
+<br class="wikidpad" />
+$numbers = array(1,2,3,4,5,6);<br class="wikidpad" />
+print_r($numbers);<br class="wikidpad" />
+echo "<br /><br />";<br class="wikidpad" />
+<br class="wikidpad" />
+// shifts first element out of an array<br class="wikidpad" />
+// and returns it.<br class="wikidpad" />
+$a = array_shift($numbers);<br class="wikidpad" />
+echo "a:" . $a ."<br />";<br class="wikidpad" />
+print_r($numbers);<br class="wikidpad" />
+echo "<br /><br />";<br class="wikidpad" />
+<br class="wikidpad" />
+// prepends an element to an array,<br class="wikidpad" />
+// returns the element count.<br class="wikidpad" />
+$b = array_unshift($numbers, 'first');<br class="wikidpad" />
+echo "b: ". $b ."<br />";<br class="wikidpad" />
+print_r($numbers);<br class="wikidpad" />
+echo "<br /><br />";<br class="wikidpad" />
+<br class="wikidpad" />
+echo "<hr />";<br class="wikidpad" />
+<br class="wikidpad" />
+// pops last element out of an array<br class="wikidpad" />
+// and returns it.<br class="wikidpad" />
+$a = array_pop($numbers);<br class="wikidpad" />
+echo "a: " . $a ."<br />";<br class="wikidpad" />
+print_r($numbers);<br class="wikidpad" />
+echo "<br /><br />";<br class="wikidpad" />
+<br class="wikidpad" />
+// pushes an element onto the end of an array,<br class="wikidpad" />
+// returns the element count.<br class="wikidpad" />
+$b = array_push($numbers, 'last');<br class="wikidpad" />
+echo "b: ". $b ."<br />";<br class="wikidpad" />
+print_r($numbers);<br class="wikidpad" />
+echo "<br /><br />";<br class="wikidpad" />
+<br class="wikidpad" />
+<b class="wikidpad">Date</b> //techer recommends not using it, use strftime() instead<br class="wikidpad" />
+<br class="wikidpad" />
+string date ( string $format [, int $timestamp = time() ] )<br class="wikidpad" />
+<br class="wikidpad" />
+Possible format<br class="wikidpad" />
+<br class="wikidpad" />
+format character	Description	Example returned values<br class="wikidpad" />
+Day	---	---<br class="wikidpad" />
+d	Day of the month, 2 digits with leading zeros	01 to 31<br class="wikidpad" />
+D	A textual representation of a day, three letters	Mon through Sun<br class="wikidpad" />
+j	Day of the month without leading zeros	1 to 31<br class="wikidpad" />
+l (lowercase 'L')	A full textual representation of the day of the week	Sunday through Saturday<br class="wikidpad" />
+N	ISO-8601 numeric representation of the day of the week (added in PHP 5.1.0)	1 (for Monday) through 7 (for Sunday)<br class="wikidpad" />
+S	English ordinal suffix for the day of the month, 2 characters	st, nd, rd or th. Works well with j<br class="wikidpad" />
+w	Numeric representation of the day of the week	0 (for Sunday) through 6 (for Saturday)<br class="wikidpad" />
+z	The day of the year (starting from 0)	0 through 365<br class="wikidpad" />
+Week	---	---<br class="wikidpad" />
+W	ISO-8601 week number of year, weeks starting on Monday (added in PHP 4.1.0)	Example: 42 (the 42nd week in the year)<br class="wikidpad" />
+Month	---	---<br class="wikidpad" />
+F	A full textual representation of a month, such as January or March	January through December<br class="wikidpad" />
+m	Numeric representation of a month, with leading zeros	01 through 12<br class="wikidpad" />
+M	A short textual representation of a month, three letters	Jan through Dec<br class="wikidpad" />
+n	Numeric representation of a month, without leading zeros	1 through 12<br class="wikidpad" />
+t	Number of days in the given month	28 through 31<br class="wikidpad" />
+Year	---	---<br class="wikidpad" />
+L	Whether it's a leap year	1 if it is a leap year, 0 otherwise.<br class="wikidpad" />
+o	ISO-8601 year number. This has the same value as Y, except that if the ISO week number (W) belongs to the previous or next year, that year is used instead. (added in PHP 5.1.0)	Examples: 1999 or 2003<br class="wikidpad" />
+Y	A full numeric representation of a year, 4 digits	Examples: 1999 or 2003<br class="wikidpad" />
+y	A two digit representation of a year	Examples: 99 or 03<br class="wikidpad" />
+Time	---	---<br class="wikidpad" />
+a	Lowercase Ante meridiem and Post meridiem	am or pm<br class="wikidpad" />
+A	Uppercase Ante meridiem and Post meridiem	AM or PM<br class="wikidpad" />
+B	Swatch Internet time	000 through 999<br class="wikidpad" />
+g	12-hour format of an hour without leading zeros	1 through 12<br class="wikidpad" />
+G	24-hour format of an hour without leading zeros	0 through 23<br class="wikidpad" />
+h	12-hour format of an hour with leading zeros	01 through 12<br class="wikidpad" />
+H	24-hour format of an hour with leading zeros	00 through 23<br class="wikidpad" />
+i	Minutes with leading zeros	00 to 59<br class="wikidpad" />
+s	Seconds, with leading zeros	00 through 59<br class="wikidpad" />
+u	Microseconds (added in PHP 5.2.2). Note that date() will always generate 000000 since it takes an integer parameter, whereas DateTime::format() does support microseconds if DateTime was created with microseconds.	Example: 654321<br class="wikidpad" />
+Timezone	---	---<br class="wikidpad" />
+e	Timezone identifier (added in PHP 5.1.0)	Examples: UTC, GMT, Atlantic/Azores<br class="wikidpad" />
+I (capital i)	Whether or not the date is in daylight saving time	1 if Daylight Saving Time, 0 otherwise.<br class="wikidpad" />
+O	Difference to Greenwich time (GMT) in hours	Example: +0200<br class="wikidpad" />
+P	Difference to Greenwich time (GMT) with colon between hours and minutes (added in PHP 5.1.3)	Example: +02:00<br class="wikidpad" />
+T	Timezone abbreviation	Examples: EST, MDT ...<br class="wikidpad" />
+Z	Timezone offset in seconds. The offset for timezones west of UTC is always negative, and for those east of UTC is always positive.	-43200 through 50400<br class="wikidpad" />
+Full Date/Time	---	---<br class="wikidpad" />
+c	ISO 8601 date (added in PHP 5)	2004-02-12T15:19:21+00:00<br class="wikidpad" />
+r	» RFC 2822 formatted date	Example: Thu, 21 Dec 2000 16:01:07 +0200<br class="wikidpad" />
+U	Seconds since the Unix Epoch (January 1 1970 00:00:00 GMT)	See also time()<br class="wikidpad" />
+<br class="wikidpad" />
+<b class="wikidpad">strftime()</b><br class="wikidpad" />
+<br class="wikidpad" />
+string strftime ( string $format [, int $timestamp = time() ] )<br class="wikidpad" />
+<br class="wikidpad" />
+The following characters are recognized in the format parameter string<br class="wikidpad" />
+format	Description	Example returned values<br class="wikidpad" />
+Day	---	---<br class="wikidpad" />
+%a	An abbreviated textual representation of the day	Sun through Sat<br class="wikidpad" />
+%A	A full textual representation of the day	Sunday through Saturday<br class="wikidpad" />
+%d	Two-digit day of the month (with leading zeros)	01 to 31<br class="wikidpad" />
+%e	Day of the month, with a space preceding single digits. Not implemented as described on Windows. See below for more information.	1 to 31<br class="wikidpad" />
+%j	Day of the year, 3 digits with leading zeros	001 to 366<br class="wikidpad" />
+%u	ISO-8601 numeric representation of the day of the week	1 (for Monday) though 7 (for Sunday)<br class="wikidpad" />
+%w	Numeric representation of the day of the week	0 (for Sunday) through 6 (for Saturday)<br class="wikidpad" />
+Week	---	---<br class="wikidpad" />
+%U	Week number of the given year, starting with the first Sunday as the first week	13 (for the 13th full week of the year)<br class="wikidpad" />
+%V	ISO-8601:1988 week number of the given year, starting with the first week of the year with at least 4 weekdays, with Monday being the start of the week	01 through 53 (where 53 accounts for an overlapping week)<br class="wikidpad" />
+%W	A numeric representation of the week of the year, starting with the first Monday as the first week	46 (for the 46th week of the year beginning with a Monday)<br class="wikidpad" />
+Month	---	---<br class="wikidpad" />
+%b	Abbreviated month name, based on the locale	Jan through Dec<br class="wikidpad" />
+%B	Full month name, based on the locale	January through December<br class="wikidpad" />
+%h	Abbreviated month name, based on the locale (an alias of %b)	Jan through Dec<br class="wikidpad" />
+%m	Two digit representation of the month	01 (for January) through 12 (for December)<br class="wikidpad" />
+Year	---	---<br class="wikidpad" />
+%C	Two digit representation of the century (year divided by 100, truncated to an integer)	19 for the 20th Century<br class="wikidpad" />
+%g	Two digit representation of the year going by ISO-8601:1988 standards (see %V)	Example: 09 for the week of January 6, 2009<br class="wikidpad" />
+%G	The full four-digit version of %g	Example: 2008 for the week of January 3, 2009<br class="wikidpad" />
+%y	Two digit representation of the year	Example: 09 for 2009, 79 for 1979<br class="wikidpad" />
+%Y	Four digit representation for the year	Example: 2038<br class="wikidpad" />
+Time	---	---<br class="wikidpad" />
+%H	Two digit representation of the hour in 24-hour format	00 through 23<br class="wikidpad" />
+%k	Two digit representation of the hour in 24-hour format, with a space preceding single digits	0 through 23<br class="wikidpad" />
+%I	Two digit representation of the hour in 12-hour format	01 through 12<br class="wikidpad" />
+%l (lower-case 'L')	Hour in 12-hour format, with a space preceding single digits	1 through 12<br class="wikidpad" />
+%M	Two digit representation of the minute	00 through 59<br class="wikidpad" />
+%p	UPPER-CASE 'AM' or 'PM' based on the given time	Example: AM for 00:31, PM for 22:23<br class="wikidpad" />
+%P	lower-case 'am' or 'pm' based on the given time	Example: am for 00:31, pm for 22:23<br class="wikidpad" />
+%r	Same as "%I:%M:%S %p"	Example: 09:34:17 PM for 21:34:17<br class="wikidpad" />
+%R	Same as "%H:%M"	Example: 00:35 for 12:35 AM, 16:44 for 4:44 PM<br class="wikidpad" />
+%S	Two digit representation of the second	00 through 59<br class="wikidpad" />
+%T	Same as "%H:%M:%S"	Example: 21:34:17 for 09:34:17 PM<br class="wikidpad" />
+%X	Preferred time representation based on locale, without the date	Example: 03:59:16 or 15:59:16<br class="wikidpad" />
+%z	The time zone offset. Not implemented as described on Windows. See below for more information.	Example: -0500 for US Eastern Time<br class="wikidpad" />
+%Z	The time zone abbreviation. Not implemented as described on Windows. See below for more information.	Example: EST for Eastern Time<br class="wikidpad" />
+Time and Date Stamps	---	---<br class="wikidpad" />
+%c	Preferred date and time stamp based on locale	Example: Tue Feb 5 00:45:10 2009 for February 5, 2009 at 12:45:10 AM<br class="wikidpad" />
+%D	Same as "%m/%d/%y"	Example: 02/05/09 for February 5, 2009<br class="wikidpad" />
+%F	Same as "%Y-%m-%d" (commonly used in database datestamps)	Example: 2009-02-05 for February 5, 2009<br class="wikidpad" />
+%s	Unix Epoch Time timestamp (same as the time() function)	Example: 305815200 for September 10, 1979 08:40:00 AM<br class="wikidpad" />
+%x	Preferred date representation based on locale, without the time	Example: 02/05/09 for February 5, 2009<br class="wikidpad" />
+Miscellaneous	---	---<br class="wikidpad" />
+%n	A newline character ("n")	---<br class="wikidpad" />
+%t	A Tab character ("t")	---<br class="wikidpad" />
+%%	A literal percentage character ("%")<br class="wikidpad" />
+<br class="wikidpad" />
+Example:<br class="wikidpad" />
+$timestamp = time();<br class="wikidpad" />
+echo strftime("The date today is %m/%d/%y", $timestamp);<br class="wikidpad" />
+echo "<br />";<br class="wikidpad" />
+<br class="wikidpad" />
+this will echo:<br class="wikidpad" />
+The date today is 11/01/08<br class="wikidpad" />
+<br class="wikidpad" />
+To remove the extra 0 on 01 and 08:<br class="wikidpad" />
+<br class="wikidpad" />
+function strip_zeros_from_date($marked_string="") {<ul class="wikidpad normalindent">// remove the marked zeros<br class="wikidpad" />
+$no_zeros = str_replace('*0', '', $marked_string);<br class="wikidpad" />
+// then remove any remaining marks<br class="wikidpad" />
+$cleaned_string = str_replace('*', '', $no_zeros);<br class="wikidpad" />
+return $cleaned_string;</ul>
+}<br class="wikidpad" />
+<br class="wikidpad" />
+echo strip_zeros_from_date(strftime("The date today is *%m/*%d/%y", $timestamp)); //notice the start in front of all the items that could potentially have a zero<br class="wikidpad" />
+<br class="wikidpad" />
+Formating date for MySQL:<br class="wikidpad" />
+<br class="wikidpad" />
+$dt = time();<br class="wikidpad" />
+$mysql_datetime = strftime("%Y-%m-%d %H:%M:%S", $dt);<br class="wikidpad" />
+<br class="wikidpad" />
+<b class="wikidpad">Static</b><br class="wikidpad" />
+<br class="wikidpad" />
+function test3() {<ul class="wikidpad normalindent">static $var = 2;  //static means that the local variable does not lose it's value once the function is done<br class="wikidpad" />
+echo $var . "<br />";<br class="wikidpad" />
+$var++;</ul>
+}<br class="wikidpad" />
+test3();<br class="wikidpad" />
+test3();<br class="wikidpad" />
+test3();<br class="wikidpad" />
+<br class="wikidpad" />
+So this will echo: 2 3 4<br class="wikidpad" />
+<br class="wikidpad" />
+<b class="wikidpad">Reference</b><br class="wikidpad" />
+<br class="wikidpad" />
+$a = 1;<br class="wikidpad" />
+$b =&amp; $a;<br class="wikidpad" />
+$b = 2;<br class="wikidpad" />
+<br class="wikidpad" />
+That means if b changes, a will change too. If a is changed, b will be changed too.<br class="wikidpad" />
+<br class="wikidpad" />
+unset($b); //that means we remove the link between a and b (b will be equal to null)<br class="wikidpad" />
+<br class="wikidpad" />
+<b class="wikidpad">References as function arguments</b><br class="wikidpad" />
+<br class="wikidpad" />
+function ref_test(&amp;$var) {<ul class="wikidpad normalindent">$var = $var * 2;</ul>
+}<br class="wikidpad" />
+$a = 10;<br class="wikidpad" />
+ref_test($a);<br class="wikidpad" />
+echo $a;<br class="wikidpad" />
+<br class="wikidpad" />
+This will return 20<br class="wikidpad" />
+<br class="wikidpad" />
+<b class="wikidpad">Returning references</b><br class="wikidpad" />
+<br class="wikidpad" />
+function &amp;ref_return() { //notice that for this to work, you need your &amp; both here<ul class="wikidpad normalindent">global $a;<br class="wikidpad" />
+$a = $a * 2;<br class="wikidpad" />
+return $a;</ul>
+}<br class="wikidpad" />
+$a = 10;<br class="wikidpad" />
+$b =&amp; ref_return(); //and here<br class="wikidpad" />
+<br class="wikidpad" />
+echo "a: {$a} / b: {$b}<br />";<br class="wikidpad" />
+$b = 30;<br class="wikidpad" />
+echo "a: {$a} / b: {$b}<br />";    </body>
+</html>

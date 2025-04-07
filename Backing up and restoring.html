@@ -1,0 +1,92 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html>
+    <head>
+        <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+        <title>Backing up and restoring</title>
+        <link type="text/css" rel="stylesheet" href="appbase.css">
+    </head>
+    <body class="wikidpad">
+<span class="wikidpad parent-nodes">parent nodes: <span class="wikidpad parent-node"><a href="Wordpress.html" class="wikidpad">Wordpress</a></span><br class="wikidpad" /><br class="wikidpad" /></span>
+<a name=".h0" class="wikidpad"></a><h2 class="wikidpad heading-level2">Backing up and restoring</h2>
+<span class="wikidpad property attribute">[camelCaseWordsEnabled: false]</span><br class="wikidpad" />
+<br class="wikidpad" />
+<b class="wikidpad">Why backups matter</b><br class="wikidpad" />
+- Hacking<br class="wikidpad" />
+- Server malfunction<br class="wikidpad" />
+- Hosting company ends service<br class="wikidpad" />
+- Quickly move site to new host<br class="wikidpad" />
+<br class="wikidpad" />
+<b class="wikidpad">What to back up</b><br class="wikidpad" />
+- Database (contains all your content and settings)<br class="wikidpad" />
+- wp-content folder (hold themes, plugins and uploads)<br class="wikidpad" />
+- wp-config.php file<br class="wikidpad" />
+- .htaccess file<br class="wikidpad" />
+<br class="wikidpad" />
+<b class="wikidpad">Step by step</b><br class="wikidpad" />
+1. Install Plugin BackWPUp<br class="wikidpad" />
+2. BackWPUp &gt; Add new job<br class="wikidpad" />
+3. Keep defaults:<ul class="wikidpad normalindent">- Database backup<br class="wikidpad" />
+- File backup<br class="wikidpad" />
+- Installed plugin list</ul>
+4. Change to ZIP<br class="wikidpad" />
+5. Backup to Dropbox<br class="wikidpad" />
+6. Uncheck "Send e-mail with log when error" so that you receive all e-mails<br class="wikidpad" />
+7. Click save<br class="wikidpad" />
+8. Click on schedule, start job with Wordpress Cron, basic, weekly<br class="wikidpad" />
+9. Under DB Backup, check Backup File Name<br class="wikidpad" />
+10. Go through files, uncheck root folder, check rest to see if it's all good<br class="wikidpad" />
+11. Dropbox configuration is now a new tab (you can send different backup jobs to different dropbox accounts)<br class="wikidpad" />
+12. Reauthenticate (full Dropbox)<br class="wikidpad" />
+13. Pick folder location, save<br class="wikidpad" />
+<br class="wikidpad" />
+<br class="wikidpad" />
+To force the job to run:<br class="wikidpad" />
+BackWPUp &gt; Jobs<br class="wikidpad" />
+Hover over job and click Run Now<br class="wikidpad" />
+<br class="wikidpad" />
+Usually no need to change settings on BackWPUp, but you could uncheck BackWPUp in admin bar.<br class="wikidpad" />
+You can also check where the logs are saved<br class="wikidpad" />
+<br class="wikidpad" />
+<b class="wikidpad">Restoring</b>=<br class="wikidpad" />
+<br class="wikidpad" />
+Before you do a site restore, check with your host if they can do it for you<br class="wikidpad" />
+<br class="wikidpad" />
+1. Do a MANUAL backup of database and files (don't go through the plugin)<ul class="wikidpad normalindent">- Copy every single file in your manual backup folder. Get db name from config.php<br class="wikidpad" />
+- Go to phpMyAdmin <br class="wikidpad" />
+- Click export<br class="wikidpad" />
+- Check Add drop table, uncheck add create procedure. Go!<br class="wikidpad" />
+</ul>
+2. Delete stuff<ul class="wikidpad normalindent">- Go to Filezilla and delete everything under wp-content<br class="wikidpad" />
+- Note down from wp-config.php the username and password for the database<br class="wikidpad" />
+</ul>
+3. Restore wp-content folder and system files<ul class="wikidpad normalindent">- If not done, get db name from wp-config.php<br class="wikidpad" />
+- Copy wp-config.php and .htaccess files through Filezilla from BackWPUp<br class="wikidpad" />
+- Copy wp-content folder through Filezilla from BackWPUp<br class="wikidpad" />
+</ul>
+4. Delete all tables from database<ul class="wikidpad normalindent">- Go to your database in phpMyAdmin (make sure it is the right database!)<br class="wikidpad" />
+- Scroll down and click "Check all". With selected, select Drop, Yes. <br class="wikidpad" />
+</ul>
+5. Import database backup to restore database<ul class="wikidpad normalindent">- Open the SQL file and rename stuff following this logic: <ul class="wikidpad normalindent">- Search and replace http://localhost/wordpress with http://mor10.com/migration<br class="wikidpad" />
+- Search and replace /wordpress with /migration</ul>
+- In phpMyAdmin, click on Import, choose file, and select the sql file located in the BackWPUp backup<br class="wikidpad" />
+- Go!<br class="wikidpad" />
+</ul>
+7. Fix wp-config.php if needed with things you noted down in step 1, don't overwrite the whole file though, just the database information<br class="wikidpad" />
+<br class="wikidpad" />
+If a professional backing up strategy is needed, suggested is vaultpress.com<br class="wikidpad" />
+<br class="wikidpad" />
+<br class="wikidpad" />
+<b class="wikidpad">=If SQL file is bigger than 50 mb</b>=<br class="wikidpad" />
+Using SSH can be a superior way to manage the files and databases on your account. Using a simple command you can import or export a MySQL database into an existing database on your account. Click Here (<span class="wikidpad url-link"><a href="https://my.bluehost.com/cgi/help/180" class="wikidpad">https://my.bluehost.com/cgi/help/180</a></span>) for information about getting SSH access.If you are looking for instructions for importing or exporting databases using phpMyAdmin, please see Import Databases with phpMyAdmin<br class="wikidpad" />
+<br class="wikidpad" />
+Import A MySQL Database<br class="wikidpad" />
+<br class="wikidpad" />
+The file must be in .sql format. It can not be compressed in a .zip or .tar.gz file.<br class="wikidpad" />
+Start by uploading the .sql file onto the Bluehost server<br class="wikidpad" />
+If you haven't already done so, create the MySQL database via the cpanel. Click Here for further instructions<br class="wikidpad" />
+Using SSH, navigate to the directory where your .sql file is.<br class="wikidpad" />
+Next run this command: <ul class="wikidpad normalindent">mysql -p -u username database_name &lt; file.sql </ul>
+To import a single table into an existing database you would use the following command:<br class="wikidpad" />
+<br class="wikidpad" />
+mysql -u username -p -D database_name &lt; tableName.sql    </body>
+</html>

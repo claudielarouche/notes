@@ -1,0 +1,114 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html>
+    <head>
+        <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+        <title>WP API</title>
+        <link type="text/css" rel="stylesheet" href="appbase.css">
+    </head>
+    <body class="wikidpad">
+<span class="wikidpad parent-nodes">parent nodes: <span class="wikidpad parent-node"><a href="Wordpress.html" class="wikidpad">Wordpress</a></span><br class="wikidpad" /><br class="wikidpad" /></span>
+<a name=".h0" class="wikidpad"></a><h2 class="wikidpad heading-level2">WP API</h2>
+<span class="wikidpad property attribute">[camelCaseWordsEnabled: false]</span><br class="wikidpad" />
+<br class="wikidpad" />
+<b class="wikidpad">What is it?</b><br class="wikidpad" />
+<br class="wikidpad" />
+The WP API is a RESTful API that can be accessed through simple HTTP requests to access the site data in JSON format<br class="wikidpad" />
+<br class="wikidpad" />
+The WP API provides uniform standardized output from Wordpress, which can be requested, parsed and processed by any application or application language.<br class="wikidpad" />
+<br class="wikidpad" />
+With the WP API, Wordpress sites are no longer restricted to PHP applications, or even the web browser<br class="wikidpad" />
+<br class="wikidpad" />
+The WP API makes Wordpress a headless CMS<br class="wikidpad" />
+<br class="wikidpad" />
+<b class="wikidpad">Terms</b><br class="wikidpad" />
+<br class="wikidpad" />
+A RESTful application is typically one that uses standard verbs like GET, POST, PUT and DELETE to retrieve and send data from and to a remote server. <br class="wikidpad" />
+<br class="wikidpad" />
+RESTful applications use resources, so essentially URIs, to interface with external systems such as a remote server, and use the four verbs to perform operations on that server. <br class="wikidpad" />
+<br class="wikidpad" />
+API is an acronym for Application Programming Interface, a set of routines, protocols, and tools for building applications and interfaces.<br class="wikidpad" />
+<br class="wikidpad" />
+If we combine these two together, we get a RESTful API, an application programming interface that uses resource URIs to perform operations on a server through verbs. Send a URI to the server, get pure data back. In the WP API, that data comes back as JSON, which stands for JavaScript Object Notation.<br class="wikidpad" />
+<br class="wikidpad" />
+So, the WP API is a RESTful API for WordPress that returns data objects in the JSON format when provided with a route and an endpoint.<br class="wikidpad" />
+<br class="wikidpad" />
+Endpoints<br class="wikidpad" />
+An endpoint is a function available through the APIs, so the verbs I mentioned in the REST definition. An endpoint performs a specific function by taking one or more parameters and returning the resulting data to the client.<br class="wikidpad" />
+<br class="wikidpad" />
+Route<br class="wikidpad" />
+A route is the "name" you use to access the available endpoints. In layman's terms, the route is the URL, and the endpoint is the action performed on the URL.<br class="wikidpad" />
+<br class="wikidpad" />
+Example:<br class="wikidpad" />
+GET wp/v2/posts/456<br class="wikidpad" />
+<br class="wikidpad" />
+GET = Endpoint<br class="wikidpad" />
+wp/v2/posts/456 = Route<br class="wikidpad" />
+<br class="wikidpad" />
+<b class="wikidpad">Resources</b><br class="wikidpad" />
+<br class="wikidpad" />
+Documentation: <span class="wikidpad url-link"><a href="http://v2.wp-api.org/" class="wikidpad">http://v2.wp-api.org/</a></span><br class="wikidpad" />
+Github Project: <span class="wikidpad url-link"><a href="https://github.com/WP-API/WP-API" class="wikidpad">https://github.com/WP-API/WP-API</a></span><br class="wikidpad" />
+Plugin: <span class="wikidpad url-link"><a href="https://wordpress.org/plugins/rest-api/" class="wikidpad">https://wordpress.org/plugins/rest-api/</a></span><br class="wikidpad" />
+<br class="wikidpad" />
+<b class="wikidpad">Example</b><br class="wikidpad" />
+<br class="wikidpad" />
+<span class="wikidpad url-link"><a href="http://demo.wp-api.org/wp-json/wp/v2/posts/1" class="wikidpad">http://demo.wp-api.org/wp-json/wp/v2/posts/1</a></span> <br class="wikidpad" />
+<br class="wikidpad" />
+Result:<br class="wikidpad" />
+{"id":1,"date":"2015-06-03T22:12:40","date_gmt":"2015-06-03T22:12:40","guid":{"rendered":"http://wp-api-de-elbinsta-n5pu020s13lb-1748419096.eu-west-1.elb.amazonaws.com/?p=1"},"modified":"2015-06-03T22:12:40","modified_gmt":"2015-06-03T22:12:40","slug":"hello-world","type":"post","link":"http://demo.wp-api.org/2015/06/03/hello-world/","title":{"rendered":"Hello world!"},"content":{"rendered":"<p>Welcome to WordPress. This is your first post. Edit or delete it, then start blogging!&lt;/p&gt;n"},"excerpt":{"rendered":"<p>Welcome to WordPress. This is your first post. Edit or delete it, then start blogging!&lt;/p&gt;n"},"author":1,"featured_image":0,"comment_status":"open","ping_status":"open","sticky":false,"format":"standard","_links":{"self":[{"href":"http://demo.wp-api.org/wp-json/wp/v2/posts/1"}],"collection":[{"href":"http://demo.wp-api.org/wp-json/wp/v2/posts"}],"about":[{"href":"http://demo.wp-api.org/wp-json/wp/v2/types/post"}],"author":[{"embeddable":true,"href":"http://demo.wp-api.org/wp-json/wp/v2/users/1"}],"replies":[{"embeddable":true,"href":"http://demo.wp-api.org/wp-json/wp/v2/comments?post=1"}],"version-history":[{"href":"http://demo.wp-api.org/wp-json/wp/v2/posts/1/revisions"}],"https://api.w.org/attachment":[{"href":"http://demo.wp-api.org/wp-json/wp/v2/media?parent=1"}],"https://api.w.org/term":[{"taxonomy":"category","embeddable":true,"href":"http://demo.wp-api.org/wp-json/wp/v2/posts/1/categories"},{"taxonomy":"post_tag","embeddable":true,"href":"http://demo.wp-api.org/wp-json/wp/v2/posts/1/tags"}],"https://api.w.org/meta":[{"embeddable":true,"href":"http://demo.wp-api.org/wp-json/wp/v2/posts/1/meta"}]}}<br class="wikidpad" />
+<br class="wikidpad" />
+In order to view this in a nicer way, use Postman (Google Chrome App)<br class="wikidpad" />
+<br class="wikidpad" />
+You can access URL/wp-json/wp/v2 to get a list of all the available endpoints.<br class="wikidpad" />
+<br class="wikidpad" />
+<b class="wikidpad">Common Routes</b><br class="wikidpad" />
+<br class="wikidpad" />
+==Posts==<br class="wikidpad" />
+<br class="wikidpad" />
+GET <span class="wikidpad url-link"><a href="http://demo.wp-api.org/wp-json/wp/v2/posts" class="wikidpad">http://demo.wp-api.org/wp-json/wp/v2/posts</a></span> will return 10 latest posts + sticky posts unless you specify a different per_page argument.<br class="wikidpad" />
+<br class="wikidpad" />
+GET <span class="wikidpad url-link"><a href="http://demo.wp-api.org/wp-json/wp/v2/posts?per_page=0" class="wikidpad">http://demo.wp-api.org/wp-json/wp/v2/posts?per_page=0</a></span> will return every single post<br class="wikidpad" />
+<br class="wikidpad" />
+To get a single post:<br class="wikidpad" />
+GET <span class="wikidpad url-link"><a href="http://demo.wp-api.org/wp-json/wp/v2/posts/{id}" class="wikidpad">http://demo.wp-api.org/wp-json/wp/v2/posts/{id}</a></span><br class="wikidpad" />
+GET <span class="wikidpad url-link"><a href="http://demo.wp-api.org/wp-json/wp/v2/posts/1" class="wikidpad">http://demo.wp-api.org/wp-json/wp/v2/posts/1</a></span><br class="wikidpad" />
+<br class="wikidpad" />
+GET <span class="wikidpad url-link"><a href="http://demo.wp-api.org/wp-json/wp/v2/posts?filter[cat" class="wikidpad">http://demo.wp-api.org/wp-json/wp/v2/posts?filter[cat</a></span>]=4 Get all posts in a specific category<br class="wikidpad" />
+<br class="wikidpad" />
+==Pages==<br class="wikidpad" />
+GET <span class="wikidpad url-link"><a href="http://demo.wp-api.org/wp-json/wp/v2/pages" class="wikidpad">http://demo.wp-api.org/wp-json/wp/v2/pages</a></span> will return 10 latest pages<br class="wikidpad" />
+<br class="wikidpad" />
+Similar logic to get more pages or a specific page<br class="wikidpad" />
+<br class="wikidpad" />
+==Categories==<br class="wikidpad" />
+<br class="wikidpad" />
+GET <span class="wikidpad url-link"><a href="http://demo.wp-api.org/wp-json/wp/v2/terms/category" class="wikidpad">http://demo.wp-api.org/wp-json/wp/v2/terms/category</a></span> 10 first categories alphabetically<br class="wikidpad" />
+<br class="wikidpad" />
+Same logic for more categories or specific categories<br class="wikidpad" />
+<br class="wikidpad" />
+Looks like this may be wrong and it might be this one instead:<br class="wikidpad" />
+GET <span class="wikidpad url-link"><a href="http://demo.wp-api.org/wp-json/wp/v2/categories" class="wikidpad">http://demo.wp-api.org/wp-json/wp/v2/categories</a></span><br class="wikidpad" />
+<br class="wikidpad" />
+==Tags==<br class="wikidpad" />
+<br class="wikidpad" />
+GET <span class="wikidpad url-link"><a href="http://demo.wp-api.org/wp-json/wp/v2/tags" class="wikidpad">http://demo.wp-api.org/wp-json/wp/v2/tags</a></span><br class="wikidpad" />
+<br class="wikidpad" />
+Morten said to use this but it doesn't seem to work:<br class="wikidpad" />
+<span class="wikidpad url-link"><a href="http://demo.wp-api.org/wp-json/wp/v2/terms/tag" class="wikidpad">http://demo.wp-api.org/wp-json/wp/v2/terms/tag</a></span><br class="wikidpad" />
+<br class="wikidpad" />
+==Users==<br class="wikidpad" />
+<br class="wikidpad" />
+<span class="wikidpad url-link"><a href="http://demo.wp-api.org/wp-json/wp/v2/users" class="wikidpad">http://demo.wp-api.org/wp-json/wp/v2/users</a></span><br class="wikidpad" />
+<span class="wikidpad url-link"><a href="http://demo.wp-api.org/wp-json/wp/v2/users/me" class="wikidpad">http://demo.wp-api.org/wp-json/wp/v2/users/me</a></span> Returns your user if you are logged in<br class="wikidpad" />
+<br class="wikidpad" />
+==Comments==<br class="wikidpad" />
+<br class="wikidpad" />
+<span class="wikidpad url-link"><a href="http://demo.wp-api.org/wp-json/wp/v2/comments" class="wikidpad">http://demo.wp-api.org/wp-json/wp/v2/comments</a></span><br class="wikidpad" />
+<span class="wikidpad url-link"><a href="http://demo.wp-api.org/wp-json/wp/v2/comments?post=49" class="wikidpad">http://demo.wp-api.org/wp-json/wp/v2/comments?post=49</a></span> Returns comments on a single post. You can comma separate those values to return more than one post.<br class="wikidpad" />
+<br class="wikidpad" />
+<br class="wikidpad" />
+<br class="wikidpad" />
+<br class="wikidpad" />
+<br class="wikidpad" />
+    </body>
+</html>
